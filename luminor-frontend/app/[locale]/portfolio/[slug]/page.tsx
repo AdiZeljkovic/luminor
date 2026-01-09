@@ -3,11 +3,12 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import AnimatedSection from "@/components/AnimatedSection";
 import styles from "./page.module.css";
+import { API_URL } from "@/lib/api";
 
 // Fetch data from API
 async function getProjectData(slug: string) {
     try {
-        const res = await fetch(`http://localhost:5000/api/portfolio/${slug}`, {
+        const res = await fetch(`${API_URL}/api/portfolio/${slug}`, {
             cache: 'no-store' // Ensure fresh data
         });
 
@@ -173,7 +174,7 @@ export default async function ProjectDetail({ params }: { params: { slug: string
                         <h2 className={styles.sectionTitle}>Korišćene Tehnologije</h2>
                     </AnimatedSection>
                     <div className={styles.techGrid}>
-                        {project.technologies.map((tech, index) => (
+                        {project.technologies.map((tech: string, index: number) => (
                             <AnimatedSection key={tech} animation="fade-up" delay={index * 50} className={styles.techItem}>
                                 {tech}
                             </AnimatedSection>
