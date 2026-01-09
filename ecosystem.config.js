@@ -1,0 +1,47 @@
+module.exports = {
+    apps: [
+        {
+            name: 'luminor-backend',
+            cwd: '/var/www/luminor/backend',
+            script: 'server.js',
+            instances: 1,
+            autorestart: true,
+            watch: false,
+            max_memory_restart: '500M',
+            env: {
+                NODE_ENV: 'production',
+                PORT: 5000
+            }
+        },
+        {
+            name: 'luminor-frontend',
+            cwd: '/var/www/luminor/frontend',
+            script: 'node_modules/next/dist/bin/next',
+            args: 'start',
+            instances: 1,
+            autorestart: true,
+            watch: false,
+            max_memory_restart: '500M',
+            env: {
+                NODE_ENV: 'production',
+                PORT: 3000,
+                NEXT_PUBLIC_API_URL: 'https://api.luminor.solutions'
+            }
+        },
+        {
+            name: 'luminor-admin',
+            cwd: '/var/www/luminor/admin',
+            script: 'node_modules/next/dist/bin/next',
+            args: 'start -p 3001',
+            instances: 1,
+            autorestart: true,
+            watch: false,
+            max_memory_restart: '500M',
+            env: {
+                NODE_ENV: 'production',
+                PORT: 3001,
+                NEXT_PUBLIC_API_URL: 'https://api.luminor.solutions'
+            }
+        }
+    ]
+};
