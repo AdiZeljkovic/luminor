@@ -6,6 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import RichTextEditor from "@/components/ui/RichTextEditor";
 import { toast } from "sonner";
+import { API_URL } from "@/lib/api";
 
 export default function EditProjectPage({ params }: { params: { id: string } }) {
     const router = useRouter();
@@ -35,7 +36,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
     const fetchProject = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/portfolio/${params.id}`);
+            const res = await fetch(`${API_URL}/api/portfolio/${params.id}`);
             const data = await res.json();
             if (data.success) {
                 const project = data.data;
@@ -82,7 +83,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
             const technologiesArray = formData.technologies.split(",").map(t => t.trim()).filter(Boolean);
 
             // Parse Results
-            let resultsData = [];
+            let resultsData: { metric: string; label: string }[] = [];
             if (formData.results) {
                 resultsData = formData.results.split(",").map(r => {
                     const parts = r.trim().split(":");
@@ -118,7 +119,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
                 date: formData.date
             };
 
-            const res = await fetch(`http://localhost:5000/api/portfolio/${params.id}`, {
+            const res = await fetch(`${API_URL}/api/portfolio/${params.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
