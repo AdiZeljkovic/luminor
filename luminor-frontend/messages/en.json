@@ -1,0 +1,1257 @@
+{
+    "seo": {
+        "default": {
+            "title": "Luminor Solutions Agency | Web development & digital marketing specialists",
+            "description": "Full-service digital agency. We build custom websites, impactful brands, and data-driven marketing campaigns that grow your business.",
+            "keywords": "luminor solutions, luminor solutions agency, web development, digital marketing, graphic design, seo agency, sarajevo, balkan, software company, custom software, react development, next.js experts, branding studio, digital transformation, marketing strategy, ui/ux design, web shop development"
+        },
+        "home": {
+            "title": "Luminor Solutions Agency | Digital solutions that drive real results",
+            "description": "We are a digital agency specializing in custom web development, SEO, and branding. Let's build a digital presence that converts visitors into made-to-measure clients.",
+            "keywords": "luminor solutions, web design agency, custom software development, digital marketing strategy, seo experts, branding studio, website builder sarajevo, professional web development, mobile app development, e-commerce solutions, online marketing, digital growth, business automation"
+        },
+        "about": {
+            "title": "About us | Luminor Solutions Agency",
+            "description": "Meet the team behind Luminor Solutions. We bridge the gap between creative design and technical engineering to deliver complete digital products.",
+            "keywords": "about luminor solutions, digital agency team, web developers sarajevo, creative studio, software engineers bosnia, agency culture, our story, luminor solutions team, tech experts sarajevo"
+        },
+        "services": {
+            "title": "Our services | Web, design & marketing solutions",
+            "description": "Comprehensive digital services: Custom Web Development, UI/UX Design, SEO Optimization, and Performance Marketing. Everything you need under one roof.",
+            "keywords": "luminor solutions services, web development services, graphic design services, digital marketing agency, seo services, hosting provider, ai automation, chatbot development, social media management, ppc advertising, content marketing, brand identity design"
+        },
+        "portfolio": {
+            "title": "Our work | Case studies & successful projects",
+            "description": "Explore our portfolio of successful projects. From e-commerce platforms to corporate branding, see how we help businesses solve real problems.",
+            "keywords": "luminor solutions portfolio, web design portfolio, branding case studies, software development projects, agency work, client success stories, e-commerce examples, website redesign, marketing campaign results"
+        },
+        "blog": {
+            "title": "Blog & insights | Digital trends and expert advice",
+            "description": "Practical advice and industry insights on web development, digital marketing, and design trends. Stay ahead of the curve with Luminor Solutions.",
+            "keywords": "luminor solutions blog, digital marketing blog, web development tips, design trends 2024, business growth strategies, seo guide, tech news, marketing insights, software development tutorial"
+        },
+        "contact": {
+            "title": "Contact us | Start your digital project",
+            "description": "Ready to grow? Contact Luminor Solutions Agency for a free consultation. Let's discuss your project and find the right solution for your budget.",
+            "keywords": "contact luminor solutions, hire developers, digital agency sarajevo, request quote, web development quote, marketing consultation, start a project, agency contact email, sarajevo software company location"
+        }
+    },
+    "common": {
+        "nav": {
+            "home": "Home",
+            "services": "Services",
+            "hosting": "Hosting",
+            "portfolio": "Portfolio",
+            "about": "About",
+            "blog": "Blog",
+            "contact": "Contact",
+            "startProject": "Start a Project"
+        },
+        "learnMore": "Learn more",
+        "services": {
+            "webDevelopment": "Web Development",
+            "graphicDesign": "Graphic Design",
+            "digitalMarketing": "Digital Marketing",
+            "seo": "SEO",
+            "aiAutomation": "AI & Automation"
+        },
+        "footer": {
+            "description": "Digital agency delivering professional web development, graphic design, digital marketing, SEO optimization, and AI automation services.",
+            "services": "Services",
+            "quickLinks": "Quick Links",
+            "company": "Company",
+            "aboutUs": "About Us",
+            "ourWork": "Our Work",
+            "blog": "Blog",
+            "careers": "Careers",
+            "contact": "Contact",
+            "address": "Porodice Ribar 39, 71000 Sarajevo, Bosnia and Herzegovina",
+            "phone": "+387 62 574 783",
+            "email": "info@luminor.solutions",
+            "getInTouch": "Get in Touch",
+            "copyright": "Luminor.Solutions. All rights reserved.",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Service"
+        },
+        "regionPrompt": {
+            "title": "Welcome!",
+            "message": "We noticed you may be visiting from the Balkans. Would you like to switch to Bosnian?",
+            "switchToBs": "Switch to Bosnian",
+            "continueEn": "Continue in English"
+        }
+    },
+    "home": {
+        "hero": {
+            "label": "DIGITAL AGENCY",
+            "titleLine1": "CREATIVE",
+            "titleLine2": "DIGITAL",
+            "titleLine3": "SOLUTIONS.",
+            "description": "We develop web platforms, brands, and marketing strategies that transform your business and build long-term digital success.",
+            "ctaPrimary": "START A PROJECT",
+            "ctaSecondary": "VIEW PORTFOLIO"
+        },
+        "services": {
+            "title": "Our Services",
+            "subtitle": "Complete support for your digital success – from strategy to execution.",
+            "webDev": {
+                "title": "Web Development",
+                "description": "We develop modern, high-performance web platforms tailored to your business goals and user experience."
+            },
+            "design": {
+                "title": "Graphic Design",
+                "description": "We create visual identities that communicate your brand values and leave a lasting impression."
+            },
+            "marketing": {
+                "title": "Digital Marketing",
+                "description": "We develop digital marketing strategies that deliver measurable results and maximize ROI."
+            },
+            "seo": {
+                "title": "SEO Optimization",
+                "description": "We improve your search engine visibility through technical optimization and content strategy."
+            },
+            "ai": {
+                "title": "AI & Automation",
+                "description": "We implement artificial intelligence solutions that optimize processes and increase efficiency."
+            },
+            "hosting": {
+                "title": "Premium Hosting",
+                "description": "Reliable hosting on NVMe infrastructure with 99.9% guaranteed uptime and professional support."
+            }
+        },
+        "whyUs": {
+            "title": "WHY LUMINOR?",
+            "subtitle": "We combine strategic thinking with technical excellence for measurable results.",
+            "expertise": {
+                "title": "EXPERTISE",
+                "description": "A team of experienced professionals with a proven portfolio of successful projects across various industries."
+            },
+            "results": {
+                "title": "RESULTS",
+                "description": "We focus on measurable business results, not just aesthetics. Your ROI is our priority."
+            },
+            "partnership": {
+                "title": "PARTNERSHIP",
+                "description": "We build long-term relationships with clients. Your success is our success – we grow together."
+            },
+            "support": {
+                "title": "SUPPORT",
+                "description": "Professional support when you need it. Quick responses and proactive problem solving."
+            }
+        },
+        "portfolio": {
+            "title": "Featured Projects",
+            "subtitle": "See how we've helped clients achieve their business goals.",
+            "viewAll": "View Full Portfolio",
+            "items": {
+                "ecommerce": {
+                    "title": "E-Commerce Platform",
+                    "description": "Complete e-commerce platform with integrated order management system."
+                },
+                "rebranding": {
+                    "title": "Corporate Rebranding",
+                    "description": "Comprehensive visual identity transformation for a leading tech company."
+                },
+                "seoGrowth": {
+                    "title": "SEO Optimization",
+                    "description": "Organic growth strategy that resulted in 300% traffic increase."
+                }
+            }
+        },
+        "cta": {
+            "titleLine1": "READY FOR",
+            "titleLine2": "THE NEXT STEP?",
+            "description": "Schedule a free consultation and let's discuss possibilities for your business.",
+            "button": "CONTACT US"
+        }
+    },
+    "about": {
+        "hero": {
+            "label": "About Us",
+            "titleLine1": "YOUR DIGITAL",
+            "titleLine2": "PARTNER",
+            "description": "An agency that combines creativity and technology to help brands reach their full potential in the digital world."
+        },
+        "story": {
+            "title": "Our Story",
+            "p1": "Luminor was born from the desire to create an agency that offers not just services, but true partnership. We noticed a gap in the market – clients often had to choose between creative excellence and technical expertise.",
+            "p2": "We assembled a team of experts from various fields, united by a common vision: to create digital solutions that inspire and deliver measurable results.",
+            "p3": "Today, Luminor.Solutions represents a synonym for quality and innovation, with a portfolio of successful projects and partnerships with companies from various industries.",
+            "cta": "View Our Projects"
+        },
+        "stats": {
+            "years": "Years of Experience",
+            "projects": "Completed Projects",
+            "clients": "Active Clients",
+            "satisfaction": "Satisfied Partners"
+        },
+        "mission": {
+            "title": "Our Mission",
+            "description": "To help companies of all sizes harness the potential of digital technologies. Through a combination of strategy, creativity, and technical expertise, we create solutions that deliver measurable business results."
+        },
+        "vision": {
+            "title": "Our Vision",
+            "description": "To become a recognized partner for digital transformations in the region, known for quality execution, innovative approach, and long-term client relationships."
+        },
+        "values": {
+            "title": "Our Values",
+            "subtitle": "Principles that define our way of working and collaborating with clients.",
+            "innovation": {
+                "title": "Innovation",
+                "description": "We continuously explore new technologies and approaches to offer clients the most advanced solutions."
+            },
+            "transparency": {
+                "title": "Transparency",
+                "description": "We believe in open communication and clearly defined processes. No hidden costs, no surprises."
+            },
+            "quality": {
+                "title": "Quality",
+                "description": "We treat every project with maximum attention. We don't compromise when it comes to quality."
+            },
+            "partnership": {
+                "title": "Partnership",
+                "description": "We build long-term relationships based on trust. We see your success as our shared goal."
+            }
+        },
+        "servicesSection": {
+            "title": "Our Services",
+            "subtitle": "Comprehensive support for your digital success."
+        },
+        "cta": {
+            "label": "Start Collaboration",
+            "titleLine1": "READY FOR",
+            "titleLine2": "A NEW PROJECT?",
+            "description": "Schedule a free consultation and let's discuss possibilities for your business."
+        }
+    },
+    "contact": {
+        "hero": {
+            "label": "Contact",
+            "titleLine1": "LET'S DISCUSS",
+            "titleLine2": "YOUR PROJECT",
+            "description": "Have a project in mind or want to learn more about our services? We're here to answer all your questions."
+        },
+        "info": {
+            "phone": "Phone",
+            "email": "Email",
+            "location": "Location",
+            "workHours": "Mon-Fri 09:00 - 17:00"
+        },
+        "form": {
+            "title": "Send Us a Message",
+            "name": "Full Name",
+            "namePlaceholder": "Your name",
+            "email": "Email Address",
+            "emailPlaceholder": "your@email.com",
+            "phone": "Phone",
+            "phonePlaceholder": "+387 60 ...",
+            "service": "Service",
+            "servicePlaceholder": "Select a service...",
+            "serviceOptions": {
+                "webDev": "Web Development",
+                "design": "Graphic Design",
+                "marketing": "Digital Marketing",
+                "seo": "SEO Optimization",
+                "ai": "AI & Automation",
+                "hosting": "Hosting",
+                "other": "Other"
+            },
+            "message": "Your Message",
+            "messagePlaceholder": "Describe your project or question...",
+            "submit": "Send Message",
+            "successTitle": "Message Sent!",
+            "successMessage": "Your message has been sent successfully. We will get back to you soon.",
+            "sendAnother": "Send Another Message",
+            "errorMessage": "An error occurred while sending your message. Please try again."
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "q1": "How long does project completion take?",
+            "a1": "Duration depends on scope and complexity. We complete a standard website in 3-4 weeks, while larger projects may take 2-3 months. You'll receive a precise estimate in our proposal.",
+            "q2": "What are the payment terms?",
+            "a2": "The standard model is 50% deposit and 50% upon project completion. For larger projects, we can arrange phased payments. All terms are clearly defined in the contract.",
+            "q3": "Do you provide support after launch?",
+            "a3": "Every project includes 30 days of free support. After that, we offer technical maintenance packages tailored to your needs."
+        },
+        "social": {
+            "title": "Follow Us"
+        }
+    },
+    "blog": {
+        "hero": {
+            "label": "Blog & Insights",
+            "titleLine1": "DIGITAL",
+            "titleLine2": "INSIGHTS",
+            "description": "Expert articles, tips, and analyses from the world of digital marketing, design, and technology."
+        },
+        "categories": {
+            "all": "All Articles",
+            "webDesign": "Web Design",
+            "seo": "SEO",
+            "development": "Development",
+            "marketing": "Marketing",
+            "ai": "AI"
+        },
+        "featured": "Featured",
+        "readMore": "Read More",
+        "readTime": "min read",
+        "loadMore": "Load More",
+        "noArticles": "There are currently no articles in this category.",
+        "backToBlog": "Back to Blog",
+        "newsletter": {
+            "titleLine1": "STAY",
+            "titleLine2": "IN THE LOOP",
+            "description": "We send useful content once a week. No spam, no sales – just things worth your time.",
+            "placeholder": "Your email address",
+            "subscribe": "Subscribe",
+            "successTitle": "Thanks for subscribing!",
+            "successMessage": "You have successfully subscribed to our newsletter. Expect useful insights soon.",
+            "error": "An error occurred. Please try again."
+        },
+        "pagination": {
+            "prev": "← Previous",
+            "next": "Next →"
+        }
+    },
+    "portfolio": {
+        "hero": {
+            "label": "Portfolio",
+            "titleLine1": "OUR WORK",
+            "titleLine2": "SPEAKS",
+            "description": "Behind every project is a story, a challenge, and a solution. See how we've helped clients achieve their goals."
+        },
+        "filters": {
+            "all": "All Projects",
+            "webDev": "Web Development",
+            "design": "Graphic Design",
+            "marketing": "Digital Marketing",
+            "seo": "SEO"
+        },
+        "emptyState": "No projects found",
+        "emptyStateHint": "Projects will appear here once added via the admin panel.",
+        "loadMore": "Load More",
+        "cta": {
+            "label": "Like what you see?",
+            "titleLine1": "YOUR IDEA IS",
+            "titleLine2": "NEXT.",
+            "description": "Tell us what you need. Maybe your project will end up here too.",
+            "button": "Start a Project"
+        }
+    },
+    "services": {
+        "hero": {
+            "label": "Services",
+            "titleLine1": "WHAT WE",
+            "titleLine2": "DO",
+            "description": "Complete digital solutions that help your business grow and succeed in the online world."
+        },
+        "items": {
+            "webDev": {
+                "title": "Web Development",
+                "description": "Building modern, fast, and secure websites and applications. From simple presentations to complex e-commerce solutions."
+            },
+            "design": {
+                "title": "Graphic Design",
+                "description": "Creative visual solutions that communicate your brand. Logo design, branding books, promo materials, and UI/UX design."
+            },
+            "marketing": {
+                "title": "Digital Marketing",
+                "description": "Comprehensive marketing strategies for business growth. Social media management, PPC advertising, and content marketing."
+            },
+            "seo": {
+                "title": "SEO Optimization",
+                "description": "Rank at the top of Google search. Technical optimization, keyword research, and link building."
+            },
+            "ai": {
+                "title": "AI & Automation",
+                "description": "Leverage the power of artificial intelligence. Chatbots, business process automation, and AI integrations."
+            }
+        },
+        "cta": {
+            "label": "Free Consultation",
+            "titleLine1": "HAVE AN IDEA FOR A",
+            "titleLine2": "NEW PROJECT?",
+            "description": "Let's turn it into reality. Schedule a free consultation and get a cost and time estimate.",
+            "cardTitle": "Request a Quote",
+            "cardText": "Briefly describe what you need and we'll get back to you with a quote within 24h.",
+            "button": "Contact Us"
+        },
+        "webDevPage": {
+            "hero": {
+                "titleLine1": "Custom",
+                "titleLine2": "Web",
+                "titleLine3": "Development",
+                "description": "We don't use templates. We build fast, secure, and scalable web applications tailored to your business. Focused on performance and conversion.",
+                "ctaPrimary": "Start Project",
+                "ctaSecondary": "Explore Services"
+            },
+            "features": {
+                "performance": {
+                    "title": "Speed & Performance",
+                    "description": "We optimize every byte. Google Core Web Vitals are our priority. Lightning-fast loading means better ranking and happier users."
+                },
+                "mobile": {
+                    "title": "Mobile First",
+                    "description": "We design for mobile devices from the start. Your site will look and work flawlessly on every screen, from phones to 4K monitors."
+                },
+                "security": {
+                    "title": "Security by Design",
+                    "description": "Security is not an afterthought. We implement SSL, attack protection, and regular backups to keep your data safe."
+                }
+            },
+            "detailedServices": {
+                "title": "What Exactly Do We Do?",
+                "ecommerce": {
+                    "title": "E-Commerce Solutions",
+                    "description": "Sell more with optimized online stores.",
+                    "features": [
+                        "WooCommerce & Shopify",
+                        "Custom Checkout Flows",
+                        "Payment Gateway Integration",
+                        "Inventory Management"
+                    ]
+                },
+                "corporate": {
+                    "title": "Corporate Websites",
+                    "description": "Present your brand in the best light.",
+                    "features": [
+                        "Premium Design",
+                        "CMS for Easy Editing",
+                        "SEO Optimization",
+                        "Multilingual Support"
+                    ]
+                },
+                "saas": {
+                    "title": "Web Applications (SaaS)",
+                    "description": "Complex cloud software solutions.",
+                    "features": [
+                        "Admin Dashboards",
+                        "Real-time Data",
+                        "User Portals",
+                        "API Development"
+                    ]
+                },
+                "api": {
+                    "title": "API Integrations",
+                    "description": "Connecting your systems to work as one.",
+                    "features": [
+                        "CRM Integrations",
+                        "ERP Connection",
+                        "Custom API Endpoints",
+                        "Data Automation"
+                    ]
+                }
+            },
+            "techStack": {
+                "title": "Technologies We Use",
+                "description": "We use only proven and modern tools that guarantee longevity and stability for your project."
+            },
+            "process": {
+                "title": "Development Process",
+                "steps": {
+                    "discovery": {
+                        "title": "Discovery Workshop",
+                        "description": "We meet to understand your business, goals, and competition. Based on that, we create a detailed project specification."
+                    },
+                    "design": {
+                        "title": "UX/UI Design",
+                        "description": "We create wireframes and visual design. We code nothing until you approve the look of every screen."
+                    },
+                    "development": {
+                        "title": "Agile Development",
+                        "description": "We work in sprints. We regularly update you on progress and send demo versions for testing."
+                    },
+                    "deployment": {
+                        "title": "Deployment & Training",
+                        "description": "We launch the site on the production server, test speed, and train you how to independently change content."
+                    }
+                }
+            },
+            "faq": {
+                "title": "Frequently Asked Questions",
+                "q1": "How long does it take to build a website?",
+                "a1": "Duration depends on project complexity. Simple corporate sites are done in 2-4 weeks, while complex web apps and e-commerce solutions may take 2-3 months.",
+                "q2": "Do you offer maintenance after launch?",
+                "a2": "Absolutely. We offer monthly maintenance packages including security updates, data backups, performance monitoring, and minor content changes.",
+                "q3": "Will my site be optimized for Google (SEO)?",
+                "a3": "Yes. Technical SEO (speed, structure, meta tags) is integrated into every project from day one. We deliver the site ready for ranking.",
+                "q4": "Can I change content myself?",
+                "a4": "Of course. We implement user-friendly CMS (Content Management System) or Admin panel through which you can easily change texts, images, and blog posts without programming knowledge."
+            },
+            "cta": {
+                "label": "Free Consultation",
+                "titleLine1": "HAVE AN IDEA FOR A",
+                "titleLine2": "NEW PROJECT?",
+                "description": "Let's turn it into reality. Schedule a free consultation and get a cost and time estimate.",
+                "cardTitle": "Request a Quote",
+                "cardText": "Briefly describe what you need and we'll get back to you with a quote within 24h.",
+                "button": "Contact Us"
+            }
+        },
+        "graphicDesignPage": {
+            "hero": {
+                "titleLine1": "Visual",
+                "titleLine2": "Identity",
+                "titleLine3": "That Resonates",
+                "description": "Design is more than just aesthetics. It's how your brand communicates with the world. We create visual solutions that tell your story.",
+                "ctaPrimary": "Request Design",
+                "ctaSecondary": "View Work"
+            },
+            "features": {
+                "unique": {
+                    "title": "Unique Style",
+                    "description": "We don't use stock templates. Every design is original and tailored specifically for your target audience and brand values."
+                },
+                "psychology": {
+                    "title": "Color Psychology",
+                    "description": "We use the science of color and shape to evoke the right emotion in your customers and build trust at first sight."
+                },
+                "consistency": {
+                    "title": "Consistency",
+                    "description": "Ensuring your brand looks the same on a business card, website, and Instagram. Consistency builds recognition."
+                }
+            },
+            "detailedServices": {
+                "title": "Our Design Services",
+                "branding": {
+                    "title": "Visual Identity (Branding)",
+                    "description": "Building a recognizable brand from scratch.",
+                    "features": [
+                        "Logo Design & Variations",
+                        "Brand Book",
+                        "Typography & Color Selection",
+                        "Business Cards & Letterheads"
+                    ]
+                },
+                "uiux": {
+                    "title": "UI/UX Design",
+                    "description": "Web and mobile interface design.",
+                    "features": [
+                        "Wireframing & Prototyping",
+                        "Website Design",
+                        "Mobile App Design",
+                        "Design System Creation"
+                    ]
+                },
+                "print": {
+                    "title": "Promotional Material",
+                    "description": "Design for print and digital.",
+                    "features": [
+                        "Brochures & Catalogs",
+                        "Billboards & Posters",
+                        "Social Media Visuals",
+                        "Product Packaging"
+                    ]
+                },
+                "illustration": {
+                    "title": "Illustration & Iconography",
+                    "description": "Unique visual elements.",
+                    "features": [
+                        "Custom Product Icons",
+                        "Vector Illustrations",
+                        "Infographics",
+                        "Character Design"
+                    ]
+                }
+            },
+            "techStack": {
+                "title": "Tools We Create With",
+                "description": "Industry standard for top-notch results."
+            },
+            "process": {
+                "title": "Creative Process",
+                "steps": {
+                    "research": {
+                        "title": "Research & Moodboard",
+                        "description": "We analyze your brand and competition. We create a 'moodboard' with inspiration and style guidelines."
+                    },
+                    "sketching": {
+                        "title": "Sketching & Concepts",
+                        "description": "drawing initial ideas on paper. We select the 3 best concepts to digitize and present to you."
+                    },
+                    "refining": {
+                        "title": "Refining",
+                        "description": "Based on your feedback, we refine the chosen concept to perfection (colors, typography, proportions)."
+                    },
+                    "delivery": {
+                        "title": "File Delivery",
+                        "description": "We send you all files neatly organized (Print ready, Web ready, Source files)."
+                    }
+                }
+            },
+            "faq": {
+                "title": "Frequently Asked Questions",
+                "q1": "What do I get in the logo design package?",
+                "a1": "You get the logo in all necessary formats (vector AI/EPS, transparent PNG, JPG). We include the primary version, monochrome version, and social media variations.",
+                "q2": "How long does branding take?",
+                "a2": "The process usually takes 2-3 weeks. This includes research, concept sketching, presentation, and finalization of the chosen solution.",
+                "q3": "How many revisions are included?",
+                "a3": "We standardly include 3 rounds of revisions. We want you to be 100% satisfied, but believe in quality feedback sessions to reach the goal efficiently.",
+                "q4": "Do you do print design?",
+                "a4": "Yes, we prepare print-ready files (CMYK colors, bleeds) and can communicate directly with your printing house to ensure perfect print."
+            },
+            "cta": {
+                "label": "Free Consultation",
+                "titleLine1": "READY TO",
+                "titleLine2": "STAND OUT?",
+                "description": "Good design pays off. Schedule a consultation and let's make your brand unforgettable.",
+                "cardTitle": "Start Design",
+                "cardText": "Want a new logo or complete rebranding? We are here to help.",
+                "button": "Request Branding"
+            }
+        },
+        "digitalMarketingPage": {
+            "hero": {
+                "titleLine1": "Digital",
+                "titleLine2": "Growth",
+                "titleLine3": "Measured",
+                "description": "We don't chase 'likes', we chase sales. We create marketing campaigns that pay off (literally). Converting visitors into loyal customers.",
+                "ctaPrimary": "Free Strategy",
+                "ctaSecondary": "Services"
+            },
+            "features": {
+                "targeting": {
+                    "title": "Precise Targeting",
+                    "description": "We don't shoot in the dark. Using advanced tools, we hit exactly the audience ready to buy your product."
+                },
+                "roi": {
+                    "title": "ROI Focus",
+                    "description": "Every invested euro must return. We constantly optimize campaigns to reduce acquisition costs (CPA)."
+                },
+                "data": {
+                    "title": "Data-Driven",
+                    "description": "We don't make decisions based on instinct, but on data. We A/B test everything - from headlines to button colors."
+                }
+            },
+            "detailedServices": {
+                "title": "How We Reach Customers?",
+                "social": {
+                    "title": "Social Media Marketing",
+                    "description": "Building a community around your brand.",
+                    "features": [
+                        "Instagram & Facebook",
+                        "LinkedIn B2B Lead Gen",
+                        "TikTok Content Strategy",
+                        "Community Management"
+                    ]
+                },
+                "ppc": {
+                    "title": "PPC Advertising",
+                    "description": "Pay only for results (clicks and sales).",
+                    "features": [
+                        "Google Search Ads",
+                        "Facebook & Instagram Ads",
+                        "Remarketing Campaigns",
+                        "Detailed Analytics"
+                    ]
+                },
+                "content": {
+                    "title": "Content Marketing",
+                    "description": "Content that educates and sells.",
+                    "features": [
+                        "Blog Writing",
+                        "Web Copywriting",
+                        "Email Newsletters",
+                        "Video Production (Reels)"
+                    ]
+                },
+                "strategy": {
+                    "title": "Marketing Strategy",
+                    "description": "Long-term plan for market dominance.",
+                    "features": [
+                        "Competitor Analysis",
+                        "Defining Buyer Personas",
+                        "Marketing Funnel Design",
+                        "Brand Positioning"
+                    ]
+                }
+            },
+            "techStack": {
+                "title": "Platforms We Dominate",
+                "description": "Be present where your attention is."
+            },
+            "process": {
+                "title": "Marketing Funnel",
+                "steps": {
+                    "awareness": {
+                        "title": "Awareness",
+                        "description": "Attracting cold audience attention through viral content and broad targeting. Goal is for them to know about you."
+                    },
+                    "consideration": {
+                        "title": "Consideration",
+                        "description": "Educating the audience about your benefits. Retargeting site visitors who didn't buy the first time."
+                    },
+                    "conversion": {
+                        "title": "Conversion",
+                        "description": "Offering an irresistible offer. Using urgency and social proof (reviews) to 'push' the sale."
+                    },
+                    "loyalty": {
+                        "title": "Loyalty",
+                        "description": "Turning customers into brand ambassadors through email marketing and loyalty programs."
+                    }
+                }
+            },
+            "faq": {
+                "title": "Frequently Asked Questions",
+                "q1": "What budget do I need for advertising?",
+                "a1": "It depends on your industry and goals. For local businesses, we recommend starting with at least 300-500€ monthly for ads (plus our service fee), while for e-commerce figures go higher. We'll help you determine the optimal budget.",
+                "q2": "When can I expect first results?",
+                "a2": "PPC campaigns (Google/Facebook ads) can bring results practically immediately (within first 48h). Organic growth (Social Media, SEO) is a longer-term strategy requiring 3-6 months of continuity.",
+                "q3": "Which channel is best for my business?",
+                "a3": "There is no universal answer. If you are a B2B firm, LinkedIn is gold. If you are a fashion brand, Instagram and TikTok are key. We will analyze your business and tell you where your customers are.",
+                "q4": "How do we track success?",
+                "a4": "Transparency is key. Each month we send a detailed report with metrics that matter (ROI, ROAS, number of leads, cost per conversion). We don't bury you in irrelevant numbers."
+            },
+            "cta": {
+                "label": "Free Strategy",
+                "titleLine1": "WANT MORE",
+                "titleLine2": "SALES?",
+                "description": "Our calendar fills up fast. Schedule a call today and let's make a plan to double your revenue.",
+                "cardTitle": "Start Growth",
+                "cardText": "Reserve 15 minutes with our strategist. No pressure, just concrete advice.",
+                "button": "Schedule Call"
+            }
+        },
+        "seoPage": {
+            "hero": {
+                "titleLine1": "Rank",
+                "titleLine2": "Higher",
+                "titleLine3": "Grow Faster",
+                "description": "SEO is not magic. It's a data-driven strategy to make your website visible to the right people at the right time. We deliver long-term organic growth.",
+                "ctaPrimary": "Start Ranking",
+                "ctaSecondary": "View Case Studies"
+            },
+            "features": {
+                "technical": {
+                    "title": "Technical Excellence",
+                    "description": "We optimize the infrastructure of your site. Speed, mobile-friendliness, and crawlability are the foundation of good rankings."
+                },
+                "content": {
+                    "title": "Strategic Content",
+                    "description": "We create content that answers users' questions and establishes you as an authority in your industry."
+                },
+                "authority": {
+                    "title": "Domain Authority",
+                    "description": "Through ethical link building and PR, we increase the reputation of your site in the eyes of Google."
+                }
+            },
+            "detailedServices": {
+                "title": "Comprehensive SEO",
+                "onpage": {
+                    "title": "On-Page SEO",
+                    "description": "Optimizing individual pages to rank higher.",
+                    "features": [
+                        "Keyword Optimization",
+                        "Meta Tags & Headings",
+                        "Internal Linking",
+                        "Content Optimization"
+                    ]
+                },
+                "offpage": {
+                    "title": "Off-Page SEO",
+                    "description": "Building authority and backlinks.",
+                    "features": [
+                        "Link Building",
+                        "Digital PR",
+                        "Guest Posting",
+                        "Brand Mentions"
+                    ]
+                },
+                "technical": {
+                    "title": "Technical SEO",
+                    "description": "Optimizing site structure and performance.",
+                    "features": [
+                        "Site Speed Optimization",
+                        "XML Sitemaps",
+                        "Schema Markup",
+                        "Core Web Vitals"
+                    ]
+                },
+                "local": {
+                    "title": "Local SEO",
+                    "description": "Dominating local search results.",
+                    "features": [
+                        "Google My Business",
+                        "Local Citations",
+                        "Review Management",
+                        "Local Keywords"
+                    ]
+                }
+            },
+            "techStack": {
+                "title": "SEO Tools We Use",
+                "description": "We use premium tools for accurate data and insights."
+            },
+            "process": {
+                "title": "SEO Process",
+                "steps": {
+                    "audit": {
+                        "title": "Audit & Strategy",
+                        "description": "We perform a deep analysis of your current status, competitors, and keywords. We define a roadmap for growth."
+                    },
+                    "optimization": {
+                        "title": "On-Site Optimization",
+                        "description": "We fix technical errors and optimize existing content. We build a solid foundation."
+                    },
+                    "content": {
+                        "title": "Content & Authority",
+                        "description": "We create new content and build backlinks. This is an ongoing process that builds momentum."
+                    },
+                    "reporting": {
+                        "title": "Tracking & Reporting",
+                        "description": "You receive monthly reports on keyword rankings, traffic, and conversions. We adjust strategy based on data."
+                    }
+                }
+            },
+            "faq": {
+                "title": "Frequently Asked Questions",
+                "q1": "How long does it take to see results?",
+                "a1": "SEO is a marathon, not a sprint. Significant results usually appear after 3-6 months, but technical fixes can have immediate impact.",
+                "q2": "Is SEO a one-time thing?",
+                "a2": "No. Competitors are precise and algorithms change. SEO requires consistent effort in content creation and optimization to maintain and grow rankings.",
+                "q3": "Do you guarantee #1 ranking?",
+                "a3": "No legitimate agency can guarantee #1 position because Google's algorithm is a third party. We guarantee ethical methods and measurable improvements in traffic and visibility.",
+                "q4": "We are a local business, do we need SEO?",
+                "a4": "Absolutely. Local SEO is crucial for physical businesses. We help you appear when people search for services 'near me'."
+            },
+            "cta": {
+                "label": "Start Ranking",
+                "titleLine1": "READY FOR",
+                "titleLine2": "PAGE 1?",
+                "description": "Don't let competitors steal your customers. Let's build your search presence today.",
+                "cardTitle": "Free Audit",
+                "cardText": "Send us your website URL and we'll provide a free mini-audit.",
+                "button": "Request Audit"
+            }
+        },
+        "aiAutomationPage": {
+            "hero": {
+                "titleLine1": "Automate",
+                "titleLine2": "To",
+                "titleLine3": "Dominate",
+                "description": "AI is not the future, it's the present. We accept custom AI solutions and automations that save hundreds of human-hours and reduce costs.",
+                "ctaPrimary": "Automate Now",
+                "ctaSecondary": "See Solutions"
+            },
+            "features": {
+                "availability": {
+                    "title": "24/7 Availability",
+                    "description": "Your digital employees never sleep. Chatbots and automated systems work round the clock."
+                },
+                "error": {
+                    "title": "Zero Errors",
+                    "description": "Machines don't get tired or distracted. Eliminate human error in repetitive tasks."
+                },
+                "scale": {
+                    "title": "Infinite Scalability",
+                    "description": "Handle 10 or 10,000 requests simultaneously without needing to hire more staff."
+                }
+            },
+            "detailedServices": {
+                "title": "Intelligent Automation",
+                "chatbots": {
+                    "title": "AI Customer Support",
+                    "description": "Intelligent chatbots that resolve 80% of queries.",
+                    "features": [
+                        "ChatGPT Integration",
+                        "Multilingual Support",
+                        "Instant Responses",
+                        "Seamless Handover"
+                    ]
+                },
+                "process": {
+                    "title": "Process Automation",
+                    "description": "Connecting your apps to work on autopilot.",
+                    "features": [
+                        "CRM Updates",
+                        "Invoice Generation",
+                        "Email Sequences",
+                        "Social Media Posting"
+                    ]
+                },
+                "data": {
+                    "title": "Data Analysis & AI",
+                    "description": "Turning raw data into actionable insights.",
+                    "features": [
+                        "Predictive Analytics",
+                        "Customer Segmentation",
+                        "Trend Forecasting",
+                        "Automated Reporting"
+                    ]
+                },
+                "custom": {
+                    "title": "Custom AI Solutions",
+                    "description": "Tailor-made AI tools for your specific needs.",
+                    "features": [
+                        "Fine-tuned Models",
+                        "Internal AI Tools",
+                        "Document Analysis",
+                        "Voice AI Agents"
+                    ]
+                }
+            },
+            "techStack": {
+                "title": "AI Tech Stack",
+                "description": "We use cutting-edge technology to build your digital workforce."
+            },
+            "process": {
+                "title": "Automation Journey",
+                "steps": {
+                    "analysis": {
+                        "title": "Workflow Analysis",
+                        "description": "We map out your current processes and identify bottlenecks and opportunities for automation."
+                    },
+                    "prototype": {
+                        "title": "Prototyping",
+                        "description": "We build a Proof of Concept (PoC) to demonstrate the value and functionality of the solution."
+                    },
+                    "integration": {
+                        "title": "Integration",
+                        "description": "We deploy the automation, integrate it with your existing stack, and ensure smooth operation."
+                    },
+                    "scaling": {
+                        "title": "Scaling & Optimization",
+                        "description": "We monitor performance and continuously improve the AI models and workflows for growth."
+                    }
+                }
+            },
+            "faq": {
+                "title": "Frequently Asked Questions",
+                "q1": "Will AI replace my employees?",
+                "a1": "No, it will empower them. AI takes over boring, repetitive tasks, freeing your team to focus on creative and strategic work.",
+                "q2": "Is AI automation expensive?",
+                "a2": "It requires initial investment, but the ROI is typically very high due to long-term savings on labor and increased efficiency.",
+                "q3": "Is my data safe?",
+                "a3": "Yes. We prioritize security and privacy. We use enterprise-grade encryption and ensure compliance with GDPR and other regulations. We can also build local models.",
+                "q4": "Can you build a custom AI model?",
+                "a4": "Yes, we can fine-tune LLMs (Large Language Models) like GPT-4 on your specific business data for highly relevant results."
+            },
+            "cta": {
+                "label": "Future Proof",
+                "titleLine1": "READY TO",
+                "titleLine2": "AUTOMATE?",
+                "description": "The competition is already using AI. Don't fall behind. Let's audit your processes.",
+                "cardTitle": "Free AI Consultation",
+                "cardText": "Let's discuss how AI can solve your specific business challenges.",
+                "button": "Book Consultation"
+            }
+        }
+    },
+    "hosting": {
+        "hero": {
+            "label": "Premium Hosting",
+            "titleLine1": "PROFESSIONAL",
+            "titleLine2": "WEB HOSTING",
+            "description": "Reliable hosting infrastructure with NVMe SSD drives, 99.9% uptime guarantee, and professional technical support.",
+            "cta": "View Packages"
+        },
+        "features": {
+            "uptime": {
+                "title": "99.9% Uptime Guarantee",
+                "description": "Redundant infrastructure ensuring constant availability of your site. If there is an outage, we refund your money."
+            },
+            "performance": {
+                "title": "High Performance",
+                "description": "NVMe SSD drives, LiteSpeed servers, and HTTP/3 protocol for maximum loading speed."
+            },
+            "security": {
+                "title": "Advanced Security",
+                "description": "Imunify360 protection, ModSecurity WAF, free SSL certificate, and automatic DDoS protection."
+            },
+            "management": {
+                "title": "Easy Management",
+                "description": "Click-to-install WordPress, WooCommerce, and 100+ other apps via cPanel."
+            }
+        },
+        "pricing": {
+            "title": "Choose Your Plan",
+            "subtitle": "Transparent pricing, no hidden costs. All packages include free migration.",
+            "starter": {
+                "name": "Starter",
+                "price": "50",
+                "billingCycle": "/year",
+                "description": "Ideal for personal sites and small blogs.",
+                "features": [
+                    "1 Website",
+                    "5 GB SSD Storage",
+                    "Free SSL Certificate",
+                    "1 Email Account",
+                    "Daily Backup",
+                    "24/7 Email Support"
+                ]
+            },
+            "business": {
+                "name": "Business",
+                "price": "100",
+                "billingCycle": "/year",
+                "description": "For businesses needing speed and reliability.",
+                "features": [
+                    "Unlimited Websites",
+                    "50 GB NVMe SSD Storage",
+                    "Premium Wildcard SSL",
+                    "50 Email Accounts",
+                    "Hourly Backup",
+                    "Priority 24/7 Support",
+                    "Free Migration",
+                    "Staging Environment"
+                ],
+                "badge": "Most Popular"
+            },
+            "enterprise": {
+                "name": "Enterprise",
+                "price": "200",
+                "billingCycle": "/year",
+                "description": "Maximum performance for demanding applications.",
+                "features": [
+                    "Dedicated Resources (4 CPU, 8GB RAM)",
+                    "200 GB NVMe SSD Storage",
+                    "Advanced SSL + WAF",
+                    "Unlimited Email Accounts",
+                    "Real-time Backup + Geo-Redundancy",
+                    "Dedicated Account Manager",
+                    "Advanced DDoS Protection",
+                    "CDN Integration",
+                    "Custom Server Config"
+                ]
+            },
+            "cta": "Choose"
+        },
+        "specs": {
+            "title": "Technical Specifications",
+            "subtitle": "We invest in top-tier hardware to keep your site fast and stable.",
+            "cpu": {
+                "label": "Processors",
+                "value": "AMD EPYC™ / Intel Xeon Scalable"
+            },
+            "ram": {
+                "label": "RAM",
+                "value": "DDR5 ECC (min. 128GB per server)"
+            },
+            "storage": {
+                "label": "Storage",
+                "value": "Enterprise NVMe SSD (RAID 10)"
+            },
+            "network": {
+                "label": "Network",
+                "value": "10 Gbps+ redundant connection"
+            },
+            "location": {
+                "label": "Location",
+                "value": "Frankfurt, DE (Tier III+ Datacenter)"
+            },
+            "os": {
+                "label": "OS",
+                "value": "CloudLinux / AlmaLinux"
+            }
+        },
+        "securitySection": {
+            "title": "Security Without Compromise",
+            "subtitle": "Multi-layer protection keeping your site safe 24/7.",
+            "items": {
+                "imunify": {
+                    "title": "Imunify360",
+                    "description": "Advanced AI-driven malware protection and firewall."
+                },
+                "ddos": {
+                    "title": "DDoS Protection",
+                    "description": "Automatic attack mitigation at L3/L4/L7."
+                },
+                "waf": {
+                    "title": "Web Application Firewall",
+                    "description": "ModSecurity with OWASP rules."
+                },
+                "backup": {
+                    "title": "Automatic Backup",
+                    "description": "Daily, weekly, and monthly backups with 30-day retention."
+                },
+                "ssl": {
+                    "title": "Free SSL",
+                    "description": "Let's Encrypt or Premium SSL of choice."
+                },
+                "2fa": {
+                    "title": "Two-Factor Auth",
+                    "description": "Protect cPanel access with 2FA."
+                }
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "q1": "How fast is hosting activation?",
+            "a1": "Activation is automatic and occurs within minutes of payment. You'll receive an email with all credentials.",
+            "q2": "Do you offer migration from another host?",
+            "a2": "Yes, we offer free migration for all Business and Enterprise packages. Our team handles the transfer without downtime.",
+            "q3": "What is the refund policy?",
+            "a3": "We offer a 30-day money-back guarantee. If you're not satisfied, we refund the full amount.",
+            "q4": "Can I upgrade my package later?",
+            "a4": "Of course. You can upgrade at any time. The price difference is calculated proportionally."
+        },
+        "ctaSection": {
+            "label": "Need Help?",
+            "titleLine1": "DON'T KNOW WHICH",
+            "titleLine2": "PACKAGE IS FOR YOU?",
+            "description": "Our team of experts is here to help you choose the right package for your needs. Free consultation, no obligation.",
+            "cardTitle": "Talk to Us",
+            "cardText": "Schedule a short call and we'll answer your questions.",
+            "button": "Schedule Call"
+        }
+    },
+    "meta": {
+        "home": {
+            "title": "Luminor.Solutions - Digital Transformation That Delivers Results",
+            "description": "Digital agency providing professional web development, graphic design, digital marketing, SEO optimization, and AI automation services."
+        },
+        "about": {
+            "title": "About Us",
+            "description": "Learn more about Luminor.Solutions - your partner for digital transformation and business growth."
+        },
+        "contact": {
+            "title": "Contact",
+            "description": "Contact us for a free consultation. We're here to help with your digital project."
+        },
+        "hosting": {
+            "title": "Premium Hosting",
+            "description": "Professional web hosting on NVMe SSD servers with 99.9% uptime guarantee."
+        },
+        "blog": {
+            "title": "Blog",
+            "description": "Expert articles and tips from the world of digital marketing, web development, and technology."
+        },
+        "portfolio": {
+            "title": "Portfolio",
+            "description": "See our portfolio of successful projects in web development, design, and digital marketing."
+        },
+        "services": {
+            "title": "Services",
+            "description": "Professional web development, graphic design, digital marketing, SEO, and AI automation services."
+        }
+    },
+    "cookies": {
+        "title": "Cookie Settings",
+        "description": "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.",
+        "privacyLink": "Privacy Policy",
+        "necessary": "Necessary Cookies",
+        "necessaryDesc": "Required for the website to function properly. Cannot be disabled.",
+        "analytics": "Analytics Cookies",
+        "analyticsDesc": "Help us understand how visitors interact with our website.",
+        "marketing": "Marketing Cookies",
+        "marketingDesc": "Used to deliver personalized advertisements.",
+        "showSettings": "Customize",
+        "hideSettings": "Hide Settings",
+        "acceptAll": "Accept All",
+        "rejectAll": "Reject All",
+        "savePreferences": "Save Preferences"
+    },
+    "legal": {
+        "backToHome": "Back to Home",
+        "privacy": {
+            "badge": "Legal Document",
+            "title": "Privacy Policy",
+            "metaDescription": "Privacy Policy for Luminor Solutions Agency. Learn how we collect, use, and protect your personal data in compliance with GDPR.",
+            "lastUpdated": "Last Updated",
+            "introduction": {
+                "title": "Introduction",
+                "content": "Luminor Solutions Agency (\"we\", \"our\", or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services."
+            },
+            "dataCollection": {
+                "title": "Information We Collect",
+                "intro": "We may collect the following types of information:",
+                "personal": "Personal Data",
+                "personalDesc": "Name, email address, phone number, and company information provided when you contact us or request our services.",
+                "technical": "Technical Data",
+                "technicalDesc": "IP address, browser type, operating system, referring URLs, and access times.",
+                "cookies": "Cookies",
+                "cookiesDesc": "Small files stored on your device to enhance your experience and analyze website usage."
+            },
+            "usage": {
+                "title": "How We Use Your Information",
+                "intro": "We use the collected information for the following purposes:",
+                "item1": "To provide and maintain our services",
+                "item2": "To communicate with you regarding inquiries and projects",
+                "item3": "To improve our website and services",
+                "item4": "To comply with legal obligations"
+            },
+            "gdpr": {
+                "title": "Your Rights Under GDPR",
+                "intro": "If you are a resident of the European Economic Area (EEA) or Bosnia and Herzegovina, you have the following rights:",
+                "access": "Right of Access",
+                "accessDesc": "You can request copies of your personal data.",
+                "rectification": "Right to Rectification",
+                "rectificationDesc": "You can request correction of inaccurate data.",
+                "erasure": "Right to Erasure",
+                "erasureDesc": "You can request deletion of your personal data.",
+                "portability": "Data Portability",
+                "portabilityDesc": "You can request transfer of your data to another organization."
+            },
+            "cookies": {
+                "title": "Cookie Policy",
+                "content": "We use cookies and similar tracking technologies to track activity on our website. You can manage your cookie preferences through our cookie consent banner.",
+                "type": "Cookie Type",
+                "purpose": "Purpose",
+                "duration": "Duration",
+                "necessary": "Necessary",
+                "necessaryPurpose": "Essential website functionality",
+                "session": "Session",
+                "analytics": "Analytics",
+                "analyticsPurpose": "Traffic analysis and user behavior",
+                "years": "years",
+                "marketing": "Marketing",
+                "marketingPurpose": "Personalized advertising",
+                "year": "year"
+            },
+            "security": {
+                "title": "Data Security",
+                "content": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. This includes encryption, secure servers, and regular security audits."
+            },
+            "contact": {
+                "title": "Contact Us",
+                "content": "If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us:"
+            }
+        },
+        "terms": {
+            "badge": "Legal Agreement",
+            "title": "Terms of Service",
+            "metaDescription": "Terms of Service for Luminor Solutions Agency. Read our terms and conditions for using our digital services.",
+            "lastUpdated": "Last Updated",
+            "acceptance": {
+                "title": "Acceptance of Terms",
+                "content": "By accessing or using the services of Luminor Solutions Agency, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services."
+            },
+            "services": {
+                "title": "Services Provided",
+                "intro": "Luminor Solutions Agency provides the following digital services:",
+                "item1": "Custom Web Development and Design",
+                "item2": "Digital Marketing and SEO",
+                "item3": "Graphic Design and Branding",
+                "item4": "AI Automation and Software Solutions"
+            },
+            "intellectual": {
+                "title": "Intellectual Property",
+                "content": "All content, designs, code, and materials created by Luminor Solutions Agency remain our intellectual property until full payment is received. Upon completion of payment, ownership of deliverables transfers to the client as specified in the project agreement."
+            },
+            "payment": {
+                "title": "Payment Terms",
+                "content": "Payment terms are specified in individual project proposals. Standard terms include a 50% deposit before work begins and the remaining 50% upon project completion.",
+                "notice": "Late payments may result in project suspension."
+            },
+            "liability": {
+                "title": "Limitation of Liability",
+                "content": "Luminor Solutions Agency shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our services. Our total liability is limited to the amount paid for the specific service."
+            },
+            "termination": {
+                "title": "Termination",
+                "content": "Either party may terminate a project with 30 days written notice. In case of termination, the client is responsible for payment of all work completed up to the termination date."
+            },
+            "modifications": {
+                "title": "Modifications to Terms",
+                "content": "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting on our website. Continued use of our services constitutes acceptance of modified terms."
+            },
+            "governing": {
+                "title": "Governing Law",
+                "content": "These terms are governed by the laws of Bosnia and Herzegovina. Any disputes shall be resolved in the courts of Sarajevo."
+            },
+            "contact": {
+                "title": "Contact Information",
+                "content": "For questions regarding these Terms of Service, please contact us:"
+            }
+        }
+    }
+}

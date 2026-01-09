@@ -1,0 +1,228 @@
+.legalPage {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+    padding: 8rem 1.5rem 4rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(135deg, #FF9F1C 0%, #F59E0B 100%);
+    color: #0F172A;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-display);
+}
+
+.subtitle {
+    color: #64748B;
+    font-size: 0.875rem;
+}
+
+/* Content */
+.content {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E2E8F0;
+}
+
+.section {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+}
+
+.section p {
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.section ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    color: #475569;
+    line-height: 1.8;
+}
+
+.section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.section ul li strong {
+    color: #0F172A;
+}
+
+/* GDPR Rights Grid */
+.rights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.rightItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #F8FAFC;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+}
+
+.rightIcon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.rightItem strong {
+    display: block;
+    color: #0F172A;
+    margin-bottom: 0.25rem;
+}
+
+.rightItem p {
+    font-size: 0.875rem;
+    color: #64748B;
+    margin: 0;
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.table th {
+    background: #F8FAFC;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.table td {
+    color: #475569;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Notice Box */
+.notice {
+    background: #FEF3C7;
+    border: 1px solid #F59E0B;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    color: #92400E;
+    font-size: 0.875rem;
+}
+
+/* Contact Box */
+.contactBox {
+    background: #0F172A;
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    margin-top: 1.5rem;
+}
+
+.contactBox p {
+    color: #94A3B8;
+    margin: 0.25rem 0;
+}
+
+.contactBox strong {
+    color: white;
+    font-size: 1.125rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #FF9F1C;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    border: 2px solid #FF9F1C;
+    transition: all 0.2s;
+}
+
+.backLink:hover {
+    background: #FF9F1C;
+    color: #0F172A;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legalPage {
+        padding: 6rem 1rem 2rem;
+    }
+
+    .content {
+        padding: 1.5rem;
+    }
+
+    .rights {
+        grid-template-columns: 1fr;
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+}

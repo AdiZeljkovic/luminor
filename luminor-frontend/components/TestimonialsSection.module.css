@@ -1,0 +1,302 @@
+.section {
+    padding: 8rem 0;
+    background-color: var(--color-background);
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid var(--color-dark);
+}
+
+/* Grid Background Pattern */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 5rem;
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    color: var(--color-gray-700);
+    line-height: 1.6;
+}
+
+.highlight {
+    font-weight: 700;
+    color: var(--color-dark);
+    background: var(--color-accent);
+    padding: 0 0.25rem;
+}
+
+/* Review Cards */
+.reviewsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 6rem;
+}
+
+.card {
+    background: var(--color-white);
+    border: 2px solid var(--color-dark);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 6px 6px 0 var(--color-dark);
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0 var(--color-accent);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.stars {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.googleBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-gray-500);
+    background: var(--color-surface-highlight);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-gray-300);
+}
+
+.gLogo {
+    font-weight: 900;
+    font-family: sans-serif;
+    color: var(--color-dark);
+}
+
+.reviewText {
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-dark);
+    font-style: italic;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.clientInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    border-top: 1px solid var(--color-gray-300);
+    padding-top: 1.5rem;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--color-dark);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    /* Square with radius */
+    box-shadow: 2px 2px 0 var(--color-accent);
+}
+
+.avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.clientName {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-dark);
+}
+
+.clientCompany {
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+}
+
+/* Clients Marquee Section */
+.clientsWrapper {
+    text-align: center;
+    border-top: 2px solid var(--color-dark);
+    border-bottom: 2px solid var(--color-dark);
+    padding: 3rem 0;
+    background: var(--color-white);
+    margin: 0 -2rem;
+    /* Bleed out of container padding */
+    width: calc(100% + 4rem);
+    transform: rotate(1deg);
+    /* Slight jaunty angle */
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.clientsLabel {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-gray-500);
+    margin-bottom: 2rem;
+}
+
+.marqueeContainer {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.marqueeContainer::before,
+.marqueeContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+}
+
+.marqueeContainer::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white), transparent);
+}
+
+.marqueeContainer::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white), transparent);
+}
+
+.marqueeTrack {
+    display: inline-flex;
+    align-items: center;
+    animation: marquee 40s linear infinite;
+}
+
+.clientLogoItem {
+    margin: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientLogoImg {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.6);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.clientLogoImg:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+}
+
+.clientLogoText {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-gray-300);
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    cursor: default;
+}
+
+.clientLogoText:hover {
+    color: var(--color-dark);
+    text-shadow: 2px 2px 0 var(--color-accent);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .clientsWrapper {
+        width: 100%;
+        margin: 0;
+        transform: none;
+    }
+
+    .clientLogoItem {
+        margin: 0 1.5rem;
+    }
+
+    .clientLogoImg {
+        height: 30px;
+    }
+
+    .clientLogoText {
+        font-size: 1.5rem;
+    }
+}

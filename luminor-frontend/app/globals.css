@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* =====================================
+   LUMINOR.SOLUTION - Modern Flat System
+   ===================================== */
+
+:root {
+  /* 
+     COLOR PALETTE 
+     Style: Modern Flat / Neo-Professional
+  */
+
+  /* Base */
+  --color-background: #FFFCF8;
+  /* Warm paper white */
+  --color-surface: #FFFFFF;
+  --color-surface-highlight: #F1F5F9;
+
+  /* Brand */
+  --color-accent: #FF9F1C;
+  /* Vibrant Orange */
+  --color-accent-hover: #F9844A;
+  --color-secondary: #2EC4B6;
+  /* Teal - for contrast/harmony */
+
+  /* Text / Strokes */
+  --color-dark: #0F172A;
+  /* Obsidian / Slate 900 */
+  --color-gray-700: #334155;
+  --color-gray-500: #64748B;
+  --color-gray-300: #CBD5E1;
+  --color-border: #0F172A;
+  /* Sharp borders */
+
+  /* Semantic */
+  --color-success: #00F5D4;
+  --color-error: #FF5A5F;
+
+  /* Typography */
+  --font-primary: 'Outfit', sans-serif;
+  /* Clean, geometric, friendly */
+  --font-display: 'Space Grotesk', sans-serif;
+  /* Tech/Modern feel for heavy headers */
+
+  /* Spacing */
+  --spacing-section: 8rem;
+  --spacing-container: 2rem;
+
+  /* Shapes & Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --border-width: 2px;
+
+  /* Shadows - HARD, FLAT SHADOWS (No Blur) */
+  --shadow-sm: 2px 2px 0px 0px var(--color-dark);
+  --shadow-md: 4px 4px 0px 0px var(--color-dark);
+  --shadow-lg: 8px 8px 0px 0px var(--color-dark);
+  --shadow-hover: 2px 2px 0px 0px var(--color-dark);
+  /* Collapsed shadow for hover effect */
+
+  /* Transitions */
+  --transition-base: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-dark);
+  --color-accent: var(--color-accent);
+  --color-dark: var(--color-dark);
+  --font-sans: var(--font-primary);
+  --font-display: var(--font-display);
+}
+
+/* =====================================
+   Base Styles
+   ===================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-dark);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(var(--color-gray-300) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* =====================================
+   Typography
+   ===================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-dark);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+}
+
+h2 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+h3 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  max-width: 65ch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =====================================
+   Layout Components
+   ===================================== */
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-container);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-container: 1rem;
+    --spacing-section: 4rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.section {
+  padding: var(--spacing-section) 0;
+  position: relative;
+}
+
+/* =====================================
+   New "Hard Flat" Components
+   ===================================== */
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  border: var(--border-width) solid var(--color-dark);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn-primary {
+  background: var(--color-dark);
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline:hover {
+  background: var(--color-white);
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* CARDS */
+.card {
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-dark);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translate(-2px, -2px);
+}
+
+/* INPUTS */
+.input-field {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: var(--color-dark);
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+.input-field:focus {
+  border-color: var(--color-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =====================================
+   Utilities
+   ===================================== */
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background: var(--color-accent);
+}
+
+.border-dark {
+  border-color: var(--color-dark) !important;
+}
+
+/* Grid Background Utility */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+}
+
+/* Animation Utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
