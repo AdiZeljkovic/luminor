@@ -24,7 +24,7 @@ module.exports = {
             max_memory_restart: '500M',
             env: {
                 NODE_ENV: 'production',
-                PORT: 3000,
+                PORT: 3002,
                 NEXT_PUBLIC_API_URL: 'https://api.luminor.solutions'
             }
         },
