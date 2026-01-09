@@ -6,6 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
 import { ChevronLeft, Save, Trash } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 export default function EditClientLogoPage() {
     const router = useRouter();
@@ -24,7 +25,7 @@ export default function EditClientLogoPage() {
         const fetchLogo = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await fetch(`http://localhost:5000/api/client-logos/${params.id}`, {
+                const res = await fetch(`${API_URL}/api/client-logos/${params.id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -77,7 +78,7 @@ export default function EditClientLogoPage() {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/client-logos/${params.id}`, {
+            const res = await fetch(`${API_URL}/api/client-logos/${params.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -106,7 +107,7 @@ export default function EditClientLogoPage() {
         setLoading(true);
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/client-logos/${params.id}`, {
+            const res = await fetch(`${API_URL}/api/client-logos/${params.id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -206,7 +207,6 @@ export default function EditClientLogoPage() {
                             <ImageUpload
                                 value={formData.logo_url}
                                 onChange={handleImageChange}
-                                label="Upload Logo"
                             />
                             <p className="text-xs text-gray-500 mt-2">Recommended: Transparent PNG/SVG, max height 100px</p>
                         </div>
