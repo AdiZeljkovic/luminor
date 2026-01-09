@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             name: 'luminor-backend',
-            cwd: '/var/www/luminor/backend',
+            cwd: '/home/Luminor/web/luminor.solutions/luminor-backend',
             script: 'server.js',
             instances: 1,
             autorestart: true,
@@ -15,7 +15,7 @@ module.exports = {
         },
         {
             name: 'luminor-frontend',
-            cwd: '/var/www/luminor/frontend',
+            cwd: '/home/Luminor/web/luminor.solutions/luminor-frontend',
             script: 'node_modules/next/dist/bin/next',
             args: 'start',
             instances: 1,
@@ -30,7 +30,7 @@ module.exports = {
         },
         {
             name: 'luminor-admin',
-            cwd: '/var/www/luminor/admin',
+            cwd: '/home/Luminor/web/luminor.solutions/luminor-admin',
             script: 'node_modules/next/dist/bin/next',
             args: 'start -p 3001',
             instances: 1,
