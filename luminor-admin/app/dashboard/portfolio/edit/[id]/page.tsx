@@ -93,7 +93,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
                         return { metric, label };
                     }
                     return null;
-                }).filter(Boolean);
+                }).filter((item): item is { metric: string; label: string } => item !== null);
             }
 
             const imagesArray = formData.images ? formData.images.split(",").map(i => i.trim()).filter(Boolean) : [];
