@@ -6,6 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
 import { ChevronLeft, Save, Trash } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 export default function EditTestimonialPage() {
     const router = useRouter();
@@ -27,7 +28,7 @@ export default function EditTestimonialPage() {
         const fetchTestimonial = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await fetch(`http://localhost:5000/api/testimonials/${params.id}`, {
+                const res = await fetch(`${API_URL}/api/testimonials/${params.id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -83,7 +84,7 @@ export default function EditTestimonialPage() {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/testimonials/${params.id}`, {
+            const res = await fetch(`${API_URL}/api/testimonials/${params.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -112,7 +113,7 @@ export default function EditTestimonialPage() {
         setLoading(true);
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/testimonials/${params.id}`, {
+            const res = await fetch(`${API_URL}/api/testimonials/${params.id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -271,7 +272,6 @@ export default function EditTestimonialPage() {
                             <ImageUpload
                                 value={formData.avatar_url}
                                 onChange={handleImageChange}
-                                label="Upload Avatar"
                             />
                             <p className="text-xs text-gray-500 mt-2">Recommended: Square image, 150x150px</p>
                         </div>

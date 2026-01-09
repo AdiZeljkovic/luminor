@@ -6,6 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
 import { ChevronLeft, Save, Star } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 export default function CreateTestimonialPage() {
     const router = useRouter();
@@ -42,7 +43,7 @@ export default function CreateTestimonialPage() {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/testimonials", {
+            const res = await fetch(`${API_URL}/api/testimonials`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -184,7 +185,6 @@ export default function CreateTestimonialPage() {
                             <ImageUpload
                                 value={formData.avatar_url}
                                 onChange={handleImageChange}
-                                label="Upload Avatar"
                             />
                             <p className="text-xs text-gray-500 mt-2">Recommended: Square image, 150x150px</p>
                         </div>
