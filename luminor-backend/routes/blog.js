@@ -27,38 +27,50 @@ router.get('/', async (req, res) => {
             where.category = category;
         }
 
-        const { count, rows: posts } = await BlogPost.findAndCountAll({
-            where,
-            include: [{
-                model: User,
-                as: 'author',
-                attributes: ['id', 'name', 'avatar']
-            }],
-            order: [['published_at', 'DESC']],
-            offset,
-            limit
-        });
+        // Generate cache key based on query params
+        const cacheKey = `posts_${page}_${limit}_${category || 'all'}_${status}_${locale}`;
 
-        // Map posts to return localized fields
-        const localizedPosts = posts.map(post => {
-            const p = post.toJSON();
+        const { getOrSetCache } = require('../config/redis');
+
+        // Cache for 60 seconds
+        const result = await getOrSetCache(cacheKey, 60, async () => {
+            const { count, rows: posts } = await BlogPost.findAndCountAll({
+                where,
+                include: [{
+                    model: User,
+                    as: 'author',
+                    attributes: ['id', 'name', 'avatar']
+                }],
+                order: [['published_at', 'DESC']],
+                offset,
+                limit
+            });
+
+            // Map posts to return localized fields
+            const localizedPosts = posts.map(post => {
+                const p = post.toJSON();
+                return {
+                    ...p,
+                    title: p[`title_${locale}`] || p.title_en || p.title_bs,
+                    content: p[`content_${locale}`] || p.content_en || p.content_bs,
+                    excerpt: p[`excerpt_${locale}`] || p.excerpt_en || p.excerpt_bs
+                };
+            });
+
             return {
-                ...p,
-                title: p[`title_${locale}`] || p.title_en || p.title_bs,
-                content: p[`content_${locale}`] || p.content_en || p.content_bs,
-                excerpt: p[`excerpt_${locale}`] || p.excerpt_en || p.excerpt_bs
+                data: localizedPosts,
+                pagination: {
+                    page,
+                    limit,
+                    total: count,
+                    pages: Math.ceil(count / limit)
+                }
             };
         });
 
         res.json({
             success: true,
-            data: localizedPosts,
-            pagination: {
-                page,
-                limit,
-                total: count,
-                pages: Math.ceil(count / limit)
-            }
+            ...result
         });
     } catch (error) {
         console.error('Get posts error:', error);
@@ -259,6 +271,10 @@ router.post('/', auth, [
         });
 
         res.status(201).json({ success: true, data: postWithAuthor });
+
+        // Clear cache
+        const { clearCachePattern } = require('../config/redis');
+        await clearCachePattern('posts_*');
     } catch (error) {
         console.error('Create post error:', error);
         res.status(500).json({ success: false, error: 'Server error' });
@@ -315,6 +331,10 @@ router.put('/:id', auth, [
         });
 
         res.json({ success: true, data: updatedPost });
+
+        // Clear cache
+        const { clearCachePattern } = require('../config/redis');
+        await clearCachePattern('posts_*');
     } catch (error) {
         console.error('Update post error:', error);
         res.status(500).json({ success: false, error: 'Server error' });
@@ -336,6 +356,10 @@ router.delete('/:id', auth, async (req, res) => {
         await post.destroy();
 
         res.json({ success: true, message: 'Post deleted successfully' });
+
+        // Clear cache
+        const { clearCachePattern } = require('../config/redis');
+        await clearCachePattern('posts_*');
     } catch (error) {
         console.error('Delete post error:', error);
         res.status(500).json({ success: false, error: 'Server error' });

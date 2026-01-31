@@ -74,7 +74,21 @@ const SiteSettings = sequelize.define('SiteSettings', {
     schema_params: {
         type: DataTypes.JSON,
         defaultValue: {}
-    }
+    },
+
+    // System Status
+    maintenance_mode: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+
+    // Announcement Banner
+    announcement_active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    announcement_message: DataTypes.STRING,
+    announcement_link: DataTypes.STRING
 
 }, {
     tableName: 'site_settings',

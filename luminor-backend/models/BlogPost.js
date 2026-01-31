@@ -102,7 +102,22 @@ const BlogPost = sequelize.define('BlogPost', {
                 post.published_at = new Date();
             }
         }
-    }
+    },
+    indexes: [
+        {
+            unique: true,
+            fields: ['slug']
+        },
+        {
+            fields: ['status']
+        },
+        {
+            fields: ['category']
+        },
+        {
+            fields: ['published_at'] // Optimized for sorting
+        }
+    ]
 });
 
 module.exports = BlogPost;

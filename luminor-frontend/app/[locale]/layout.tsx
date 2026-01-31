@@ -12,6 +12,8 @@ import RegionPrompt from "@/components/RegionPrompt";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import CookieConsent from "@/components/CookieConsent";
 import { getSiteSettings } from "@/lib/getSettings";
+import MaintenanceScreen from "@/components/MaintenanceScreen";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 
 interface SiteSettings {
     site_title?: string;
@@ -40,6 +42,10 @@ interface SiteSettings {
     opening_hours?: string;
     geo_latitude?: string;
     geo_longitude?: string;
+    maintenance_mode?: boolean;
+    announcement_active?: boolean;
+    announcement_message?: string;
+    announcement_link?: string;
 }
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -127,6 +133,17 @@ export default async function LocaleLayout({ children, params }: Props) {
     const messages = await getMessages();
     const settings = await getSiteSettings();
 
+    // Check Maintenance Mode
+    if (settings?.maintenance_mode) {
+        return (
+            <html lang={locale}>
+                <body className={`${beVietnamPro.variable} antialiased`}>
+                    <MaintenanceScreen />
+                </body>
+            </html>
+        );
+    }
+
     return (
         <html lang={locale} suppressHydrationWarning>
             <head>
@@ -191,6 +208,13 @@ export default async function LocaleLayout({ children, params }: Props) {
 
                 <NextIntlClientProvider messages={messages}>
                     <AnalyticsTracker />
+                    {/* Announcement Banner */}
+                    {settings?.announcement_active && settings?.announcement_message && (
+                        <AnnouncementBanner
+                            message={settings.announcement_message}
+                            link={settings.announcement_link}
+                        />
+                    )}
                     <Header />
                     <main>{children}</main>
                     <Footer />

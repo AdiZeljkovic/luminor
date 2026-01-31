@@ -10,14 +10,20 @@ const router = express.Router();
  */
 router.get('/', async (req, res) => {
     try {
-        // Find the first row, or create default if not exists
-        const [settings, created] = await SiteSettings.findOrCreate({
-            where: { id: 1 },
-            defaults: {
-                site_title: 'Luminor.Solution',
-                site_description: 'Digital agency providing professional web development and design services.'
-            }
+        const { getOrSetCache } = require('../config/redis');
+
+        // Cache settings for 60 seconds
+        const settings = await getOrSetCache('site_settings', 60, async () => {
+            const [data, created] = await SiteSettings.findOrCreate({
+                where: { id: 1 },
+                defaults: {
+                    site_title: 'Luminor.Solution',
+                    site_description: 'Digital agency providing professional web development and design services.'
+                }
+            });
+            return data;
         });
+
         res.json({ success: true, data: settings });
     } catch (error) {
         console.error('Get settings error:', error);

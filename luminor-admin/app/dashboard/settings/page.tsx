@@ -11,6 +11,10 @@ interface SiteSettings {
     social_instagram: string;
     social_linkedin: string;
     social_twitter: string;
+    maintenance_mode: boolean;
+    announcement_active: boolean;
+    announcement_message: string;
+    announcement_link: string;
 }
 
 export default function SettingsPage() {
@@ -90,6 +94,61 @@ export default function SettingsPage() {
             </div>
 
             <form onSubmit={handleSave} className="space-y-6">
+
+                {/* System Control & Announcements */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Maintenance Mode */}
+                    <div className={`border-2 rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(239,68,68,1)] transition-colors ${settings.maintenance_mode ? 'bg-red-50 border-red-500' : 'bg-white border-[#0F172A]'}`}>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold font-display text-dark">🚧 Maintenance</h2>
+                            <label className="relative inline-flex items-center cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    className="sr-only peer"
+                                    checked={settings.maintenance_mode || false}
+                                    onChange={(e) => setSettings({ ...settings, maintenance_mode: e.target.checked })}
+                                />
+                                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                            </label>
+                        </div>
+                        <p className="text-sm text-gray-600 mb-2">
+                            When active, the public site will show a "Under Construction" page.
+                            <br /><span className="font-bold text-red-600">Only Admins can access the dashboard.</span>
+                        </p>
+                    </div>
+
+                    {/* Announcement Banner */}
+                    <div className={`border-2 rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(255,159,28,1)] transition-colors ${settings.announcement_active ? 'bg-yellow-50 border-[#FF9F1C]' : 'bg-white border-[#0F172A]'}`}>
+                        <div className="flex items-center justify-between mb-4">
+                            <h2 className="text-xl font-bold font-display text-dark">📢 Announcement</h2>
+                            <label className="relative inline-flex items-center cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    className="sr-only peer"
+                                    checked={settings.announcement_active || false}
+                                    onChange={(e) => setSettings({ ...settings, announcement_active: e.target.checked })}
+                                />
+                                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FF9F1C]"></div>
+                            </label>
+                        </div>
+                        <div className="space-y-3">
+                            <input
+                                type="text"
+                                placeholder="Message (e.g. 20% OFF SEO Services)"
+                                className="input"
+                                value={settings.announcement_message || ""}
+                                onChange={(e) => handleChange("announcement_message", e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Link (Optional)"
+                                className="input"
+                                value={settings.announcement_link || ""}
+                                onChange={(e) => handleChange("announcement_link", e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </div>
 
 
                 {/* Contact Info */}

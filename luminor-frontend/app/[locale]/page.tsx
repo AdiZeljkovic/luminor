@@ -8,6 +8,7 @@ import Button from "@/components/Button";
 import styles from "./page.module.css";
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from "next";
+import { API_URL } from "@/lib/api";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -86,7 +87,7 @@ export default async function Home() {
   }> = [];
 
   try {
-    const res = await fetch("http://localhost:5000/api/portfolio/featured", {
+    const res = await fetch(`${API_URL}/api/portfolio/featured`, {
       cache: "no-store",
     });
     const data = await res.json();

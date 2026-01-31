@@ -19,7 +19,9 @@ const analyticsRoutes = require('./routes/analytics');
 const settingsRoutes = require('./routes/settings');
 const uploadRoutes = require('./routes/uploadRoutes');
 const testimonialsRoutes = require('./routes/testimonials');
+const testimonialsRoutes = require('./routes/testimonials');
 const clientLogosRoutes = require('./routes/clientLogos');
+const systemRoutes = require('./routes/system');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -31,6 +33,11 @@ const PORT = process.env.PORT || 5000;
 // ----------------------------
 // SECURITY MIDDLEWARE
 // ----------------------------
+
+// Trust Proxy (Required for Nginx/HestiaCP)
+// This ensures req.ip represents the real client IP, not 127.0.0.1
+// and allows Rate Limiting to work correctly per user.
+app.set('trust proxy', 1);
 
 // Helmet: Sets various HTTP headers for security
 app.use(helmet({
@@ -106,6 +113,7 @@ app.use('/api/settings', settingsRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/testimonials', testimonialsRoutes);
 app.use('/api/client-logos', clientLogosRoutes);
+app.use('/api/system', systemRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -119,7 +127,9 @@ app.use(errorHandler);
 const startServer = async () => {
     try {
         // Sync database (creates tables if they don't exist)
-        await syncDatabase({ alter: false });
+        // Sync database (creates tables if they don't exist)
+        // ENABLE ALTER to update schema with new fields
+        await syncDatabase({ alter: true });
 
         app.listen(PORT, () => {
             console.log(`🚀 Server running on port ${PORT}`);

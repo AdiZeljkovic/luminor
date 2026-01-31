@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Eye, MessageSquare, Mail, Layers, ArrowUpRight, Plus, ExternalLink } from "lucide-react";
 import StatCard from "@/components/ui/StatCard";
+import HealthWidget from "@/components/HealthWidget";
 
 interface DashboardStats {
     counts: {
@@ -154,6 +155,9 @@ export default function DashboardPage() {
 
                 {/* Quick Actions / Recents Column */}
                 <div className="space-y-6">
+                    {/* System Status */}
+                    <HealthWidget />
+
                     {/* Recent Messages Widget */}
                     <div className="card-brutal p-0 overflow-hidden">
                         <div className="p-4 border-b-2 border-gray-100 bg-gray-50 flex justify-between items-center">
@@ -189,7 +193,7 @@ export default function DashboardPage() {
                             <Link href="/dashboard/settings" className="flex items-center gap-3 p-3 rounded bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-sm font-medium">
                                 <span className="text-[#FF9F1C]">⚙️</span> Settings
                             </Link>
-                            <Link href="http://localhost:3000" target="_blank" className="flex items-center gap-3 p-3 rounded bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-sm font-medium">
+                            <Link href="https://luminor.solutions" target="_blank" className="flex items-center gap-3 p-3 rounded bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-sm font-medium">
                                 <span className="text-[#FF9F1C]">🌐</span> View Live Site <ExternalLink size={12} className="ml-auto opacity-50" />
                             </Link>
                         </div>

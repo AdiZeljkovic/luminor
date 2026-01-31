@@ -1,51 +1,107 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 import BlogSidebar from "@/components/BlogSidebar";
 import styles from "./page.module.css";
+import { API_URL } from "@/lib/api";
+// Note: You might need to define API_URL in a shared const or env. 
+// If not available, I will use process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
-const getPostData = (slug: string) => {
+// Fetch post data
+async function getPost(slug: string, locale: string) {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/blog/${slug}?locale=${locale}`, {
+            next: { revalidate: 60 } // Revalidate every minute
+        });
+
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        return data.success ? data.data : null;
+    } catch (error) {
+        console.error("Error fetching post:", error);
+        return null;
+    }
+}
+
+// Generate Metadata for SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+    const { slug, locale } = await params;
+    const post = await getPost(slug, locale);
+
+    if (!post) return { title: 'Post Not Found' };
+
+    const title = post[`title_${locale}`] || post.title_en;
+    const excerpt = post[`excerpt_${locale}`] || post.excerpt_en || "";
+
     return {
-        title: "5 trendova u Web Dizajnu za 2024.",
-        content: `
-      <p class="lead">Web dizajn se neprestano menja. Ono što je bilo moderno prošle godine, danas može izgledati zastarelo. U ovom tekstu istražujemo 5 ključnih trendova koji će oblikovati internet u 2024. godini.</p>
-      
-      <h2>1. Bento Grid Layout</h2>
-      <p>Inspirisan Apple-ovim promotivnim materijalima i dashboard interfejsima, Bento Grid (ili bento kutija) postaje sve popularniji. Ovaj stil karakteriše podela sadržaja u pravougaone blokove različitih veličina, što omogućava prikazivanje velike količine informacija na organizovan i vizuelno privlačan način.</p>
-      
-      <h2>2. Kinetička Tipografija</h2>
-      <p>Tekst više nije samo statičan. Kinetička tipografija podrazumeva animirani tekst koji se kreće, menja veličinu ili boju na scroll ili hover. Ovo daje dinamiku sajtu i drži pažnju korisnika.</p>
-      
-      <h2>3. Mikro-interakcije</h2>
-      <p>Dugmad koja reaguju na prelazak miša, subtle loading animacije i interaktivni elementi čine sajt "živim". Ovi mali detalji značajno doprinose boljem korisničkom iskustvu (UX).</p>
-      
-      <h2>4. AI-Generisane Slike</h2>
-      <p>Sa napretkom alata kao što su Midjourney i DALL-E, sve više sajtova koristi originalne, AI-generisane ilustracije umesto generičkih stock fotografija. Ovo omogućava unikatnost brenda po znatno nižoj ceni.</p>
-      
-      <h2>5. Održivi Web Dizajn</h2>
-      <p>Fokus na smanjenje digitalnog "ugljeničnog otiska". Ovo podrazumeva optimizaciju slika, korišćenje sistemskih fontova i dark mode opcije radi uštede energije na OLED ekranima.</p>
-      
-      <h3>Zaključak</h3>
-      <p>Iako je važno pratiti trendove, zapamtite da je funkcionalnost uvek na prvom mestu. Dobar dizajn treba da služi svrsi i rešava probleme korisnika, a ne samo da izgleda lepo.</p>
-    `,
-        date: "12. Jan 2024",
-        author: {
-            name: "Marko Petrović",
-            avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-            description: "Senior Frontend Developer sa 10 godina iskustva u kreiranju modernih web aplikacija."
+        title: title,
+        description: excerpt,
+        openGraph: {
+            title: title,
+            description: excerpt,
+            type: 'article',
+            publishedTime: post.published_at,
+            authors: [post.author?.name],
+            images: post.featuredImage ? [post.featuredImage] : [],
         },
-        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-        category: "Web Dizajn",
-        readTime: 5,
-        tags: ["dizajn", "trendovi", "2024", "ux", "ui"]
+        twitter: {
+            card: 'summary_large_image',
+            title: title,
+            description: excerpt,
+            images: post.featuredImage ? [post.featuredImage] : [],
+        }
     };
-};
+}
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-    const post = getPostData(params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+    const { slug, locale } = await params;
+    const post = await getPost(slug, locale);
+
+    if (!post) {
+        notFound();
+    }
+
+    const title = post[`title_${locale}`] || post.title_en;
+    const content = post[`content_${locale}`] || post.content_en;
+    const category = post.category || "Uncategorized";
+    const authorName = post.author?.name || "Luminor Team";
+    const authorAvatar = post.author?.avatar || "/images/avatar-default.png";
+
+    // Article Schema
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "image": post.featuredImage ? [post.featuredImage] : [],
+        "datePublished": post.published_at,
+        "dateModified": post.updatedAt,
+        "author": [{
+            "@type": "Person",
+            "name": authorName,
+            "url": `https://luminor.solutions/author/${post.author?.id}`
+        }],
+        "publisher": {
+            "@type": "Organization",
+            "name": "Luminor Solutions",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://luminor.solutions/logo.png"
+            }
+        },
+        "description": post[`excerpt_${locale}`] || post.excerpt_en
+    };
 
     return (
         <div className={styles.page}>
+            {/* Inject Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+
             <div className={styles.container}>
                 <div className={styles.contentWrapper}>
                     {/* Main Content */}
@@ -57,83 +113,69 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                                 <header className={styles.header}>
                                     <div className={styles.meta}>
                                         <span className={styles.category}>
-                                            {post.category}
+                                            {category}
                                         </span>
-                                        <span>{post.date}</span>
+                                        <span>{new Date(post.published_at).toLocaleDateString(locale)}</span>
                                         <span>•</span>
-                                        <span>{post.readTime} min čitanja</span>
+                                        <span>{post.read_time || 5} min read</span>
                                     </div>
 
                                     <h1 className={styles.title}>
-                                        {post.title}
+                                        {title}
                                     </h1>
 
                                     <div className={styles.author}>
                                         <Image
-                                            src={post.author.avatar}
-                                            alt={post.author.name}
+                                            src={authorAvatar}
+                                            alt={authorName}
                                             width={48}
                                             height={48}
                                             className={styles.authorImage}
                                         />
                                         <div>
-                                            <div className={styles.authorName}>{post.author.name}</div>
-                                            <div className={styles.authorRole}>Autor</div>
+                                            <div className={styles.authorName}>{authorName}</div>
+                                            <div className={styles.authorRole}>Author</div>
                                         </div>
                                     </div>
                                 </header>
 
                                 {/* Featured Image */}
-                                <div className={styles.featuredImage}>
-                                    <Image
-                                        src={post.image}
-                                        alt={post.title}
-                                        fill
-                                        className="object-cover"
-                                        priority
-                                    />
-                                </div>
+                                {post.featuredImage && (
+                                    <div className={styles.featuredImage}>
+                                        <Image
+                                            src={post.featuredImage}
+                                            alt={title}
+                                            fill
+                                            className="object-cover"
+                                            priority
+                                        />
+                                    </div>
+                                )}
 
                                 {/* Content */}
                                 <div
                                     className={`${styles.content} prose prose-lg max-w-none text-gray-600 prose-headings:font-display prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-yellow-600 hover:prose-a:text-yellow-700`}
-                                    dangerouslySetInnerHTML={{ __html: post.content }}
+                                    dangerouslySetInnerHTML={{ __html: content }}
                                 >
                                 </div>
 
                                 {/* Tags */}
-                                <div className={styles.tagsSection}>
-                                    <h3 className={styles.tagsTitle}>Tagovi:</h3>
-                                    <div className={styles.tagsList}>
-                                        {post.tags.map(tag => (
-                                            <Link
-                                                key={tag}
-                                                href={`/blog/tag/${tag}`}
-                                                className={styles.tag}
-                                            >
-                                                #{tag}
-                                            </Link>
-                                        ))}
+                                {post.tags && post.tags.length > 0 && (
+                                    <div className={styles.tagsSection}>
+                                        <h3 className={styles.tagsTitle}>Tags:</h3>
+                                        <div className={styles.tagsList}>
+                                            {post.tags.map((tag: string) => (
+                                                <Link
+                                                    key={tag}
+                                                    href={`/blog/tag/${tag}`}
+                                                    className={styles.tag}
+                                                >
+                                                    #{tag}
+                                                </Link>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-
-                                {/* Author Box */}
-                                <div className={styles.authorBox}>
-                                    <Image
-                                        src={post.author.avatar}
-                                        alt={post.author.name}
-                                        width={64}
-                                        height={64}
-                                        className={styles.authorBoxImage}
-                                    />
-                                    <div>
-                                        <h4 className={styles.authorBoxName}>O Autoru</h4>
-                                        <p className={styles.authorBoxDesc}>
-                                            {post.author.description}
-                                        </p>
-                                    </div>
-                                </div>
-
+                                )}
                             </article>
                         </AnimatedSection>
                     </div>
