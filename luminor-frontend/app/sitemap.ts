@@ -48,8 +48,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("Sitemap generation error:", error);
     }
 
-    // 3. Dynamic Portfolio Projects (Optional, if endpoint exists)
-    // ...
+    // 3. Dynamic Portfolio Projects
+    let portfolioUrls: MetadataRoute.Sitemap = [];
+    try {
+        const res = await fetch(`${API_URL}/api/portfolio`);
+        const data = await res.json();
 
-    return [...staticUrls, ...blogUrls];
+        if (data.success && data.data) {
+            portfolioUrls = data.data.flatMap((project: any) =>
+                locales.map(locale => ({
+                    url: `${BASE_URL}/${locale}/portfolio/${project.slug || project.id}`, // Fallback to ID if slug missing
+                    lastModified: new Date(project.updated_at || project.created_at || new Date()),
+                    changeFrequency: 'monthly' as const,
+                    priority: 0.8,
+                }))
+            );
+        }
+    } catch (error) {
+        console.error("Portfolio sitemap generation error:", error);
+    }
+
+    return [...staticUrls, ...blogUrls, ...portfolioUrls];
 }

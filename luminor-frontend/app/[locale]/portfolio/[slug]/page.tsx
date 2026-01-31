@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/Button";
@@ -40,6 +41,26 @@ async function getProjectData(slug: string) {
         console.error("Error fetching project:", error);
         return null; // Return null to trigger "Not Found" UI
     }
+}
+
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const project = await getProjectData(params.slug);
+    if (!project) return {};
+
+    // Strip HTML from description for meta tag
+    const plainDescription = project.description.replace(/<[^>]*>?/gm, '').substring(0, 160) + "...";
+
+    return {
+        title: project.title,
+        description: plainDescription,
+        openGraph: {
+            title: project.title,
+            description: plainDescription,
+            images: [project.featuredImage],
+            type: "article"
+        }
+    };
 }
 
 export default async function ProjectDetail({ params }: { params: { slug: string } }) {
