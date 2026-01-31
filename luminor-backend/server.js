@@ -68,6 +68,8 @@ app.use(compression({
 }));
 
 // CORS
+// CORS - Handle Preflight Explicitly
+app.options('*', corsConfig);
 app.use(corsConfig);
 
 // Body parsers with size limits
