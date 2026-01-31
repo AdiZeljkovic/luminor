@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 const BASE_URL = 'https://luminor.solutions';
 import { API_URL } from '@/lib/api';
 
-const BASE_URL = 'https://luminor.solutions';
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 1. Static Routes
