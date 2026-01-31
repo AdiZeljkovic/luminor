@@ -17,6 +17,8 @@ interface SiteSettings {
     announcement_link: string;
 }
 
+import { API_URL } from "@/lib/api";
+
 export default function SettingsPage() {
     const [settings, setSettings] = useState<SiteSettings | null>(null);
     const [loading, setLoading] = useState(true);
@@ -37,16 +39,12 @@ export default function SettingsPage() {
         fetchSettings();
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setSettings(prev => ({ ...prev, [name]: value }));
+    const handleChange = (field: keyof SiteSettings, value: string) => {
+        if (!settings) return;
+        setSettings({ ...settings, [field]: value });
     };
 
-    const handleToggle = (name: string) => {
-        setSettings(prev => ({ ...prev, [name]: !prev[name as keyof SiteSettings] }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSave = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!settings) return;
 
@@ -73,11 +71,6 @@ export default function SettingsPage() {
         } finally {
             setSaving(false);
         }
-    };
-
-    const handleChange = (field: keyof SiteSettings, value: string) => {
-        if (!settings) return;
-        setSettings({ ...settings, [field]: value });
     };
 
     if (loading) return <div className="p-8">Loading...</div>;
