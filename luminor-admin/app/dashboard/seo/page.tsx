@@ -39,7 +39,7 @@ export default function SeoPage() {
     const fetchSettings = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/settings", {
+            const res = await fetch(`${API_URL}/api/settings`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -60,7 +60,7 @@ export default function SeoPage() {
         setSaving(true);
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/settings", {
+            const res = await fetch(`${API_URL}/api/settings`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

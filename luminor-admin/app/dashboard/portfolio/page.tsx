@@ -18,29 +18,29 @@ export default function PortfolioListPage() {
     const router = useRouter();
 
     useEffect(() => {
-        fetchProjects();
+        fetchItems();
     }, []);
 
-    const fetchProjects = async () => {
+    const fetchItems = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/portfolio");
+            const res = await fetch(`${API_URL}/api/portfolio`);
             const data = await res.json();
             if (data.success) {
-                setProjects(data.data);
+                setItems(data.data);
             }
         } catch (error) {
-            console.error("Failed to fetch projects", error);
+            console.error("Failed to fetch portfolio", error);
         } finally {
             setLoading(false);
         }
     };
 
     const handleDelete = async (id: number) => {
-        if (!confirm("Are you sure you want to delete this project?")) return;
+        if (!confirm("Are you sure?")) return;
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/portfolio/${id}`, {
+            const res = await fetch(`${API_URL}/api/portfolio/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,

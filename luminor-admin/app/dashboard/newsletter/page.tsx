@@ -21,7 +21,7 @@ export default function NewsletterPage() {
     const fetchSubscribers = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/newsletter", {
+            const res = await fetch(`${API_URL}/api/newsletter`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -42,7 +42,7 @@ export default function NewsletterPage() {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/newsletter/${id}`, {
+            const res = await fetch(`${API_URL}/api/newsletter/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -112,8 +112,8 @@ export default function NewsletterPage() {
                                     <td className="px-6 py-4 font-medium text-dark">{sub.email}</td>
                                     <td className="px-6 py-4">
                                         <span className={`px-2 py-1 text-xs font-semibold rounded-full border ${sub.status === 'active'
-                                                ? 'bg-[#D1FAE5] text-[#065F46] border-[#10B981]'
-                                                : 'bg-gray-100 text-gray-500 border-gray-300'
+                                            ? 'bg-[#D1FAE5] text-[#065F46] border-[#10B981]'
+                                            : 'bg-gray-100 text-gray-500 border-gray-300'
                                             }`}>
                                             {sub.status.toUpperCase()}
                                         </span>

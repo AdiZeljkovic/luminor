@@ -13,7 +13,9 @@ interface ImageUploadProps {
     endpoint?: string;
 }
 
-export default function ImageUpload({ value, onChange, className, endpoint = 'http://localhost:5000/api/upload' }: ImageUploadProps) {
+import { API_URL } from "@/lib/api";
+
+export default function ImageUpload({ value, onChange, className, endpoint = `${API_URL}/api/upload` }: ImageUploadProps) {
     const [isUploading, setIsUploading] = useState(false);
     const [preview, setPreview] = useState(value);
     const fileInputRef = useRef<HTMLInputElement>(null);

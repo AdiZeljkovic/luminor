@@ -26,7 +26,7 @@ export default function TestimonialsListPage() {
     const fetchTestimonials = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/testimonials/all", {
+            const res = await fetch(`${API_URL}/api/testimonials/all`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -47,7 +47,7 @@ export default function TestimonialsListPage() {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
+            const res = await fetch(`${API_URL}/api/testimonials/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,

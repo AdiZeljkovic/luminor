@@ -24,7 +24,7 @@ export default function BlogListPage() {
 
     const fetchPosts = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/blog");
+            const res = await fetch(`${API_URL}/api/blog`);
             const data = await res.json();
             if (data.success) {
                 setPosts(data.data);
@@ -41,7 +41,7 @@ export default function BlogListPage() {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/blog/${id}`, {
+            const res = await fetch(`${API_URL}/api/blog/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,

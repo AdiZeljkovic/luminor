@@ -23,31 +23,37 @@ export default function SettingsPage() {
     const [saving, setSaving] = useState(false);
 
     useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const res = await fetch(`${API_URL}/api/settings`);
+                const data = await res.json();
+                if (data.success) setSettings(data.data);
+            } catch (error) {
+                console.error("Failed to fetch settings", error);
+            } finally {
+                setLoading(false);
+            }
+        };
         fetchSettings();
     }, []);
 
-    const fetchSettings = async () => {
-        try {
-            const res = await fetch("http://localhost:5000/api/settings");
-            const data = await res.json();
-            if (data.success) {
-                setSettings(data.data);
-            }
-        } catch (error) {
-            console.error("Error fetching settings:", error);
-        } finally {
-            setLoading(false);
-        }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setSettings(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSave = async (e: React.FormEvent) => {
+    const handleToggle = (name: string) => {
+        setSettings(prev => ({ ...prev, [name]: !prev[name as keyof SiteSettings] }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!settings) return;
 
         setSaving(true);
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/settings", {
+            const res = await fetch(`${API_URL}/api/settings`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

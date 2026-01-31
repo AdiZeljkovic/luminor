@@ -24,29 +24,24 @@ export default function ClientLogosListPage() {
 
     const fetchLogos = async () => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/client-logos/all", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+            const res = await fetch(`${API_URL}/api/client-logos/all`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
             });
             const data = await res.json();
-            if (data.success) {
-                setLogos(data.data);
-            }
+            if (data.success) setLogos(data.data);
         } catch (error) {
-            console.error("Failed to fetch client logos", error);
+            console.error("Failed to fetch logos", error);
         } finally {
             setLoading(false);
         }
     };
 
     const handleDelete = async (id: number) => {
-        if (!confirm("Are you sure you want to delete this logo?")) return;
+        if (!confirm("Delete this logo?")) return;
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/client-logos/${id}`, {
+            const res = await fetch(`${API_URL}/api/client-logos/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
