@@ -1,7 +1,8 @@
 const cors = require('cors');
 
-    ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : ['http://localhost:3000']),
-    ...(process.env.ADMIN_URL ? process.env.ADMIN_URL.split(',') : ['http://localhost:3001']),
+const allowedOrigins = [
+    ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map(url => url.trim()) : ['http://localhost:3000']),
+    ...(process.env.ADMIN_URL ? process.env.ADMIN_URL.split(',').map(url => url.trim()) : ['http://localhost:3001']),
     'http://localhost:3000',
     'http://localhost:3001',
     'http://127.0.0.1:3000',
@@ -19,6 +20,8 @@ const corsOptions = {
         if (allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
+            console.error('CORS Blocked Origin:', origin);
+            console.error('Allowed Origins:', allowedOrigins);
             callback(new Error('Not allowed by CORS'));
         }
     },
