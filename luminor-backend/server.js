@@ -90,6 +90,7 @@ const authLimiter = rateLimit({
     message: { error: 'Too many login attempts. Please try again in 15 minutes.' },
     standardHeaders: true,
     legacyHeaders: false,
+    validate: { xForwardedForHeader: false } // Trust proxy is handled by app.set
 });
 
 // General API rate limiter
@@ -99,6 +100,7 @@ const generalLimiter = rateLimit({
     message: { error: 'Too many requests, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false,
+    validate: { xForwardedForHeader: false } // Trust proxy is handled by app.set
 });
 
 app.use('/api/auth', authLimiter);
