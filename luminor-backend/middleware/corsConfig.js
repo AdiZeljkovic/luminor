@@ -1,12 +1,14 @@
 const cors = require('cors');
 
-const allowedOrigins = [
     ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : ['http://localhost:3000']),
     ...(process.env.ADMIN_URL ? process.env.ADMIN_URL.split(',') : ['http://localhost:3001']),
     'http://localhost:3000',
     'http://localhost:3001',
     'http://127.0.0.1:3000',
-    'http://127.0.0.1:3001'
+    'http://127.0.0.1:3001',
+    'https://luminor.solutions',
+    'https://www.luminor.solutions',
+    'https://admin.luminor.solutions'
 ];
 
 const corsOptions = {
