@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { API_URL } from "@/lib/api";
 import { useRouter } from "next/navigation";
 
 interface PortfolioProject {
@@ -26,7 +27,7 @@ export default function PortfolioListPage() {
             const res = await fetch(`${API_URL}/api/portfolio`);
             const data = await res.json();
             if (data.success) {
-                setItems(data.data);
+                setProjects(data.data);
             }
         } catch (error) {
             console.error("Failed to fetch portfolio", error);

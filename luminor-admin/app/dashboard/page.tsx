@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { API_URL } from "@/lib/api";
 import { Eye, MessageSquare, Mail, Layers, ArrowUpRight, Plus, ExternalLink } from "lucide-react";
 import StatCard from "@/components/ui/StatCard";
 import HealthWidget from "@/components/HealthWidget";

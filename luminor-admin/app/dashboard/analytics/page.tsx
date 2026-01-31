@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { TrendingUp, Users, Clock, Globe, ArrowUpRight, BarChart2 } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 interface AnalyticsStats {
     counts: {

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { API_URL } from "@/lib/api";
 import { useRouter } from "next/navigation";
 
 interface BlogPost {

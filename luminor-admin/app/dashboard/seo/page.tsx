@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Save, Globe, Code, Search, BarChart2, Zap, Layout, Terminal } from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 interface SiteSettings {
     id: number;
