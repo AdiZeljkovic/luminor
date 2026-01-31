@@ -107,17 +107,17 @@ export default function MessagesPage() {
     }
 
     return (
-        <div className="h-[calc(100vh-8rem)] flex flex-col">
+        <div className="h-[calc(100vh-8rem)] flex flex-col animate-fade-up">
             {/* Header */}
             <div className="mb-6 flex justify-between items-end">
                 <div>
-                    <h1 className="text-3xl font-bold font-display text-[#0F172A]">Inbox</h1>
+                    <h1 className="text-3xl font-extrabold font-display text-[#0F172A]">Inbox</h1>
                     <p className="text-gray-500 font-medium">
                         {unreadCount > 0 ? `${unreadCount} unread message${unreadCount > 1 ? 's' : ''}` : 'All caught up!'}
                     </p>
                 </div>
                 <div className="flex gap-2">
-                    <button className="btn bg-white">
+                    <button className="btn bg-white shadow-sm hover:shadow-md border border-gray-200">
                         <Filter size={18} /> Filter
                     </button>
                 </div>
@@ -127,14 +127,14 @@ export default function MessagesPage() {
             <div className="flex-1 flex gap-6 overflow-hidden">
 
                 {/* Message List */}
-                <div className="w-[400px] flex flex-col bg-white border-2 border-[#0F172A] rounded-xl shadow-[4px_4px_0px_#0F172A] overflow-hidden">
+                <div className="w-[400px] flex flex-col card-bento p-0 overflow-hidden">
                     <div className="p-4 border-b-2 border-[#0F172A] bg-gray-50">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                             <input
                                 type="text"
                                 placeholder="Search messages..."
-                                className="w-full pl-10 pr-4 py-2 border-2 border-gray-200 rounded-lg text-sm font-medium focus:border-[#0F172A] outline-none transition-colors"
+                                className="w-full pl-10 pr-4 py-2 border-2 border-gray-200 rounded-lg text-sm font-bold focus:border-[#0F172A] outline-none transition-colors"
                             />
                         </div>
                     </div>
@@ -182,7 +182,7 @@ export default function MessagesPage() {
                 </div>
 
                 {/* Message Detail View */}
-                <div className="flex-1 bg-white border-2 border-[#0F172A] rounded-xl shadow-[4px_4px_0px_#0F172A] overflow-hidden flex flex-col relative">
+                <div className="flex-1 card-bento p-0 overflow-hidden flex flex-col relative">
                     {selectedMessage ? (
                         <>
                             {/* Toolbar */}
@@ -191,7 +191,7 @@ export default function MessagesPage() {
                                     <select
                                         value={selectedMessage.status}
                                         onChange={(e) => handleUpdate(selectedMessage.id, { status: e.target.value })}
-                                        className="btn bg-white py-1.5 min-w-[140px]"
+                                        className="bg-white border-2 border-gray-200 rounded-lg py-1.5 px-3 text-sm font-bold text-[#0F172A] outline-none focus:border-[#0F172A] transition-all min-w-[140px]"
                                     >
                                         {statusOptions.map(opt => (
                                             <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -201,7 +201,7 @@ export default function MessagesPage() {
                                 <div className="flex gap-2">
                                     <button
                                         onClick={() => handleDelete(selectedMessage.id)}
-                                        className="p-2 hover:bg-red-50 text-red-500 rounded-lg transition-colors"
+                                        className="p-2 hover:bg-red-50 text-red-500 rounded-lg transition-colors border border-transparent hover:border-red-100"
                                         title="Delete Message"
                                     >
                                         <Trash2 size={20} />
@@ -212,24 +212,24 @@ export default function MessagesPage() {
                             {/* Content */}
                             <div className="flex-1 overflow-y-auto p-8">
                                 <div className="mb-8 pb-8 border-b border-gray-100">
-                                    <h1 className="text-2xl font-bold font-display text-[#0F172A] mb-4">{selectedMessage.subject}</h1>
+                                    <h1 className="text-3xl font-bold font-display text-[#0F172A] mb-6">{selectedMessage.subject}</h1>
 
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-xl bg-[#0F172A] text-white flex items-center justify-center text-xl font-bold font-display shadow-[4px_4px_0px_#E2E8F0]">
+                                    <div className="flex items-center gap-6">
+                                        <div className="w-16 h-16 rounded-2xl bg-[#0F172A] text-white flex items-center justify-center text-2xl font-bold font-display shadow-[4px_4px_0px_#94A3B8]">
                                             {selectedMessage.name.charAt(0).toUpperCase()}
                                         </div>
                                         <div>
-                                            <p className="font-bold text-[#0F172A] text-lg leading-tight">{selectedMessage.name}</p>
-                                            <p className="text-gray-500 font-medium">{selectedMessage.email}</p>
-                                        </div>
-                                        <div className="ml-auto text-sm text-gray-400 font-medium flex items-center gap-2">
-                                            <Clock size={14} />
-                                            {new Date(selectedMessage.created_at).toLocaleString()}
+                                            <p className="font-bold text-[#0F172A] text-xl leading-tight mb-1">{selectedMessage.name}</p>
+                                            <p className="text-gray-500 font-medium text-lg mb-1">{selectedMessage.email}</p>
+                                            <div className="text-sm text-gray-400 font-medium flex items-center gap-2">
+                                                <Clock size={14} />
+                                                {new Date(selectedMessage.created_at).toLocaleString()}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="prose max-w-none text-[#334155] whitespace-pre-wrap leading-relaxed font-medium">
+                                <div className="prose max-w-none text-[#334155] whitespace-pre-wrap leading-relaxed font-medium text-lg">
                                     {selectedMessage.message}
                                 </div>
                             </div>
@@ -239,7 +239,7 @@ export default function MessagesPage() {
                                 <div className="mb-4">
                                     <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Internal Notes</label>
                                     <textarea
-                                        className="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-[#0F172A] outline-none text-sm font-medium min-h-[80px] transition-all focus:shadow-[4px_4px_0px_#E2E8F0]"
+                                        className="input-field min-h-[80px]"
                                         placeholder="Add private notes regarding this lead..."
                                         value={selectedMessage?.notes || ''}
                                         onChange={(e) => setSelectedMessage({ ...selectedMessage, notes: e.target.value })}
@@ -258,11 +258,11 @@ export default function MessagesPage() {
                         </>
                     ) : (
                         <div className="flex-1 flex flex-col items-center justify-center text-gray-400 bg-gray-50/50">
-                            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6 animate-pulse">
                                 <Mail size={48} className="opacity-20 text-[#0F172A]" />
                             </div>
                             <h3 className="text-lg font-bold text-[#0F172A] mb-1">Select a message</h3>
-                            <p className="text-sm">Choose a message from the list to view details.</p>
+                            <p className="text-sm font-medium">Choose a message from the list to view details.</p>
                         </div>
                     )}
                 </div>

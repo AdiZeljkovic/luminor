@@ -117,39 +117,47 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
                 {/* Traffic Chart Placeholder (Redesigned) */}
-                <div className="lg:col-span-2 card-brutal p-6">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-bold font-display text-[#0F172A]">Traffic Overview</h2>
-                        <select className="bg-gray-50 border-2 border-gray-200 rounded-md text-sm px-3 py-1 font-bold text-gray-600 outline-none focus:border-[#0F172A]">
+                <div className="lg:col-span-2 card-bento p-8">
+                    <div className="flex items-center justify-between mb-8">
+                        <div>
+                            <h2 className="text-xl font-bold font-display text-[#0F172A]">Traffic Overview</h2>
+                            <p className="text-sm text-gray-400 font-medium">Unique visitors vs total page views</p>
+                        </div>
+                        <select className="bg-white border-2 border-gray-200 rounded-lg text-sm px-4 py-2 font-bold text-gray-600 outline-none focus:border-[#0F172A] focus:shadow-[4px_4px_0px_#0F172A] transition-all cursor-pointer">
                             <option>Last 30 Days</option>
                             <option>Last 7 Days</option>
                         </select>
                     </div>
 
-                    <div className="h-64 flex items-end gap-2 pt-4 border-b border-gray-100">
+                    <div className="h-64 flex items-end gap-3 pt-4 border-b border-gray-100">
                         {stats?.traffic?.length ? (
                             stats.traffic.map((day, i) => {
                                 const maxViews = Math.max(...stats.traffic.map(t => parseInt(t.total_views as any)));
                                 const heightPercentage = Math.max(10, (parseInt(day.total_views as any) / (maxViews || 1)) * 100);
                                 return (
-                                    <div key={i} className="flex-1 flex flex-col items-center group relative">
+                                    <div key={i} className="flex-1 flex flex-col items-center group relative cursor-pointer">
                                         <div
-                                            className="w-full bg-[#0F172A] rounded-t-sm opacity-80 group-hover:opacity-100 group-hover:bg-[#FF9F1C] transition-all relative"
+                                            className="w-full bg-[#E2E8F0] rounded-t-sm group-hover:bg-[#FF9F1C] transition-all relative"
                                             style={{ height: `${heightPercentage}%` }}
                                         >
-                                            <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap z-10 pointer-events-none shadow-lg">
+                                            <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#0F172A] text-white text-xs font-bold px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap z-10 pointer-events-none shadow-xl transform translate-y-2 group-hover:translate-y-0">
                                                 {day.total_views} views
+                                                <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-[#0F172A]"></div>
                                             </div>
                                         </div>
                                     </div>
                                 );
                             })
                         ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-400 font-medium">No traffic data available</div>
+                            <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 font-medium animate-pulse">
+                                <div className="w-16 h-16 bg-gray-100 rounded-full mb-4"></div>
+                                <div className="h-4 bg-gray-100 w-32 rounded mb-2"></div>
+                                <div className="h-3 bg-gray-100 w-24 rounded"></div>
+                            </div>
                         )}
                     </div>
-                    <div className="flex justify-between mt-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                        <span>{stats?.traffic?.[0]?.date}</span>
+                    <div className="flex justify-between mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                        <span>{stats?.traffic?.[0]?.date || 'Start Date'}</span>
                         <span>Today</span>
                     </div>
                 </div>
@@ -160,42 +168,54 @@ export default function DashboardPage() {
                     <HealthWidget />
 
                     {/* Recent Messages Widget */}
-                    <div className="card-brutal p-0 overflow-hidden">
-                        <div className="p-4 border-b-2 border-gray-100 bg-gray-50 flex justify-between items-center">
-                            <h3 className="font-bold font-display text-[#0F172A]">Recent Messages</h3>
-                            <Link href="/dashboard/messages" className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
+                    <div className="card-bento p-0 overflow-hidden">
+                        <div className="p-5 border-b-2 border-[#0F172A] bg-gray-50 flex justify-between items-center">
+                            <h3 className="font-bold font-display text-[#0F172A] flex items-center gap-2">
+                                <MessageSquare size={18} className="text-blue-500" /> Recent Messages
+                            </h3>
+                            <Link href="/dashboard/messages" className="text-xs font-bold text-[#0F172A] hover:text-[#FF9F1C] flex items-center gap-1 transition-colors uppercase tracking-wide">
                                 View All <ArrowUpRight size={12} />
                             </Link>
                         </div>
                         <div className="divide-y divide-gray-100">
                             {stats?.recents?.messages?.length ? (
                                 stats.recents.messages.slice(0, 4).map((msg: any) => (
-                                    <div key={msg.id} className="p-4 hover:bg-gray-50 transition-colors">
+                                    <div key={msg.id} className="p-4 hover:bg-[#FFF9F0] transition-colors cursor-pointer group">
                                         <div className="flex justify-between items-start mb-1">
-                                            <p className="font-bold text-sm text-[#0F172A]">{msg.name}</p>
-                                            <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${msg.status === 'new' ? 'bg-[#FF9F1C] text-[#0F172A]' : 'bg-gray-200 text-gray-500'}`}>
+                                            <p className="font-bold text-sm text-[#0F172A] group-hover:text-blue-600 transition-colors">{msg.name}</p>
+                                            <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full border ${msg.status === 'new'
+                                                ? 'bg-[#FF9F1C]/10 text-[#FF9F1C] border-[#FF9F1C]/20'
+                                                : 'bg-gray-100 text-gray-500 border-gray-200'
+                                                }`}>
                                                 {msg.status}
                                             </span>
                                         </div>
-                                        <p className="text-xs text-gray-500 line-clamp-1">{msg.subject}</p>
+                                        <p className="text-xs text-gray-500 line-clamp-1 group-hover:text-gray-700">{msg.subject}</p>
                                     </div>
                                 ))
                             ) : (
-                                <div className="p-6 text-center text-gray-400 text-sm">No new messages</div>
+                                <div className="p-8 text-center text-gray-400 text-sm flex flex-col items-center">
+                                    <MessageSquare size={32} className="mb-2 opacity-20" />
+                                    No new messages
+                                </div>
                             )}
                         </div>
                     </div>
 
                     {/* Quick Access Card */}
-                    <div className="card-brutal p-5 bg-[#0F172A] text-white border-none">
-                        <h3 className="font-bold font-display text-lg mb-2 text-[#FF9F1C]">Quick Access</h3>
-                        <p className="text-sm text-gray-400 mb-4">Jump straight to your most used tools.</p>
-                        <div className="flex flex-col gap-2">
-                            <Link href="/dashboard/settings" className="flex items-center gap-3 p-3 rounded bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-sm font-medium">
-                                <span className="text-[#FF9F1C]">⚙️</span> Settings
+                    <div className="card-bento p-6 bg-[#0F172A] text-white border-[#0F172A]">
+                        <h3 className="font-bold font-display text-lg mb-2 text-[#FF9F1C] flex items-center gap-2">
+                            <Layers size={20} /> Quick Access
+                        </h3>
+                        <p className="text-sm text-gray-400 mb-5 leading-relaxed">Jump straight to your most used tools to speed up your workflow.</p>
+                        <div className="flex flex-col gap-3">
+                            <Link href="/dashboard/settings" className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all hover:translate-x-1 text-sm font-bold">
+                                <span className="w-6 h-6 rounded flex items-center justify-center bg-[#FF9F1C] text-[#0F172A] text-xs">⚙️</span>
+                                Settings
                             </Link>
-                            <Link href="https://luminor.solutions" target="_blank" className="flex items-center gap-3 p-3 rounded bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-sm font-medium">
-                                <span className="text-[#FF9F1C]">🌐</span> View Live Site <ExternalLink size={12} className="ml-auto opacity-50" />
+                            <Link href="https://luminor.solutions" target="_blank" className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all hover:translate-x-1 text-sm font-bold">
+                                <span className="w-6 h-6 rounded flex items-center justify-center bg-blue-500 text-white text-xs">🌐</span>
+                                View Live Site <ExternalLink size={12} className="ml-auto opacity-50" />
                             </Link>
                         </div>
                     </div>

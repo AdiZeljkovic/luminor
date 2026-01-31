@@ -18,7 +18,7 @@ export default function StatCard({
     color = "#0F172A"
 }: StatCardProps) {
     return (
-        <div className="card-brutal p-6 relative overflow-hidden group">
+        <div className="card-bento p-6 relative overflow-hidden group">
             {/* Background Decoration */}
             <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-5 bg-current" style={{ color }} />
 
