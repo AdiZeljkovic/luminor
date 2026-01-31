@@ -37,11 +37,12 @@ const corsOptions = {
         } else {
             // LOGGING FOR DEBUGGING
             console.log('---------------------------------');
-            console.log('🚨 CORS BLOCKED ORIGIN:', origin);
-            console.log('✅ ALLOWED ORIGINS:', allowedOrigins);
+            console.log('⚠️ CORS WARNING (Fail-Open Active):', origin);
+            console.log('✅ ALLOWED ORIGINS LIST:', allowedOrigins);
             console.log('---------------------------------');
 
-            return callback(new Error('Not allowed by CORS'));
+            // TEMPORARY DEBUG: Allow anyway to rule out Node.js blocking
+            return callback(null, true);
         }
     },
     credentials: true,
