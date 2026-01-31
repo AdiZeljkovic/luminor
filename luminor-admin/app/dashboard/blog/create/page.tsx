@@ -78,7 +78,6 @@ export default function CreateBlogPage() {
     };
 
     return (
-    return (
         <div className="max-w-[1600px] mx-auto pb-12 animate-fade-up">
             <div className="flex items-center gap-4 mb-8">
                 <Link href="/dashboard/blog" className="w-10 h-10 flex items-center justify-center rounded-lg bg-white border border-gray-200 text-gray-500 hover:text-[#0F172A] hover:border-[#0F172A] transition-all">
