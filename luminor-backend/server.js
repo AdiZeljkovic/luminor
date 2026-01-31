@@ -19,7 +19,7 @@ const analyticsRoutes = require('./routes/analytics');
 const settingsRoutes = require('./routes/settings');
 const uploadRoutes = require('./routes/uploadRoutes');
 const testimonialsRoutes = require('./routes/testimonials');
-const testimonialsRoutes = require('./routes/testimonials');
+
 const clientLogosRoutes = require('./routes/clientLogos');
 const systemRoutes = require('./routes/system');
 
