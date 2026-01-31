@@ -125,272 +125,170 @@ export default function CreateProjectPage() {
     };
 
     return (
-        <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-6">
-                <Link href="/dashboard/portfolio" className="text-gray-500 hover:text-gray-900 transition-colors">
-                    ← Back
+        <div className="max-w-[1600px] mx-auto pb-12 animate-fade-up">
+            <div className="flex items-center gap-4 mb-8">
+                <Link href="/dashboard/portfolio" className="w-10 h-10 flex items-center justify-center rounded-lg bg-white border border-gray-200 text-gray-500 hover:text-[#0F172A] hover:border-[#0F172A] transition-all">
+                    ←
                 </Link>
-                <h1 className="text-2xl font-bold text-gray-800">Add New Project</h1>
+                <div>
+                    <h1 className="text-3xl font-extrabold font-display text-[#0F172A]">Add New Project</h1>
+                    <p className="text-gray-500 font-medium text-sm">Showcase a new success story.</p>
+                </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Language Tabs */}
-                    <div className="flex gap-2 border-b border-gray-200 pb-4">
-                        <button
-                            type="button"
-                            onClick={() => setActiveTab('en')}
-                            className={`px-4 py-2 font-semibold rounded-t-lg transition-colors ${activeTab === 'en'
-                                ? 'bg-gray-900 text-white'
-                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                }`}
-                        >
-                            🇬🇧 English
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => setActiveTab('bs')}
-                            className={`px-4 py-2 font-semibold rounded-t-lg transition-colors ${activeTab === 'bs'
-                                ? 'bg-gray-900 text-white'
-                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                }`}
-                        >
-                            🇧🇦 Bosanski
-                        </button>
-                    </div>
-
-                    {/* English Content */}
-                    <div className={activeTab === 'en' ? 'block space-y-4' : 'hidden'}>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Project Title (English)</label>
-                            <input
-                                type="text"
-                                name="title_en"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.title_en}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Description (English)</label>
-                            <RichTextEditor
-                                value={formData.description_en}
-                                onChange={(html) => setFormData(prev => ({ ...prev, description_en: html }))}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Challenge (English)</label>
-                            <RichTextEditor
-                                value={formData.challenge_en}
-                                onChange={(html) => setFormData(prev => ({ ...prev, challenge_en: html }))}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Solution (English)</label>
-                            <RichTextEditor
-                                value={formData.solution_en}
-                                onChange={(html) => setFormData(prev => ({ ...prev, solution_en: html }))}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Bosnian Content */}
-                    <div className={activeTab === 'bs' ? 'block space-y-4' : 'hidden'}>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Naslov Projekta (Bosanski)</label>
-                            <input
-                                type="text"
-                                name="title_bs"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.title_bs}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Opis (Bosanski)</label>
-                            <RichTextEditor
-                                value={formData.description_bs}
-                                onChange={(html) => setFormData(prev => ({ ...prev, description_bs: html }))}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Izazov (Bosanski)</label>
-                            <RichTextEditor
-                                value={formData.challenge_bs}
-                                onChange={(html) => setFormData(prev => ({ ...prev, challenge_bs: html }))}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Rješenje (Bosanski)</label>
-                            <RichTextEditor
-                                value={formData.solution_bs}
-                                onChange={(html) => setFormData(prev => ({ ...prev, solution_bs: html }))}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Shared Fields */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-200">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                            <select
-                                name="category"
-                                required
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.category}
-                                onChange={handleChange}
-                            >
-                                <option value="">Select Category</option>
-                                <option value="web-development">Web Development</option>
-                                <option value="graphic-design">Graphic Design</option>
-                                <option value="digital-marketing">Digital Marketing</option>
-                                <option value="seo">SEO</option>
-                                <option value="ai-automation">AI & Automation</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Client Name</label>
-                            <input
-                                type="text"
-                                name="client"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.client}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Project URL</label>
-                            <input
-                                type="url"
-                                name="website"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.website}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Main Image</label>
-                            <ImageUpload
-                                value={formData.image}
-                                onChange={(url) => setFormData(prev => ({ ...prev, image: url }))}
-                            />
-                        </div>
-
-                        <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Additional Image URLs (comma separated)</label>
-                            <textarea
-                                name="images"
-                                rows={2}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.images}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Technologies (comma separated)</label>
-                            <input
-                                type="text"
-                                name="technologies"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.technologies}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Completion Date</label>
-                            <input
-                                type="text"
-                                name="date"
-                                placeholder="e.g. Decembar 2023"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                value={formData.date}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        {/* Enhanced Results Builder */}
-                        <div className="col-span-2 bg-gray-50 p-4 rounded-xl border border-gray-200">
-                            <label className="block text-sm font-bold text-gray-800 mb-2">Key Results / Metrics</label>
-                            <p className="text-xs text-gray-500 mb-4">Add quantifiable results achieved (e.g., +40% Sales, 2.5x ROI).</p>
-
-                            <div className="space-y-3">
-                                {results.map((result, index) => (
-                                    <div key={index} className="flex gap-3 items-center">
-                                        <div className="flex-1">
-                                            <input
-                                                type="text"
-                                                placeholder="Metric (e.g. +45%)"
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-                                                value={result.metric}
-                                                onChange={(e) => handleResultChange(index, 'metric', e.target.value)}
-                                            />
-                                        </div>
-                                        <div className="flex-[2]">
-                                            <input
-                                                type="text"
-                                                placeholder="Label (e.g. Increase in Sales)"
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-                                                value={result.label}
-                                                onChange={(e) => handleResultChange(index, 'label', e.target.value)}
-                                            />
-                                        </div>
-                                        {results.length > 1 && (
-                                            <button
-                                                type="button"
-                                                onClick={() => removeResult(index)}
-                                                className="text-red-500 hover:bg-red-50 p-2 rounded-full transition-colors"
-                                            >
-                                                ✕
-                                            </button>
-                                        )}
-                                    </div>
-                                ))}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* LEFT COLUMN - Main Content */}
+                <div className="lg:col-span-2 space-y-8">
+                    <div className="card-bento p-8 bg-white">
+                        <form id="portfolioForm" onSubmit={handleSubmit} className="space-y-6">
+                            {/* Language Tabs */}
+                            <div className="flex gap-2 border-b-2 border-gray-100 pb-0">
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveTab('en')}
+                                    className={`px-6 py-3 font-bold rounded-t-lg transition-all text-sm uppercase tracking-wide ${activeTab === 'en'
+                                        ? 'bg-[#0F172A] text-white'
+                                        : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+                                        }`}
+                                >
+                                    🇬🇧 English
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveTab('bs')}
+                                    className={`px-6 py-3 font-bold rounded-t-lg transition-all text-sm uppercase tracking-wide ${activeTab === 'bs'
+                                        ? 'bg-[#0F172A] text-white'
+                                        : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+                                        }`}
+                                >
+                                    🇧🇦 Bosanski
+                                </button>
                             </div>
 
-                            <button
-                                type="button"
-                                onClick={addResult}
-                                className="mt-4 text-sm font-semibold text-[#FF9F1C] hover:text-[#d37f0c] transition-colors flex items-center gap-1"
-                            >
-                                + Add Another Result
-                            </button>
-                        </div>
-
-                        <div className="col-span-2 border-t border-gray-100 pt-6">
-                            <h3 className="text-lg font-semibold text-gray-800 mb-4">Testimonial</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="col-span-2">
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Quote</label>
-                                    <textarea
-                                        name="testimonialQuote"
-                                        rows={2}
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
-                                        value={formData.testimonialQuote}
+                            {/* English Content */}
+                            <div className={`pt-6 ${activeTab === 'en' ? 'block space-y-6' : 'hidden'}`}>
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Project Title (English)</label>
+                                    <input
+                                        type="text"
+                                        name="title_en"
+                                        className="input-field text-lg font-bold"
+                                        placeholder="Project Name..."
+                                        value={formData.title_en}
                                         onChange={handleChange}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Author Name</label>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Description (English)</label>
+                                    <div className="border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-[#0F172A] transition-colors">
+                                        <RichTextEditor
+                                            value={formData.description_en}
+                                            onChange={(html) => setFormData(prev => ({ ...prev, description_en: html }))}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Challenge (English)</label>
+                                        <div className="border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-[#0F172A] transition-colors">
+                                            <RichTextEditor
+                                                value={formData.challenge_en}
+                                                onChange={(html) => setFormData(prev => ({ ...prev, challenge_en: html }))}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Solution (English)</label>
+                                        <div className="border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-[#0F172A] transition-colors">
+                                            <RichTextEditor
+                                                value={formData.solution_en}
+                                                onChange={(html) => setFormData(prev => ({ ...prev, solution_en: html }))}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Bosnian Content */}
+                            <div className={`pt-6 ${activeTab === 'bs' ? 'block space-y-6' : 'hidden'}`}>
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Naslov Projekta (Bosanski)</label>
+                                    <input
+                                        type="text"
+                                        name="title_bs"
+                                        className="input-field text-lg font-bold"
+                                        placeholder="Naziv projekta..."
+                                        value={formData.title_bs}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Opis (Bosanski)</label>
+                                    <div className="border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-[#0F172A] transition-colors">
+                                        <RichTextEditor
+                                            value={formData.description_bs}
+                                            onChange={(html) => setFormData(prev => ({ ...prev, description_bs: html }))}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Izazov (Bosanski)</label>
+                                        <div className="border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-[#0F172A] transition-colors">
+                                            <RichTextEditor
+                                                value={formData.challenge_bs}
+                                                onChange={(html) => setFormData(prev => ({ ...prev, challenge_bs: html }))}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Rješenje (Bosanski)</label>
+                                        <div className="border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-[#0F172A] transition-colors">
+                                            <RichTextEditor
+                                                value={formData.solution_bs}
+                                                onChange={(html) => setFormData(prev => ({ ...prev, solution_bs: html }))}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    {/* Testimonial Section */}
+                    <div className="card-bento p-8 bg-white">
+                        <h3 className="text-xl font-bold font-display text-[#0F172A] mb-6 flex items-center gap-2">Testimonial</h3>
+                        <div className="space-y-6">
+                            <div>
+                                <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Quote</label>
+                                <textarea
+                                    name="testimonialQuote"
+                                    rows={3}
+                                    className="input-field"
+                                    placeholder="what the client said..."
+                                    value={formData.testimonialQuote}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Author Name</label>
                                     <input
                                         type="text"
                                         name="testimonialAuthor"
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
+                                        className="input-field"
+                                        placeholder="John Doe"
                                         value={formData.testimonialAuthor}
                                         onChange={handleChange}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Author Role</label>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Author Role</label>
                                     <input
                                         type="text"
                                         name="testimonialRole"
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none transition-all"
+                                        className="input-field"
+                                        placeholder="CEO, Company Inc."
                                         value={formData.testimonialRole}
                                         onChange={handleChange}
                                     />
@@ -398,17 +296,161 @@ export default function CreateProjectPage() {
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div className="flex justify-end pt-6 border-t border-gray-100">
+                {/* RIGHT COLUMN - Sidebar Settings */}
+                <div className="space-y-6">
+                    <div className="card-bento p-6 bg-white">
+                        <h3 className="font-bold font-display text-xl text-[#0F172A] mb-6 flex items-center gap-2">
+                            🚀 Project Details
+                        </h3>
+                        <div className="space-y-5">
+                            <div>
+                                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Category</label>
+                                <select
+                                    name="category"
+                                    required
+                                    className="input-field"
+                                    value={formData.category}
+                                    onChange={handleChange}
+                                >
+                                    <option value="">Select...</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="graphic-design">Graphic Design</option>
+                                    <option value="digital-marketing">Digital Marketing</option>
+                                    <option value="seo">SEO</option>
+                                    <option value="ai-automation">AI & Automation</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Client Name</label>
+                                <input
+                                    type="text"
+                                    name="client"
+                                    className="input-field"
+                                    value={formData.client}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Project URL</label>
+                                <input
+                                    type="url"
+                                    name="website"
+                                    className="input-field"
+                                    placeholder="https://"
+                                    value={formData.website}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Completion Date</label>
+                                <input
+                                    type="text"
+                                    name="date"
+                                    placeholder="e.g. Dec 2023"
+                                    className="input-field"
+                                    value={formData.date}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Technologies</label>
+                                <input
+                                    type="text"
+                                    name="technologies"
+                                    className="input-field"
+                                    placeholder="React, Next.js, etc."
+                                    value={formData.technologies}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                form="portfolioForm"
+                                disabled={loading}
+                                className="w-full btn btn-primary py-3 text-base justify-center mt-2 group"
+                            >
+                                {loading ? <span className="spinner w-5 h-5 border-white border-t-transparent"></span> : (
+                                    <>
+                                        <span>Create Project</span>
+                                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                                    </>
+                                )}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="card-bento p-6 bg-white">
+                        <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-3">Main Image</label>
+                        <div className="p-1 bg-gray-50 rounded-xl border-2 border-dashed border-gray-300 hover:border-[#0F172A] transition-colors">
+                            <ImageUpload
+                                value={formData.image}
+                                onChange={(url) => setFormData(prev => ({ ...prev, image: url }))}
+                            />
+                        </div>
+
+                        <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-3 mt-6">Gallery Images</label>
+                        <textarea
+                            name="images"
+                            rows={3}
+                            className="input-field text-xs font-mono"
+                            placeholder="Comma separated URLs..."
+                            value={formData.images}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    {/* Results Builder */}
+                    <div className="card-bento p-6 bg-[#0F172A] text-white border-[#0F172A]">
+                        <h3 className="text-lg font-bold font-display text-white mb-4">Key Results</h3>
+
+                        <div className="space-y-4">
+                            {results.map((result, index) => (
+                                <div key={index} className="flex gap-2 items-start p-3 bg-white/5 rounded-lg border border-white/10">
+                                    <div className="space-y-2 flex-1">
+                                        <input
+                                            type="text"
+                                            placeholder="Metric (+45%)"
+                                            className="w-full px-2 py-1 bg-transparent border-b border-white/20 text-sm font-bold text-[#FF9F1C] placeholder:text-gray-500 focus:outline-none focus:border-[#FF9F1C]"
+                                            value={result.metric}
+                                            onChange={(e) => handleResultChange(index, 'metric', e.target.value)}
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Label (Sales)"
+                                            className="w-full px-2 py-1 bg-transparent border-b border-white/20 text-xs font-medium text-gray-300 placeholder:text-gray-600 focus:outline-none focus:border-white"
+                                            value={result.label}
+                                            onChange={(e) => handleResultChange(index, 'label', e.target.value)}
+                                        />
+                                    </div>
+                                    {results.length > 1 && (
+                                        <button
+                                            type="button"
+                                            onClick={() => removeResult(index)}
+                                            className="text-gray-500 hover:text-red-400 p-1"
+                                        >
+                                            ✕
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
                         <button
-                            type="submit"
-                            disabled={loading}
-                            className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors font-semibold disabled:opacity-50 flex items-center gap-2"
+                            type="button"
+                            onClick={addResult}
+                            className="mt-4 w-full py-2 border border-dashed border-white/20 rounded-lg text-xs font-bold text-gray-400 hover:text-white hover:border-white transition-colors"
                         >
-                            {loading ? "Creating..." : "Create Project"}
+                            + Add Metric
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );

@@ -68,88 +68,100 @@ export default function ClientLogosListPage() {
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-8 animate-fade-up">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold font-display text-dark">Client Logos</h1>
-                    <p className="text-gray-500 text-sm mt-1">Manage partner and client logos</p>
+                    <h1 className="text-3xl font-extrabold font-display text-[#0F172A]">Client Logos</h1>
+                    <p className="text-gray-500 font-medium text-sm mt-1">Manage partner and client logos.</p>
                 </div>
-                <Link href="/dashboard/client-logos/create" className="btn btn-primary">
-                    + Add New Logo
+                <Link href="/dashboard/client-logos/create" className="btn btn-primary group">
+                    <span className="mr-2 text-lg">+</span>
+                    New Logo
                 </Link>
             </div>
 
             {/* Table */}
-            <div className="bg-white border-2 border-[#0F172A] rounded-xl shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] overflow-hidden">
-                <table className="w-full text-left">
-                    <thead className="bg-gray-50 border-b-2 border-[#0F172A]">
-                        <tr>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Logo</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Client Name</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Website</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                        {logos.map((logo) => (
-                            <tr key={logo.id} className="hover:bg-[#FFF9F0] transition-colors group">
-                                <td className="px-6 py-4">
-                                    <div className="w-16 h-10 flex items-center justify-center bg-gray-100 rounded border border-gray-200 p-1">
-                                        <img src={logo.logo_url} alt={logo.client_name} className="max-w-full max-h-full object-contain" />
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4">
-                                    <div className="font-semibold text-dark group-hover:text-[#FF9F1C] transition-colors">{logo.client_name}</div>
-                                </td>
-                                <td className="px-6 py-4">
-                                    <span className="text-gray-500 text-sm truncate max-w-[150px] block">
-                                        {logo.website_url || "-"}
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4">
-                                    {logo.is_active ? (
-                                        <span className="inline-flex items-center px-2 py-0.5 text-xs font-bold bg-[#DCFCE7] text-[#166534] rounded-full border border-[#86EFAC]">
-                                            ACTIVE
-                                        </span>
-                                    ) : (
-                                        <span className="inline-flex items-center px-2 py-0.5 text-xs font-bold bg-gray-100 text-gray-500 rounded-full border border-gray-200">
-                                            INACTIVE
-                                        </span>
-                                    )}
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <div className="flex justify-end gap-2">
-                                        <Link
-                                            href={`/dashboard/client-logos/edit/${logo.id}`}
-                                            className="px-3 py-2 text-sm font-semibold text-[#3B82F6] bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors border border-blue-200"
-                                        >
-                                            ✏️ Edit
-                                        </Link>
-                                        <button
-                                            onClick={() => handleDelete(logo.id)}
-                                            className="px-3 py-2 text-sm font-semibold text-[#EF4444] bg-red-50 rounded-lg hover:bg-red-100 transition-colors border border-red-200"
-                                        >
-                                            🗑️ Delete
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                        {logos.length === 0 && (
+            <div className="card-bento p-0 overflow-hidden bg-white">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead className="bg-[#F8FAFC] border-b-2 border-[#0F172A]">
                             <tr>
-                                <td colSpan={5} className="px-6 py-16 text-center">
-                                    <div className="text-4xl mb-4">🌟</div>
-                                    <p className="text-gray-500 font-medium mb-4">No client logos found</p>
-                                    <Link href="/dashboard/client-logos/create" className="btn btn-secondary btn-sm">
-                                        Add your first client logo
-                                    </Link>
-                                </td>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Logo</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Client Name</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Website</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Status</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider text-right">Actions</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                            {logos.map((logo) => (
+                                <tr key={logo.id} className="hover:bg-[#FFF9F0] transition-colors group">
+                                    <td className="px-6 py-4">
+                                        <div className="w-20 h-12 flex items-center justify-center bg-gray-50 rounded-lg border border-gray-200 p-2 group-hover:border-[#FF9F1C] transition-colors">
+                                            <img src={logo.logo_url} alt={logo.client_name} className="max-w-full max-h-full object-contain" />
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="font-bold text-[#0F172A] group-hover:text-[#FF9F1C] transition-colors">{logo.client_name}</div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {logo.website_url ? (
+                                            <a href={logo.website_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm font-medium">
+                                                {logo.website_url.replace(/^https?:\/\//, '')}
+                                            </a>
+                                        ) : (
+                                            <span className="text-gray-400 text-sm">-</span>
+                                        )}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {logo.is_active ? (
+                                            <span className="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-[#DCFCE7] text-[#166534] rounded-lg border border-[#86EFAC]">
+                                                ACTIVE
+                                            </span>
+                                        ) : (
+                                            <span className="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-gray-100 text-gray-500 rounded-lg border border-gray-200">
+                                                INACTIVE
+                                            </span>
+                                        )}
+                                    </td>
+                                    <td className="px-6 py-4 text-right">
+                                        <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <Link
+                                                href={`/dashboard/client-logos/edit/${logo.id}`}
+                                                className="w-8 h-8 flex items-center justify-center text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 border border-blue-200 transition-colors"
+                                                title="Edit"
+                                            >
+                                                ✏️
+                                            </Link>
+                                            <button
+                                                onClick={() => handleDelete(logo.id)}
+                                                className="w-8 h-8 flex items-center justify-center text-red-600 bg-red-50 rounded-lg hover:bg-red-100 border border-red-200 transition-colors"
+                                                title="Delete"
+                                            >
+                                                🗑️
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                            {logos.length === 0 && (
+                                <tr>
+                                    <td colSpan={5} className="px-6 py-20 text-center">
+                                        <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 border-2 border-gray-100">
+                                            🌟
+                                        </div>
+                                        <h3 className="text-lg font-bold text-[#0F172A]">No client logos yet</h3>
+                                        <p className="text-gray-500 font-medium mb-6 mt-1">Add logos to showcase your partners.</p>
+                                        <Link href="/dashboard/client-logos/create" className="btn btn-secondary inline-flex">
+                                            Add First Logo
+                                        </Link>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

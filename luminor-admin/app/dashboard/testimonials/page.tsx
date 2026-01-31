@@ -13,6 +13,7 @@ interface Testimonial {
     rating: number;
     is_featured: boolean;
     display_order: number;
+    client_position?: string;
 }
 
 export default function TestimonialsListPage() {
@@ -74,88 +75,99 @@ export default function TestimonialsListPage() {
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-8 animate-fade-up">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold font-display text-dark">Client Testimonials</h1>
-                    <p className="text-gray-500 text-sm mt-1">Manage what your clients say about you</p>
+                    <h1 className="text-3xl font-extrabold font-display text-[#0F172A]">Client Testimonials</h1>
+                    <p className="text-gray-500 font-medium text-sm mt-1">Manage what your clients say about you.</p>
                 </div>
-                <Link href="/dashboard/testimonials/create" className="btn btn-primary">
-                    + Add New Testimonial
+                <Link href="/dashboard/testimonials/create" className="btn btn-primary group">
+                    <span className="mr-2 text-lg">+</span>
+                    New Testimonial
                 </Link>
             </div>
 
             {/* Table */}
-            <div className="bg-white border-2 border-[#0F172A] rounded-xl shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] overflow-hidden">
-                <table className="w-full text-left">
-                    <thead className="bg-gray-50 border-b-2 border-[#0F172A]">
-                        <tr>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Client</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Company</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Rating</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Featured</th>
-                            <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                        {testimonials.map((testimonial) => (
-                            <tr key={testimonial.id} className="hover:bg-[#FFF9F0] transition-colors group">
-                                <td className="px-6 py-4">
-                                    <div className="font-semibold text-dark group-hover:text-[#FF9F1C] transition-colors">{testimonial.client_name}</div>
-                                    <div className="text-xs text-gray-400 mt-1 truncate max-w-[200px]">
-                                        "{testimonial.content.substring(0, 50)}..."
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4">
-                                    <span className="text-gray-600 font-medium">{testimonial.company_name}</span>
-                                </td>
-                                <td className="px-6 py-4">
-                                    <span className="text-[#FFB703] font-bold">
-                                        {"★".repeat(testimonial.rating)}
-                                        <span className="text-gray-300">{"★".repeat(5 - testimonial.rating)}</span>
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4">
-                                    {testimonial.is_featured ? (
-                                        <span className="inline-flex items-center px-2 py-0.5 text-xs font-bold bg-[#DCFCE7] text-[#166534] rounded-full border border-[#86EFAC]">
-                                            FEATURED
-                                        </span>
-                                    ) : (
-                                        <span className="text-xs text-gray-400">Regular</span>
-                                    )}
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <div className="flex justify-end gap-2">
-                                        <Link
-                                            href={`/dashboard/testimonials/edit/${testimonial.id}`}
-                                            className="px-3 py-2 text-sm font-semibold text-[#3B82F6] bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors border border-blue-200"
-                                        >
-                                            ✏️ Edit
-                                        </Link>
-                                        <button
-                                            onClick={() => handleDelete(testimonial.id)}
-                                            className="px-3 py-2 text-sm font-semibold text-[#EF4444] bg-red-50 rounded-lg hover:bg-red-100 transition-colors border border-red-200"
-                                        >
-                                            🗑️ Delete
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                        {testimonials.length === 0 && (
+            <div className="card-bento p-0 overflow-hidden bg-white">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead className="bg-[#F8FAFC] border-b-2 border-[#0F172A]">
                             <tr>
-                                <td colSpan={5} className="px-6 py-16 text-center">
-                                    <div className="text-4xl mb-4">💬</div>
-                                    <p className="text-gray-500 font-medium mb-4">No testimonials found</p>
-                                    <Link href="/dashboard/testimonials/create" className="btn btn-secondary btn-sm">
-                                        Add your first testimonial
-                                    </Link>
-                                </td>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Client</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Company</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Rating</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider">Status</th>
+                                <th className="px-6 py-4 text-xs font-bold text-[#0F172A] uppercase tracking-wider text-right">Actions</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                            {testimonials.map((testimonial) => (
+                                <tr key={testimonial.id} className="hover:bg-[#FFF9F0] transition-colors group">
+                                    <td className="px-6 py-4">
+                                        <div className="font-bold text-[#0F172A] group-hover:text-[#FF9F1C] transition-colors">{testimonial.client_name}</div>
+                                        <div className="text-xs text-gray-500 mt-1 truncate max-w-[300px] font-medium">
+                                            "{testimonial.content.substring(0, 60)}..."
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="text-sm font-semibold text-gray-700">{testimonial.company_name}</div>
+                                        {testimonial.client_position && (
+                                            <div className="text-xs text-gray-400">{testimonial.client_position}</div>
+                                        )}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center gap-1">
+                                            <span className="text-[#FFB703] text-lg">{"★".repeat(testimonial.rating)}</span>
+                                            <span className="text-gray-200 text-lg">{"★".repeat(5 - testimonial.rating)}</span>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {testimonial.is_featured ? (
+                                            <span className="inline-flex items-center px-2.5 py-1 text-xs font-bold bg-[#DCFCE7] text-[#166534] rounded-lg border border-[#86EFAC]">
+                                                FEATURED
+                                            </span>
+                                        ) : (
+                                            <span className="text-xs font-bold text-gray-400 border border-gray-200 px-2.5 py-1 rounded-lg">Regular</span>
+                                        )}
+                                    </td>
+                                    <td className="px-6 py-4 text-right">
+                                        <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <Link
+                                                href={`/dashboard/testimonials/edit/${testimonial.id}`}
+                                                className="w-8 h-8 flex items-center justify-center text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 border border-blue-200 transition-colors"
+                                                title="Edit"
+                                            >
+                                                ✏️
+                                            </Link>
+                                            <button
+                                                onClick={() => handleDelete(testimonial.id)}
+                                                className="w-8 h-8 flex items-center justify-center text-red-600 bg-red-50 rounded-lg hover:bg-red-100 border border-red-200 transition-colors"
+                                                title="Delete"
+                                            >
+                                                🗑️
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                            {testimonials.length === 0 && (
+                                <tr>
+                                    <td colSpan={5} className="px-6 py-20 text-center">
+                                        <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 border-2 border-gray-100">
+                                            💬
+                                        </div>
+                                        <h3 className="text-lg font-bold text-[#0F172A]">No testimonials yet</h3>
+                                        <p className="text-gray-500 font-medium mb-6 mt-1">Start collecting reviews from your happy clients.</p>
+                                        <Link href="/dashboard/testimonials/create" className="btn btn-secondary inline-flex">
+                                            Add First Testimonial
+                                        </Link>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
