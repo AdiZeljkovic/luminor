@@ -6,13 +6,11 @@ import AnimatedSection from "@/components/AnimatedSection";
 import BlogSidebar from "@/components/BlogSidebar";
 import styles from "./page.module.css";
 import { API_URL } from "@/lib/api";
-// Note: You might need to define API_URL in a shared const or env. 
-// If not available, I will use process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
 // Fetch post data
 async function getPost(slug: string, locale: string) {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/blog/${slug}?locale=${locale}`, {
+        const res = await fetch(`${API_URL}/api/blog/${slug}?locale=${locale}`, {
             next: { revalidate: 60 } // Revalidate every minute
         });
 

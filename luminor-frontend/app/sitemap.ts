@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next';
 
 const BASE_URL = 'https://luminor.solutions';
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+import { API_URL } from '@/lib/api';
+
+const BASE_URL = 'https://luminor.solutions';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 1. Static Routes

@@ -21,6 +21,8 @@ interface ClientLogo {
     website_url?: string;
 }
 
+import { API_URL } from "@/lib/api";
+
 export default function TestimonialsSection() {
     const [reviews, setReviews] = useState<Testimonial[]>([]);
     const [clients, setClients] = useState<ClientLogo[]>([]);
@@ -30,7 +32,7 @@ export default function TestimonialsSection() {
         const fetchData = async () => {
             try {
                 // Fetch testimonials
-                const testimonialsRes = await fetch("http://localhost:5000/api/testimonials/featured");
+                const testimonialsRes = await fetch(`${API_URL}/api/testimonials/featured`);
                 const testimonialsData = await testimonialsRes.json();
 
                 if (testimonialsData.success) {
@@ -38,7 +40,7 @@ export default function TestimonialsSection() {
                 }
 
                 // Fetch client logos
-                const logosRes = await fetch("http://localhost:5000/api/client-logos");
+                const logosRes = await fetch(`${API_URL}/api/client-logos`);
                 const logosData = await logosRes.json();
 
                 if (logosData.success) {

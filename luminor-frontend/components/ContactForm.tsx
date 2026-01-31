@@ -4,6 +4,8 @@ import { useState } from "react";
 import Button from "./Button";
 import styles from "./ContactForm.module.css";
 
+import { API_URL } from "@/lib/api";
+
 export default function ContactForm() {
     const [formData, setFormData] = useState({
         name: "",
@@ -27,7 +29,7 @@ export default function ContactForm() {
         setStatus("submitting");
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/contact/send`, {
+            const response = await fetch(`${API_URL}/api/contact/send`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
