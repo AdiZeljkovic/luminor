@@ -178,6 +178,33 @@
     line-height: 1.6;
 }
 
+/* Related Posts Section */
+.relatedSection {
+    padding: 4rem 0;
+    background: var(--color-gray-50);
+    border-top: 2px solid var(--color-gray-200);
+}
+
+.relatedTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-primary);
+}
+
+.relatedSubtitle {
+    color: var(--color-gray-600);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.relatedGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
 @media (max-width: 1024px) {
     .contentWrapper {
         flex-direction: column;
@@ -185,5 +212,9 @@
 
     .sidebarWrapper {
         order: 2;
+    }
+
+    .relatedGrid {
+        grid-template-columns: 1fr;
     }
 }

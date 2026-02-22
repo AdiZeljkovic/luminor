@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm audit fix:*)",
+      "Bash(npm update:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(head:*)",
+      "Bash(grep:*)",
+      "Bash(du -h:*)",
+      "Bash(test:*)",
+      "Bash(for dir in ai-automation digital-marketing graphic-design seo web-development)",
+      "Bash(do echo \"Processing $dir/layout.tsx\")",
+      "Bash(done)",
+      "Bash(git add:*)"
+    ]
+  }
+}

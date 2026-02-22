@@ -30,10 +30,11 @@ export default function PortfolioCard({
             <div className={styles.imageWrapper}>
                 <Image
                     src={image}
-                    alt={title}
+                    alt={`${title} - ${formattedCategory} project showcase`}
                     fill
                     className={styles.image}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
                 />
                 <div className={styles.overlay}>
                     <Link href={`/portfolio/${slug}`} className={styles.viewButton}>

@@ -34,6 +34,36 @@
             "title": "Contact us | Start your digital project",
             "description": "Ready to grow? Contact Luminor Solutions Agency for a free consultation. Let's discuss your project and find the right solution for your budget.",
             "keywords": "contact luminor solutions, hire developers, digital agency sarajevo, request quote, web development quote, marketing consultation, start a project, agency contact email, sarajevo software company location"
+        },
+        "webDevelopment": {
+            "title": "Web Development Services | Custom Websites & Web Apps | Luminor",
+            "description": "Professional custom web development services. React, Next.js, Node.js specialists. E-commerce platforms, corporate websites, SaaS applications, and progressive web apps.",
+            "keywords": "web development, custom website development, react development, next.js development, node.js backend, e-commerce development, corporate website, saas platform, progressive web app, responsive website, web application development, full stack development, api development, web development agency sarajevo"
+        },
+        "seoService": {
+            "title": "SEO Services | Search Engine Optimization & Ranking | Luminor",
+            "description": "Expert SEO services to boost your search rankings. On-page SEO, technical SEO, link building, keyword research, and local SEO. Get more organic traffic and leads.",
+            "keywords": "seo services, search engine optimization, google ranking, seo agency, technical seo, on-page seo, link building, keyword research, local seo, seo audit, organic traffic, search visibility, seo expert sarajevo, google my business optimization"
+        },
+        "graphicDesign": {
+            "title": "Graphic Design Services | Branding & Visual Identity | Luminor",
+            "description": "Creative graphic design services. Brand identity, logo design, marketing materials, social media graphics, and print design. Build a memorable brand.",
+            "keywords": "graphic design, brand identity design, logo design, visual identity, marketing materials, brochure design, social media graphics, print design, packaging design, corporate branding, brand guidelines, graphic design agency, creative studio sarajevo"
+        },
+        "digitalMarketing": {
+            "title": "Digital Marketing Services | Performance Marketing & Ads | Luminor",
+            "description": "Data-driven digital marketing services. Google Ads, Facebook Ads, social media marketing, email campaigns, and content marketing. Maximize your ROI.",
+            "keywords": "digital marketing, performance marketing, google ads, facebook ads, social media marketing, email marketing, content marketing, ppc advertising, conversion optimization, marketing automation, influencer marketing, digital marketing agency sarajevo"
+        },
+        "aiAutomation": {
+            "title": "AI Automation Services | ChatGPT Integration & AI Solutions | Luminor",
+            "description": "AI automation and integration services. Custom ChatGPT solutions, AI chatbots, workflow automation, data analysis, and intelligent automation for your business.",
+            "keywords": "ai automation, chatgpt integration, ai chatbot, artificial intelligence, machine learning, workflow automation, business automation, ai solutions, intelligent automation, custom ai development, chatbot development, ai agency sarajevo"
+        },
+        "hosting": {
+            "title": "Web Hosting Services | Fast NVMe SSD Hosting | Luminor",
+            "description": "Professional web hosting on NVMe SSD infrastructure. 99.9% uptime guarantee, 24/7 support, free SSL, daily backups. Reliable hosting for your website.",
+            "keywords": "web hosting, nvme hosting, ssd hosting, fast hosting, reliable hosting, managed hosting, wordpress hosting, business hosting, hosting sarajevo, hosting bih, ssl certificate, website hosting, cloud hosting, hosting provider"
         }
     },
     "common": {

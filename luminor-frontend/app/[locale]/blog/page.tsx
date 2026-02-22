@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import BlogCard from "@/components/BlogCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
@@ -27,10 +28,16 @@ interface BlogPost {
 export default function BlogPage() {
     const t = useTranslations('blog');
     const locale = useLocale();
-    const [activeCategory, setActiveCategory] = useState("all");
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
+    // Get page from URL query params, default to 1
+    const page = parseInt(searchParams.get('page') || '1', 10);
+    const categoryParam = searchParams.get('category');
+
+    const [activeCategory, setActiveCategory] = useState(categoryParam || "all");
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
-    const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
     // Newsletter state
@@ -175,7 +182,13 @@ export default function BlogPage() {
                                     key={category.id}
                                     onClick={() => {
                                         setActiveCategory(category.id);
-                                        setPage(1); // Reset to page 1 on filter change
+                                        // Update URL with new category, reset to page 1
+                                        const params = new URLSearchParams();
+                                        if (category.id !== "all") {
+                                            params.set('category', category.id);
+                                        }
+                                        params.set('page', '1');
+                                        router.push(`?${params.toString()}`);
                                     }}
                                     className={`${styles.filterButton} ${activeCategory === category.id ? styles.active : ""}`}
                                 >
@@ -226,7 +239,11 @@ export default function BlogPage() {
                                 <button
                                     className={styles.pageButton}
                                     disabled={page === 1}
-                                    onClick={() => setPage(p => p - 1)}
+                                    onClick={() => {
+                                        const params = new URLSearchParams(searchParams.toString());
+                                        params.set('page', String(page - 1));
+                                        router.push(`?${params.toString()}`);
+                                    }}
                                 >
                                     {t('pagination.prev')}
                                 </button>
@@ -234,7 +251,11 @@ export default function BlogPage() {
                                 <button
                                     className={styles.pageButton}
                                     disabled={page >= totalPages}
-                                    onClick={() => setPage(p => p + 1)}
+                                    onClick={() => {
+                                        const params = new URLSearchParams(searchParams.toString());
+                                        params.set('page', String(page + 1));
+                                        router.push(`?${params.toString()}`);
+                                    }}
                                 >
                                     {t('pagination.next')}
                                 </button>

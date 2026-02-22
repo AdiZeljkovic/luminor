@@ -88,7 +88,7 @@ export default async function Home() {
 
   try {
     const res = await fetch(`${API_URL}/api/portfolio/featured`, {
-      cache: "no-store",
+      next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
     });
     const data = await res.json();
     if (data.success && data.data) {

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 import BlogSidebar from "@/components/BlogSidebar";
+import BlogCard from "@/components/BlogCard";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import styles from "./page.module.css";
 import { API_URL } from "@/lib/api";
 
@@ -21,6 +23,26 @@ async function getPost(slug: string, locale: string) {
     } catch (error) {
         console.error("Error fetching post:", error);
         return null;
+    }
+}
+
+// Fetch related posts
+async function getRelatedPosts(category: string, currentSlug: string, locale: string, limit: number = 3) {
+    try {
+        const res = await fetch(`${API_URL}/api/blog?category=${encodeURIComponent(category)}&locale=${locale}&limit=${limit + 5}`, {
+            next: { revalidate: 3600 } // Cache for 1 hour
+        });
+
+        if (!res.ok) return [];
+
+        const data = await res.json();
+        if (!data.success || !data.data) return [];
+
+        // Filter out current post and limit results
+        return data.data.filter((post: any) => post.slug !== currentSlug).slice(0, limit);
+    } catch (error) {
+        console.error("Error fetching related posts:", error);
+        return [];
     }
 }
 
@@ -68,6 +90,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     const authorName = post.author?.name || "Luminor Team";
     const authorAvatar = post.author?.avatar || "/images/avatar-default.png";
 
+    // Fetch related posts
+    const relatedPosts = await getRelatedPosts(category, slug, locale, 3);
+
     // Article Schema
     const articleSchema = {
         "@context": "https://schema.org",
@@ -104,6 +129,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className={styles.contentWrapper}>
                     {/* Main Content */}
                     <div className={styles.mainContent}>
+                        {/* Breadcrumbs */}
+                        <Breadcrumbs
+                            items={[
+                                { label: 'Home', href: '/' },
+                                { label: 'Blog', href: '/blog' },
+                                { label: category, href: `/blog?category=${encodeURIComponent(category)}` },
+                                { label: title }
+                            ]}
+                        />
+
                         <AnimatedSection>
                             <article className={styles.article}>
 
@@ -142,7 +177,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                     <div className={styles.featuredImage}>
                                         <Image
                                             src={post.featuredImage}
-                                            alt={title}
+                                            alt={`${title} - Featured image for article about ${post.category || 'digital solutions'}`}
                                             fill
                                             className="object-cover"
                                             priority
@@ -183,6 +218,40 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <BlogSidebar />
                     </div>
                 </div>
+
+                {/* Related Posts */}
+                {relatedPosts.length > 0 && (
+                    <section className={styles.relatedSection}>
+                        <div className={styles.container}>
+                            <AnimatedSection>
+                                <h2 className={styles.relatedTitle}>Related Articles</h2>
+                                <p className={styles.relatedSubtitle}>
+                                    More articles from {category}
+                                </p>
+                            </AnimatedSection>
+
+                            <div className={styles.relatedGrid}>
+                                {relatedPosts.map((relatedPost: any, index: number) => (
+                                    <AnimatedSection key={relatedPost.id || index} animation="fade-up" delay={index * 100}>
+                                        <BlogCard
+                                            title={relatedPost[`title_${locale}`] || relatedPost.title_en}
+                                            excerpt={relatedPost[`excerpt_${locale}`] || relatedPost.excerpt_en || ''}
+                                            slug={relatedPost.slug}
+                                            date={relatedPost.published_at}
+                                            author={{
+                                                name: relatedPost.author?.name || 'Luminor Team',
+                                                avatar: relatedPost.author?.avatar
+                                            }}
+                                            image={relatedPost.featured_image}
+                                            category={relatedPost.category}
+                                            readTime={relatedPost.read_time || 5}
+                                        />
+                                    </AnimatedSection>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                )}
             </div>
         </div>
     );

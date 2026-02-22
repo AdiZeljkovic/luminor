@@ -4,20 +4,27 @@ const { User } = require('../models');
 /**
  * JWT Authentication Middleware
  * Protects routes that require authentication
+ * Supports both httpOnly cookies (preferred) and Authorization header (backward compatibility)
  */
 const auth = async (req, res, next) => {
     try {
-        // Get token from header
-        const authHeader = req.headers.authorization;
+        let token;
 
-        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        // SECURITY: Try to get token from httpOnly cookie first (most secure)
+        if (req.cookies && req.cookies.accessToken) {
+            token = req.cookies.accessToken;
+        }
+        // Fallback: Get token from Authorization header (for backward compatibility)
+        else if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+            token = req.headers.authorization.split(' ')[1];
+        }
+
+        if (!token) {
             return res.status(401).json({
                 success: false,
                 error: 'No token provided, authorization denied'
             });
         }
-
-        const token = authHeader.split(' ')[1];
 
         // Verify token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);

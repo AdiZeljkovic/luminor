@@ -35,8 +35,36 @@ export default function DigitalMarketingPage() {
         { name: "Analytics", icon: "📈" },
     ];
 
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Digital Marketing Services",
+        "description": "Professional digital marketing services. Social media marketing, PPC, content marketing, and marketing strategy. Grow your business online.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Luminor Solutions",
+            "url": "https://luminor.solutions",
+            "logo": "https://luminor.solutions/rocket-hero.png"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Bosnia and Herzegovina"
+        },
+        "serviceType": "Digital Marketing",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock"
+        }
+    };
+
     return (
         <div className={styles.page}>
+            {/* JSON-LD Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.container}>

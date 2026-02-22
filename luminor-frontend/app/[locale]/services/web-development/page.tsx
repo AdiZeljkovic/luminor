@@ -61,8 +61,36 @@ export default function WebDevelopmentPage() {
         }
     ];
 
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Web Development Services",
+        "description": "Professional custom web development services. React, Next.js, Node.js specialists. Build fast, scalable, and modern web applications.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Luminor Solutions",
+            "url": "https://luminor.solutions",
+            "logo": "https://luminor.solutions/rocket-hero.png"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Bosnia and Herzegovina"
+        },
+        "serviceType": "Web Development",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock"
+        }
+    };
+
     return (
         <div className={styles.page}>
+            {/* JSON-LD Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.container}>

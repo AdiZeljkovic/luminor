@@ -12,20 +12,22 @@ export default function LanguageSwitcher() {
     const switchLocale = (newLocale: string) => {
         if (newLocale === locale) return;
 
-        let newPath = pathname;
+        // Get current path without locale prefix
+        // usePathname() in next-intl returns path WITHOUT locale prefix
+        const pathWithoutLocale = pathname.replace(/^\/(en|bs)/, '') || '/';
 
-        // If currently in Bosnian ('/bs' prefix), remove it
-        if (locale === 'bs' && pathname.startsWith('/bs')) {
-            newPath = pathname.replace(/^\/bs/, '') || '/';
-        }
-
-        // If switching TO Bosnian, add '/bs' prefix
-        if (newLocale === 'bs') {
-            // Ensure we don't double slash if path is just '/'
-            newPath = `/bs${newPath === '/' ? '' : newPath}`;
+        // Build new path with new locale
+        let newPath;
+        if (newLocale === 'en') {
+            // English is default locale - no prefix needed
+            newPath = pathWithoutLocale;
+        } else {
+            // Other locales need prefix (e.g., /bs)
+            newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
         }
 
         router.push(newPath);
+        router.refresh(); // Force refresh to update the page
     };
 
     return (

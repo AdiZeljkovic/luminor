@@ -36,8 +36,36 @@ export default function GraphicDesignPage() {
         { name: "Blender", icon: "🧊" },
     ];
 
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Graphic Design Services",
+        "description": "Professional graphic design services. Branding, UI/UX design, print design, and illustration. Create stunning visuals that captivate your audience.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Luminor Solutions",
+            "url": "https://luminor.solutions",
+            "logo": "https://luminor.solutions/rocket-hero.png"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Bosnia and Herzegovina"
+        },
+        "serviceType": "Graphic Design",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock"
+        }
+    };
+
     return (
         <div className={styles.page}>
+            {/* JSON-LD Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.container}>

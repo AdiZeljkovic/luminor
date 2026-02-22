@@ -1,10 +1,17 @@
 require('dotenv').config();
+
+// SECURITY: Validate environment variables before starting
+const { validateEnv } = require('./config/envValidator');
+validateEnv();
+
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const compression = require('compression');
+const cookieParser = require('cookie-parser');
+const { doubleCsrf } = require('csrf-csrf');
 
 // Import database
 const { syncDatabase } = require('./models');
@@ -26,6 +33,7 @@ const systemRoutes = require('./routes/system');
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
 const corsConfig = require('./middleware/corsConfig');
+const { errorLogger, requestLogger } = require('./middleware/logger');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -70,9 +78,35 @@ app.use(compression({
 // CORS
 app.use(corsConfig);
 
+// Cookie Parser (needed for httpOnly cookies)
+app.use(cookieParser());
+
 // Body parsers with size limits
 app.use(express.json({ limit: '1mb' })); // Reduced from 10mb for security
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
+
+// CSRF Protection
+const { generateToken, doubleCsrfProtection } = doubleCsrf({
+    getSecret: () => process.env.CSRF_SECRET || 'default-csrf-secret-change-in-production',
+    cookieName: '__Host-csrf',
+    cookieOptions: {
+        httpOnly: true,
+        sameSite: 'strict',
+        secure: process.env.NODE_ENV === 'production',
+        path: '/'
+    },
+    size: 64,
+    ignoredMethods: ['GET', 'HEAD', 'OPTIONS']
+});
+
+// Make CSRF token generator available to routes
+app.use((req, res, next) => {
+    req.csrfToken = generateToken(req, res);
+    next();
+});
+
+// Request logging (optional - enable via LOG_REQUESTS=true)
+app.use(requestLogger);
 
 // Serve static files from public directory
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
@@ -117,32 +151,110 @@ app.use('/api/testimonials', testimonialsRoutes);
 app.use('/api/client-logos', clientLogosRoutes);
 app.use('/api/system', systemRoutes);
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK', timestamp: new Date().toISOString() });
+// Enhanced Health check endpoint
+app.get('/api/health', async (req, res) => {
+    const health = {
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        environment: process.env.NODE_ENV,
+        checks: {
+            database: 'checking',
+            redis: 'checking'
+        }
+    };
+
+    try {
+        // Check database connection
+        const sequelize = require('./config/database');
+        await sequelize.authenticate();
+        health.checks.database = 'healthy';
+    } catch (error) {
+        health.checks.database = 'unhealthy';
+        health.status = 'DEGRADED';
+    }
+
+    try {
+        // Check Redis connection (if used)
+        const { redisClient } = require('./config/redis');
+        if (redisClient && redisClient.isReady) {
+            await redisClient.ping();
+            health.checks.redis = 'healthy';
+        } else {
+            health.checks.redis = 'not connected';
+        }
+    } catch (error) {
+        health.checks.redis = 'unhealthy';
+    }
+
+    res.status(health.status === 'OK' ? 200 : 503).json(health);
 });
 
 // Error handling middleware
-app.use(errorHandler);
+app.use(errorLogger); // Log errors to file
+app.use(errorHandler); // Send error response
 
 // Start server
+let server;
 const startServer = async () => {
     try {
-        // Sync database (creates tables if they don't exist)
         // Sync database (creates tables if they don't exist)
         // ENABLE ALTER to update schema with new fields
         await syncDatabase({ alter: true });
 
-        app.listen(PORT, () => {
+        server = app.listen(PORT, () => {
             console.log(`🚀 Server running on port ${PORT}`);
-            console.log(`� Startup Time: ${new Date().toISOString()}`);
-            console.log(`�📍 API available at http://localhost:${PORT}/api`);
+            console.log(`⏰ Startup Time: ${new Date().toISOString()}`);
+            console.log(`📍 API available at http://localhost:${PORT}/api`);
         });
     } catch (error) {
         console.error('Failed to start server:', error);
         process.exit(1);
     }
 };
+
+// Graceful Shutdown Handler
+const gracefulShutdown = async (signal) => {
+    console.log(`\n${signal} received. Starting graceful shutdown...`);
+
+    if (server) {
+        server.close(async () => {
+            console.log('HTTP server closed');
+
+            try {
+                // Close database connection
+                const sequelize = require('./config/database');
+                await sequelize.close();
+                console.log('Database connection closed');
+
+                // Close Redis connection
+                const { redisClient } = require('./config/redis');
+                if (redisClient && redisClient.isOpen) {
+                    await redisClient.quit();
+                    console.log('Redis connection closed');
+                }
+
+                console.log('Graceful shutdown completed');
+                process.exit(0);
+            } catch (error) {
+                console.error('Error during shutdown:', error);
+                process.exit(1);
+            }
+        });
+
+        // Force shutdown after 30 seconds
+        setTimeout(() => {
+            console.error('Forced shutdown after timeout');
+            process.exit(1);
+        }, 30000);
+    } else {
+        process.exit(0);
+    }
+};
+
+// Listen for shutdown signals
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 
 startServer();
 

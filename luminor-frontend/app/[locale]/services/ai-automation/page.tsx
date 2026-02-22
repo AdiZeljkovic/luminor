@@ -35,8 +35,36 @@ export default function AIAutomationPage() {
         { name: "LangChain", icon: "🔗" },
     ];
 
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "AI & Automation Services",
+        "description": "Professional AI and automation services. Chatbots, process automation, data analysis, and custom AI solutions. Automate your business with AI.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Luminor Solutions",
+            "url": "https://luminor.solutions",
+            "logo": "https://luminor.solutions/rocket-hero.png"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Bosnia and Herzegovina"
+        },
+        "serviceType": "AI & Automation",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock"
+        }
+    };
+
     return (
         <div className={styles.page}>
+            {/* JSON-LD Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.container}>

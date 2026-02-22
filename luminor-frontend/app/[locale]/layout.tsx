@@ -84,11 +84,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: siteDesc,
         keywords: keywords,
         authors: [{ name: siteTitle }],
+        viewport: {
+            width: 'device-width',
+            initialScale: 1,
+            maximumScale: 5,
+            userScalable: true,
+            viewportFit: 'cover',
+        },
+        appleWebApp: {
+            capable: true,
+            statusBarStyle: 'black-translucent',
+            title: 'Luminor',
+        },
         alternates: {
             canonical: locale === defaultLocale ? baseUrl : `${baseUrl}/${locale}`,
             languages: {
                 'en': baseUrl,
                 'bs': `${baseUrl}/bs`,
+                'hr': `${baseUrl}/bs`, // Croatian users see Bosnian version
+                'sr': `${baseUrl}/bs`, // Serbian users see Bosnian version
                 'x-default': baseUrl,
             },
         },
@@ -115,11 +129,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: siteTitle,
             description: siteDesc,
             images: [{
-                url: settings?.og_image_url || 'https://luminor.solutions/images/og-default.png',
+                url: settings?.og_image_url || 'https://luminor.solutions/rocket-hero.png',
                 width: 1200,
                 height: 630,
                 alt: siteTitle
             }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: siteTitle,
+            description: siteDesc,
+            images: [settings?.og_image_url || 'https://luminor.solutions/rocket-hero.png'],
+            creator: '@LuminorSolutions',
+            site: '@LuminorSolutions',
         },
     };
 }

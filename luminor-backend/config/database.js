@@ -1,5 +1,18 @@
 const { Sequelize } = require('sequelize');
 
+// SECURITY: Validate required environment variables in production
+if (process.env.NODE_ENV === 'production') {
+    const requiredEnvVars = ['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'DB_HOST'];
+    const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+
+    if (missingVars.length > 0) {
+        throw new Error(
+            `Missing required environment variables in production: ${missingVars.join(', ')}\n` +
+            'Please ensure all database credentials are set in .env file.'
+        );
+    }
+}
+
 const sequelize = new Sequelize(
     process.env.DB_NAME || 'luminor_db',
     process.env.DB_USER || 'root',

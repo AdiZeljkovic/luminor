@@ -67,8 +67,32 @@ export default function TestimonialsSection() {
 
     if (reviews.length === 0) return null; // Don't show section if no reviews
 
+    // Calculate aggregate rating
+    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const averageRating = reviews.length > 0 ? (totalRating / reviews.length).toFixed(1) : "0";
+
+    const aggregateRatingSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Luminor Solutions",
+        "url": "https://luminor.solutions",
+        "logo": "https://luminor.solutions/rocket-hero.png",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": averageRating,
+            "reviewCount": reviews.length,
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    };
+
     return (
         <section className={styles.section}>
+            {/* JSON-LD Schema for Aggregate Rating */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
+            />
             <div className={styles.container}>
                 <AnimatedSection className={styles.header}>
                     <h2 className={styles.title}>RIJEČ KLIJENATA</h2>
@@ -78,41 +102,69 @@ export default function TestimonialsSection() {
                 </AnimatedSection>
 
                 <div className={styles.reviewsGrid}>
-                    {reviews.map((review, i) => (
-                        <AnimatedSection
-                            key={review.id}
-                            animation="fade-up"
-                            delay={i * 100}
-                            className={styles.card}
-                        >
-                            <div className={styles.cardHeader}>
-                                <div className={styles.stars}>
-                                    {renderStars(review.rating)}
-                                </div>
-                                {/* G Reviews badge removed as requested */}
-                            </div>
+                    {reviews.map((review, i) => {
+                        const reviewSchema = {
+                            "@context": "https://schema.org",
+                            "@type": "Review",
+                            "itemReviewed": {
+                                "@type": "Organization",
+                                "name": "Luminor Solutions"
+                            },
+                            "author": {
+                                "@type": "Person",
+                                "name": review.client_name
+                            },
+                            "reviewRating": {
+                                "@type": "Rating",
+                                "ratingValue": review.rating,
+                                "bestRating": "5",
+                                "worstRating": "1"
+                            },
+                            "reviewBody": review.content
+                        };
 
-                            <p className={styles.reviewText}>
-                                "{review.content}"
-                            </p>
+                        return (
+                            <AnimatedSection
+                                key={review.id}
+                                animation="fade-up"
+                                delay={i * 100}
+                                className={styles.card}
+                            >
+                                {/* Individual Review Schema */}
+                                <script
+                                    type="application/ld+json"
+                                    dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+                                />
 
-                            <div className={styles.clientInfo}>
-                                <div className={styles.avatar}>
-                                    {review.avatar_url ? (
-                                        <img src={review.avatar_url} alt={review.client_name} className={styles.avatarImg} />
-                                    ) : (
-                                        review.client_name.charAt(0)
-                                    )}
+                                <div className={styles.cardHeader}>
+                                    <div className={styles.stars}>
+                                        {renderStars(review.rating)}
+                                    </div>
+                                    {/* G Reviews badge removed as requested */}
                                 </div>
-                                <div className={styles.meta}>
-                                    <span className={styles.clientName}>{review.client_name}</span>
-                                    <span className={styles.clientCompany}>
-                                        {review.client_position ? `${review.client_position}, ` : ''}{review.company_name}
-                                    </span>
+
+                                <p className={styles.reviewText}>
+                                    "{review.content}"
+                                </p>
+
+                                <div className={styles.clientInfo}>
+                                    <div className={styles.avatar}>
+                                        {review.avatar_url ? (
+                                            <img src={review.avatar_url} alt={review.client_name} className={styles.avatarImg} />
+                                        ) : (
+                                            review.client_name.charAt(0)
+                                        )}
+                                    </div>
+                                    <div className={styles.meta}>
+                                        <span className={styles.clientName}>{review.client_name}</span>
+                                        <span className={styles.clientCompany}>
+                                            {review.client_position ? `${review.client_position}, ` : ''}{review.company_name}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </AnimatedSection>
-                    ))}
+                            </AnimatedSection>
+                        );
+                    })}
                 </div>
 
                 {clients.length > 0 && (

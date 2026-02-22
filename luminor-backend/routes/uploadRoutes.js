@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/upload');
+const { upload, validateFileType, optimizeImage } = require('../middleware/upload');
 
-// POST /api/upload
-router.post('/', upload.single('image'), (req, res) => {
+// POST /api/upload - with magic bytes validation and optimization
+router.post('/', upload.single('image'), validateFileType, optimizeImage, (req, res) => {
     try {
         if (!req.file) {
             return res.status(400).json({ error: 'Please upload a file' });

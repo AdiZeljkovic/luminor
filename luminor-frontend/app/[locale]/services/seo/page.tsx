@@ -35,8 +35,36 @@ export default function SEOPage() {
         { name: "Lighthouse", icon: "⚡" },
     ];
 
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "SEO Services",
+        "description": "Professional SEO optimization services. On-page, off-page, technical SEO. Rank higher on Google and drive organic traffic.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Luminor Solutions",
+            "url": "https://luminor.solutions",
+            "logo": "https://luminor.solutions/rocket-hero.png"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Bosnia and Herzegovina"
+        },
+        "serviceType": "SEO Optimization",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock"
+        }
+    };
+
     return (
         <div className={styles.page}>
+            {/* JSON-LD Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.container}>

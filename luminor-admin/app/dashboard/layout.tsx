@@ -20,11 +20,11 @@ export default function DashboardLayout({
     const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile toggle
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        // SECURITY: Token is now in httpOnly cookie, only check user data
         const userData = localStorage.getItem("user");
 
-        if (!token || !userData || userData === "undefined") {
-            router.push("/login"); // Simplify login check
+        if (!userData || userData === "undefined") {
+            router.push("/login");
             return;
         }
 
@@ -36,10 +36,20 @@ export default function DashboardLayout({
         }
     }, [router]);
 
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        router.push("/login");
+    const handleLogout = async () => {
+        try {
+            // SECURITY: Call backend to clear httpOnly cookies
+            await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/logout`, {
+                method: 'POST',
+                credentials: 'include' // Send cookies
+            });
+        } catch (error) {
+            console.error('Logout error:', error);
+        } finally {
+            // Clear user data from localStorage
+            localStorage.removeItem("user");
+            router.push("/login");
+        }
     };
 
     if (loading) return null;
@@ -200,7 +210,7 @@ export default function DashboardLayout({
 
                     <div className="flex items-center gap-4">
                         <Link
-                            href="http://localhost:3000"
+                            href={process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3002"}
                             target="_blank"
                             className="hidden sm:flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wide bg-white border border-gray-200 rounded-full hover:border-[#FF9F1C] hover:text-[#FF9F1C] transition-colors shadow-sm"
                         >

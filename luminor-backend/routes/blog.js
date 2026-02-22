@@ -3,6 +3,7 @@ const { body, validationResult, query } = require('express-validator');
 const { Op } = require('sequelize');
 const { BlogPost, User } = require('../models');
 const { auth, optionalAuth } = require('../middleware/auth');
+const { sanitizeBlogContent } = require('../middleware/sanitize');
 
 const router = express.Router();
 
@@ -84,7 +85,11 @@ router.get('/', async (req, res) => {
  * @access  Public
  */
 router.get('/search', [
-    query('q').trim().notEmpty().withMessage('Search query is required')
+    query('q')
+        .trim()
+        .notEmpty().withMessage('Search query is required')
+        .isLength({ min: 2, max: 100 }).withMessage('Search query must be between 2-100 characters')
+        .escape() // Escape HTML entities
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -92,8 +97,9 @@ router.get('/search', [
             return res.status(400).json({ success: false, errors: errors.array() });
         }
 
-        const searchQuery = req.query.q;
-        const limit = parseInt(req.query.limit) || 10;
+        // Additional sanitization - remove SQL wildcards that could be misused
+        const searchQuery = req.query.q.replace(/[_%]/g, '');
+        const limit = Math.min(parseInt(req.query.limit) || 10, 50); // Max 50 results
 
         const posts = await BlogPost.findAll({
             where: {
@@ -151,53 +157,45 @@ router.get('/recent', async (req, res) => {
 });
 
 /**
- * @route   GET /api/blog/:id
- * @desc    Get single blog post by ID (for Admin)
+ * @route   GET /api/blog/:idOrSlug
+ * @desc    Get single blog post by ID or slug
  * @access  Public
  */
-router.get('/:id', async (req, res) => {
+router.get('/:idOrSlug', async (req, res) => {
     try {
-        const post = await BlogPost.findByPk(req.params.id, {
-            include: [{
-                model: User,
-                as: 'author',
-                attributes: ['id', 'name', 'avatar']
-            }]
-        });
+        const { idOrSlug } = req.params;
+        let post;
+
+        // Check if parameter is a number (ID) or string (slug)
+        if (/^\d+$/.test(idOrSlug)) {
+            // It's a numeric ID
+            post = await BlogPost.findByPk(idOrSlug, {
+                include: [{
+                    model: User,
+                    as: 'author',
+                    attributes: ['id', 'name', 'avatar']
+                }]
+            });
+        } else {
+            // It's a slug
+            post = await BlogPost.findOne({
+                where: { slug: idOrSlug },
+                include: [{
+                    model: User,
+                    as: 'author',
+                    attributes: ['id', 'name', 'avatar']
+                }]
+            });
+        }
 
         if (!post) {
             return res.status(404).json({ success: false, error: 'Post not found' });
         }
 
-        res.json({ success: true, data: post });
-    } catch (error) {
-        console.error('Get post by ID error:', error);
-        res.status(500).json({ success: false, error: 'Server error' });
-    }
-});
-
-/**
- * @route   GET /api/blog/:slug
- * @desc    Get single blog post by slug
- * @access  Public
- */
-router.get('/:slug', async (req, res) => {
-    try {
-        const post = await BlogPost.findOne({
-            where: { slug: req.params.slug },
-            include: [{
-                model: User,
-                as: 'author',
-                attributes: ['id', 'name', 'avatar']
-            }]
-        });
-
-        if (!post) {
-            return res.status(404).json({ success: false, error: 'Post not found' });
+        // Increment views only for slug requests (public frontend)
+        if (!/^\d+$/.test(idOrSlug)) {
+            await post.increment('views');
         }
-
-        // Increment views
-        await post.increment('views');
 
         res.json({ success: true, data: post });
     } catch (error) {
@@ -211,12 +209,13 @@ router.get('/:slug', async (req, res) => {
  * @desc    Create a new blog post
  * @access  Private (Admin)
  */
-router.post('/', auth, [
+router.post('/', auth, sanitizeBlogContent, [
     body('title_en').optional().trim(),
     body('title_bs').optional().trim(),
     body('content_en').optional(),
     body('content_bs').optional(),
-    body('category').optional().isIn(['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'news', 'tutorials'])
+    body('category').optional().isIn(['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'news', 'tutorials']),
+    body('status').optional().isIn(['draft', 'published'])
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -231,8 +230,23 @@ router.post('/', auth, [
             featuredImage, category, tags, status
         } = req.body;
 
+        // VALIDATION: Require at least one title and one content
+        if (!title_en && !title_bs) {
+            return res.status(400).json({
+                success: false,
+                error: 'At least one title (English or Bosnian) is required'
+            });
+        }
+
+        if (!content_en && !content_bs) {
+            return res.status(400).json({
+                success: false,
+                error: 'At least one content (English or Bosnian) is required'
+            });
+        }
+
         // Generate unique slug from English title (or Bosnian if EN not provided)
-        const titleForSlug = title_en || title_bs || 'untitled';
+        const titleForSlug = title_en || title_bs;
         let slug = titleForSlug
             .toLowerCase()
             .replace(/[^a-z0-9\s-]/g, '')
@@ -286,7 +300,7 @@ router.post('/', auth, [
  * @desc    Update a blog post
  * @access  Private (Admin)
  */
-router.put('/:id', auth, [
+router.put('/:id', auth, sanitizeBlogContent, [
     body('title').optional().trim().notEmpty().withMessage('Title cannot be empty'),
     body('content').optional().notEmpty().withMessage('Content cannot be empty')
 ], async (req, res) => {

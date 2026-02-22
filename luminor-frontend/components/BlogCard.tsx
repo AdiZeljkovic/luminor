@@ -42,10 +42,11 @@ export default function BlogCard({
                     <div className={styles.imageWrapper}>
                         <Image
                             src={image}
-                            alt={title}
+                            alt={`${title} - ${category} article cover image`}
                             fill
                             className={styles.image}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            loading="lazy"
                         />
                         <span className={styles.category}>{category}</span>
                     </div>

@@ -35,14 +35,14 @@ const corsOptions = {
         if (allowedOrigins.includes(origin)) {
             return callback(null, true);
         } else {
-            // LOGGING FOR DEBUGGING
+            // LOGGING FOR SECURITY
             console.log('---------------------------------');
-            console.log('⚠️ CORS WARNING (Fail-Open Active):', origin);
-            console.log('✅ ALLOWED ORIGINS LIST:', allowedOrigins);
+            console.log('⚠️ CORS BLOCKED:', origin);
+            console.log('✅ ALLOWED ORIGINS:', allowedOrigins);
             console.log('---------------------------------');
 
-            // TEMPORARY DEBUG: Allow anyway to rule out Node.js blocking
-            return callback(null, true);
+            // SECURITY: Block unauthorized origins
+            return callback(new Error('Not allowed by CORS'));
         }
     },
     credentials: true,

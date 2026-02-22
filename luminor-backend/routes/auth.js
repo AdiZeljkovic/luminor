@@ -9,7 +9,7 @@ const router = express.Router();
 /**
  * @route   POST /api/auth/register
  * @desc    Register a new admin user
- * @access  Public (should be restricted in production)
+ * @access  Restricted (Protected in production)
  */
 router.post('/register', [
     body('name').trim().notEmpty().withMessage('Name is required'),
@@ -17,6 +17,14 @@ router.post('/register', [
     body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
 ], async (req, res) => {
     try {
+        // SECURITY: Block registration in production unless explicitly allowed
+        if (process.env.NODE_ENV === 'production' && process.env.ALLOW_REGISTRATION !== 'true') {
+            return res.status(403).json({
+                success: false,
+                error: 'Registration is disabled. Use the createAdmin.js script or contact system administrator.'
+            });
+        }
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ success: false, errors: errors.array() });
@@ -92,12 +100,29 @@ router.post('/login', [
         user.refresh_token = refreshToken;
         await user.save();
 
+        // SECURITY: Set httpOnly cookies instead of sending tokens in response
+        const cookieOptions = {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // HTTPS only in production
+            sameSite: 'strict', // CSRF protection
+            path: '/'
+        };
+
+        res.cookie('accessToken', accessToken, {
+            ...cookieOptions,
+            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+        });
+
+        res.cookie('refreshToken', refreshToken, {
+            ...cookieOptions,
+            maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+        });
+
         res.json({
             success: true,
             data: {
-                user: { id: user.id, name: user.name, email: user.email, role: user.role },
-                accessToken,
-                refreshToken
+                user: { id: user.id, name: user.name, email: user.email, role: user.role }
+                // No tokens in response body - they're in httpOnly cookies!
             }
         });
     } catch (error) {
@@ -156,8 +181,12 @@ router.post('/refresh', async (req, res) => {
  */
 router.post('/logout', auth, async (req, res) => {
     try {
-        // Clear refresh token
+        // Clear refresh token from database
         await User.update({ refresh_token: null }, { where: { id: req.user.id } });
+
+        // SECURITY: Clear httpOnly cookies
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
 
         res.json({ success: true, message: 'Logged out successfully' });
     } catch (error) {

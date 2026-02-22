@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -18,20 +17,15 @@ export default function LoginPage() {
         setError("");
 
         try {
-            const res = await fetch(`${API_URL}/api/auth/login`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
-            });
+            // SECURITY: Tokens now stored in httpOnly cookies automatically
+            const response = await apiClient.post('/api/auth/login', { email, password });
 
-            const responseData = await res.json();
-
-            if (!res.ok) {
-                throw new Error(responseData.error || "Login failed");
+            if (!response.success) {
+                throw new Error(response.error || "Login failed");
             }
 
-            localStorage.setItem("token", responseData.data.accessToken);
-            localStorage.setItem("user", JSON.stringify(responseData.data.user));
+            // Only store user info in localStorage (not tokens!)
+            localStorage.setItem("user", JSON.stringify(response.data.user));
 
             router.push("/dashboard");
         } catch (err: any) {

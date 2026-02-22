@@ -55,8 +55,28 @@ export default function ServicePageLayout({
     faq,
     portfolioCategory,
 }: ServicePageLayoutProps) {
+    // FAQ Schema for SEO
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faq.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+            }
+        }))
+    };
+
     return (
         <>
+            {/* Inject FAQ Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+
             {/* Hero Section */}
             <section className="pt-32 pb-20 bg-gradient-to-b from-orange-50 to-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,8 +108,9 @@ export default function ServicePageLayout({
                                 {heroImage && (
                                     <Image
                                         src={heroImage}
-                                        alt={title}
+                                        alt={`${title} - Professional digital service illustration showcasing modern solutions`}
                                         fill
+                                        priority
                                         className="object-cover"
                                         sizes="(max-width: 1024px) 100vw, 50vw"
                                     />

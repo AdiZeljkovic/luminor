@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/Button";
 import AnimatedSection from "@/components/AnimatedSection";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import styles from "./page.module.css";
 import { API_URL } from "@/lib/api";
 
@@ -87,7 +88,7 @@ export default async function ProjectDetail({ params }: { params: { slug: string
                 <div className={styles.heroBackground}>
                     <Image
                         src={project.featuredImage}
-                        alt={project.title}
+                        alt={`${project.title} - ${project.category} project hero image showcasing ${project.client || 'client'} collaboration`}
                         fill
                         className={styles.heroImage}
                         priority
@@ -95,6 +96,17 @@ export default async function ProjectDetail({ params }: { params: { slug: string
                     <div className={styles.heroOverlay}></div>
                 </div>
                 <div className={styles.container}>
+                    {/* Breadcrumbs */}
+                    <Breadcrumbs
+                        items={[
+                            { label: 'Home', href: '/' },
+                            { label: 'Portfolio', href: '/portfolio' },
+                            { label: project.category, href: `/portfolio?category=${encodeURIComponent(project.category)}` },
+                            { label: project.title }
+                        ]}
+                        className="pt-8"
+                    />
+
                     <AnimatedSection animation="fade-up" className={styles.heroContent}>
                         <span className={styles.heroLabel}>{project.category}</span>
                         <h1 className={styles.heroTitle}>
@@ -180,7 +192,13 @@ export default async function ProjectDetail({ params }: { params: { slug: string
                         <div className={styles.galleryGrid}>
                             {project.images.map((img: string, idx: number) => (
                                 <AnimatedSection key={idx} animation="fade-up" delay={idx * 100} className={styles.galleryItem}>
-                                    <Image src={img} alt={`${project.title} detail ${idx + 1}`} fill className={styles.galleryImage} />
+                                    <Image
+                                        src={img}
+                                        alt={`${project.title} - Project detail screenshot ${idx + 1} showcasing ${project.category} implementation`}
+                                        fill
+                                        className={styles.galleryImage}
+                                        loading={idx === 0 ? "eager" : "lazy"}
+                                    />
                                 </AnimatedSection>
                             ))}
                         </div>

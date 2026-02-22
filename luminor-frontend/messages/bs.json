@@ -34,6 +34,36 @@
             "title": "Kontakt | Započnite projekat sa nama",
             "description": "Spremni za rast? Kontaktirajte Luminor Solutions Agenciju za besplatnu konsultaciju. Razgovarajmo o vašem projektu i nađimo rješenje za vaš budžet.",
             "keywords": "kontaktirajte web agenciju, zapošljavanje programera, agencija sarajevo, zatraži ponudu, cijena izrade sajta, besplatna konsultacija, lokacija agencije"
+        },
+        "webDevelopment": {
+            "title": "Web Development Usluge | Izrada Web Stranica i Aplikacija | Luminor",
+            "description": "Profesionalne usluge izrade web stranica. React, Next.js, Node.js stručnjaci. E-commerce platforme, korporativni sajtovi, SaaS aplikacije i progresivne web aplikacije.",
+            "keywords": "izrada web stranica, programiranje sajtova, react development, next.js, node.js backend, e-commerce razvoj, korporativni sajt, saas platforma, responzivni sajt, web aplikacije, full stack development, api development, web agencija sarajevo"
+        },
+        "seoService": {
+            "title": "SEO Usluge | Optimizacija za Pretraživače | Luminor",
+            "description": "Stručne SEO usluge za poboljšanje rangiranja. On-page SEO, tehnički SEO, link building, istraživanje ključnih riječi i lokalni SEO. Više organskog saobraćaja.",
+            "keywords": "seo usluge, optimizacija za pretraživače, google rangiranje, seo agencija, tehnički seo, on-page seo, link building, ključne riječi, lokalni seo, seo audit, organski promet, seo ekspert sarajevo, google my business"
+        },
+        "graphicDesign": {
+            "title": "Grafički Dizajn | Branding i Vizuelni Identitet | Luminor",
+            "description": "Kreativne usluge grafičkog dizajna. Brendiranje, dizajn logotipa, marketing materijali, grafika za društvene mreže i print dizajn. Izgradite prepoznatljiv brend.",
+            "keywords": "grafički dizajn, brand identitet, dizajn logotipa, vizuelni identitet, marketing materijali, dizajn brošura, grafika za društvene mreže, print dizajn, dizajn ambalaže, korporativno brendiranje, grafička agencija sarajevo"
+        },
+        "digitalMarketing": {
+            "title": "Digitalni Marketing | Performance Marketing i Oglašavanje | Luminor",
+            "description": "Digitalni marketing zasnovan na podacima. Google Ads, Facebook oglasi, marketing na društvenim mrežama, email kampanje i content marketing. Maksimalan ROI.",
+            "keywords": "digitalni marketing, performance marketing, google ads, facebook oglasi, marketing na društvenim mrežama, email marketing, content marketing, ppc oglašavanje, optimizacija konverzija, marketing automatizacija, agencija za marketing sarajevo"
+        },
+        "aiAutomation": {
+            "title": "AI Automatizacija | ChatGPT Integracija i AI Rješenja | Luminor",
+            "description": "AI automatizacija i integracija. Custom ChatGPT rješenja, AI chatbotovi, automatizacija procesa, analiza podataka i inteligentna automatizacija za vaš biznis.",
+            "keywords": "ai automatizacija, chatgpt integracija, ai chatbot, umjetna inteligencija, machine learning, automatizacija procesa, poslovnautomatizacija, ai rješenja, inteligentna automatizacija, izrada chatbota, ai agencija sarajevo"
+        },
+        "hosting": {
+            "title": "Web Hosting | Brzi NVMe SSD Hosting | Luminor",
+            "description": "Profesionalni web hosting na NVMe SSD infrastrukturi. 99.9% uptime garancija, 24/7 podrška, besplatni SSL, dnevni backup. Pouzdan hosting za vaš sajt.",
+            "keywords": "web hosting, nvme hosting, ssd hosting, brzi hosting, pouzdan hosting, managed hosting, wordpress hosting, poslovni hosting, hosting sarajevo, hosting bih, ssl certifikat, hosting za sajt, cloud hosting, hosting provajder"
         }
     },
     "common": {

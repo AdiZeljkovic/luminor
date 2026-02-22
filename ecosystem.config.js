@@ -40,7 +40,8 @@ module.exports = {
             env: {
                 NODE_ENV: 'production',
                 PORT: 3001,
-                NEXT_PUBLIC_API_URL: 'https://api.luminor.solutions'
+                NEXT_PUBLIC_API_URL: 'https://api.luminor.solutions',
+                NEXT_PUBLIC_FRONTEND_URL: 'https://luminor.solutions'
             }
         }
     ]
