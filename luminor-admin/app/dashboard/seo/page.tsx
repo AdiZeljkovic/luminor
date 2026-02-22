@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Save, Globe, Code, Search, BarChart2, Zap, Layout, Terminal } from "lucide-react";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 interface SiteSettings {
     id: number;
@@ -39,13 +39,9 @@ export default function SeoPage() {
 
     const fetchSettings = async () => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/settings`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            const data = await res.json();
-            if (data.success) {
-                setSettings(data.data);
+            const response = await apiClient.get('/api/settings');
+            if (response.success) {
+                setSettings(response.data);
             }
         } catch (error) {
             console.error("Error fetching settings:", error);
@@ -60,17 +56,8 @@ export default function SeoPage() {
 
         setSaving(true);
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/settings`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(settings),
-            });
-            const data = await res.json();
-            if (data.success) {
+            const response = await apiClient.put('/api/settings', settings);
+            if (response.success) {
                 // Toast notification would go here
                 alert("Settings Saved");
             }

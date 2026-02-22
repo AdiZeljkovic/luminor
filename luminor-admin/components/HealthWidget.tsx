@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Database, Server, HardDrive, RefreshCw, AlertCircle } from "lucide-react";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 type Status = 'connected' | 'disconnected' | 'error' | 'unknown';
 
@@ -21,13 +21,9 @@ export default function HealthWidget() {
 
     const fetchHealth = async () => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/system/health`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            const data = await res.json();
-            if (data.success) {
-                setHealth(data.data);
+            const response = await apiClient.get('/api/system/health');
+            if (response.success) {
+                setHealth(response.data);
                 setError(false);
             }
         } catch (error) {

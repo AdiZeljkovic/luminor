@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 import { useRouter } from "next/navigation";
 
 interface ClientLogo {
@@ -25,11 +25,8 @@ export default function ClientLogosListPage() {
 
     const fetchLogos = async () => {
         try {
-            const res = await fetch(`${API_URL}/api/client-logos/all`, {
-                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-            });
-            const data = await res.json();
-            if (data.success) setLogos(data.data);
+            const response = await apiClient.get('/api/client-logos/all');
+            if (response.success) setLogos(response.data);
         } catch (error) {
             console.error("Failed to fetch logos", error);
         } finally {
@@ -41,21 +38,11 @@ export default function ClientLogosListPage() {
         if (!confirm("Delete this logo?")) return;
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/client-logos/${id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (res.ok) {
-                setLogos(logos.filter((l) => l.id !== id));
-            } else {
-                alert("Failed to delete logo");
-            }
+            await apiClient.delete(`/api/client-logos/${id}`);
+            setLogos(logos.filter((l) => l.id !== id));
         } catch (error) {
             console.error("Error deleting logo", error);
+            alert("Failed to delete logo");
         }
     };
 

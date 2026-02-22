@@ -6,7 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
 import { ChevronLeft, Save, Star } from "lucide-react";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function CreateTestimonialPage() {
     const router = useRouter();
@@ -42,22 +42,9 @@ export default function CreateTestimonialPage() {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/testimonials`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (res.ok) {
-                toast.success("Testimonial created successfully!");
-                router.push("/dashboard/testimonials");
-            } else {
-                toast.error("Failed to create testimonial");
-            }
+            await apiClient.post('/api/testimonials', formData);
+            toast.success("Testimonial created successfully!");
+            router.push("/dashboard/testimonials");
         } catch (error) {
             console.error("Error creating testimonial", error);
             toast.error("An error occurred");

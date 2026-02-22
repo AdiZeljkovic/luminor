@@ -6,7 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import RichTextEditor from "@/components/ui/RichTextEditor";
 import { toast } from "sonner";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function CreateProjectPage() {
     const router = useRouter();
@@ -66,8 +66,6 @@ export default function CreateProjectPage() {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem("token");
-
             // Process array fields
             const technologiesArray = formData.technologies.split(",").map(t => t.trim()).filter(Boolean);
             const imagesArray = formData.images ? formData.images.split(",").map(i => i.trim()).filter(Boolean) : [];
@@ -100,19 +98,7 @@ export default function CreateProjectPage() {
                 date: formData.date
             };
 
-            const res = await fetch(`${API_URL}/api/portfolio`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(payload),
-            });
-
-            if (!res.ok) {
-                const err = await res.json();
-                throw new Error(err.error || "Failed to create project");
-            }
+            await apiClient.post('/api/portfolio', payload);
 
             toast.success("Project created successfully");
             router.push("/dashboard/portfolio");

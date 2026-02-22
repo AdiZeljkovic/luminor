@@ -6,7 +6,7 @@ import Link from "next/link";
 import RichTextEditor from "@/components/ui/RichTextEditor";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function EditBlogPage({ params }: { params: { id: string } }) {
     const router = useRouter();
@@ -28,10 +28,9 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
 
     const fetchPost = async () => {
         try {
-            const res = await fetch(`${API_URL}/api/blog/${params.id}`);
-            const data = await res.json();
-            if (data.success) {
-                const post = data.data;
+            const response = await apiClient.get(`/api/blog/${params.id}`);
+            if (response.success) {
+                const post = response.data;
                 setFormData({
                     title: post.title,
                     content: post.content,
@@ -60,24 +59,12 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
         setSubmitting(true);
 
         try {
-            const token = localStorage.getItem("token");
             const tagsArray = formData.tags.split(",").map((tag) => tag.trim());
 
-            const res = await fetch(`${API_URL}/api/blog/${params.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    tags: tagsArray,
-                }),
+            await apiClient.put(`/api/blog/${params.id}`, {
+                ...formData,
+                tags: tagsArray,
             });
-
-            if (!res.ok) {
-                throw new Error("Failed to update post");
-            }
 
             toast.success("Blog post updated successfully");
             router.push("/dashboard/blog");

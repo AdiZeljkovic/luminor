@@ -7,7 +7,7 @@ import RichTextEditor from "@/components/ui/RichTextEditor";
 import ImageUpload from "@/components/ui/ImageUpload";
 import SeoHelper from "@/components/SeoHelper";
 import { toast } from "sonner";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function CreateBlogPage() {
     const router = useRouter();
@@ -40,32 +40,20 @@ export default function CreateBlogPage() {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem("token");
             const tagsArray = formData.tags.split(",").map((tag) => tag.trim());
 
-            const res = await fetch(`${API_URL}/api/blog`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    title_en: formData.title_en,
-                    title_bs: formData.title_bs,
-                    content_en: formData.content_en,
-                    content_bs: formData.content_bs,
-                    excerpt_en: formData.excerpt_en,
-                    excerpt_bs: formData.excerpt_bs,
-                    category: formData.category,
-                    status: formData.status,
-                    featuredImage: formData.featuredImage,
-                    tags: tagsArray,
-                }),
+            await apiClient.post('/api/blog', {
+                title_en: formData.title_en,
+                title_bs: formData.title_bs,
+                content_en: formData.content_en,
+                content_bs: formData.content_bs,
+                excerpt_en: formData.excerpt_en,
+                excerpt_bs: formData.excerpt_bs,
+                category: formData.category,
+                status: formData.status,
+                featuredImage: formData.featuredImage,
+                tags: tagsArray,
             });
-
-            if (!res.ok) {
-                throw new Error("Failed to create post");
-            }
 
             toast.success("Blog post created successfully!");
             router.push("/dashboard/blog");

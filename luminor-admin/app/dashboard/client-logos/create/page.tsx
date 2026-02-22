@@ -6,7 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
 import { ChevronLeft, Save } from "lucide-react";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function CreateClientLogoPage() {
     const router = useRouter();
@@ -39,22 +39,9 @@ export default function CreateClientLogoPage() {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/client-logos`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (res.ok) {
-                toast.success("Client logo created successfully!");
-                router.push("/dashboard/client-logos");
-            } else {
-                toast.error("Failed to create client logo");
-            }
+            await apiClient.post('/api/client-logos', formData);
+            toast.success("Client logo created successfully!");
+            router.push("/dashboard/client-logos");
         } catch (error) {
             console.error("Error creating client logo", error);
             toast.error("An error occurred");

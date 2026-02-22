@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { apiClient } from "@/lib/apiClient";
 import { API_URL } from "@/lib/api";
 import { Trash2, Copy, Upload, Image as ImageIcon, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -20,13 +21,9 @@ export default function MediaLibraryPage() {
 
     const fetchFiles = async () => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/upload/files`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            const data = await res.json();
-            if (data.success) {
-                setFiles(data.data);
+            const response = await apiClient.get('/api/upload/files');
+            if (response.success) {
+                setFiles(response.data);
             }
         } catch (error) {
             console.error("Error fetching files:", error);
@@ -77,18 +74,9 @@ export default function MediaLibraryPage() {
         if (!confirm("Are you sure you want to delete this image? This cannot be undone.")) return;
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/upload/files/${filename}`, {
-                method: "DELETE",
-                headers: { Authorization: `Bearer ${token}` }
-            });
-
-            if (res.ok) {
-                toast.success("Image deleted");
-                setFiles(files.filter(f => f.name !== filename));
-            } else {
-                toast.error("Failed to delete image");
-            }
+            await apiClient.delete(`/api/upload/files/${filename}`);
+            toast.success("Image deleted");
+            setFiles(files.filter(f => f.name !== filename));
         } catch (error) {
             toast.error("Delete failed");
         }

@@ -6,7 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
 import { ChevronLeft, Save, Trash } from "lucide-react";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function EditTestimonialPage() {
     const router = useRouter();
@@ -27,24 +27,18 @@ export default function EditTestimonialPage() {
     useEffect(() => {
         const fetchTestimonial = async () => {
             try {
-                const token = localStorage.getItem("token");
-                const res = await fetch(`${API_URL}/api/testimonials/${params.id}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                const data = await res.json();
+                const response = await apiClient.get(`/api/testimonials/${params.id}`);
 
-                if (data.success) {
+                if (response.success) {
                     setFormData({
-                        client_name: data.data.client_name,
-                        client_position: data.data.client_position || "",
-                        company_name: data.data.company_name,
-                        content: data.data.content,
-                        rating: data.data.rating,
-                        avatar_url: data.data.avatar_url || "",
-                        is_featured: data.data.is_featured,
-                        display_order: data.data.display_order
+                        client_name: response.data.client_name,
+                        client_position: response.data.client_position || "",
+                        company_name: response.data.company_name,
+                        content: response.data.content,
+                        rating: response.data.rating,
+                        avatar_url: response.data.avatar_url || "",
+                        is_featured: response.data.is_featured,
+                        display_order: response.data.display_order
                     });
                 } else {
                     toast.error("Testimonial not found");
@@ -83,22 +77,9 @@ export default function EditTestimonialPage() {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/testimonials/${params.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (res.ok) {
-                toast.success("Testimonial updated successfully!");
-                router.push("/dashboard/testimonials");
-            } else {
-                toast.error("Failed to update testimonial");
-            }
+            await apiClient.put(`/api/testimonials/${params.id}`, formData);
+            toast.success("Testimonial updated successfully!");
+            router.push("/dashboard/testimonials");
         } catch (error) {
             console.error("Error updating testimonial", error);
             toast.error("An error occurred");
@@ -112,20 +93,9 @@ export default function EditTestimonialPage() {
 
         setLoading(true);
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/testimonials/${params.id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (res.ok) {
-                toast.success("Testimonial deleted successfully");
-                router.push("/dashboard/testimonials");
-            } else {
-                toast.error("Failed to delete testimonial");
-            }
+            await apiClient.delete(`/api/testimonials/${params.id}`);
+            toast.success("Testimonial deleted successfully");
+            router.push("/dashboard/testimonials");
         } catch (error) {
             console.error("Error deleting testimonial", error);
             toast.error("An error occurred");

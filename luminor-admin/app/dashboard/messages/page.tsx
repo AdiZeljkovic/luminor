@@ -1,6 +1,6 @@
 "use client";
 
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 import { useEffect, useState } from "react";
 import { Search, Filter, Trash2, Mail, CheckCircle, Clock, Archive } from "lucide-react";
@@ -37,15 +37,9 @@ export default function MessagesPage() {
 
     const fetchMessages = async () => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/contact`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const data = await res.json();
-            if (data.success) {
-                setMessages(data.data);
+            const response = await apiClient.get('/api/contact');
+            if (response.success) {
+                setMessages(response.data);
             }
         } catch (error) {
             console.error("Failed to fetch messages", error);
@@ -56,23 +50,11 @@ export default function MessagesPage() {
 
     const handleUpdate = async (id: number, updates: any) => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/contact/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(updates),
-            });
+            await apiClient.put(`/api/contact/${id}`, updates);
 
-            if (res.ok) {
-                const updatedMsg = await res.json();
-
-                setMessages(messages.map(msg => msg.id === id ? { ...msg, ...updates } : msg));
-                if (selectedMessage?.id === id) {
-                    setSelectedMessage({ ...selectedMessage, ...updates });
-                }
+            setMessages(messages.map(msg => msg.id === id ? { ...msg, ...updates } : msg));
+            if (selectedMessage?.id === id) {
+                setSelectedMessage({ ...selectedMessage, ...updates });
             }
         } catch (error) {
             console.error("Error updating message", error);
@@ -83,11 +65,7 @@ export default function MessagesPage() {
         if (!confirm("Delete this message?")) return;
 
         try {
-            const token = localStorage.getItem("token");
-            await fetch(`${API_URL}/api/contact/${id}`, {
-                method: "DELETE",
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            await apiClient.delete(`/api/contact/${id}`);
 
             setMessages(messages.filter(m => m.id !== id));
             if (selectedMessage?.id === id) setSelectedMessage(null);

@@ -17,7 +17,7 @@ interface SiteSettings {
     announcement_link: string;
 }
 
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function SettingsPage() {
     const [settings, setSettings] = useState<SiteSettings | null>(null);
@@ -27,9 +27,8 @@ export default function SettingsPage() {
     useEffect(() => {
         const fetchSettings = async () => {
             try {
-                const res = await fetch(`${API_URL}/api/settings`);
-                const data = await res.json();
-                if (data.success) setSettings(data.data);
+                const response = await apiClient.get('/api/settings');
+                if (response.success) setSettings(response.data);
             } catch (error) {
                 console.error("Failed to fetch settings", error);
             } finally {
@@ -50,17 +49,8 @@ export default function SettingsPage() {
 
         setSaving(true);
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/settings`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(settings),
-            });
-            const data = await res.json();
-            if (data.success) {
+            const response = await apiClient.put('/api/settings', settings);
+            if (response.success) {
                 alert("Settings saved successfully! ✅");
             } else {
                 alert("Failed to save settings. ❌");

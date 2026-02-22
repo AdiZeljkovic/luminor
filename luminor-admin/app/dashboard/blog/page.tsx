@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 import { useRouter } from "next/navigation";
 
 interface BlogPost {
@@ -25,10 +25,9 @@ export default function BlogListPage() {
 
     const fetchPosts = async () => {
         try {
-            const res = await fetch(`${API_URL}/api/blog`);
-            const data = await res.json();
-            if (data.success) {
-                setPosts(data.data);
+            const response = await apiClient.get('/api/blog');
+            if (response.success) {
+                setPosts(response.data);
             }
         } catch (error) {
             console.error("Failed to fetch posts", error);
@@ -41,21 +40,11 @@ export default function BlogListPage() {
         if (!confirm("Are you sure you want to delete this post?")) return;
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/blog/${id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (res.ok) {
-                setPosts(posts.filter((post) => post.id !== id));
-            } else {
-                alert("Failed to delete post");
-            }
+            await apiClient.delete(`/api/blog/${id}`);
+            setPosts(posts.filter((post) => post.id !== id));
         } catch (error) {
             console.error("Error deleting post", error);
+            alert("Failed to delete post");
         }
     };
 

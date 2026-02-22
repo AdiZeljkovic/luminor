@@ -122,39 +122,41 @@ router.get('/category/:category', async (req, res) => {
 });
 
 /**
- * @route   GET /api/portfolio/:id
- * @desc    Get single portfolio project by ID (for Admin)
+ * @route   GET /api/portfolio/:idOrSlug
+ * @desc    Get single portfolio project by ID or slug
  * @access  Public
  */
-router.get('/:id', async (req, res) => {
+router.get('/:idOrSlug', async (req, res) => {
     try {
-        const project = await PortfolioProject.findByPk(req.params.id);
+        const { idOrSlug } = req.params;
+        const locale = req.query.locale || 'en';
+        let project;
+
+        // Check if parameter is a number (ID) or string (slug)
+        if (/^\d+$/.test(idOrSlug)) {
+            // It's a numeric ID
+            project = await PortfolioProject.findByPk(idOrSlug);
+        } else {
+            // It's a slug
+            project = await PortfolioProject.findOne({ where: { slug: idOrSlug } });
+        }
 
         if (!project) {
             return res.status(404).json({ success: false, error: 'Project not found' });
         }
 
-        res.json({ success: true, data: project });
-    } catch (error) {
-        console.error('Get project by ID error:', error);
-        res.status(500).json({ success: false, error: 'Server error' });
-    }
-});
+        // Return localized fields for frontend requests
+        const p = project.toJSON();
+        const localizedProject = {
+            ...p,
+            title: p[`title_${locale}`] || p.title_en || p.title_bs,
+            description: p[`description_${locale}`] || p.description_en || p.description_bs,
+            short_description: p[`short_description_${locale}`] || p.short_description_en || p.short_description_bs,
+            challenge: p[`challenge_${locale}`] || p.challenge_en || p.challenge_bs,
+            solution: p[`solution_${locale}`] || p.solution_en || p.solution_bs
+        };
 
-/**
- * @route   GET /api/portfolio/:slug
- * @desc    Get single portfolio project by slug
- * @access  Public
- */
-router.get('/:slug', async (req, res) => {
-    try {
-        const project = await PortfolioProject.findOne({ where: { slug: req.params.slug } });
-
-        if (!project) {
-            return res.status(404).json({ success: false, error: 'Project not found' });
-        }
-
-        res.json({ success: true, data: project });
+        res.json({ success: true, data: localizedProject });
     } catch (error) {
         console.error('Get project error:', error);
         res.status(500).json({ success: false, error: 'Server error' });

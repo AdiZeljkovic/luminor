@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 interface Subscriber {
     id: number;
@@ -21,15 +21,9 @@ export default function NewsletterPage() {
 
     const fetchSubscribers = async () => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/newsletter`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const data = await res.json();
-            if (data.success) {
-                setSubscribers(data.data);
+            const response = await apiClient.get('/api/newsletter');
+            if (response.success) {
+                setSubscribers(response.data);
             }
         } catch (error) {
             console.error("Failed to fetch subscribers", error);
@@ -42,15 +36,8 @@ export default function NewsletterPage() {
         if (!confirm("Are you sure you want to remove this subscriber?")) return;
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/newsletter/${id}`, {
-                method: "DELETE",
-                headers: { Authorization: `Bearer ${token}` }
-            });
-
-            if (res.ok) {
-                setSubscribers(subscribers.filter(s => s.id !== id));
-            }
+            await apiClient.delete(`/api/newsletter/${id}`);
+            setSubscribers(subscribers.filter(s => s.id !== id));
         } catch (error) {
             console.error("Error deleting subscriber", error);
         }

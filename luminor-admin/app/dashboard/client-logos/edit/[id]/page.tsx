@@ -6,7 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import { toast } from "sonner";
 import { ChevronLeft, Save, Trash } from "lucide-react";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function EditClientLogoPage() {
     const router = useRouter();
@@ -24,21 +24,15 @@ export default function EditClientLogoPage() {
     useEffect(() => {
         const fetchLogo = async () => {
             try {
-                const token = localStorage.getItem("token");
-                const res = await fetch(`${API_URL}/api/client-logos/${params.id}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                const data = await res.json();
+                const response = await apiClient.get(`/api/client-logos/${params.id}`);
 
-                if (data.success) {
+                if (response.success) {
                     setFormData({
-                        client_name: data.data.client_name,
-                        logo_url: data.data.logo_url,
-                        website_url: data.data.website_url || "",
-                        is_active: data.data.is_active,
-                        display_order: data.data.display_order
+                        client_name: response.data.client_name,
+                        logo_url: response.data.logo_url,
+                        website_url: response.data.website_url || "",
+                        is_active: response.data.is_active,
+                        display_order: response.data.display_order
                     });
                 } else {
                     toast.error("Client logo not found");
@@ -77,22 +71,9 @@ export default function EditClientLogoPage() {
         setLoading(true);
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/client-logos/${params.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (res.ok) {
-                toast.success("Client logo updated successfully!");
-                router.push("/dashboard/client-logos");
-            } else {
-                toast.error("Failed to update client logo");
-            }
+            await apiClient.put(`/api/client-logos/${params.id}`, formData);
+            toast.success("Client logo updated successfully!");
+            router.push("/dashboard/client-logos");
         } catch (error) {
             console.error("Error updating client logo", error);
             toast.error("An error occurred");
@@ -106,20 +87,9 @@ export default function EditClientLogoPage() {
 
         setLoading(true);
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/client-logos/${params.id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (res.ok) {
-                toast.success("Client logo deleted successfully");
-                router.push("/dashboard/client-logos");
-            } else {
-                toast.error("Failed to delete client logo");
-            }
+            await apiClient.delete(`/api/client-logos/${params.id}`);
+            toast.success("Client logo deleted successfully");
+            router.push("/dashboard/client-logos");
         } catch (error) {
             console.error("Error deleting client logo", error);
             toast.error("An error occurred");

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 import { Eye, MessageSquare, Mail, Layers, ArrowUpRight, Plus, ExternalLink } from "lucide-react";
 import StatCard from "@/components/ui/StatCard";
 import HealthWidget from "@/components/HealthWidget";
@@ -34,13 +34,9 @@ export default function DashboardPage() {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const token = localStorage.getItem("token");
-                const res = await fetch(`${API_URL}/api/analytics/stats`, {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-                const data = await res.json();
-                if (data.success) {
-                    setStats(data);
+                const response = await apiClient.get('/api/analytics/stats');
+                if (response.success) {
+                    setStats(response);
                 }
             } catch (error) {
                 console.error("Error fetching stats:", error);

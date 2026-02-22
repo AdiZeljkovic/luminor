@@ -6,7 +6,7 @@ import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
 import RichTextEditor from "@/components/ui/RichTextEditor";
 import { toast } from "sonner";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 
 export default function EditProjectPage({ params }: { params: { id: string } }) {
     const router = useRouter();
@@ -36,10 +36,9 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
     const fetchProject = async () => {
         try {
-            const res = await fetch(`${API_URL}/api/portfolio/${params.id}`);
-            const data = await res.json();
-            if (data.success) {
-                const project = data.data;
+            const response = await apiClient.get(`/api/portfolio/${params.id}`);
+            if (response.success) {
+                const project = response.data;
                 setFormData({
                     title: project.title,
                     description: project.description,
@@ -78,8 +77,6 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
         setSubmitting(true);
 
         try {
-            const token = localStorage.getItem("token");
-
             const technologiesArray = formData.technologies.split(",").map(t => t.trim()).filter(Boolean);
 
             // Parse Results
@@ -119,18 +116,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
                 date: formData.date
             };
 
-            const res = await fetch(`${API_URL}/api/portfolio/${params.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(payload),
-            });
-
-            if (!res.ok) {
-                throw new Error("Failed to update project");
-            }
+            await apiClient.put(`/api/portfolio/${params.id}`, payload);
 
             toast.success("Project updated successfully");
             router.push("/dashboard/portfolio");

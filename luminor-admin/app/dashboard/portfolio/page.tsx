@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 import { useRouter } from "next/navigation";
 
 interface PortfolioProject {
@@ -24,10 +24,9 @@ export default function PortfolioListPage() {
 
     const fetchItems = async () => {
         try {
-            const res = await fetch(`${API_URL}/api/portfolio`);
-            const data = await res.json();
-            if (data.success) {
-                setProjects(data.data);
+            const response = await apiClient.get('/api/portfolio');
+            if (response.success) {
+                setProjects(response.data);
             }
         } catch (error) {
             console.error("Failed to fetch portfolio", error);
@@ -40,21 +39,11 @@ export default function PortfolioListPage() {
         if (!confirm("Are you sure?")) return;
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/portfolio/${id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (res.ok) {
-                setProjects(projects.filter((p) => p.id !== id));
-            } else {
-                alert("Failed to delete project");
-            }
+            await apiClient.delete(`/api/portfolio/${id}`);
+            setProjects(projects.filter((p) => p.id !== id));
         } catch (error) {
             console.error("Error deleting project", error);
+            alert("Failed to delete project");
         }
     };
 

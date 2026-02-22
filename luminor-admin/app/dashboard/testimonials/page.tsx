@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { API_URL } from "@/lib/api";
+import { apiClient } from "@/lib/apiClient";
 import { useRouter } from "next/navigation";
 
 interface Testimonial {
@@ -27,15 +27,9 @@ export default function TestimonialsListPage() {
 
     const fetchTestimonials = async () => {
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/testimonials/all`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const data = await res.json();
-            if (data.success) {
-                setTestimonials(data.data);
+            const response = await apiClient.get('/api/testimonials/all');
+            if (response.success) {
+                setTestimonials(response.data);
             }
         } catch (error) {
             console.error("Failed to fetch testimonials", error);
@@ -48,21 +42,11 @@ export default function TestimonialsListPage() {
         if (!confirm("Are you sure you want to delete this testimonial?")) return;
 
         try {
-            const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/testimonials/${id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (res.ok) {
-                setTestimonials(testimonials.filter((t) => t.id !== id));
-            } else {
-                alert("Failed to delete testimonial");
-            }
+            await apiClient.delete(`/api/testimonials/${id}`);
+            setTestimonials(testimonials.filter((t) => t.id !== id));
         } catch (error) {
             console.error("Error deleting testimonial", error);
+            alert("Failed to delete testimonial");
         }
     };
 
