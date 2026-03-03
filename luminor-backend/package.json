@@ -36,6 +36,7 @@
     "nodemailer": "^7.0.12",
     "redis": "^4.6.13",
     "sequelize": "^6.37.7",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "socket.io": "^4.8.1"
   }
 }

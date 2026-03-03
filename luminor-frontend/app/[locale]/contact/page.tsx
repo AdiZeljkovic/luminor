@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
@@ -15,6 +15,19 @@ export default function ContactPage() {
     const tSocial = useTranslations('contact.social');
 
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [calendlyUrl, setCalendlyUrl] = useState<string | null>(null);
+
+    useEffect(() => {
+        fetch(`${API_URL}/api/settings`)
+            .then((r) => r.json())
+            .then((data) => {
+                if (data.success && data.data?.calendly_url) {
+                    setCalendlyUrl(data.data.calendly_url);
+                }
+            })
+            .catch(() => {});
+    }, []);
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -297,6 +310,34 @@ export default function ContactPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Calendly Booking Section */}
+            {calendlyUrl && (
+                <section className={styles.calendlySection}>
+                    <div className={styles.container}>
+                        <AnimatedSection className={styles.calendlyWrapper}>
+                            <h2 className={styles.calendlyTitle}>
+                                {t('hero.label') === 'Contact Us' ? 'Schedule a Free Consultation' : 'Zakažite Besplatnu Konsultaciju'}
+                            </h2>
+                            <p className={styles.calendlySubtitle}>
+                                {t('hero.label') === 'Contact Us'
+                                    ? 'Book a 30-minute call to discuss your project'
+                                    : 'Rezervišite 30-minutni poziv i razgovarajte s našim timom'}
+                            </p>
+                            <div
+                                className="calendly-inline-widget"
+                                data-url={calendlyUrl}
+                                style={{ minWidth: '320px', height: '700px' }}
+                            />
+                            <script
+                                type="text/javascript"
+                                src="https://assets.calendly.com/assets/external/widget.js"
+                                async
+                            />
+                        </AnimatedSection>
+                    </div>
+                </section>
+            )}
 
             {/* Map Section */}
             <section className={styles.mapSection}>

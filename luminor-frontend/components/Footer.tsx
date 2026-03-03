@@ -26,6 +26,8 @@ export default async function Footer() {
         { name: t('nav.blog'), href: "/blog" },
         { name: t('nav.contact'), href: "/contact" },
         { name: t('nav.hosting'), href: "/hosting" },
+        { name: "FAQ", href: "/faq" },
+        { name: "Status", href: "/status" },
     ];
 
     const socialLinks = [

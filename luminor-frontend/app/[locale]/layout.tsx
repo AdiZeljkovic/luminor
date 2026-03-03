@@ -11,6 +11,8 @@ import { setRequestLocale } from 'next-intl/server';
 import RegionPrompt from "@/components/RegionPrompt";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import CookieConsent from "@/components/CookieConsent";
+import LeadMagnetPopup from "@/components/LeadMagnetPopup";
+import ChatWidget from "@/components/LiveChat/ChatWidget";
 import { getSiteSettings } from "@/lib/getSettings";
 import MaintenanceScreen from "@/components/MaintenanceScreen";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
@@ -242,6 +244,8 @@ export default async function LocaleLayout({ children, params }: Props) {
                     <Footer />
                     <RegionPrompt />
                     <CookieConsent />
+                    <LeadMagnetPopup />
+                    <ChatWidget />
                 </NextIntlClientProvider>
 
                 {/* Google Analytics 4 */}

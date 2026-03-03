@@ -8,10 +8,30 @@ const Analytics = require('./Analytics');
 const SiteSettings = require('./SiteSettings');
 const Testimonial = require('./Testimonial');
 const ClientLogo = require('./ClientLogo');
+const FAQ = require('./FAQ');
+const StatusService = require('./StatusService');
+const ChatSession = require('./ChatSession');
+const ChatMessage = require('./ChatMessage');
+const Client = require('./Client');
+const ClientProject = require('./ClientProject');
+const HostingPlan = require('./HostingPlan');
+const Invoice = require('./Invoice');
 
 // Define associations
 User.hasMany(BlogPost, { foreignKey: 'author_id', as: 'posts' });
 BlogPost.belongsTo(User, { foreignKey: 'author_id', as: 'author' });
+
+ChatSession.hasMany(ChatMessage, { foreignKey: 'session_id', as: 'messages' });
+ChatMessage.belongsTo(ChatSession, { foreignKey: 'session_id', as: 'session' });
+
+Client.hasMany(ClientProject, { foreignKey: 'client_id', as: 'projects' });
+ClientProject.belongsTo(Client, { foreignKey: 'client_id', as: 'client' });
+
+Client.hasMany(HostingPlan, { foreignKey: 'client_id', as: 'hostingPlans' });
+HostingPlan.belongsTo(Client, { foreignKey: 'client_id', as: 'client' });
+
+Client.hasMany(Invoice, { foreignKey: 'client_id', as: 'invoices' });
+Invoice.belongsTo(Client, { foreignKey: 'client_id', as: 'client' });
 
 // Sync all models
 const syncDatabase = async (options = {}) => {
@@ -41,5 +61,13 @@ module.exports = {
     SiteSettings,
     Testimonial,
     ClientLogo,
+    FAQ,
+    StatusService,
+    ChatSession,
+    ChatMessage,
+    Client,
+    ClientProject,
+    HostingPlan,
+    Invoice,
     syncDatabase
 };

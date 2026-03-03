@@ -1,0 +1,226 @@
+.page {
+    min-height: 100vh;
+}
+
+.hero {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* FAQ Section */
+.faqSection {
+    padding: 80px 0 120px;
+    background: #0f0f0f;
+}
+
+.faqSection .container {
+    max-width: 860px;
+}
+
+/* Category Filter */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 48px;
+    justify-content: center;
+}
+
+.categoryBtn {
+    padding: 8px 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.categoryBtn:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+    color: #ffffff;
+}
+
+.categoryBtn.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* Accordion */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    transition: border-color 0.2s ease;
+}
+
+.item.open {
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    gap: 16px;
+    transition: color 0.2s ease;
+}
+
+.question:hover {
+    color: #a5b4fc;
+}
+
+.item.open .question {
+    color: #a5b4fc;
+}
+
+.icon {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #6366f1;
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+    line-height: 1;
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.2s ease;
+}
+
+.item.open .answer {
+    max-height: 400px;
+}
+
+.answer p {
+    padding: 0 24px 20px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* Skeleton Loading */
+.loading {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeleton {
+    height: 64px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    margin-top: 64px;
+    padding: 48px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+}
+
+.ctaText {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.ctaButton {
+    display: inline-block;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ctaButton:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+    .question {
+        padding: 16px 18px;
+        font-size: 0.9rem;
+    }
+
+    .answer p {
+        padding: 0 18px 16px;
+    }
+
+    .cta {
+        padding: 32px 20px;
+    }
+}

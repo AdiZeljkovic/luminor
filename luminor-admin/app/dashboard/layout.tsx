@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { LogOut, Home, PieChart, MessageSquare, Briefcase, FileText, Search, Mail, Settings, Menu, X, ChevronRight, Star } from "lucide-react";
+import { LogOut, Home, PieChart, MessageSquare, Briefcase, FileText, Search, Mail, Settings, Menu, X, ChevronRight, Star, HelpCircle, Activity, MessageCircle, Users } from "lucide-react";
 
 // NOTE: We're using standard Lucide React icons for the sidebar
 // This requires installation: npm install lucide-react (Already done in package.json)
@@ -77,7 +77,16 @@ export default function DashboardLayout({
             title: "Communication",
             items: [
                 { name: "Messages", href: "/dashboard/messages", icon: MessageSquare },
+                { name: "Live Chat", href: "/dashboard/chat", icon: MessageCircle },
                 { name: "Newsletter", href: "/dashboard/newsletter", icon: Mail },
+            ]
+        },
+        {
+            title: "Tools",
+            items: [
+                { name: "Client Portal", href: "/dashboard/clients", icon: Users },
+                { name: "FAQ", href: "/dashboard/faq", icon: HelpCircle },
+                { name: "Status Page", href: "/dashboard/status", icon: Activity },
             ]
         },
         {

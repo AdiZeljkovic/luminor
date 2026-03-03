@@ -88,7 +88,22 @@ const SiteSettings = sequelize.define('SiteSettings', {
         defaultValue: false
     },
     announcement_message: DataTypes.STRING,
-    announcement_link: DataTypes.STRING
+    announcement_link: DataTypes.STRING,
+
+    // Booking Integration
+    calendly_url: DataTypes.STRING,
+
+    // Lead Magnet
+    lead_magnet_active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    lead_magnet_title_en: { type: DataTypes.STRING, defaultValue: 'Download Free Guide: 10 Web Design Mistakes' },
+    lead_magnet_title_bs: { type: DataTypes.STRING, defaultValue: 'Preuzmite besplatni vodič: 10 grešaka pri izradi web sajta' },
+    lead_magnet_pdf_url: DataTypes.STRING,
+
+    // WhatsApp
+    whatsapp_number: DataTypes.STRING
 
 }, {
     tableName: 'site_settings',

@@ -28,13 +28,20 @@ const testimonialsRoutes = require('./routes/testimonials');
 
 const clientLogosRoutes = require('./routes/clientLogos');
 const systemRoutes = require('./routes/system');
+const faqRoutes = require('./routes/faq');
+const statusRoutes = require('./routes/status');
+const chatRoutes = require('./routes/chat');
+const { router: clientAuthRoutes } = require('./routes/clientAuth');
+const clientPortalRoutes = require('./routes/clientPortal');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
 const corsConfig = require('./middleware/corsConfig');
 const { errorLogger, requestLogger } = require('./middleware/logger');
 
+const http = require('http');
 const app = express();
+const httpServer = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // ----------------------------
@@ -129,6 +136,11 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/testimonials', testimonialsRoutes);
 app.use('/api/client-logos', clientLogosRoutes);
 app.use('/api/system', systemRoutes);
+app.use('/api/faq', faqRoutes);
+app.use('/api/status', statusRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/client-auth', clientAuthRoutes);
+app.use('/api/portal', clientPortalRoutes);
 
 // Enhanced Health check endpoint
 app.get('/api/health', async (req, res) => {
@@ -181,7 +193,19 @@ const startServer = async () => {
         // ENABLE ALTER to update schema with new fields
         await syncDatabase({ alter: true });
 
-        server = app.listen(PORT, () => {
+        // Initialize Socket.io (requires chat feature)
+        try {
+            const { initSocket } = require('./config/socket');
+            initSocket(httpServer);
+        } catch (socketErr) {
+            if (socketErr.code === 'MODULE_NOT_FOUND') {
+                console.warn('⚠️  socket.io not installed. Live chat disabled. Run: npm install socket.io');
+            } else {
+                console.error('Socket.io init error:', socketErr.message);
+            }
+        }
+
+        server = httpServer.listen(PORT, () => {
             console.log(`🚀 Server running on port ${PORT}`);
             console.log(`⏰ Startup Time: ${new Date().toISOString()}`);
             console.log(`📍 API available at http://localhost:${PORT}/api`);
@@ -196,8 +220,8 @@ const startServer = async () => {
 const gracefulShutdown = async (signal) => {
     console.log(`\n${signal} received. Starting graceful shutdown...`);
 
-    if (server) {
-        server.close(async () => {
+    if (server || httpServer) {
+        (server || httpServer).close(async () => {
             console.log('HTTP server closed');
 
             try {
