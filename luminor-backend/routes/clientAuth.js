@@ -31,8 +31,8 @@ const clientAuth = async (req, res, next) => {
             const admin = await User.findByPk(decoded.id, {
                 attributes: { exclude: ['password'] }
             });
-            if (!admin || admin.status !== 'active') {
-                return res.status(401).json({ success: false, error: 'Account not found or inactive' });
+            if (!admin) {
+                return res.status(401).json({ success: false, error: 'Account not found' });
             }
             req.client = {
                 id: admin.id,
@@ -91,10 +91,10 @@ router.post('/login', loginLimiter, [
 
         // 2. Fallback: check admin users table
         if (!tokenPayload) {
-            const admin = await User.findOne({ where: { email, status: 'active' } });
+            const admin = await User.findOne({ where: { email } });
             if (admin) {
                 const isValid = await bcrypt.compare(password, admin.password);
-                if (isValid && (admin.role === 'admin' || admin.role === 'super_admin')) {
+                if (isValid && (admin.role === 'admin' || admin.role === 'editor')) {
                     tokenPayload = { id: admin.id, email: admin.email, type: 'admin', isAdmin: true };
                     responseData = { id: admin.id, name: admin.name, email: admin.email, company: 'Luminor Solutions', isAdmin: true };
                 }
