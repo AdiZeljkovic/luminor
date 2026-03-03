@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 const rateLimit = require('express-rate-limit');
-const { Client } = require('../models');
+const { Client, User } = require('../models');
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ const loginLimiter = rateLimit({
     message: { success: false, error: 'Too many login attempts. Please try again in 15 minutes.' }
 });
 
-// Middleware: Verify client token
+// Middleware: Verify client token (supports both clients and admins)
 const clientAuth = async (req, res, next) => {
     try {
         const token = req.cookies?.clientToken;
@@ -25,6 +25,26 @@ const clientAuth = async (req, res, next) => {
         }
 
         const decoded = jwt.verify(token, CLIENT_JWT_SECRET);
+
+        // Admin accessing portal
+        if (decoded.isAdmin) {
+            const admin = await User.findByPk(decoded.id, {
+                attributes: { exclude: ['password'] }
+            });
+            if (!admin || admin.status !== 'active') {
+                return res.status(401).json({ success: false, error: 'Account not found or inactive' });
+            }
+            req.client = {
+                id: admin.id,
+                name: admin.name,
+                email: admin.email,
+                company: 'Luminor Solutions',
+                isAdmin: true
+            };
+            return next();
+        }
+
+        // Regular client
         const client = await Client.findByPk(decoded.id, {
             attributes: { exclude: ['password'] }
         });
@@ -56,38 +76,45 @@ router.post('/login', loginLimiter, [
     try {
         const { email, password } = req.body;
 
+        // 1. Check clients table first
+        let tokenPayload = null;
+        let responseData = null;
+
         const client = await Client.findOne({ where: { email } });
-        if (!client || !client.is_active) {
+        if (client && client.is_active) {
+            const isValid = await bcrypt.compare(password, client.password);
+            if (isValid) {
+                tokenPayload = { id: client.id, email: client.email, type: 'client' };
+                responseData = { id: client.id, name: client.name, email: client.email, company: client.company };
+            }
+        }
+
+        // 2. Fallback: check admin users table
+        if (!tokenPayload) {
+            const admin = await User.findOne({ where: { email, status: 'active' } });
+            if (admin) {
+                const isValid = await bcrypt.compare(password, admin.password);
+                if (isValid && (admin.role === 'admin' || admin.role === 'super_admin')) {
+                    tokenPayload = { id: admin.id, email: admin.email, type: 'admin', isAdmin: true };
+                    responseData = { id: admin.id, name: admin.name, email: admin.email, company: 'Luminor Solutions', isAdmin: true };
+                }
+            }
+        }
+
+        if (!tokenPayload) {
             return res.status(401).json({ success: false, error: 'Invalid email or password' });
         }
 
-        const isValid = await bcrypt.compare(password, client.password);
-        if (!isValid) {
-            return res.status(401).json({ success: false, error: 'Invalid email or password' });
-        }
-
-        const token = jwt.sign(
-            { id: client.id, email: client.email, type: 'client' },
-            CLIENT_JWT_SECRET,
-            { expiresIn: TOKEN_EXPIRY }
-        );
+        const token = jwt.sign(tokenPayload, CLIENT_JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
 
         res.cookie('clientToken', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+            maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
-        res.json({
-            success: true,
-            data: {
-                id: client.id,
-                name: client.name,
-                email: client.email,
-                company: client.company
-            }
-        });
+        res.json({ success: true, data: responseData });
     } catch (error) {
         console.error('Client login error:', error);
         res.status(500).json({ success: false, error: 'Server error' });
