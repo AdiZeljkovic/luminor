@@ -60,28 +60,5 @@ sequelize.afterConnect((connection, config) => {
     console.log('✓ Database connection established successfully');
 });
 
-// Handle connection errors and attempt reconnection
-const handleConnectionError = (err) => {
-    console.error('❌ Database connection error:', err.message);
-
-    // Log detailed error in development
-    if (process.env.NODE_ENV === 'development') {
-        console.error('Error details:', err);
-    }
-
-    // Attempt reconnection after delay
-    setTimeout(async () => {
-        try {
-            console.log('Attempting to reconnect to database...');
-            await sequelize.authenticate();
-            console.log('✓ Database reconnection successful');
-        } catch (reconnectError) {
-            console.error('Failed to reconnect:', reconnectError.message);
-        }
-    }, 5000); // Retry after 5 seconds
-};
-
-// Listen for connection pool errors
-sequelize.connectionManager.pool.on('error', handleConnectionError);
 
 module.exports = sequelize;
