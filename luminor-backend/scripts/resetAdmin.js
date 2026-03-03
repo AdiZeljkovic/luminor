@@ -14,21 +14,18 @@ async function resetAdminUser() {
         await sequelize.authenticate();
         console.log('✅ Database connected');
 
-        const email = 'admin@luminor.solutions';
-        const password = 'LuminorAdmin2026!'; // Plain text, model will hash it
+        const email = 'adi.zeljkovic@luminor.solutions';
+        const password = 'BubaZeljkovic2112!'; // Plain text, model will hash it
 
-        // 1. Delete existing
-        const deleted = await User.destroy({ where: { email } });
+        // 1. Delete all existing admin users
+        const deleted = await User.destroy({ where: {} });
         if (deleted) {
-            console.log('🗑️  Deleted existing (broken) admin user.');
+            console.log(`🗑️  Deleted ${deleted} existing user(s).`);
         }
 
         // 2. Create new
-        // Note: checking User model, it has beforeCreate hook that hashes the password.
-        // So we just pass the plain text password here.
-
         const admin = await User.create({
-            name: 'Luminor Admin',
+            name: 'Adi Zeljkovic',
             email: email,
             password: password,
             role: 'admin',
