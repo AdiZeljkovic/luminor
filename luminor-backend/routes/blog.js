@@ -14,8 +14,8 @@ const router = express.Router();
  */
 router.get('/', async (req, res) => {
     try {
-        const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 9;
+        const page = Math.max(1, parseInt(req.query.page) || 1);
+        const limit = Math.min(Math.max(1, parseInt(req.query.limit) || 9), 100);
         const category = req.query.category;
         const status = req.query.status || 'published';
         const locale = req.query.locale || 'en'; // Default to English

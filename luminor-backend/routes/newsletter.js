@@ -1,16 +1,29 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
+const rateLimit = require('express-rate-limit');
 const { Subscriber } = require('../models');
 const { auth } = require('../middleware/auth');
 const router = express.Router();
+
+const newsletterLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 10,
+    message: { success: false, error: 'Too many subscription attempts. Please try again later.' },
+    standardHeaders: true,
+    legacyHeaders: false
+});
 
 /**
  * @route   POST /api/newsletter/subscribe
  * @desc    Subscribe to newsletter
  * @access  Public
  */
-router.post('/subscribe', [
-    body('email').isEmail().withMessage('Please provide a valid email')
+router.post('/subscribe', newsletterLimiter, [
+    body('email')
+        .trim()
+        .isEmail().withMessage('Please provide a valid email')
+        .isLength({ max: 254 }).withMessage('Email address is too long')
+        .normalizeEmail()
 ], async (req, res) => {
     try {
         const errors = validationResult(req);

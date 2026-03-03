@@ -2,6 +2,7 @@ const express = require('express');
 const { Analytics } = require('../models');
 const { auth } = require('../middleware/auth');
 const { Op } = require('sequelize');
+const sequelize = require('../config/database');
 const router = express.Router();
 
 /**
@@ -118,5 +119,4 @@ router.get('/stats', auth, async (req, res) => {
     }
 });
 
-const sequelize = require('../config/database'); // Needed for Op/fn in route
 module.exports = router;

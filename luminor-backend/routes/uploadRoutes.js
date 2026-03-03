@@ -40,14 +40,19 @@ router.get('/files', auth, (req, res) => {
         const fileInfos = files
             .filter(file => !file.startsWith('.')) // Hide hidden files
             .map(file => {
-                const stats = fs.statSync(path.join(directoryPath, file));
-                return {
-                    name: file,
-                    url: `${req.protocol}://${req.get('host')}/uploads/${file}`,
-                    size: stats.size,
-                    createdAt: stats.birthtime
-                };
+                try {
+                    const stats = fs.statSync(path.join(directoryPath, file));
+                    return {
+                        name: file,
+                        url: `${req.protocol}://${req.get('host')}/uploads/${file}`,
+                        size: stats.size,
+                        createdAt: stats.birthtime
+                    };
+                } catch {
+                    return null;
+                }
             })
+            .filter(Boolean)
             .sort((a, b) => b.createdAt - a.createdAt); // Newest first
 
         res.json({ success: true, data: fileInfos });
@@ -57,10 +62,11 @@ router.get('/files', auth, (req, res) => {
 // DELETE /api/upload/files/:filename - Delete file
 router.delete('/files/:filename', auth, (req, res) => {
     const filename = req.params.filename;
-    const filePath = path.join(__dirname, '../public/uploads', filename);
+    const baseDir = path.resolve(__dirname, '../public/uploads');
+    const filePath = path.resolve(baseDir, filename);
 
-    // Prevent directory traversal
-    if (filename.includes('..') || filename.includes('/')) {
+    // Prevent directory traversal - ensure file is within uploads dir
+    if (!filePath.startsWith(baseDir + path.sep) && filePath !== baseDir) {
         return res.status(400).json({ error: 'Invalid filename' });
     }
 

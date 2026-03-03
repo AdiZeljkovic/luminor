@@ -39,8 +39,9 @@ export default function ContactForm() {
 
             const data = await response.json();
 
-            if (!response.ok) {
-                throw new Error(data.error || "Failed to send message");
+            if (!response.ok || !data.success) {
+                const errorMsg = data.error || data.errors?.[0]?.msg || "Failed to send message";
+                throw new Error(errorMsg);
             }
 
             setStatus("success");

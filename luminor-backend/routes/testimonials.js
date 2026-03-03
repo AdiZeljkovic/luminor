@@ -55,8 +55,12 @@ router.get('/featured', async (req, res) => {
  */
 router.get('/all', authMiddleware, async (req, res) => {
     try {
+        const limit = Math.min(parseInt(req.query.limit) || 50, 500);
+        const offset = parseInt(req.query.offset) || 0;
         const testimonials = await Testimonial.findAll({
-            order: [['display_order', 'ASC'], ['created_at', 'DESC']]
+            order: [['display_order', 'ASC'], ['created_at', 'DESC']],
+            limit,
+            offset
         });
 
         res.json({
@@ -110,7 +114,7 @@ router.post('/', authMiddleware, async (req, res) => {
             client_position,
             company_name,
             content,
-            rating: rating || 5,
+            rating: Math.min(5, Math.max(1, parseInt(rating) || 5)),
             avatar_url,
             is_featured: is_featured || false,
             is_active: is_active !== false,

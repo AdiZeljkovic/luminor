@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
     try {
         const { getOrSetCache } = require('../config/redis');
 
-        // Cache settings for 60 seconds
-        const settings = await getOrSetCache('site_settings', 60, async () => {
+        // Cache settings for 1 hour (settings rarely change)
+        const settings = await getOrSetCache('site_settings', 3600, async () => {
             const [data, created] = await SiteSettings.findOrCreate({
                 where: { id: 1 },
                 defaults: {

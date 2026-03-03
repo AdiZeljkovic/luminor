@@ -138,7 +138,8 @@ router.post('/login', [
  */
 router.post('/refresh', async (req, res) => {
     try {
-        const { refreshToken } = req.body;
+        // SECURITY: Read refresh token from httpOnly cookie
+        const refreshToken = req.cookies?.refreshToken;
 
         if (!refreshToken) {
             return res.status(401).json({ success: false, error: 'Refresh token required' });
@@ -161,13 +162,18 @@ router.post('/refresh', async (req, res) => {
         user.refresh_token = newRefreshToken;
         await user.save();
 
-        res.json({
-            success: true,
-            data: {
-                accessToken: newAccessToken,
-                refreshToken: newRefreshToken
-            }
-        });
+        // Set new tokens in httpOnly cookies
+        const cookieOptions = {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            path: '/'
+        };
+
+        res.cookie('accessToken', newAccessToken, { ...cookieOptions, maxAge: 7 * 24 * 60 * 60 * 1000 });
+        res.cookie('refreshToken', newRefreshToken, { ...cookieOptions, maxAge: 30 * 24 * 60 * 60 * 1000 });
+
+        res.json({ success: true });
     } catch (error) {
         console.error('Refresh token error:', error);
         res.status(401).json({ success: false, error: 'Invalid refresh token' });

@@ -162,6 +162,13 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
 /**
  * Send email notification to admin
  */
@@ -172,10 +179,11 @@ async function sendEmailNotification({ name, email, phone, subject, message, ser
     return;
   }
 
+  const smtpPort = parseInt(process.env.SMTP_PORT) || 587;
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT) || 587,
-    secure: false,
+    port: smtpPort,
+    secure: smtpPort === 465,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS
@@ -192,36 +200,43 @@ async function sendEmailNotification({ name, email, phone, subject, message, ser
     'other': 'Other'
   };
 
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone);
+  const safeSubject = escapeHtml(subject);
+  const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
+  const safeService = escapeHtml(serviceLabels[service] || service || '');
+
   const htmlContent = `
     <h2>New Contact Form Submission</h2>
     <table style="border-collapse: collapse; width: 100%;">
       <tr>
         <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Name</td>
-        <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${safeName}</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Email</td>
-        <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${email}">${email}</a></td>
+        <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:${safeEmail}">${safeEmail}</a></td>
       </tr>
       ${phone ? `
       <tr>
         <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Phone</td>
-        <td style="padding: 10px; border: 1px solid #ddd;">${phone}</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${safePhone}</td>
       </tr>
       ` : ''}
       ${service ? `
       <tr>
         <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Service</td>
-        <td style="padding: 10px; border: 1px solid #ddd;">${serviceLabels[service] || service}</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${safeService}</td>
       </tr>
       ` : ''}
       <tr>
         <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Subject</td>
-        <td style="padding: 10px; border: 1px solid #ddd;">${subject}</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${safeSubject}</td>
       </tr>
       <tr>
         <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Message</td>
-        <td style="padding: 10px; border: 1px solid #ddd;">${message.replace(/\n/g, '<br>')}</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${safeMessage}</td>
       </tr>
     </table>
   `;

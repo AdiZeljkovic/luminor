@@ -76,4 +76,21 @@ const optionalAuth = async (req, res, next) => {
     next();
 };
 
-module.exports = { auth, optionalAuth };
+/**
+ * Admin Auth Middleware
+ * Verifies token AND checks that user has admin role
+ */
+const adminAuth = async (req, res, next) => {
+    await auth(req, res, () => {
+        if (req.user && req.user.role === 'admin') {
+            next();
+        } else {
+            res.status(403).json({
+                success: false,
+                error: 'Admin access required'
+            });
+        }
+    });
+};
+
+module.exports = { auth, optionalAuth, adminAuth };
