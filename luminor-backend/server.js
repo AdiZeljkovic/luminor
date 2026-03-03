@@ -11,7 +11,6 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
-const { doubleCsrf } = require('csrf-csrf');
 
 // Import database
 const { syncDatabase } = require('./models');
@@ -84,26 +83,6 @@ app.use(cookieParser());
 // Body parsers with size limits
 app.use(express.json({ limit: '1mb' })); // Reduced from 10mb for security
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
-
-// CSRF Protection
-const { generateToken, doubleCsrfProtection } = doubleCsrf({
-    getSecret: () => process.env.CSRF_SECRET || 'default-csrf-secret-change-in-production',
-    cookieName: '__Host-csrf',
-    cookieOptions: {
-        httpOnly: true,
-        sameSite: 'strict',
-        secure: process.env.NODE_ENV === 'production',
-        path: '/'
-    },
-    size: 64,
-    ignoredMethods: ['GET', 'HEAD', 'OPTIONS']
-});
-
-// Make CSRF token generator available to routes
-app.use((req, res, next) => {
-    req.csrfToken = generateToken(req, res);
-    next();
-});
 
 // Request logging (optional - enable via LOG_REQUESTS=true)
 app.use(requestLogger);
