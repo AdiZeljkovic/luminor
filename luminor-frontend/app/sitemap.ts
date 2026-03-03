@@ -85,7 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
         if (data.success && data.data) {
             // Extract unique categories from blog posts
-            const categories = [...new Set(data.data.map((post: any) => post.category).filter(Boolean))];
+            const categories = [...new Set<string>(data.data.map((post: any) => post.category).filter(Boolean))];
 
             categoryUrls = categories.flatMap((category: string) =>
                 locales.map(locale => ({
