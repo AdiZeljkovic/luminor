@@ -45,26 +45,42 @@ async function getProjectData(slug: string) {
 }
 
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
     const project = await getProjectData(params.slug);
     if (!project) return {};
 
-    // Strip HTML from description for meta tag
+    const { slug, locale = 'en' } = params;
     const plainDescription = project.description.replace(/<[^>]*>?/gm, '').substring(0, 160) + "...";
+    const canonicalPath = locale === 'en' ? `portfolio/${slug}` : `${locale}/portfolio/${slug}`;
 
     return {
         title: project.title,
         description: plainDescription,
+        alternates: {
+            canonical: `https://luminor.solutions/${canonicalPath}`,
+            languages: {
+                'en': `https://luminor.solutions/portfolio/${slug}`,
+                'bs': `https://luminor.solutions/bs/portfolio/${slug}`,
+                'x-default': `https://luminor.solutions/portfolio/${slug}`,
+            },
+        },
         openGraph: {
             title: project.title,
             description: plainDescription,
+            images: [{ url: project.featuredImage, width: 1200, height: 630 }],
+            type: "article",
+            url: `https://luminor.solutions/${canonicalPath}`,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: project.title,
+            description: plainDescription,
             images: [project.featuredImage],
-            type: "article"
-        }
+        },
     };
 }
 
-export default async function ProjectDetail({ params }: { params: { slug: string } }) {
+export default async function ProjectDetail({ params }: { params: { slug: string; locale: string } }) {
     const project = await getProjectData(params.slug);
 
     if (!project) {
@@ -81,8 +97,32 @@ export default async function ProjectDetail({ params }: { params: { slug: string
         );
     }
 
+    const { slug, locale = 'en' } = params;
+    const canonicalUrl = `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}portfolio/${slug}`;
+
+    const creativeWorkSchema = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": project.title,
+        "description": project.description.replace(/<[^>]*>?/gm, '').substring(0, 500),
+        "url": canonicalUrl,
+        "image": project.featuredImage,
+        "dateCreated": project.date,
+        "creator": {
+            "@type": "Organization",
+            "name": "Luminor Solutions",
+            "url": "https://luminor.solutions"
+        },
+        "genre": project.category,
+        ...(project.client ? { "contributor": { "@type": "Organization", "name": project.client } } : {}),
+    };
+
     return (
         <div className={styles.page}>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
+            />
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.heroBackground}>
@@ -123,21 +163,21 @@ export default async function ProjectDetail({ params }: { params: { slug: string
                 <div className={styles.container}>
                     <div className={styles.infoGrid}>
                         <div className={styles.infoItem}>
-                            <span className={styles.infoLabel}>Klijent</span>
+                            <span className={styles.infoLabel}>{locale === 'bs' ? 'Klijent' : 'Client'}</span>
                             <span className={styles.infoValue}>{project.client}</span>
                         </div>
                         <div className={styles.infoItem}>
-                            <span className={styles.infoLabel}>Datum</span>
+                            <span className={styles.infoLabel}>{locale === 'bs' ? 'Datum' : 'Date'}</span>
                             <span className={styles.infoValue}>{project.date}</span>
                         </div>
                         <div className={styles.infoItem}>
-                            <span className={styles.infoLabel}>Kategorija</span>
+                            <span className={styles.infoLabel}>{locale === 'bs' ? 'Kategorija' : 'Category'}</span>
                             <span className={styles.infoValue}>{project.category}</span>
                         </div>
                         {project.website && (
                             <div className={styles.infoItem}>
                                 <a href={project.website} target="_blank" rel="noopener noreferrer" className={styles.websiteLink}>
-                                    Poseti Website ↗
+                                    {locale === 'bs' ? 'Poseti Website ↗' : 'Visit Website ↗'}
                                 </a>
                             </div>
                         )}

@@ -12,10 +12,33 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'seo.services' });
+    const title = t('title');
+    const description = t('description');
+    const canonicalPath = locale === 'en' ? 'services' : `${locale}/services`;
     return {
-        title: t('title'),
-        description: t('description'),
-        keywords: t('keywords').split(',').map(k => k.trim())
+        title,
+        description,
+        keywords: t('keywords').split(',').map(k => k.trim()),
+        alternates: {
+            canonical: `https://luminor.solutions/${canonicalPath}`,
+            languages: {
+                'en': 'https://luminor.solutions/services',
+                'bs': 'https://luminor.solutions/bs/services',
+                'x-default': 'https://luminor.solutions/services',
+            },
+        },
+        openGraph: {
+            type: 'website',
+            title,
+            description,
+            url: `https://luminor.solutions/${canonicalPath}`,
+            images: [{ url: 'https://luminor.solutions/rocket-hero.png', width: 1200, height: 630 }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+        },
     };
 }
 

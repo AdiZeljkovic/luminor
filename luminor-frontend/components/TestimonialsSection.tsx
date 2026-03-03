@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "./TestimonialsSection.module.css";
 import AnimatedSection from "./AnimatedSection";
 
@@ -150,7 +151,7 @@ export default function TestimonialsSection() {
                                 <div className={styles.clientInfo}>
                                     <div className={styles.avatar}>
                                         {review.avatar_url ? (
-                                            <img src={review.avatar_url} alt={review.client_name} className={styles.avatarImg} />
+                                            <Image src={review.avatar_url} alt={review.client_name} width={48} height={48} className={styles.avatarImg} />
                                         ) : (
                                             review.client_name.charAt(0)
                                         )}
@@ -176,9 +177,11 @@ export default function TestimonialsSection() {
                                 {[...clients, ...clients, ...clients].map((client, i) => (
                                     <div key={`${client.id}-${i}`} className={styles.clientLogoItem}>
                                         {client.logo_url ? (
-                                            <img
+                                            <Image
                                                 src={client.logo_url}
                                                 alt={client.client_name}
+                                                width={120}
+                                                height={40}
                                                 className={styles.clientLogoImg}
                                                 title={client.client_name}
                                             />

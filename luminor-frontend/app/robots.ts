@@ -3,20 +3,28 @@ import { getSiteSettings } from '@/lib/getSettings';
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
     const settings = await getSiteSettings();
-    const rules = settings?.robots_txt || "User-agent: *\nAllow: /";
 
-    // Simple parser for standard robots.txt content if needed, 
-    // but Next.js expects an object.
+    // If admin has configured custom robots.txt rules, parse and use them
+    if (settings?.robots_txt) {
+        const lines = settings.robots_txt.split('\n').map((l: string) => l.trim()).filter(Boolean);
+        const disallowLines = lines
+            .filter((l: string) => l.toLowerCase().startsWith('disallow:'))
+            .map((l: string) => l.replace(/^disallow:\s*/i, ''));
 
-    // For now, let's just return a standard object based on our "Maintenance Mode" or default.
-    // Ideally we'd parse the string, but that's complex.
-    // Let's just allow all unless we specificly want to disallow admin.
+        if (disallowLines.length > 0) {
+            return {
+                rules: { userAgent: '*', allow: '/', disallow: disallowLines },
+                sitemap: 'https://luminor.solutions/sitemap.xml',
+            };
+        }
+    }
 
+    // Default: allow all public pages, block admin/api
     return {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: ['/dashboard/', '/api/'],
+            disallow: ['/dashboard/', '/api/', '/portal/'],
         },
         sitemap: 'https://luminor.solutions/sitemap.xml',
     };

@@ -9,6 +9,7 @@ interface PortfolioCardProps {
     slug: string;
     description?: string;
     className?: string;
+    priority?: boolean;
 }
 
 export default function PortfolioCard({
@@ -18,6 +19,7 @@ export default function PortfolioCard({
     slug,
     description,
     className = "",
+    priority = false,
 }: PortfolioCardProps) {
     // Format category for display (e.g., 'web-development' -> 'Web Development')
     const formattedCategory = category
@@ -34,7 +36,8 @@ export default function PortfolioCard({
                     fill
                     className={styles.image}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading="lazy"
+                    priority={priority}
+                    loading={priority ? undefined : "lazy"}
                 />
                 <div className={styles.overlay}>
                     <Link href={`/portfolio/${slug}`} className={styles.viewButton}>

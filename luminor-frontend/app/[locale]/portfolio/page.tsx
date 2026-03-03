@@ -119,7 +119,7 @@ export default function PortfolioPage() {
                 <div className={styles.grid}>
                     {displayedProjects.map((project, index) => (
                         <AnimatedSection key={project.slug || project.id} animation="fade-up" delay={index * 100}>
-                            <PortfolioCard {...project} />
+                            <PortfolioCard {...project} priority={index < 3} />
                         </AnimatedSection>
                     ))}
                 </div>

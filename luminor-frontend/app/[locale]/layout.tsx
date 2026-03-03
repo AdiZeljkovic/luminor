@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro } from "next/font/google";
+import { Be_Vietnam_Pro, Outfit, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -54,6 +54,20 @@ const beVietnamPro = Be_Vietnam_Pro({
     variable: "--font-primary",
     subsets: ["latin"],
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    display: "swap",
+});
+
+const outfit = Outfit({
+    variable: "--font-outfit",
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700", "800"],
+    display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+    variable: "--font-display",
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700"],
     display: "swap",
 });
 
@@ -161,7 +175,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     if (settings?.maintenance_mode) {
         return (
             <html lang={locale}>
-                <body className={`${beVietnamPro.variable} antialiased`}>
+                <body className={`${beVietnamPro.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased`}>
                     <MaintenanceScreen />
                 </body>
             </html>
@@ -171,12 +185,15 @@ export default async function LocaleLayout({ children, params }: Props) {
     return (
         <html lang={locale} suppressHydrationWarning>
             <head>
+                {/* Preconnect to API for faster data fetching */}
+                <link rel="preconnect" href="https://api.luminor.solutions" />
+                <link rel="dns-prefetch" href="https://api.luminor.solutions" />
                 {/* Hreflang tags for SEO */}
                 <link rel="alternate" hrefLang="en" href="https://luminor.solutions" />
                 <link rel="alternate" hrefLang="bs" href="https://luminor.solutions/bs" />
                 <link rel="alternate" hrefLang="x-default" href="https://luminor.solutions" />
             </head>
-            <body className={`${beVietnamPro.variable} antialiased`}>
+            <body className={`${beVietnamPro.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased`}>
                 {/* Google Tag Manager (noscript) */}
                 {settings?.google_tag_manager_id && (
                     <noscript>

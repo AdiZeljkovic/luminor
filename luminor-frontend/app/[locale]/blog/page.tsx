@@ -220,6 +220,8 @@ export default function BlogPage() {
                                             image={post.featured_image}
                                             category={post.category}
                                             readTime={post.read_time}
+                                            priority={index < 3}
+                                            locale={locale}
                                         />
                                     </AnimatedSection>
                                 ))}

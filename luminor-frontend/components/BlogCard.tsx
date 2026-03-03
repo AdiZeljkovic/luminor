@@ -15,6 +15,8 @@ interface BlogCardProps {
     category: string;
     readTime: number;
     className?: string;
+    priority?: boolean;
+    locale?: string;
 }
 
 export default function BlogCard({
@@ -27,6 +29,8 @@ export default function BlogCard({
     category,
     readTime,
     className = "",
+    priority = false,
+    locale = "en",
 }: BlogCardProps) {
     // Format date
     const formattedDate = new Date(date).toLocaleDateString("sr-RS", {
@@ -46,7 +50,8 @@ export default function BlogCard({
                             fill
                             className={styles.image}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            loading="lazy"
+                            priority={priority}
+                            loading={priority ? undefined : "lazy"}
                         />
                         <span className={styles.category}>{category}</span>
                     </div>
@@ -57,7 +62,7 @@ export default function BlogCard({
                 <div className={styles.meta}>
                     <span className={styles.date}>{formattedDate}</span>
                     <span className={styles.dot}>•</span>
-                    <span className={styles.readTime}>{readTime} min čitanja</span>
+                    <span className={styles.readTime}>{readTime} {locale === 'bs' ? 'min čitanja' : 'min read'}</span>
                 </div>
 
                 <h3 className={styles.title}>

@@ -4,10 +4,13 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(255, 252, 248, 0.95);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 252, 248, 0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-bottom: 2px solid var(--color-dark);
     transition: all 0.3s ease;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .header.scrolled {

@@ -56,16 +56,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const title = post[`title_${locale}`] || post.title_en;
     const excerpt = post[`excerpt_${locale}`] || post.excerpt_en || "";
 
+    const canonicalPath = locale === 'en' ? `blog/${slug}` : `${locale}/blog/${slug}`;
+
     return {
         title: title,
         description: excerpt,
+        alternates: {
+            canonical: `https://luminor.solutions/${canonicalPath}`,
+            languages: {
+                'en': `https://luminor.solutions/blog/${slug}`,
+                'bs': `https://luminor.solutions/bs/blog/${slug}`,
+                'x-default': `https://luminor.solutions/blog/${slug}`,
+            },
+        },
         openGraph: {
             title: title,
             description: excerpt,
             type: 'article',
             publishedTime: post.published_at,
             authors: [post.author?.name],
-            images: post.featuredImage ? [post.featuredImage] : [],
+            images: post.featuredImage ? [{ url: post.featuredImage, width: 1200, height: 630 }] : [],
+            url: `https://luminor.solutions/${canonicalPath}`,
         },
         twitter: {
             card: 'summary_large_image',
