@@ -97,7 +97,7 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
                         <Link
                             key={item.href}
                             href={item.href}
-                            className={`${styles.navItem} ${pathname === item.href ? styles.active : ""}`}
+                            className={`${styles.navItem} ${pathname === item.href ? styles.navItemActive : ""}`}
                         >
                             {item.label}
                         </Link>
