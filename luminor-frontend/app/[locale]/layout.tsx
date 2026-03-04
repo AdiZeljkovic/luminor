@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro, Outfit, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/Header";
@@ -80,6 +80,14 @@ export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: 'cover',
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'seo.default' });
@@ -100,13 +108,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: siteDesc,
         keywords: keywords,
         authors: [{ name: siteTitle }],
-        viewport: {
-            width: 'device-width',
-            initialScale: 1,
-            maximumScale: 5,
-            userScalable: true,
-            viewportFit: 'cover',
-        },
         appleWebApp: {
             capable: true,
             statusBarStyle: 'black-translucent',
