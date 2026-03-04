@@ -12,6 +12,9 @@ interface ApiResponse<T = any> {
     data?: any;
     error?: string;
     errors?: Array<{ msg: string; path: string }>;
+    // Allow extra fields returned by some endpoints (e.g. session, pagination)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
 }
 
 class ApiClient {
