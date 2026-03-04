@@ -30,7 +30,7 @@ export default function AnalyticsPage() {
             try {
                 const response = await apiClient.get('/api/analytics/stats');
                 if (response.success) {
-                    setStats(response);
+                    setStats(response.data);
                 }
             } catch (error) {
                 console.error("Error fetching analytics:", error);
