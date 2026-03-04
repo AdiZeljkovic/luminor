@@ -5,9 +5,11 @@ import { API_URL } from './api';
  * All requests automatically include credentials (cookies)
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface ApiResponse<T = any> {
     success: boolean;
-    data?: T;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    data?: any;
     error?: string;
     errors?: Array<{ msg: string; path: string }>;
 }
