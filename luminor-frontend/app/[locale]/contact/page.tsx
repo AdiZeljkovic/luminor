@@ -263,7 +263,7 @@ export default function ContactPage() {
                                                 disabled={submitting}
                                             >
                                                 <option value="">{tForm('budgetPlaceholder')}</option>
-                                                <option value="under_1000">{tForm('budgetOptions.under1k')}</option>
+                                                <option value="exploring">{tForm('budgetOptions.exploring')}</option>
                                                 <option value="1000_5000">{tForm('budgetOptions.1k5k')}</option>
                                                 <option value="5000_15000">{tForm('budgetOptions.5k15k')}</option>
                                                 <option value="15000_50000">{tForm('budgetOptions.15k50k')}</option>

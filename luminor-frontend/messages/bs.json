@@ -71,9 +71,10 @@
             "home": "Početna",
             "services": "Usluge",
             "hosting": "Hosting",
-            "portfolio": "Portfolio",
+            "portfolio": "Radovi",
             "about": "O Nama",
-            "blog": "Blog",
+            "blog": "Insights",
+            "process": "Proces",
             "contact": "Kontakt",
             "startProject": "Započnite Saradnju"
         },
@@ -86,7 +87,7 @@
             "aiAutomation": "AI & Automatizacija"
         },
         "footer": {
-            "description": "Digitalna agencija koja pruža profesionalne usluge web developmenta, grafičkog dizajna, digitalnog marketinga, SEO optimizacije i AI automatizacije.",
+            "description": "Strategija, dizajn i inženjering za kompanije koje ozbiljno shvataju kuda idu.",
             "services": "Usluge",
             "quickLinks": "Brzi Linkovi",
             "company": "Kompanija",
@@ -112,13 +113,13 @@
     },
     "home": {
         "hero": {
-            "label": "DIGITALNA AGENCIJA",
-            "titleLine1": "KREATIVNA",
-            "titleLine2": "DIGITALNA",
-            "titleLine3": "RJEŠENJA.",
-            "description": "Razvijamo web platforme, brendove i marketinške strategije koje transformišu vaše poslovanje i grade dugoročan digitalni uspjeh.",
+            "label": "PARTNER ZA DIGITALNI RAST",
+            "titleLine1": "GRADIMO",
+            "titleLine2": "DIGITALNE",
+            "titleLine3": "TEMELJE.",
+            "description": "Strategija, dizajn i inženjering pod jednim krovom — za kompanije koje ozbiljno shvataju kuda idu.",
             "ctaPrimary": "ZAPOČNITE PROJEKAT",
-            "ctaSecondary": "POGLEDAJTE PORTFOLIO"
+            "ctaSecondary": "POGLEDAJTE RADOVE"
         },
         "services": {
             "title": "Naše Usluge",
@@ -149,23 +150,23 @@
             }
         },
         "whyUs": {
-            "title": "ZAŠTO LUMINOR?",
-            "subtitle": "Kombinujemo strateško razmišljanje sa tehničkom izvrsnošću za rezultate koji se mjere.",
+            "title": "KAKO RAZMIŠLJAMO",
+            "subtitle": "Četiri principa koji oblikuju svaki projekat koji preuzmemo.",
             "expertise": {
-                "title": "EKSPERTIZA",
-                "description": "Tim iskusnih stručnjaka sa dokazanim portfoliom uspješnih projekata u različitim industrijama."
+                "title": "STRATEGIJA PRIJE PIKSELA",
+                "description": "Počinjemo razumijevanjem vaših poslovnih ciljeva — ne vaše palete boja. Svaka dizajnerska i tehnička odluka proističe iz onoga što pokušavate postići."
             },
             "results": {
-                "title": "REZULTATI",
-                "description": "Fokusiramo se na mjerljive poslovne rezultate, a ne samo na estetiku. Vaš ROI je naš prioritet."
+                "title": "JEDAN TIM. OD POČETKA DO KRAJA.",
+                "description": "Isti ljudi koji definišu opseg projekta, grade ga. Bez predaje između timova. Bez izgubljenog konteksta. Bez 'to nije naše'."
             },
             "partnership": {
-                "title": "PARTNERSTVO",
-                "description": "Gradimo dugoročne odnose sa klijentima. Vaš uspjeh je naš uspjeh – rastemo zajedno."
+                "title": "IZGRAĐENO DA NADŽIVI TRENDOVE",
+                "description": "Ne jurimo dizajnerske mode. Gradimo stvari koje rade i za 5 godina — i izgledaju namjerno, ne zastarjelo."
             },
             "support": {
-                "title": "PODRŠKA",
-                "description": "Profesionalna podrška kada vam zatreba. Brzi odgovori i proaktivno rješavanje izazova."
+                "title": "REĆI ĆEMO VAM KADA GRIJEŠITE",
+                "description": "Ako smatramo da vaš smjer treba prilagodbu, reći ćemo to. Uvijek možete nas prevladati. Ali uvijek ćemo biti iskreni."
             }
         },
         "portfolio": {
@@ -188,25 +189,25 @@
             }
         },
         "cta": {
-            "titleLine1": "SPREMNI ZA",
-            "titleLine2": "SLJEDEĆI KORAK?",
-            "description": "Zakažite besplatnu konsultaciju i razgovarajmo o mogućnostima za vaše poslovanje.",
-            "button": "KONTAKTIRAJTE NAS"
+            "titleLine1": "SPREMI ZA GRADNJU",
+            "titleLine2": "NEČEG PRAVOG?",
+            "description": "Recite nam na čemu radite. Mi ćemo vam reći šta je potrebno da stignete tamo.",
+            "button": "ZAPOČNITE RAZGOVOR"
         }
     },
     "about": {
         "hero": {
-            "label": "O Nama",
-            "titleLine1": "VAŠ DIGITALNI",
-            "titleLine2": "PARTNER",
-            "description": "Agencija koja kombinuje kreativnost i tehnologiju kako bi pomogla brendovima da ostvare svoj puni potencijal u digitalnom svijetu."
+            "label": "O Luminoru",
+            "titleLine1": "GRADIMO",
+            "titleLine2": "DIGITALNE TEMELJE",
+            "description": "Mi smo digitalni partner za kompanije koje znaju kuda idu — i trebaju pravi tim da ih tamo odvede."
         },
         "story": {
             "title": "Naša Priča",
-            "p1": "Luminor je nastao iz želje da stvorimo agenciju koja ne nudi samo usluge, već pravo partnerstvo. Primijetili smo prazninu na tržištu – klijenti su često morali da biraju između kreativne izvrsnosti i tehničke ekspertize.",
-            "p2": "Okupili smo tim stručnjaka iz različitih oblasti, ujedinjenih zajedničkom vizijom: stvarati digitalna rješenja koja inspirišu i donose mjerljive rezultate.",
-            "p3": "Danas, Luminor.Solutions predstavlja sinonim za kvalitet i inovaciju, sa portfoliom uspješnih projekata i partnerstvima sa kompanijama iz različitih industrija.",
-            "cta": "Pogledajte Naše Projekte"
+            "p1": "Pokrenuli smo Luminor jer smo bili frustrirani agencijskim modelom — gdje se strategija dešava na jednom sastanku, dizajn na drugom, a programer saznaje za oboje na dan lansiranja.",
+            "p2": "Zato smo izgradili nešto drugačije. Jedan tim, od početka do kraja. Isti ljudi koji postavljaju teška pitanja pišu kod, dizajniraju ekrane i lansiraju proizvod.",
+            "p3": "Radimo s kompanijama koje ozbiljno shvataju svoje digitalno prisustvo — od ambicioznih startupova do etabliranih brendova koji žele zatvoriti jaz između toga gdje jesu i gdje žele biti.",
+            "cta": "Pogledajte Naše Radove"
         },
         "stats": {
             "years": "Godina Iskustva",
@@ -216,11 +217,11 @@
         },
         "mission": {
             "title": "Naša Misija",
-            "description": "Pomoći kompanijama svih veličina da iskoriste potencijal digitalnih tehnologija. Kroz kombinaciju strategije, kreativnosti i tehničke ekspertize, stvaramo rješenja koja donose mjerljive poslovne rezultate."
+            "description": "Biti tim u kojeg ambiciozne kompanije imaju povjerenje za izgradnju svog digitalnog prisustva — od strategije do izvršenja, pod jednim krovom."
         },
         "vision": {
             "title": "Naša Vizija",
-            "description": "Postati prepoznatljiv partner za digitalne transformacije u regionu, poznat po kvalitetu izvršenja, inovativnom pristupu i dugoročnim odnosima sa klijentima."
+            "description": "Svijet u kojem dobre kompanije pobjeđuju online. Ne zato što su imale najveći budžet, već zato što su imale pravog partnera."
         },
         "values": {
             "title": "Naše Vrijednosti",
@@ -247,18 +248,18 @@
             "subtitle": "Sveobuhvatna podrška za vaš digitalni uspjeh."
         },
         "cta": {
-            "label": "Započnimo Saradnju",
-            "titleLine1": "SPREMNI ZA",
-            "titleLine2": "NOVI PROJEKAT?",
-            "description": "Zakažite besplatnu konsultaciju i razgovarajmo o mogućnostima za vaše poslovanje."
+            "label": "Hajde da Radimo Zajedno",
+            "titleLine1": "VAŠ SLJEDEĆI",
+            "titleLine2": "KORAK?",
+            "description": "Recite nam šta gradite. Mi ćemo vam reći kako bismo to pristupili."
         }
     },
     "contact": {
         "hero": {
             "label": "Kontakt",
-            "titleLine1": "RAZGOVARAJMO O",
-            "titleLine2": "VAŠEM PROJEKTU",
-            "description": "Imate projekat na umu ili želite da saznate više o našim uslugama? Tu smo da odgovorimo na sva vaša pitanja."
+            "titleLine1": "RAZGOVARAJMO",
+            "titleLine2": "O VAŠEM PROJEKTU",
+            "description": "Imate nešto na umu? Slušat ćemo, postaviti prava pitanja i dati vam iskrenu procjenu šta bi to zahtijevalo."
         },
         "info": {
             "phone": "Telefon",
@@ -285,11 +286,11 @@
                 "hosting": "Hosting",
                 "other": "Ostalo"
             },
-            "budget": "Očekivani Budžet",
-            "budgetPlaceholder": "Odaberite budžet",
+            "budget": "Nivo Investicije",
+            "budgetPlaceholder": "Odaberite raspon investicije",
             "budgetOptions": {
-                "under1k": "Manje od €1.000",
-                "1k5k": "€1.000 – €5.000",
+                "exploring": "Samo istražujem / Nisam siguran/a",
+                "1k5k": "€1.500 – €5.000",
                 "5k15k": "€5.000 – €15.000",
                 "15k50k": "€15.000 – €50.000",
                 "over50k": "Više od €50.000"
@@ -303,13 +304,13 @@
             "errorMessage": "Došlo je do greške prilikom slanja poruke. Molimo pokušajte ponovo."
         },
         "faq": {
-            "title": "Česta Pitanja",
-            "q1": "Koliko traje realizacija projekta?",
-            "a1": "Trajanje zavisi od obima i kompleksnosti. Standardnu web stranicu završavamo za 3-4 sedmice, dok veći projekti mogu trajati 2-3 mjeseca. Preciznu procjenu dobijete u ponudi.",
-            "q2": "Kakvi su uslovi plaćanja?",
-            "a2": "Standardni model je 50% avansa i 50% po završetku projekta. Za veće projekte možemo dogovoriti fazno plaćanje. Sve uslove jasno definišemo u ugovoru.",
-            "q3": "Da li pružate podršku nakon lansiranja?",
-            "a3": "Svaki projekat uključuje 30 dana besplatne podrške. Nakon toga nudimo pakete tehničkog održavanja prilagođene vašim potrebama."
+            "title": "Dobra Pitanja",
+            "q1": "Da li radite s malim biznisima?",
+            "a1": "Da. Radimo s kompanijama svih veličina — ono što nam je važno je da ste ozbiljni u pogledu onoga što gradite. Tim od 5 osoba s jasnom vizijom jednako je zanimljiv kao i kompanija od 500 zaposlenih.",
+            "q2": "Kako zapravo izgleda saradnja s vama?",
+            "a2": "Počinjemo uvodnim razgovorom da razumijemo vaše ciljeve, ograničenja i vremenski okvir. Zatim šaljemo ponudu s opsegom, rokom i cijenom. Nakon odobrenja, radimo u kratkim petljama povratnih informacija — bez dugih tišina, bez iznenađenja.",
+            "q3": "Koliko dugo traje tipičan projekat?",
+            "a3": "Standardna web stranica traje 3-4 sedmice. Složenije platforme ili kompletan branding traju 6-10 sedmica. Dat ćemo vam preciznu procjenu nakon prvog razgovora."
         },
         "social": {
             "title": "Pratite Nas"
@@ -354,10 +355,10 @@
     },
     "portfolio": {
         "hero": {
-            "label": "Portfolio",
-            "titleLine1": "RADOVI",
-            "titleLine2": "GOVORE",
-            "description": "Iza svakog projekta stoji priča, izazov i rješenje. Pogledajte kako smo pomogli klijentima da postignu ciljeve."
+            "label": "Naši Radovi",
+            "titleLine1": "REZULTATI",
+            "titleLine2": "NE OBEĆANJA",
+            "description": "Iza svakog projekta stoji pravi poslovni izazov. Evo kako smo ih riješili."
         },
         "filters": {
             "all": "Svi Projekti",
@@ -375,6 +376,99 @@
             "titleLine2": "SLJEDEĆA.",
             "description": "Kažite nam šta vam treba. Možda će i vaš projekat završiti ovdje.",
             "button": "Započnite Projekat"
+        }
+    },
+    "process": {
+        "hero": {
+            "label": "Kako Radimo",
+            "titleLine1": "BEZ MISTERIJE.",
+            "titleLine2": "BEZ IZNENAĐENJA.",
+            "description": "Vjerujemo da se najboljim klijentskim odnosima počinje s jasnoćom. Evo tačno kako radimo — od prvog razgovora do konačne isporuke."
+        },
+        "phases": {
+            "title": "ČETIRI FAZE",
+            "subtitle": "Svaki projekat prati istu strukturu. Detalji se mijenjaju. Disciplina ne.",
+            "discovery": {
+                "number": "01",
+                "title": "Istraživanje",
+                "description": "Prije nego što se išta dizajnira ili gradi, razumijemo. Provodimo vrijeme učeći o vašem poslovanju, klijentima, konkurenciji i ciljevima. Ovo nije formalnost — tu počinje dobar posao.",
+                "items": [
+                    "Uvodni razgovor za usklađivanje ciljeva i ograničenja",
+                    "Pregled postojećeg brenda, sajta i materijala",
+                    "Analiza konkurentskog okruženja",
+                    "Definisanje mjerila uspjeha prije početka"
+                ]
+            },
+            "strategy": {
+                "number": "02",
+                "title": "Strategija i Ponuda",
+                "description": "Ono što smo naučili pretvaramo u jasan plan — opseg, vremenski okvir, tim i cijena. Znat ćete tačno što dobijate i zašto.",
+                "items": [
+                    "Detaljan dokument opsega projekta",
+                    "Vremenski plan s kontrolnim točkama i pregledima",
+                    "Fiksna cijena (bez iznenađujućih faktura)",
+                    "Jasna raspodjela odgovornosti: ko što radi i kada"
+                ]
+            },
+            "build": {
+                "number": "03",
+                "title": "Dizajn i Izgradnja",
+                "description": "Isti ljudi koji su napisali ponudu grade proizvod. Radimo u kratkim ciklusima — vidite pravi napredak, dajete pravo povratne informacije, a mi se krećemo brzo bez rezanja uglova.",
+                "items": [
+                    "Iterativni dizajn s realnim petljama povratnih informacija",
+                    "Sedmični izvještaji o napretku",
+                    "Vi pregledate i odobravate na svakom kontrolnom punktu",
+                    "Bez predaje između agencija ili freelancera"
+                ]
+            },
+            "launch": {
+                "number": "04",
+                "title": "Lansiranje i Dalje",
+                "description": "Ne nestajemo kad projekat krene. Pratimo lansiranje, popravljamo što treba i ostajemo dostupni. Većina naših klijenata i dalje su klijenti godinama kasnije.",
+                "items": [
+                    "Postupno lansiranje i provjera kvalitete",
+                    "30 dana podrške nakon lansiranja uključeno",
+                    "Dokumentacija i obuka pri predaji",
+                    "Opcionalni tekući retaineri za održavanje i rast"
+                ]
+            }
+        },
+        "principles": {
+            "title": "U ŠTA VJERUJEMO",
+            "honest": {
+                "title": "Iskrenost Iznad Ugodnosti",
+                "description": "Reći ćemo vam kada mislimo da nešto neće funkcionisati. Angažirali ste nas zbog prosudbe, ne samo izvršavanja."
+            },
+            "scope": {
+                "title": "Opseg Štiti Sve",
+                "description": "Pišemo detaljne ponude da nema nejasnoća. Ako je nešto izvan opsega, razgovaramo — ne naplaćujemo tiho."
+            },
+            "communication": {
+                "title": "Komunikacija Nije Opcija",
+                "description": "Nikada se nećete pitati što se dešava. Ažuriramo vas dosljedno. Ako se nešto promijeni, vi ste prvi koji saznaju."
+            },
+            "ownership": {
+                "title": "Vi Posjedujete Sve",
+                "description": "Kod, dizajni, nalozi, domeni — sve što gradimo za vas pripada vama. Bez zaključavanja, ikad."
+            }
+        },
+        "faq": {
+            "title": "Česta Pitanja",
+            "q1": "Da li prihvatate male projekte?",
+            "a1": "Da, ali smo selektivni. Radije ćemo raditi manje projekata dobro nego mnogo projekata loše. Ako je vaš projekat dobar fit, veličina ga ne diskvalificira.",
+            "q2": "Možemo li početi bez jasnog briefa?",
+            "a2": "Apsolutno. Istraživanje je specifično dizajnirano za situacije kada znate da vam treba nešto ali niste sigurni tačno što. Pomoći ćemo vam to shvatiti.",
+            "q3": "Šta ako trebamo promjene usred projekta?",
+            "a3": "Promjene se dešavaju. Ako je promjena mala, apsorbiramo je. Ako je značajna, razgovaramo o utjecaju na vremenski okvir i cijenu prije nastavka — transparentno.",
+            "q4": "Da li radite s klijentima izvan Bosne?",
+            "a4": "Da. Većina naših klijenata su međunarodni. Radimo na daljinu i navikli smo upravljati projektima kroz različite vremenske zone."
+        },
+        "cta": {
+            "label": "Spremi za Početak?",
+            "titleLine1": "POČNIMO",
+            "titleLine2": "RAZGOVOROM.",
+            "description": "Bez obaveze. Samo razgovor o tome što gradite i da li smo pravi tim za to.",
+            "button": "Zakažite Uvodne Razgovor"
         }
     },
     "services": {

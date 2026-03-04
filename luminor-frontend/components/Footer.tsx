@@ -121,7 +121,7 @@ export default async function Footer() {
                 {/* Bottom Bar */}
                 <div className={styles.bottomBar}>
                     <p className={styles.copyright}>
-                        Made with ❤️ by <span className={styles.brandHighlight}>Luminor.solutions</span> © All Rights Reserved {currentYear}
+                        <span className={styles.brandHighlight}>Luminor Solutions</span> · Sarajevo © {currentYear}
                     </p>
                     <div className={styles.legalLinks}>
                         <Link href="/privacy">{t('footer.privacy')}</Link>

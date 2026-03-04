@@ -71,9 +71,10 @@
             "home": "Home",
             "services": "Services",
             "hosting": "Hosting",
-            "portfolio": "Portfolio",
+            "portfolio": "Work",
             "about": "About",
-            "blog": "Blog",
+            "blog": "Insights",
+            "process": "Process",
             "contact": "Contact",
             "startProject": "Start a Project"
         },
@@ -86,7 +87,7 @@
             "aiAutomation": "AI & Automation"
         },
         "footer": {
-            "description": "Digital agency delivering professional web development, graphic design, digital marketing, SEO optimization, and AI automation services.",
+            "description": "Strategy, design, and engineering for companies that are serious about where they're going.",
             "services": "Services",
             "quickLinks": "Quick Links",
             "company": "Company",
@@ -112,13 +113,13 @@
     },
     "home": {
         "hero": {
-            "label": "DIGITAL AGENCY",
-            "titleLine1": "CREATIVE",
+            "label": "DIGITAL GROWTH PARTNER",
+            "titleLine1": "WE BUILD",
             "titleLine2": "DIGITAL",
-            "titleLine3": "SOLUTIONS.",
-            "description": "We develop web platforms, brands, and marketing strategies that transform your business and build long-term digital success.",
+            "titleLine3": "FOUNDATIONS.",
+            "description": "Strategy, design, and engineering under one roof — for companies that are serious about where they're going.",
             "ctaPrimary": "START A PROJECT",
-            "ctaSecondary": "VIEW PORTFOLIO"
+            "ctaSecondary": "SEE OUR WORK"
         },
         "services": {
             "title": "Our Services",
@@ -149,23 +150,23 @@
             }
         },
         "whyUs": {
-            "title": "WHY LUMINOR?",
-            "subtitle": "We combine strategic thinking with technical excellence for measurable results.",
+            "title": "HOW WE THINK",
+            "subtitle": "Four principles that shape every project we take on.",
             "expertise": {
-                "title": "EXPERTISE",
-                "description": "A team of experienced professionals with a proven portfolio of successful projects across various industries."
+                "title": "STRATEGY BEFORE PIXELS",
+                "description": "We start by understanding your business goals — not your color palette. Every design and technical decision flows from what you're trying to achieve."
             },
             "results": {
-                "title": "RESULTS",
-                "description": "We focus on measurable business results, not just aesthetics. Your ROI is our priority."
+                "title": "ONE TEAM. START TO FINISH.",
+                "description": "The same people who scope your project build it. No handoffs. No lost context. No 'that's not our department.'"
             },
             "partnership": {
-                "title": "PARTNERSHIP",
-                "description": "We build long-term relationships with clients. Your success is our success – we grow together."
+                "title": "BUILT TO OUTLAST TRENDS",
+                "description": "We don't chase design fads. We build things that still work in 5 years — and look intentional, not dated."
             },
             "support": {
-                "title": "SUPPORT",
-                "description": "Professional support when you need it. Quick responses and proactive problem solving."
+                "title": "WE'LL TELL YOU WHEN YOU'RE WRONG",
+                "description": "If we think your direction needs adjustment, we'll say so. You can always override us. But we'll always be honest."
             }
         },
         "portfolio": {
@@ -188,25 +189,25 @@
             }
         },
         "cta": {
-            "titleLine1": "READY FOR",
-            "titleLine2": "THE NEXT STEP?",
-            "description": "Schedule a free consultation and let's discuss possibilities for your business.",
-            "button": "CONTACT US"
+            "titleLine1": "READY TO BUILD",
+            "titleLine2": "SOMETHING REAL?",
+            "description": "Tell us what you're working on. We'll tell you what it takes to get there.",
+            "button": "START THE CONVERSATION"
         }
     },
     "about": {
         "hero": {
-            "label": "About Us",
-            "titleLine1": "YOUR DIGITAL",
-            "titleLine2": "PARTNER",
-            "description": "An agency that combines creativity and technology to help brands reach their full potential in the digital world."
+            "label": "About Luminor",
+            "titleLine1": "WE BUILD",
+            "titleLine2": "DIGITAL FOUNDATIONS",
+            "description": "We're a digital partner for companies that know where they're going — and need the right team to get them there."
         },
         "story": {
             "title": "Our Story",
-            "p1": "Luminor was born from the desire to create an agency that offers not just services, but true partnership. We noticed a gap in the market – clients often had to choose between creative excellence and technical expertise.",
-            "p2": "We assembled a team of experts from various fields, united by a common vision: to create digital solutions that inspire and deliver measurable results.",
-            "p3": "Today, Luminor.Solutions represents a synonym for quality and innovation, with a portfolio of successful projects and partnerships with companies from various industries.",
-            "cta": "View Our Projects"
+            "p1": "We started Luminor because we were frustrated with the agency model — where strategy happens in one meeting, design happens in another, and the developer finds out about both on deployment day.",
+            "p2": "So we built something different. One team, end to end. The same people who ask the hard questions are the ones who write the code, design the screens, and launch the product.",
+            "p3": "We work with companies that take their digital presence seriously — from ambitious startups to established brands looking to close the gap between where they are and where they want to be.",
+            "cta": "See Our Work"
         },
         "stats": {
             "years": "Years of Experience",
@@ -216,11 +217,11 @@
         },
         "mission": {
             "title": "Our Mission",
-            "description": "To help companies of all sizes harness the potential of digital technologies. Through a combination of strategy, creativity, and technical expertise, we create solutions that deliver measurable business results."
+            "description": "To be the team that ambitious companies trust to build their digital presence — from strategy through execution, under one roof."
         },
         "vision": {
             "title": "Our Vision",
-            "description": "To become a recognized partner for digital transformations in the region, known for quality execution, innovative approach, and long-term client relationships."
+            "description": "A world where good companies win online. Not because they had the biggest budget, but because they had the right partner."
         },
         "values": {
             "title": "Our Values",
@@ -247,18 +248,18 @@
             "subtitle": "Comprehensive support for your digital success."
         },
         "cta": {
-            "label": "Start Collaboration",
-            "titleLine1": "READY FOR",
-            "titleLine2": "A NEW PROJECT?",
-            "description": "Schedule a free consultation and let's discuss possibilities for your business."
+            "label": "Let's Work Together",
+            "titleLine1": "YOUR NEXT",
+            "titleLine2": "MOVE?",
+            "description": "Tell us what you're building. We'll tell you how we'd approach it."
         }
     },
     "contact": {
         "hero": {
             "label": "Contact",
-            "titleLine1": "LET'S DISCUSS",
-            "titleLine2": "YOUR PROJECT",
-            "description": "Have a project in mind or want to learn more about our services? We're here to answer all your questions."
+            "titleLine1": "LET'S TALK",
+            "titleLine2": "ABOUT YOUR PROJECT",
+            "description": "Have something in mind? We'll listen, ask the right questions, and give you an honest assessment of what it would take."
         },
         "info": {
             "phone": "Phone",
@@ -285,11 +286,11 @@
                 "hosting": "Hosting",
                 "other": "Other"
             },
-            "budget": "Expected Budget",
-            "budgetPlaceholder": "Select budget range",
+            "budget": "Investment Level",
+            "budgetPlaceholder": "Select an investment range",
             "budgetOptions": {
-                "under1k": "Under €1,000",
-                "1k5k": "€1,000 – €5,000",
+                "exploring": "Just exploring / Not sure yet",
+                "1k5k": "€1,500 – €5,000",
                 "5k15k": "€5,000 – €15,000",
                 "15k50k": "€15,000 – €50,000",
                 "over50k": "Over €50,000"
@@ -303,13 +304,13 @@
             "errorMessage": "An error occurred while sending your message. Please try again."
         },
         "faq": {
-            "title": "Frequently Asked Questions",
-            "q1": "How long does project completion take?",
-            "a1": "Duration depends on scope and complexity. We complete a standard website in 3-4 weeks, while larger projects may take 2-3 months. You'll receive a precise estimate in our proposal.",
-            "q2": "What are the payment terms?",
-            "a2": "The standard model is 50% deposit and 50% upon project completion. For larger projects, we can arrange phased payments. All terms are clearly defined in the contract.",
-            "q3": "Do you provide support after launch?",
-            "a3": "Every project includes 30 days of free support. After that, we offer technical maintenance packages tailored to your needs."
+            "title": "Good Questions",
+            "q1": "Do you work with small businesses?",
+            "a1": "Yes. We work with companies of all sizes — what matters to us is that you're serious about what you're building. A 5-person team with a clear vision is as interesting to us as a 500-person company.",
+            "q2": "What does working with you actually look like?",
+            "a2": "We start with a discovery call to understand your goals, constraints, and timeline. Then we send a proposal with scope, timeline, and pricing. Once approved, we work in tight feedback loops — no long silences, no surprises.",
+            "q3": "How long does a typical project take?",
+            "a3": "A standard website takes 3-4 weeks. More complex platforms or full branding projects run 6-10 weeks. We'll give you a specific estimate after our first conversation."
         },
         "social": {
             "title": "Follow Us"
@@ -353,10 +354,10 @@
     },
     "portfolio": {
         "hero": {
-            "label": "Portfolio",
-            "titleLine1": "OUR WORK",
-            "titleLine2": "SPEAKS",
-            "description": "Behind every project is a story, a challenge, and a solution. See how we've helped clients achieve their goals."
+            "label": "Our Work",
+            "titleLine1": "RESULTS",
+            "titleLine2": "NOT PROMISES",
+            "description": "Behind every project is a real business challenge. Here's how we solved them."
         },
         "filters": {
             "all": "All Projects",
@@ -374,6 +375,99 @@
             "titleLine2": "NEXT.",
             "description": "Tell us what you need. Maybe your project will end up here too.",
             "button": "Start a Project"
+        }
+    },
+    "process": {
+        "hero": {
+            "label": "How We Work",
+            "titleLine1": "NO MYSTERY.",
+            "titleLine2": "NO SURPRISES.",
+            "description": "We believe the best client relationships start with clarity. Here's exactly how we work — from first conversation to final delivery."
+        },
+        "phases": {
+            "title": "THE FOUR PHASES",
+            "subtitle": "Every project follows the same structure. The details change. The discipline doesn't.",
+            "discovery": {
+                "number": "01",
+                "title": "Discovery",
+                "description": "Before anything gets designed or built, we understand. We spend time learning your business, your customers, your competition, and your goals. This isn't a checkbox — it's where the good work starts.",
+                "items": [
+                    "Kickoff call to align on goals and constraints",
+                    "Review of existing brand, site, and materials",
+                    "Competitor landscape review",
+                    "Defining success metrics before we start"
+                ]
+            },
+            "strategy": {
+                "number": "02",
+                "title": "Strategy & Proposal",
+                "description": "We translate what we learned into a clear plan — scope, timeline, team, and price. You'll know exactly what you're getting and why.",
+                "items": [
+                    "Detailed project scope document",
+                    "Timeline with milestones and review points",
+                    "Fixed-price proposal (no surprise invoices)",
+                    "Clear ownership: who does what, when"
+                ]
+            },
+            "build": {
+                "number": "03",
+                "title": "Design & Build",
+                "description": "The same people who wrote the proposal build the product. We work in tight cycles — you see real progress, give real feedback, and we move fast without cutting corners.",
+                "items": [
+                    "Iterative design with real feedback loops",
+                    "Weekly progress updates",
+                    "You review and approve at each milestone",
+                    "No handoffs between agencies or freelancers"
+                ]
+            },
+            "launch": {
+                "number": "04",
+                "title": "Launch & Beyond",
+                "description": "We don't disappear when the project goes live. We monitor the launch, fix what needs fixing, and stay available. Most of our clients are still clients years later.",
+                "items": [
+                    "Staged rollout and quality checks",
+                    "30 days of post-launch support included",
+                    "Documentation and handover training",
+                    "Optional ongoing maintenance and growth retainers"
+                ]
+            }
+        },
+        "principles": {
+            "title": "WHAT WE BELIEVE IN",
+            "honest": {
+                "title": "Honest Over Comfortable",
+                "description": "We'll tell you when we think something won't work. You hired us for judgment, not just execution."
+            },
+            "scope": {
+                "title": "Scope Protects Everyone",
+                "description": "We write detailed proposals so there's no ambiguity. If something is out of scope, we discuss it — we don't bill quietly."
+            },
+            "communication": {
+                "title": "Communication Is Not Optional",
+                "description": "You'll never wonder what's happening. We update you consistently. If something changes, you're the first to know."
+            },
+            "ownership": {
+                "title": "You Own Everything",
+                "description": "Code, designs, accounts, domains — everything we build for you belongs to you. No lock-in, ever."
+            }
+        },
+        "faq": {
+            "title": "Common Questions",
+            "q1": "Do you take on small projects?",
+            "a1": "Yes, but we're selective. We'd rather do fewer projects well than many projects poorly. If your project is a good fit, size doesn't disqualify it.",
+            "q2": "Can we start without a clear brief?",
+            "a2": "Absolutely. Discovery is specifically designed for situations where you know you need something but aren't sure exactly what. We'll help you figure it out.",
+            "q3": "What if we need changes mid-project?",
+            "a3": "Changes happen. If a change is small, we absorb it. If it's significant, we discuss the impact on timeline and price before proceeding — transparently.",
+            "q4": "Do you work with clients outside Bosnia?",
+            "a4": "Yes. Most of our clients are international. We work remotely and are used to managing projects across time zones."
+        },
+        "cta": {
+            "label": "Ready to Start?",
+            "titleLine1": "LET'S START",
+            "titleLine2": "WITH A CONVERSATION.",
+            "description": "No commitment required. Just a conversation about what you're building and whether we're the right team for it.",
+            "button": "Book a Discovery Call"
         }
     },
     "services": {
