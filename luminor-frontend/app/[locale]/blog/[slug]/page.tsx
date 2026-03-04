@@ -220,6 +220,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                         </div>
                                     </div>
                                 )}
+
+                                {/* Share Buttons */}
+                                {(() => {
+                                    const canonicalPath = locale === 'en' ? `blog/${slug}` : `${locale}/blog/${slug}`;
+                                    const shareUrl = encodeURIComponent(`https://www.luminor.solutions/${canonicalPath}`);
+                                    const shareTitle = encodeURIComponent(title);
+                                    return (
+                                        <div className={styles.tagsSection}>
+                                            <h3 className={styles.tagsTitle}>Share:</h3>
+                                            <div className={styles.tagsList}>
+                                                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noopener noreferrer" className={styles.tag}>LinkedIn</a>
+                                                <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noopener noreferrer" className={styles.tag}>Facebook</a>
+                                                <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`} target="_blank" rel="noopener noreferrer" className={styles.tag}>X / Twitter</a>
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
                             </article>
                         </AnimatedSection>
                     </div>

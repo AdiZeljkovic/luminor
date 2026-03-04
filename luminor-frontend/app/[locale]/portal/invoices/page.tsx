@@ -78,6 +78,16 @@ export default function PortalInvoicesPage() {
                                             </span>
                                         )}
                                         <span className={styles.amount}>{inv.currency} {Number(inv.amount).toFixed(2)}</span>
+                                        {(inv.status === "paid" || inv.status === "pending") && (
+                                            <a
+                                                href={`${API_URL}/api/portal/invoices/${inv.id}/pdf`}
+                                                download={`invoice-${inv.invoice_number}.pdf`}
+                                                onClick={(e) => e.stopPropagation()}
+                                                style={{ padding: "6px 14px", background: "rgba(255,159,28,0.15)", border: "1px solid rgba(255,159,28,0.4)", borderRadius: "8px", color: "#FF9F1C", fontSize: "0.75rem", fontWeight: "700", textDecoration: "none", whiteSpace: "nowrap" }}
+                                            >
+                                                PDF ↓
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
 

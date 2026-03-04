@@ -97,6 +97,10 @@ const PortfolioProject = sequelize.define('PortfolioProject', {
         type: DataTypes.STRING(500),
         allowNull: true
     },
+    case_study_pdf_url: {
+        type: DataTypes.STRING(500),
+        allowNull: true
+    },
     featured: {
         type: DataTypes.BOOLEAN,
         defaultValue: false

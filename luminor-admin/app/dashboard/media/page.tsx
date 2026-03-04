@@ -21,9 +21,9 @@ export default function MediaLibraryPage() {
 
     const fetchFiles = async () => {
         try {
-            const response = await apiClient.get('/api/upload/files');
+            const response = await apiClient.get('/api/media');
             if (response.success) {
-                setFiles(response.data);
+                setFiles(response.data.map((f: any) => ({ name: f.filename, url: f.url, size: f.size, createdAt: f.created_at })));
             }
         } catch (error) {
             console.error("Error fetching files:", error);
@@ -74,8 +74,8 @@ export default function MediaLibraryPage() {
         if (!confirm("Are you sure you want to delete this image? This cannot be undone.")) return;
 
         try {
-            await apiClient.delete(`/api/upload/files/${filename}`);
-            toast.success("Image deleted");
+            await apiClient.delete(`/api/media/${encodeURIComponent(filename)}`);
+            toast.success("File deleted");
             setFiles(files.filter(f => f.name !== filename));
         } catch (error) {
             toast.error("Delete failed");

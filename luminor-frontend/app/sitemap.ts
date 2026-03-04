@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const BASE_URL = 'https://luminor.solutions';
+const BASE_URL = 'https://www.luminor.solutions';
 import { API_URL } from '@/lib/api';
 
 

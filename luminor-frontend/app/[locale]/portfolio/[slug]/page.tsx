@@ -36,7 +36,8 @@ async function getProjectData(slug: string) {
             // Ensure images array has hero image first if needed, or just use featured_image separately
             featuredImage: data.featured_image,
             images: data.images || [],
-            testimonial: data.testimonial // { quote, author, role }
+            testimonial: data.testimonial, // { quote, author, role }
+            case_study_pdf_url: data.case_study_pdf_url || null
         };
     } catch (error) {
         console.error("Error fetching project:", error);
@@ -178,6 +179,13 @@ export default async function ProjectDetail({ params }: { params: { slug: string
                             <div className={styles.infoItem}>
                                 <a href={project.website} target="_blank" rel="noopener noreferrer" className={styles.websiteLink}>
                                     {locale === 'bs' ? 'Poseti Website ↗' : 'Visit Website ↗'}
+                                </a>
+                            </div>
+                        )}
+                        {project.case_study_pdf_url && (
+                            <div className={styles.infoItem}>
+                                <a href={project.case_study_pdf_url} download className={styles.websiteLink}>
+                                    {locale === 'bs' ? '↓ Case Study PDF' : '↓ Case Study PDF'}
                                 </a>
                             </div>
                         )}

@@ -4,6 +4,8 @@ const { clientAuth } = require('./clientAuth');
 const { auth } = require('../middleware/auth');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
+const { sendMail } = require('../utils/mailer');
+const { generateInvoicePdf } = require('../utils/generateInvoicePdf');
 
 const router = express.Router();
 
@@ -56,6 +58,29 @@ router.get('/invoices', clientAuth, async (req, res) => {
         res.json({ success: true, data: invoices });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });
+    }
+});
+
+/**
+ * @route   GET /api/portal/invoices/:id/pdf
+ * @access  Client
+ */
+router.get('/invoices/:id/pdf', clientAuth, async (req, res) => {
+    try {
+        const invoice = await Invoice.findOne({
+            where: { id: req.params.id, client_id: req.client.id }
+        });
+        if (!invoice) return res.status(404).json({ success: false, error: 'Not found' });
+
+        const client = await Client.findByPk(req.client.id, { attributes: { exclude: ['password'] } });
+        const pdfBuffer = await generateInvoicePdf(invoice.toJSON(), client.toJSON());
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename="invoice-${invoice.invoice_number}.pdf"`);
+        res.send(pdfBuffer);
+    } catch (error) {
+        console.error('PDF generation error:', error);
+        res.status(500).json({ success: false, error: 'Failed to generate PDF' });
     }
 });
 
@@ -198,6 +223,17 @@ router.get('/admin/clients/:clientId/projects', auth, async (req, res) => {
 router.post('/admin/projects', auth, async (req, res) => {
     try {
         const project = await ClientProject.create(req.body);
+        // Notify client by email (non-blocking)
+        try {
+            const client = await Client.findByPk(project.client_id);
+            if (client?.email) {
+                await sendMail({
+                    to: client.email,
+                    subject: `New Project Created: ${project.title}`,
+                    html: `<h2>Hello ${client.name},</h2><p>A new project <strong>${project.title}</strong> has been created for you on Luminor Portal.</p><p>Log in at <a href="https://www.luminor.solutions/portal">luminor.solutions/portal</a> to track progress.</p>`
+                });
+            }
+        } catch (emailErr) { console.error('Email notify error:', emailErr.message); }
         res.status(201).json({ success: true, data: project });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });
@@ -285,6 +321,17 @@ router.post('/admin/invoices', auth, async (req, res) => {
         const count = await Invoice.count();
         const invoice_number = req.body.invoice_number || `INV-${new Date().getFullYear()}-${String(count + 1).padStart(4, '0')}`;
         const invoice = await Invoice.create({ ...req.body, invoice_number });
+        // Notify client by email (non-blocking)
+        try {
+            const client = await Client.findByPk(invoice.client_id);
+            if (client?.email) {
+                await sendMail({
+                    to: client.email,
+                    subject: `New Invoice: ${invoice_number}`,
+                    html: `<h2>Hello ${client.name},</h2><p>A new invoice <strong>${invoice_number}</strong> for <strong>${invoice.currency} ${Number(invoice.amount).toFixed(2)}</strong> has been issued.</p><p>Log in at <a href="https://www.luminor.solutions/portal">luminor.solutions/portal</a> to view and download it.</p>`
+                });
+            }
+        } catch (emailErr) { console.error('Email notify error:', emailErr.message); }
         res.status(201).json({ success: true, data: invoice });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });
@@ -313,6 +360,24 @@ router.delete('/admin/invoices/:id', auth, async (req, res) => {
         res.json({ success: true });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });
+    }
+});
+
+// Admin: Generate invoice PDF
+router.get('/admin/invoices/:id/pdf', auth, async (req, res) => {
+    try {
+        const invoice = await Invoice.findByPk(req.params.id);
+        if (!invoice) return res.status(404).json({ success: false, error: 'Not found' });
+
+        const client = await Client.findByPk(invoice.client_id, { attributes: { exclude: ['password'] } });
+        const pdfBuffer = await generateInvoicePdf(invoice.toJSON(), client ? client.toJSON() : {});
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename="invoice-${invoice.invoice_number}.pdf"`);
+        res.send(pdfBuffer);
+    } catch (error) {
+        console.error('PDF generation error:', error);
+        res.status(500).json({ success: false, error: 'Failed to generate PDF' });
     }
 });
 

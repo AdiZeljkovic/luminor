@@ -33,6 +33,7 @@ export default function ContactPage() {
         email: "",
         phone: "",
         service: "",
+        budget_range: "",
         message: "",
     });
 
@@ -101,6 +102,7 @@ export default function ContactPage() {
                     email: "",
                     phone: "",
                     service: "",
+                    budget_range: "",
                     message: "",
                 });
             } else {
@@ -224,6 +226,22 @@ export default function ContactPage() {
                                                     <option value="other">{tForm('serviceOptions.other')}</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div className={styles.formGroup}>
+                                            <label className={styles.formLabel}>Expected Budget</label>
+                                            <select
+                                                className={styles.formSelect}
+                                                value={formData.budget_range}
+                                                onChange={(e) => setFormData({ ...formData, budget_range: e.target.value })}
+                                                disabled={submitting}
+                                            >
+                                                <option value="">Select budget range</option>
+                                                <option value="under_1000">Under €1,000</option>
+                                                <option value="1000_5000">€1,000 – €5,000</option>
+                                                <option value="5000_15000">€5,000 – €15,000</option>
+                                                <option value="15000_50000">€15,000 – €50,000</option>
+                                                <option value="over_50000">Over €50,000</option>
+                                            </select>
                                         </div>
                                         <div className={styles.formGroup}>
                                             <label className={styles.formLabel}>{tForm('message')} *</label>

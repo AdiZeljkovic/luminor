@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import { Metadata } from "next";
 import styles from "./page.module.css";
 import { getTranslations } from 'next-intl/server';
+import { API_URL } from "@/lib/api";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
@@ -38,7 +39,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
-export default async function AboutPage() {
+async function getTeamMembers() {
+    try {
+        const res = await fetch(`${API_URL}/api/team`, { next: { revalidate: 3600 } });
+        if (!res.ok) return [];
+        const data = await res.json();
+        return data.success ? data.data : [];
+    } catch { return []; }
+}
+
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const t = await getTranslations('about');
     const tValues = await getTranslations('about.values');
     const tStats = await getTranslations('about.stats');
@@ -47,6 +58,7 @@ export default async function AboutPage() {
     const tStory = await getTranslations('about.story');
     const tCta = await getTranslations('about.cta');
     const tServices = await getTranslations('about.servicesSection');
+    const teamMembers = await getTeamMembers();
 
     const values = [
         {
@@ -182,6 +194,41 @@ export default async function AboutPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Team Section — only show if members exist */}
+            {teamMembers.length > 0 && (
+                <section className={styles.teamSection}>
+                    <div className={styles.container}>
+                        <AnimatedSection className={styles.sectionHeader}>
+                            <h2 className={styles.sectionTitle}>{locale === 'bs' ? 'Naš Tim' : 'Meet Our Team'}</h2>
+                            <p className={styles.sectionSubtitle}>{locale === 'bs' ? 'Upoznajte ljude iza Luminor Solutions' : 'The people behind Luminor Solutions'}</p>
+                        </AnimatedSection>
+                        <div className={styles.teamGrid}>
+                            {teamMembers.map((member: any, index: number) => (
+                                <AnimatedSection key={member.id} animation="fade-up" delay={index * 100} className={styles.teamCard}>
+                                    <div className={styles.teamPhoto}>
+                                        {member.photo_url ? (
+                                            <Image src={member.photo_url} alt={member.name} width={96} height={96} className="object-cover w-full h-full" />
+                                        ) : (
+                                            member.name.charAt(0)
+                                        )}
+                                    </div>
+                                    <h3 className={styles.teamName}>{member.name}</h3>
+                                    <p className={styles.teamRole}>{(locale === 'bs' ? member.role_bs : member.role_en) || member.role_en}</p>
+                                    {(locale === 'bs' ? member.bio_bs : member.bio_en) && (
+                                        <p className={styles.teamBio}>{locale === 'bs' ? member.bio_bs : member.bio_en}</p>
+                                    )}
+                                    {member.linkedin_url && (
+                                        <a href={member.linkedin_url} target="_blank" rel="noopener noreferrer" className={styles.teamLinkedIn}>
+                                            LinkedIn ↗
+                                        </a>
+                                    )}
+                                </AnimatedSection>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* What We Do */}
             <section className={styles.servicesSection}>

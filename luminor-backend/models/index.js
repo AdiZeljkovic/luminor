@@ -16,6 +16,8 @@ const Client = require('./Client');
 const ClientProject = require('./ClientProject');
 const HostingPlan = require('./HostingPlan');
 const Invoice = require('./Invoice');
+const PricingPlan = require('./PricingPlan');
+const TeamMember = require('./TeamMember');
 
 // Define associations
 User.hasMany(BlogPost, { foreignKey: 'author_id', as: 'posts' });
@@ -69,5 +71,7 @@ module.exports = {
     ClientProject,
     HostingPlan,
     Invoice,
+    PricingPlan,
+    TeamMember,
     syncDatabase
 };

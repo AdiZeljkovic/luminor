@@ -34,6 +34,10 @@ const ContactMessage = sequelize.define('ContactMessage', {
         type: DataTypes.ENUM('web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'hosting', 'other'),
         defaultValue: 'other'
     },
+    budget_range: {
+        type: DataTypes.ENUM('under_1000', '1000_5000', '5000_15000', '15000_50000', 'over_50000'),
+        allowNull: true
+    },
     status: {
         type: DataTypes.ENUM('new', 'in_progress', 'contacted', 'proposal_sent', 'closed_won', 'closed_lost', 'archived'),
         defaultValue: 'new'

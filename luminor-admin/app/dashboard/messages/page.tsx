@@ -9,12 +9,33 @@ interface ContactMessage {
     id: number;
     name: string;
     email: string;
+    phone?: string;
     subject: string;
     message: string;
+    service?: string;
+    budget_range?: string;
     status: string;
     notes?: string;
     created_at: string;
 }
+
+const BUDGET_LABELS: Record<string, string> = {
+    under_1000: 'Under €1,000',
+    '1000_5000': '€1,000 – €5,000',
+    '5000_15000': '€5,000 – €15,000',
+    '15000_50000': '€15,000 – €50,000',
+    over_50000: 'Over €50,000',
+};
+
+const SERVICE_LABELS: Record<string, string> = {
+    'web-development': 'Web Development',
+    'graphic-design': 'Graphic Design',
+    'digital-marketing': 'Digital Marketing',
+    seo: 'SEO',
+    'ai-automation': 'AI & Automation',
+    hosting: 'Hosting',
+    other: 'Other',
+};
 
 const statusOptions = [
     { value: 'new', label: 'New', color: 'bg-blue-100 text-blue-800' },
@@ -206,6 +227,27 @@ export default function MessagesPage() {
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Meta info */}
+                                {(selectedMessage.phone || selectedMessage.service || selectedMessage.budget_range) && (
+                                    <div className="flex flex-wrap gap-3 mb-6">
+                                        {selectedMessage.phone && (
+                                            <span className="text-xs px-3 py-1.5 bg-gray-100 rounded-full font-bold text-[#0F172A]">
+                                                📞 {selectedMessage.phone}
+                                            </span>
+                                        )}
+                                        {selectedMessage.service && (
+                                            <span className="text-xs px-3 py-1.5 bg-blue-50 rounded-full font-bold text-blue-800">
+                                                🛠 {SERVICE_LABELS[selectedMessage.service] || selectedMessage.service}
+                                            </span>
+                                        )}
+                                        {selectedMessage.budget_range && (
+                                            <span className="text-xs px-3 py-1.5 bg-[#FFF9F0] rounded-full font-bold text-[#FF9F1C] border border-[#FF9F1C]/30">
+                                                💰 {BUDGET_LABELS[selectedMessage.budget_range] || selectedMessage.budget_range}
+                                            </span>
+                                        )}
+                                    </div>
+                                )}
 
                                 <div className="prose max-w-none text-[#334155] whitespace-pre-wrap leading-relaxed font-medium text-lg">
                                     {selectedMessage.message}

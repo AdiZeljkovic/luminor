@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m \"fix: Remove broken CSRF generateToken middleware \\(SameSite=strict cookies already protect against CSRF\\)\")",
+      "Bash(git commit:*)",
+      "Bash(xargs sed -i \"s|''https://luminor\\\\.solutions|''https://www.luminor.solutions|g\")",
+      "Bash(xargs sed -i 's|`https://luminor\\\\.solutions|`https://www.luminor.solutions|g')",
+      "Bash(xargs sed -i 's|\"\"https://luminor\\\\.solutions|\"\"https://www.luminor.solutions|g')"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-admin\\app\\dashboard\\clients",
+      "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-admin\\app\\dashboard\\pricing\\edit",
+      "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-frontend\\app\\[locale]"
+    ]
+  }
+}

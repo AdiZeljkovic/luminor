@@ -25,7 +25,8 @@ router.post('/send', contactLimiter, [
   body('phone').optional().trim().isLength({ max: 30 }),
   body('subject').trim().notEmpty().withMessage('Subject is required').isLength({ max: 200 }),
   body('message').trim().notEmpty().withMessage('Message is required').isLength({ max: 5000 }),
-  body('service').optional().isIn(['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'hosting', 'other'])
+  body('service').optional().isIn(['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'hosting', 'other']),
+  body('budget_range').optional().isIn(['under_1000', '1000_5000', '5000_15000', '15000_50000', 'over_50000'])
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -33,7 +34,7 @@ router.post('/send', contactLimiter, [
       return res.status(400).json({ success: false, errors: errors.array() });
     }
 
-    const { name, email, phone, subject, message, service } = req.body;
+    const { name, email, phone, subject, message, service, budget_range } = req.body;
 
     // Get client info
     const ipAddress = req.ip || req.connection.remoteAddress;
@@ -47,6 +48,7 @@ router.post('/send', contactLimiter, [
       subject,
       message,
       service,
+      budget_range: budget_range || null,
       ip_address: ipAddress,
       user_agent: userAgent
     });

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
-import { LogOut, Home, PieChart, MessageSquare, Briefcase, FileText, Search, Mail, Settings, Menu, X, ChevronRight, Star, HelpCircle, Activity, MessageCircle, Users } from "lucide-react";
+import { LogOut, Home, PieChart, MessageSquare, Briefcase, FileText, Search, Mail, Settings, Menu, X, ChevronRight, Star, HelpCircle, Activity, MessageCircle, Users, Tag, Image } from "lucide-react";
 
 // NOTE: We're using standard Lucide React icons for the sidebar
 // This requires installation: npm install lucide-react (Already done in package.json)
@@ -68,8 +68,10 @@ export default function DashboardLayout({
             items: [
                 { name: "Blog Posts", href: "/dashboard/blog", icon: FileText },
                 { name: "Portfolio", href: "/dashboard/portfolio", icon: Briefcase },
-                { name: "Testimonials", href: "/dashboard/testimonials", icon: MessageSquare }, // Reusing MessageSquare or find better
-                { name: "Client Logos", href: "/dashboard/client-logos", icon: Star }, // Using Star or similar
+                { name: "Pricing Plans", href: "/dashboard/pricing", icon: Tag },
+                { name: "Team", href: "/dashboard/team", icon: Users },
+                { name: "Testimonials", href: "/dashboard/testimonials", icon: MessageSquare },
+                { name: "Client Logos", href: "/dashboard/client-logos", icon: Star },
                 { name: "SEO Tools", href: "/dashboard/seo", icon: Search },
             ]
         },
@@ -85,6 +87,7 @@ export default function DashboardLayout({
             title: "Tools",
             items: [
                 { name: "Client Portal", href: "/dashboard/clients", icon: Users },
+                { name: "Media Library", href: "/dashboard/media", icon: Image },
                 { name: "FAQ", href: "/dashboard/faq", icon: HelpCircle },
                 { name: "Status Page", href: "/dashboard/status", icon: Activity },
             ]
