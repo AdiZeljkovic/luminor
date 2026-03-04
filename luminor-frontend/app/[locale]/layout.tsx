@@ -189,10 +189,6 @@ export default async function LocaleLayout({ children, params }: Props) {
                 {/* Preconnect to API for faster data fetching */}
                 <link rel="preconnect" href="https://api.luminor.solutions" />
                 <link rel="dns-prefetch" href="https://api.luminor.solutions" />
-                {/* Hreflang tags for SEO */}
-                <link rel="alternate" hrefLang="en" href="https://www.luminor.solutions" />
-                <link rel="alternate" hrefLang="bs" href="https://www.luminor.solutions/bs" />
-                <link rel="alternate" hrefLang="x-default" href="https://www.luminor.solutions" />
             </head>
             <body className={`${beVietnamPro.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased`}>
                 {/* Google Tag Manager (noscript) */}

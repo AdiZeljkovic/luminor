@@ -72,15 +72,22 @@ export default function WebDevelopmentPage() {
             "url": "https://www.luminor.solutions",
             "logo": "https://www.luminor.solutions/rocket-hero.png"
         },
-        "areaServed": {
-            "@type": "Country",
-            "name": "Bosnia and Herzegovina"
-        },
+        "areaServed": "Worldwide",
         "serviceType": "Web Development",
         "offers": {
             "@type": "Offer",
             "availability": "https://schema.org/InStock"
         }
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+        }))
     };
 
     return (
@@ -89,6 +96,10 @@ export default function WebDevelopmentPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
             {/* Hero Section */}

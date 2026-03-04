@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         "author": [{
             "@type": "Person",
             "name": authorName,
-            "url": `https://www.luminor.solutions/author/${post.author?.id}`
+            "url": "https://www.luminor.solutions"
         }],
         "publisher": {
             "@type": "Organization",

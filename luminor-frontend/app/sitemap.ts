@@ -14,7 +14,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/pricing',
         '/portfolio',
         '/blog',
-        '/contact'
+        '/contact',
+        '/hosting',
+        '/faq',
+        '/status',
     ];
 
     const locales = ['en', 'bs'];

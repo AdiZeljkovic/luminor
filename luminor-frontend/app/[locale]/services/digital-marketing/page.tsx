@@ -46,15 +46,22 @@ export default function DigitalMarketingPage() {
             "url": "https://www.luminor.solutions",
             "logo": "https://www.luminor.solutions/rocket-hero.png"
         },
-        "areaServed": {
-            "@type": "Country",
-            "name": "Bosnia and Herzegovina"
-        },
+        "areaServed": "Worldwide",
         "serviceType": "Digital Marketing",
         "offers": {
             "@type": "Offer",
             "availability": "https://schema.org/InStock"
         }
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqKeys.map(key => ({
+            "@type": "Question",
+            "name": t(`faq.q${key}`),
+            "acceptedAnswer": { "@type": "Answer", "text": t(`faq.a${key}`) }
+        }))
     };
 
     return (
@@ -63,6 +70,10 @@ export default function DigitalMarketingPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
             {/* Hero Section */}

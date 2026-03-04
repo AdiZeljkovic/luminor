@@ -116,8 +116,35 @@ export default function ContactPage() {
         }
     };
 
+    const localBusinessSchema = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Luminor Solutions",
+        "url": "https://www.luminor.solutions",
+        "email": "info@luminor.solutions",
+        "telephone": "+387 62 574 783",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Porodice Ribar 39",
+            "addressLocality": "Sarajevo",
+            "postalCode": "71000",
+            "addressCountry": "BA"
+        },
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 09:00-17:00",
+        "sameAs": [
+            "https://www.linkedin.com/company/luminor-solutions",
+            "https://www.instagram.com/luminor.solutions",
+            "https://www.facebook.com/luminor.solutions"
+        ]
+    };
+
     return (
         <div className={styles.page}>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+            />
             {/* Hero */}
             <section className={styles.hero}>
                 <div className={styles.container}>
