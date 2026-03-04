@@ -285,6 +285,15 @@
                 "hosting": "Hosting",
                 "other": "Ostalo"
             },
+            "budget": "Očekivani Budžet",
+            "budgetPlaceholder": "Odaberite budžet",
+            "budgetOptions": {
+                "under1k": "Manje od €1.000",
+                "1k5k": "€1.000 – €5.000",
+                "5k15k": "€5.000 – €15.000",
+                "15k50k": "€15.000 – €50.000",
+                "over50k": "Više od €50.000"
+            },
             "message": "Vaša Poruka",
             "messagePlaceholder": "Opišite nam vaš projekat ili pitanje...",
             "submit": "Pošalji Poruku",

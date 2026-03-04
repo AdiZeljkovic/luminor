@@ -220,7 +220,7 @@ export default function ChatSessionPage() {
             </div>
 
             {/* Messages */}
-            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col" style={{ height: "480px" }}>
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm flex flex-col" style={{ height: "clamp(320px, calc(100vh - 280px), 600px)" }}>
                 <div className="flex-1 overflow-y-auto p-6 space-y-4">
                     {messages.map((msg) => (
                         <div key={msg.id} className={`flex ${msg.sender_type === "agent" ? "justify-end" : "justify-start"}`}>

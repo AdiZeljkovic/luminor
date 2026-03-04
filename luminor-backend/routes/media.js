@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises;
 const { auth } = require('../middleware/auth');
 const router = express.Router();
 
@@ -9,29 +9,32 @@ const UPLOADS_DIR = path.join(__dirname, '../public/uploads');
 // GET /api/media — Admin: list all uploaded files
 router.get('/', auth, async (req, res) => {
     try {
-        if (!fs.existsSync(UPLOADS_DIR)) {
+        try {
+            await fs.access(UPLOADS_DIR);
+        } catch {
             return res.json({ success: true, data: [] });
         }
 
-        const files = fs.readdirSync(UPLOADS_DIR)
-            .filter(f => !f.startsWith('.'))
-            .map(filename => {
-                const filePath = path.join(UPLOADS_DIR, filename);
-                const stat = fs.statSync(filePath);
-                const ext = path.extname(filename).toLowerCase();
-                const isImage = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif'].includes(ext);
-                const isPdf = ext === '.pdf';
+        const filenames = (await fs.readdir(UPLOADS_DIR)).filter(f => !f.startsWith('.'));
 
-                return {
-                    filename,
-                    url: `/uploads/${filename}`,
-                    size: stat.size,
-                    type: isImage ? 'image' : isPdf ? 'pdf' : 'other',
-                    mimetype: isImage ? `image/${ext.replace('.', '')}` : isPdf ? 'application/pdf' : 'application/octet-stream',
-                    created_at: stat.birthtime || stat.mtime
-                };
-            })
-            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        const files = await Promise.all(filenames.map(async filename => {
+            const filePath = path.join(UPLOADS_DIR, filename);
+            const stat = await fs.stat(filePath);
+            const ext = path.extname(filename).toLowerCase();
+            const isImage = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif'].includes(ext);
+            const isPdf = ext === '.pdf';
+
+            return {
+                filename,
+                url: `/uploads/${filename}`,
+                size: stat.size,
+                type: isImage ? 'image' : isPdf ? 'pdf' : 'other',
+                mimetype: isImage ? `image/${ext.replace('.', '')}` : isPdf ? 'application/pdf' : 'application/octet-stream',
+                created_at: stat.birthtime || stat.mtime
+            };
+        }));
+
+        files.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
         res.json({ success: true, data: files });
     } catch (error) {
@@ -52,11 +55,13 @@ router.delete('/:filename', auth, async (req, res) => {
             return res.status(400).json({ success: false, error: 'Invalid filename' });
         }
 
-        if (!fs.existsSync(filePath)) {
+        try {
+            await fs.access(filePath);
+        } catch {
             return res.status(404).json({ success: false, error: 'File not found' });
         }
 
-        fs.unlinkSync(filePath);
+        await fs.unlink(filePath);
         res.json({ success: true, message: 'File deleted' });
     } catch (error) {
         console.error('Media delete error:', error);

@@ -11,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '',
         '/about',
         '/services',
+        '/pricing',
         '/portfolio',
         '/blog',
         '/contact'
@@ -28,26 +29,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }))
     );
 
-    // 2. Dynamic Blog Posts (with image metadata)
-    let blogUrls: MetadataRoute.Sitemap = [];
+    // 2. Fetch blog data once — reused for posts, categories and tags
+    let allBlogPosts: any[] = [];
     try {
-        const res = await fetch(`${API_URL}/api/blog?limit=1000`); // Fetch many
+        const res = await fetch(`${API_URL}/api/blog?limit=1000`);
         const data = await res.json();
-
-        if (data.success && data.data) {
-            blogUrls = data.data.flatMap((post: any) =>
-                locales.map(locale => ({
-                    url: `${BASE_URL}/${locale}/blog/${post.slug}`,
-                    lastModified: new Date(post.updatedAt || post.published_at),
-                    changeFrequency: 'weekly' as const,
-                    priority: 0.7,
-                    images: post.featured_image ? [post.featured_image] : undefined,
-                }))
-            );
-        }
+        if (data.success && data.data) allBlogPosts = data.data;
     } catch (error) {
-        console.error("Sitemap generation error:", error);
+        console.error("Sitemap blog fetch error:", error);
     }
+
+    const blogUrls: MetadataRoute.Sitemap = allBlogPosts.flatMap((post: any) =>
+        locales.map(locale => ({
+            url: `${BASE_URL}/${locale}/blog/${post.slug}`,
+            lastModified: new Date(post.updatedAt || post.published_at),
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+            images: post.featured_image ? [post.featured_image] : undefined,
+        }))
+    );
 
     // 3. Dynamic Portfolio Projects (with image metadata)
     let portfolioUrls: MetadataRoute.Sitemap = [];
@@ -57,15 +57,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
         if (data.success && data.data) {
             portfolioUrls = data.data.flatMap((project: any) => {
-                // Collect all project images (featured image + screenshots)
                 const images: string[] = [];
                 if (project.featured_image) images.push(project.featured_image);
                 if (project.screenshots && Array.isArray(project.screenshots)) {
                     images.push(...project.screenshots);
                 }
-
                 return locales.map(locale => ({
-                    url: `${BASE_URL}/${locale}/portfolio/${project.slug || project.id}`, // Fallback to ID if slug missing
+                    url: `${BASE_URL}/${locale}/portfolio/${project.slug || project.id}`,
                     lastModified: new Date(project.updated_at || project.created_at || new Date()),
                     changeFrequency: 'monthly' as const,
                     priority: 0.8,
@@ -77,56 +75,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error("Portfolio sitemap generation error:", error);
     }
 
-    // 4. Blog Category Archive Pages
-    let categoryUrls: MetadataRoute.Sitemap = [];
-    try {
-        const res = await fetch(`${API_URL}/api/blog?limit=1000`);
-        const data = await res.json();
+    // 4. Blog Category Archive Pages (derived from already-fetched blog data)
+    const categories = [...new Set<string>(allBlogPosts.map((post: any) => post.category).filter(Boolean))];
+    const categoryUrls: MetadataRoute.Sitemap = categories.flatMap((category: string) =>
+        locales.map(locale => ({
+            url: `${BASE_URL}/${locale}/blog/category/${encodeURIComponent(category)}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.6,
+        }))
+    );
 
-        if (data.success && data.data) {
-            // Extract unique categories from blog posts
-            const categories = [...new Set<string>(data.data.map((post: any) => post.category).filter(Boolean))];
-
-            categoryUrls = categories.flatMap((category: string) =>
-                locales.map(locale => ({
-                    url: `${BASE_URL}/${locale}/blog/category/${encodeURIComponent(category)}`,
-                    lastModified: new Date(),
-                    changeFrequency: 'weekly' as const,
-                    priority: 0.6,
-                }))
-            );
+    // 5. Blog Tag Archive Pages (derived from already-fetched blog data)
+    const allTags = new Set<string>();
+    allBlogPosts.forEach((post: any) => {
+        if (post.tags && Array.isArray(post.tags)) {
+            post.tags.forEach((tag: string) => allTags.add(tag));
         }
-    } catch (error) {
-        console.error("Category sitemap generation error:", error);
-    }
-
-    // 5. Blog Tag Archive Pages
-    let tagUrls: MetadataRoute.Sitemap = [];
-    try {
-        const res = await fetch(`${API_URL}/api/blog?limit=1000`);
-        const data = await res.json();
-
-        if (data.success && data.data) {
-            // Extract unique tags from all blog posts
-            const allTags = new Set<string>();
-            data.data.forEach((post: any) => {
-                if (post.tags && Array.isArray(post.tags)) {
-                    post.tags.forEach((tag: string) => allTags.add(tag));
-                }
-            });
-
-            tagUrls = Array.from(allTags).flatMap((tag: string) =>
-                locales.map(locale => ({
-                    url: `${BASE_URL}/${locale}/blog/tag/${encodeURIComponent(tag)}`,
-                    lastModified: new Date(),
-                    changeFrequency: 'weekly' as const,
-                    priority: 0.6,
-                }))
-            );
-        }
-    } catch (error) {
-        console.error("Tag sitemap generation error:", error);
-    }
+    });
+    const tagUrls: MetadataRoute.Sitemap = Array.from(allTags).flatMap((tag: string) =>
+        locales.map(locale => ({
+            url: `${BASE_URL}/${locale}/blog/tag/${encodeURIComponent(tag)}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.6,
+        }))
+    );
 
     return [...staticUrls, ...blogUrls, ...portfolioUrls, ...categoryUrls, ...tagUrls];
 }

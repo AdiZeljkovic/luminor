@@ -196,8 +196,8 @@ let server;
 const startServer = async () => {
     try {
         // Sync database (creates tables if they don't exist)
-        // ENABLE ALTER to update schema with new fields
-        await syncDatabase({ alter: true });
+        // Set DB_ALTER=true in .env only when deploying schema changes
+        await syncDatabase({ alter: process.env.DB_ALTER === 'true' });
 
         // Initialize Socket.io (requires chat feature)
         try {

@@ -28,7 +28,8 @@ router.get('/all', auth, async (req, res) => {
 // POST /api/pricing — Admin
 router.post('/', auth, async (req, res) => {
     try {
-        const plan = await PricingPlan.create(req.body);
+        const { name, price, currency, billing_cycle, description_en, description_bs, features, is_recommended, is_active, order_num, category, cta_text, cta_url } = req.body;
+        const plan = await PricingPlan.create({ name, price, currency, billing_cycle, description_en, description_bs, features, is_recommended, is_active, order_num, category, cta_text, cta_url });
         res.status(201).json({ success: true, data: plan });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });
@@ -40,7 +41,8 @@ router.put('/:id', auth, async (req, res) => {
     try {
         const plan = await PricingPlan.findByPk(req.params.id);
         if (!plan) return res.status(404).json({ success: false, error: 'Not found' });
-        await plan.update(req.body);
+        const { name, price, currency, billing_cycle, description_en, description_bs, features, is_recommended, is_active, order_num, category, cta_text, cta_url } = req.body;
+        await plan.update({ name, price, currency, billing_cycle, description_en, description_bs, features, is_recommended, is_active, order_num, category, cta_text, cta_url });
         res.json({ success: true, data: plan });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });

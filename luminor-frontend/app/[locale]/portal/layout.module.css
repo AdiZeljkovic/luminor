@@ -281,5 +281,7 @@
     .navLabel { display: none; }
     .main { padding: 20px 16px; }
     .brand { padding: 16px 16px 12px; }
-    .userSection { display: none; }
+    .userSection { padding: 0 10px 10px; border-top: none; }
+    .userInfo { display: none; }
+    .logoutBtn { padding: 7px 12px; font-size: 0.68rem; }
 }

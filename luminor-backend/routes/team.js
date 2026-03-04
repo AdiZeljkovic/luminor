@@ -29,7 +29,8 @@ router.get('/all', auth, async (req, res) => {
 // POST /api/team — Admin
 router.post('/', auth, async (req, res) => {
     try {
-        const member = await TeamMember.create(req.body);
+        const { name, role_en, role_bs, bio_en, bio_bs, photo_url, linkedin_url, order_num, is_active } = req.body;
+        const member = await TeamMember.create({ name, role_en, role_bs, bio_en, bio_bs, photo_url, linkedin_url, order_num, is_active });
         res.status(201).json({ success: true, data: member });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });
@@ -41,7 +42,8 @@ router.put('/:id', auth, async (req, res) => {
     try {
         const member = await TeamMember.findByPk(req.params.id);
         if (!member) return res.status(404).json({ success: false, error: 'Not found' });
-        await member.update(req.body);
+        const { name, role_en, role_bs, bio_en, bio_bs, photo_url, linkedin_url, order_num, is_active } = req.body;
+        await member.update({ name, role_en, role_bs, bio_en, bio_bs, photo_url, linkedin_url, order_num, is_active });
         res.json({ success: true, data: member });
     } catch (error) {
         res.status(500).json({ success: false, error: 'Server error' });

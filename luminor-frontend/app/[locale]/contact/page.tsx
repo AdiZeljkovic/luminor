@@ -228,19 +228,19 @@ export default function ContactPage() {
                                             </div>
                                         </div>
                                         <div className={styles.formGroup}>
-                                            <label className={styles.formLabel}>Expected Budget</label>
+                                            <label className={styles.formLabel}>{tForm('budget')}</label>
                                             <select
                                                 className={styles.formSelect}
                                                 value={formData.budget_range}
                                                 onChange={(e) => setFormData({ ...formData, budget_range: e.target.value })}
                                                 disabled={submitting}
                                             >
-                                                <option value="">Select budget range</option>
-                                                <option value="under_1000">Under €1,000</option>
-                                                <option value="1000_5000">€1,000 – €5,000</option>
-                                                <option value="5000_15000">€5,000 – €15,000</option>
-                                                <option value="15000_50000">€15,000 – €50,000</option>
-                                                <option value="over_50000">Over €50,000</option>
+                                                <option value="">{tForm('budgetPlaceholder')}</option>
+                                                <option value="under_1000">{tForm('budgetOptions.under1k')}</option>
+                                                <option value="1000_5000">{tForm('budgetOptions.1k5k')}</option>
+                                                <option value="5000_15000">{tForm('budgetOptions.5k15k')}</option>
+                                                <option value="15000_50000">{tForm('budgetOptions.15k50k')}</option>
+                                                <option value="over_50000">{tForm('budgetOptions.over50k')}</option>
                                             </select>
                                         </div>
                                         <div className={styles.formGroup}>

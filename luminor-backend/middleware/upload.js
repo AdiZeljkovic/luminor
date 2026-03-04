@@ -30,8 +30,6 @@ const fileFilter = (req, file, cb) => {
     if (extname && mimetype) {
         return cb(null, true);
     } else {
-        // TODO: For maximum security, implement magic bytes validation using 'file-type' package
-        // to verify actual file content, not just MIME type and extension
         cb(new Error('Only images are allowed (jpeg, jpg, png, webp, gif)!'));
     }
 };
