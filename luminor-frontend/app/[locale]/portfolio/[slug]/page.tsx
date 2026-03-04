@@ -57,11 +57,11 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
         title: project.title,
         description: plainDescription,
         alternates: {
-            canonical: `https://luminor.solutions/${canonicalPath}`,
+            canonical: `https://www.luminor.solutions/${canonicalPath}`,
             languages: {
-                'en': `https://luminor.solutions/portfolio/${slug}`,
-                'bs': `https://luminor.solutions/bs/portfolio/${slug}`,
-                'x-default': `https://luminor.solutions/portfolio/${slug}`,
+                'en': `https://www.luminor.solutions/portfolio/${slug}`,
+                'bs': `https://www.luminor.solutions/bs/portfolio/${slug}`,
+                'x-default': `https://www.luminor.solutions/portfolio/${slug}`,
             },
         },
         openGraph: {
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
             description: plainDescription,
             images: [{ url: project.featuredImage, width: 1200, height: 630 }],
             type: "article",
-            url: `https://luminor.solutions/${canonicalPath}`,
+            url: `https://www.luminor.solutions/${canonicalPath}`,
         },
         twitter: {
             card: 'summary_large_image',
@@ -98,7 +98,7 @@ export default async function ProjectDetail({ params }: { params: { slug: string
     }
 
     const { slug, locale = 'en' } = params;
-    const canonicalUrl = `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}portfolio/${slug}`;
+    const canonicalUrl = `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}portfolio/${slug}`;
 
     const creativeWorkSchema = {
         "@context": "https://schema.org",
@@ -111,7 +111,7 @@ export default async function ProjectDetail({ params }: { params: { slug: string
         "creator": {
             "@type": "Organization",
             "name": "Luminor Solutions",
-            "url": "https://luminor.solutions"
+            "url": "https://www.luminor.solutions"
         },
         "genre": project.category,
         ...(project.client ? { "contributor": { "@type": "Organization", "name": project.client } } : {}),

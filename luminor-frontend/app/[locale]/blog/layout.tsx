@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: t('title'),
             description: t('description'),
             type: 'website',
-            url: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog`,
+            url: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog`,
         },
         twitter: {
             card: 'summary_large_image',
@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description: t('description'),
         },
         alternates: {
-            canonical: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog`,
+            canonical: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog`,
             languages: {
-                'en': 'https://luminor.solutions/blog',
-                'bs': 'https://luminor.solutions/bs/blog',
-                'hr': 'https://luminor.solutions/bs/blog',
-                'sr': 'https://luminor.solutions/bs/blog',
+                'en': 'https://www.luminor.solutions/blog',
+                'bs': 'https://www.luminor.solutions/bs/blog',
+                'hr': 'https://www.luminor.solutions/bs/blog',
+                'sr': 'https://www.luminor.solutions/bs/blog',
             },
         },
     };

@@ -20,19 +20,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description,
         keywords: t('keywords').split(',').map(k => k.trim()),
         alternates: {
-            canonical: `https://luminor.solutions/${canonicalPath}`,
+            canonical: `https://www.luminor.solutions/${canonicalPath}`,
             languages: {
-                'en': 'https://luminor.solutions/services',
-                'bs': 'https://luminor.solutions/bs/services',
-                'x-default': 'https://luminor.solutions/services',
+                'en': 'https://www.luminor.solutions/services',
+                'bs': 'https://www.luminor.solutions/bs/services',
+                'x-default': 'https://www.luminor.solutions/services',
             },
         },
         openGraph: {
             type: 'website',
             title,
             description,
-            url: `https://luminor.solutions/${canonicalPath}`,
-            images: [{ url: 'https://luminor.solutions/rocket-hero.png', width: 1200, height: 630 }],
+            url: `https://www.luminor.solutions/${canonicalPath}`,
+            images: [{ url: 'https://www.luminor.solutions/rocket-hero.png', width: 1200, height: 630 }],
         },
         twitter: {
             card: 'summary_large_image',

@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: `Explore all our articles tagged with "${decodedTag}". Expert insights and practical tips from Luminor Solutions.`,
         keywords: `${decodedTag}, blog, articles, ${decodedTag} tips, ${decodedTag} guide`,
         alternates: {
-            canonical: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog/tag/${tag}`,
+            canonical: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog/tag/${tag}`,
             languages: {
-                'en': `https://luminor.solutions/blog/tag/${tag}`,
-                'bs': `https://luminor.solutions/bs/blog/tag/${tag}`,
-                'hr': `https://luminor.solutions/bs/blog/tag/${tag}`,
-                'sr': `https://luminor.solutions/bs/blog/tag/${tag}`,
+                'en': `https://www.luminor.solutions/blog/tag/${tag}`,
+                'bs': `https://www.luminor.solutions/bs/blog/tag/${tag}`,
+                'hr': `https://www.luminor.solutions/bs/blog/tag/${tag}`,
+                'sr': `https://www.luminor.solutions/bs/blog/tag/${tag}`,
             },
         },
         robots: {

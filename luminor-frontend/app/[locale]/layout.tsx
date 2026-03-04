@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const t = await getTranslations({ locale, namespace: 'seo.default' });
     const settings = await getSiteSettings();
 
-    const baseUrl = 'https://luminor.solutions';
+    const baseUrl = 'https://www.luminor.solutions';
     const siteTitle = settings?.site_title || t('title');
     const siteDesc = settings?.site_description || t('description');
     const keywords = settings?.site_keywords
@@ -145,7 +145,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: siteTitle,
             description: siteDesc,
             images: [{
-                url: settings?.og_image_url || 'https://luminor.solutions/rocket-hero.png',
+                url: settings?.og_image_url || 'https://www.luminor.solutions/rocket-hero.png',
                 width: 1200,
                 height: 630,
                 alt: siteTitle
@@ -155,7 +155,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             card: 'summary_large_image',
             title: siteTitle,
             description: siteDesc,
-            images: [settings?.og_image_url || 'https://luminor.solutions/rocket-hero.png'],
+            images: [settings?.og_image_url || 'https://www.luminor.solutions/rocket-hero.png'],
             creator: '@LuminorSolutions',
             site: '@LuminorSolutions',
         },
@@ -189,9 +189,9 @@ export default async function LocaleLayout({ children, params }: Props) {
                 <link rel="preconnect" href="https://api.luminor.solutions" />
                 <link rel="dns-prefetch" href="https://api.luminor.solutions" />
                 {/* Hreflang tags for SEO */}
-                <link rel="alternate" hrefLang="en" href="https://luminor.solutions" />
-                <link rel="alternate" hrefLang="bs" href="https://luminor.solutions/bs" />
-                <link rel="alternate" hrefLang="x-default" href="https://luminor.solutions" />
+                <link rel="alternate" hrefLang="en" href="https://www.luminor.solutions" />
+                <link rel="alternate" hrefLang="bs" href="https://www.luminor.solutions/bs" />
+                <link rel="alternate" hrefLang="x-default" href="https://www.luminor.solutions" />
             </head>
             <body className={`${beVietnamPro.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased`}>
                 {/* Google Tag Manager (noscript) */}
@@ -215,8 +215,8 @@ export default async function LocaleLayout({ children, params }: Props) {
                             "@context": "https://schema.org",
                             "@type": settings?.schema_type || "Organization",
                             "name": settings?.business_name || settings?.site_title || "Luminor.Solutions",
-                            "url": "https://luminor.solutions",
-                            "logo": settings?.logo_url || "https://luminor.solutions/logo.png",
+                            "url": "https://www.luminor.solutions",
+                            "logo": settings?.logo_url || "https://www.luminor.solutions/logo.png",
                             "description": settings?.site_description,
                             "email": settings?.contact_email || "info@luminor.solutions",
                             "telephone": settings?.contact_phone || "+387 62 574 783",

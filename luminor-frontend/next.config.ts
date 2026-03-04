@@ -67,6 +67,14 @@ const nextConfig: NextConfig = {
             value: 'camera=(), microphone=(), geolocation=()'
           },
           {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin-allow-popups'
+          },
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'unsafe-none'
+          },
+          {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
@@ -74,7 +82,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
               "font-src 'self' https://fonts.gstatic.com data:",
               "img-src 'self' data: blob: https://images.unsplash.com https://api.luminor.solutions https://luminor.solutions https://www.google-analytics.com https://www.googletagmanager.com",
-              "connect-src 'self' https://api.luminor.solutions https://www.google-analytics.com https://www.googletagmanager.com https://calendly.com",
+              "connect-src 'self' https://api.luminor.solutions wss://api.luminor.solutions https://www.google-analytics.com https://www.googletagmanager.com https://calendly.com",
               "frame-src https://www.googletagmanager.com https://calendly.com",
               "media-src 'self'",
               "object-src 'none'",

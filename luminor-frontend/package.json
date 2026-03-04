@@ -16,6 +16,12 @@
     "react-dom": "19.2.3",
     "socket.io-client": "^4.8.1"
   },
+  "browserslist": [
+    "chrome >= 90",
+    "firefox >= 88",
+    "safari >= 14",
+    "edge >= 90"
+  ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

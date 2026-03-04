@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: t('title'),
             description: t('description'),
             type: 'website',
-            url: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/ai-automation`,
+            url: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/ai-automation`,
         },
         twitter: {
             card: 'summary_large_image',
@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description: t('description'),
         },
         alternates: {
-            canonical: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/ai-automation`,
+            canonical: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/ai-automation`,
             languages: {
-                'en': 'https://luminor.solutions/services/ai-automation',
-                'bs': 'https://luminor.solutions/bs/services/ai-automation',
-                'hr': 'https://luminor.solutions/bs/services/ai-automation',
-                'sr': 'https://luminor.solutions/bs/services/ai-automation',
+                'en': 'https://www.luminor.solutions/services/ai-automation',
+                'bs': 'https://www.luminor.solutions/bs/services/ai-automation',
+                'hr': 'https://www.luminor.solutions/bs/services/ai-automation',
+                'sr': 'https://www.luminor.solutions/bs/services/ai-automation',
             },
         },
     };

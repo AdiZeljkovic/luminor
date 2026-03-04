@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: t('title'),
             description: t('description'),
             type: 'website',
-            url: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/digital-marketing`,
+            url: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/digital-marketing`,
         },
         twitter: {
             card: 'summary_large_image',
@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description: t('description'),
         },
         alternates: {
-            canonical: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/digital-marketing`,
+            canonical: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}services/digital-marketing`,
             languages: {
-                'en': 'https://luminor.solutions/services/digital-marketing',
-                'bs': 'https://luminor.solutions/bs/services/digital-marketing',
-                'hr': 'https://luminor.solutions/bs/services/digital-marketing',
-                'sr': 'https://luminor.solutions/bs/services/digital-marketing',
+                'en': 'https://www.luminor.solutions/services/digital-marketing',
+                'bs': 'https://www.luminor.solutions/bs/services/digital-marketing',
+                'hr': 'https://www.luminor.solutions/bs/services/digital-marketing',
+                'sr': 'https://www.luminor.solutions/bs/services/digital-marketing',
             },
         },
     };

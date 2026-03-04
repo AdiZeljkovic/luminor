@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: `Discover expert insights and practical guides about ${decodedCategory}. Professional articles from Luminor Solutions.`,
         keywords: `${decodedCategory}, blog, articles, ${decodedCategory} tips, ${decodedCategory} guide, ${decodedCategory} best practices`,
         alternates: {
-            canonical: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog/category/${category}`,
+            canonical: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog/category/${category}`,
             languages: {
-                'en': `https://luminor.solutions/blog/category/${category}`,
-                'bs': `https://luminor.solutions/bs/blog/category/${category}`,
-                'hr': `https://luminor.solutions/bs/blog/category/${category}`,
-                'sr': `https://luminor.solutions/bs/blog/category/${category}`,
+                'en': `https://www.luminor.solutions/blog/category/${category}`,
+                'bs': `https://www.luminor.solutions/bs/blog/category/${category}`,
+                'hr': `https://www.luminor.solutions/bs/blog/category/${category}`,
+                'sr': `https://www.luminor.solutions/bs/blog/category/${category}`,
             },
         },
         robots: {
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: `${decodedCategory} | Luminor Blog`,
             description: `Discover expert insights and practical guides about ${decodedCategory}. Professional articles from Luminor Solutions.`,
             type: 'website',
-            url: `https://luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog/category/${category}`,
+            url: `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}blog/category/${category}`,
         },
         twitter: {
             card: 'summary_large_image',

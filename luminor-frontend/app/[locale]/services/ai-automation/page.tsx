@@ -43,8 +43,8 @@ export default function AIAutomationPage() {
         "provider": {
             "@type": "Organization",
             "name": "Luminor Solutions",
-            "url": "https://luminor.solutions",
-            "logo": "https://luminor.solutions/rocket-hero.png"
+            "url": "https://www.luminor.solutions",
+            "logo": "https://www.luminor.solutions/rocket-hero.png"
         },
         "areaServed": {
             "@type": "Country",
