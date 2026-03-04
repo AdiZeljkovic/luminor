@@ -36,7 +36,7 @@ export default function DashboardPage() {
             try {
                 const response = await apiClient.get('/api/analytics/stats');
                 if (response.success) {
-                    setStats(response);
+                    setStats(response.data as DashboardStats);
                 }
             } catch (error) {
                 console.error("Error fetching stats:", error);
