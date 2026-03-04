@@ -7,6 +7,7 @@ import { apiClient } from "@/lib/apiClient";
 
 interface Message {
     id: number;
+    session_id: number;
     content: string;
     sender_type: "visitor" | "agent";
     sender_name: string;
