@@ -50,7 +50,7 @@ export default function BlogPage() {
         { id: "all", label: t('categories.all') },
         { id: "web-development", label: t('categories.webDesign') }, // Mapped to backend values
         { id: "seo", label: t('categories.seo') },
-        { id: "graphic-design", label: "Graphic Design" }, // Backend value
+        { id: "graphic-design", label: t('categories.graphicDesign') },
         { id: "digital-marketing", label: t('categories.marketing') },
         { id: "ai-automation", label: t('categories.ai') },
     ];

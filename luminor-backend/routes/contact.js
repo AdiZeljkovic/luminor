@@ -26,7 +26,7 @@ router.post('/send', contactLimiter, [
   body('subject').trim().notEmpty().withMessage('Subject is required').isLength({ max: 200 }),
   body('message').trim().notEmpty().withMessage('Message is required').isLength({ max: 5000 }),
   body('service').optional().isIn(['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'hosting', 'other']),
-  body('budget_range').optional().isIn(['under_1000', '1000_5000', '5000_15000', '15000_50000', 'over_50000'])
+  body('budget_range').optional().isIn(['exploring', '1000_5000', '5000_15000', '15000_50000', 'over_50000'])
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -55,7 +55,7 @@ router.post('/send', contactLimiter, [
 
     // Send email notification
     try {
-      await sendEmailNotification({ name, email, phone, subject, message, service });
+      await sendEmailNotification({ name, email, phone, subject, message, service, budget_range });
     } catch (emailError) {
       console.error('Email notification failed:', emailError);
       // Don't fail the request if email fails - message is saved to DB
@@ -174,7 +174,7 @@ function escapeHtml(text) {
 /**
  * Send email notification to admin
  */
-async function sendEmailNotification({ name, email, phone, subject, message, service }) {
+async function sendEmailNotification({ name, email, phone, subject, message, service, budget_range }) {
   // Skip if email not configured
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
     console.log('Email not configured, skipping notification');
@@ -202,12 +202,21 @@ async function sendEmailNotification({ name, email, phone, subject, message, ser
     'other': 'Other'
   };
 
+  const budgetLabels = {
+    'exploring': 'Just exploring / Not sure yet',
+    '1000_5000': '€1,500–€5,000',
+    '5000_15000': '€5,000–€15,000',
+    '15000_50000': '€15,000–€50,000',
+    'over_50000': 'Over €50,000'
+  };
+
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
   const safePhone = escapeHtml(phone);
   const safeSubject = escapeHtml(subject);
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
   const safeService = escapeHtml(serviceLabels[service] || service || '');
+  const safeBudget = escapeHtml(budgetLabels[budget_range] || '');
 
   const htmlContent = `
     <h2>New Contact Form Submission</h2>
@@ -230,6 +239,12 @@ async function sendEmailNotification({ name, email, phone, subject, message, ser
       <tr>
         <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Service</td>
         <td style="padding: 10px; border: 1px solid #ddd;">${safeService}</td>
+      </tr>
+      ` : ''}
+      ${budget_range ? `
+      <tr>
+        <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Budget</td>
+        <td style="padding: 10px; border: 1px solid #ddd;">${safeBudget}</td>
       </tr>
       ` : ''}
       <tr>

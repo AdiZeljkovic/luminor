@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import styles from "../page.module.css";
 import { API_URL } from "@/lib/api";
 
@@ -27,7 +27,7 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 export default function PortalHostingPage() {
-    const locale = useLocale();
+    const t = useTranslations('portal.hosting');
     const [plans, setPlans] = useState<HostingPlan[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -43,17 +43,14 @@ export default function PortalHostingPage() {
         return <div className={styles.loading}><div className={styles.spinner} /></div>;
     }
 
-    const title = locale === "bs" ? "Vaši Hosting Planovi" : "Your Hosting Plans";
-    const empty = locale === "bs" ? "Nemate hosting planova." : "You have no hosting plans.";
-
     return (
         <div className={styles.page}>
             <div className={styles.header}>
-                <h1 className={styles.title}>{title}</h1>
+                <h1 className={styles.title}>{t('title')}</h1>
             </div>
 
             {!plans.length ? (
-                <p className={styles.empty}>{empty}</p>
+                <p className={styles.empty}>{t('empty')}</p>
             ) : (
                 <div style={{ display: "grid", gap: "16px" }}>
                     {plans.map((plan) => (
@@ -72,21 +69,21 @@ export default function PortalHostingPage() {
 
                             <div style={{ padding: "16px 24px 20px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "16px" }}>
                                 <div>
-                                    <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Plan</div>
+                                    <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>{t('labels.plan')}</div>
                                     <div style={{ color: "#ffffff", fontWeight: "600", fontSize: "0.9rem" }}>{plan.plan_name}</div>
                                 </div>
                                 <div>
-                                    <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Storage</div>
+                                    <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>{t('labels.storage')}</div>
                                     <div style={{ color: "#ffffff", fontWeight: "600", fontSize: "0.9rem" }}>{plan.storage_gb} GB</div>
                                 </div>
                                 <div>
-                                    <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>Bandwidth</div>
+                                    <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>{t('labels.bandwidth')}</div>
                                     <div style={{ color: "#ffffff", fontWeight: "600", fontSize: "0.9rem" }}>{plan.bandwidth_gb} GB</div>
                                 </div>
                                 {plan.expires_at && (
                                     <div>
                                         <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>
-                                            {locale === "bs" ? "Ističe" : "Expires"}
+                                            {t('expires')}
                                         </div>
                                         <div style={{ color: "#ffffff", fontWeight: "600", fontSize: "0.9rem" }}>
                                             {new Date(plan.expires_at).toLocaleDateString()}
@@ -95,7 +92,7 @@ export default function PortalHostingPage() {
                                 )}
                                 {plan.ip_address && (
                                     <div>
-                                        <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>IP Address</div>
+                                        <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>{t('labels.ip')}</div>
                                         <div style={{ color: "#ffffff", fontWeight: "600", fontSize: "0.85rem", fontFamily: "monospace" }}>{plan.ip_address}</div>
                                     </div>
                                 )}

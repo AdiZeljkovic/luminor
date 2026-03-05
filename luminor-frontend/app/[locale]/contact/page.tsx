@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
 import styles from "./page.module.css";
 import { API_URL } from "@/lib/api";
 
 export default function ContactPage() {
+    const locale = useLocale();
+    const router = useRouter();
     const t = useTranslations('contact');
     const tForm = useTranslations('contact.form');
     const tFaq = useTranslations('contact.faq');
@@ -96,15 +99,8 @@ export default function ContactPage() {
             const result = await res.json();
 
             if (result.success) {
-                setSuccess(true);
-                setFormData({
-                    name: "",
-                    email: "",
-                    phone: "",
-                    service: "",
-                    budget_range: "",
-                    message: "",
-                });
+                // Redirect to thank-you page for conversion tracking
+                router.push(locale === 'en' ? '/thank-you' : `/${locale}/thank-you`);
             } else {
                 setError(result.error || t('form.errorMessage'));
             }

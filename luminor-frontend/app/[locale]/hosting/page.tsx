@@ -1,18 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
 import styles from "./page.module.css";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export default function HostingPage() {
-    const t = useTranslations('hosting');
-    const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-    const toggleFaq = (index: number) => {
-        setOpenFaq(openFaq === index ? null : index);
-    };
+export default async function HostingPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: 'hosting' });
 
     const plans = [
         {
@@ -130,7 +124,7 @@ export default function HostingPage() {
                     <div className={styles.featuresGrid}>
                         {hostingFeatures.map((feature, index) => (
                             <AnimatedSection key={index} animation="fade-up" delay={index * 100} className={styles.featureCard}>
-                                <div className={styles.featureIcon}>{feature.icon}</div>
+                                <div className={styles.featureIcon} aria-hidden="true">{feature.icon}</div>
                                 <h3 className={styles.featureTitle}>{feature.title}</h3>
                                 <p className={styles.featureText}>{feature.description}</p>
                             </AnimatedSection>
@@ -229,18 +223,15 @@ export default function HostingPage() {
                     <div className={styles.faqList}>
                         {faqs.map((faq, index) => (
                             <AnimatedSection key={index} animation="fade-up" delay={index * 100} className={styles.accordionItem}>
-                                <button
-                                    className={styles.accordionTrigger}
-                                    onClick={() => toggleFaq(index)}
-                                >
-                                    {faq.question}
-                                    <span className={`${styles.accordionIcon} ${openFaq === index ? styles.accordionIconOpen : ''}`}>▼</span>
-                                </button>
-                                {openFaq === index && (
+                                <details className="group">
+                                    <summary className={styles.accordionTrigger}>
+                                        {faq.question}
+                                        <span className={`${styles.accordionIcon} transform transition-transform group-open:rotate-180`} aria-hidden="true">▼</span>
+                                    </summary>
                                     <div className={styles.accordionContent}>
                                         <p>{faq.answer}</p>
                                     </div>
-                                )}
+                                </details>
                             </AnimatedSection>
                         ))}
                     </div>
@@ -250,8 +241,8 @@ export default function HostingPage() {
             {/* Premium CTA */}
             <div className={styles.container}>
                 <AnimatedSection animation="scale" className={styles.ctaPanel}>
-                    <div className={`${styles.floatingElement} ${styles.float1}`}>☁️</div>
-                    <div className={`${styles.floatingElement} ${styles.float2}`}>🖥️</div>
+                    <div className={`${styles.floatingElement} ${styles.float1}`} aria-hidden="true">☁️</div>
+                    <div className={`${styles.floatingElement} ${styles.float2}`} aria-hidden="true">🖥️</div>
 
                     <div className={styles.ctaGrid}>
                         <div className={styles.ctaContent}>
@@ -267,7 +258,7 @@ export default function HostingPage() {
 
                         <div className={styles.ctaCardWrapper}>
                             <div className={styles.ctaCard}>
-                                <div className={styles.ctaCardIcon}>📞</div>
+                                <div className={styles.ctaCardIcon} aria-hidden="true">📞</div>
                                 <h3 className={styles.ctaCardTitle}>{t('ctaSection.cardTitle')}</h3>
                                 <p className={styles.ctaCardText}>
                                     {t('ctaSection.cardText')}

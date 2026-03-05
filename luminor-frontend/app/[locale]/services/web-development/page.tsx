@@ -1,12 +1,12 @@
-"use client";
-
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
 import styles from "../ServiceDetail.module.css";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export default function WebDevelopmentPage() {
-    const t = useTranslations('services.webDevPage');
+export default async function WebDevelopmentPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: 'services.webDevPage' });
 
     const detailedServices = [
         {
@@ -127,17 +127,17 @@ export default function WebDevelopmentPage() {
             <div className={styles.container}>
                 <div className={styles.featuresGrid}>
                     <AnimatedSection animation="fade-up" delay={0} className={styles.featureCard}>
-                        <div className={styles.featureIcon}>🚀</div>
+                        <div className={styles.featureIcon} aria-hidden="true">🚀</div>
                         <h3 className={styles.featureTitle}>{t('features.performance.title')}</h3>
                         <p className={styles.featureText}>{t('features.performance.description')}</p>
                     </AnimatedSection>
                     <AnimatedSection animation="fade-up" delay={100} className={styles.featureCard}>
-                        <div className={styles.featureIcon}>📱</div>
+                        <div className={styles.featureIcon} aria-hidden="true">📱</div>
                         <h3 className={styles.featureTitle}>{t('features.mobile.title')}</h3>
                         <p className={styles.featureText}>{t('features.mobile.description')}</p>
                     </AnimatedSection>
                     <AnimatedSection animation="fade-up" delay={200} className={styles.featureCard}>
-                        <div className={styles.featureIcon}>🔒</div>
+                        <div className={styles.featureIcon} aria-hidden="true">🔒</div>
                         <h3 className={styles.featureTitle}>{t('features.security.title')}</h3>
                         <p className={styles.featureText}>{t('features.security.description')}</p>
                     </AnimatedSection>
@@ -258,8 +258,8 @@ export default function WebDevelopmentPage() {
             <div className={styles.container}>
                 <AnimatedSection animation="scale" className={styles.ctaPanel}>
                     {/* Decorative Background Elements */}
-                    <div className={`${styles.floatingElement} ${styles.float1}`}>?</div>
-                    <div className={`${styles.floatingElement} ${styles.float2}`}>💡</div>
+                    <div className={`${styles.floatingElement} ${styles.float1}`} aria-hidden="true">?</div>
+                    <div className={`${styles.floatingElement} ${styles.float2}`} aria-hidden="true">💡</div>
 
                     <div className={styles.ctaGrid}>
                         <div className={styles.ctaContent}>
@@ -275,7 +275,7 @@ export default function WebDevelopmentPage() {
 
                         <div className={styles.ctaCardWrapper}>
                             <div className={styles.ctaCard}>
-                                <div className={styles.ctaCardIcon}>🚀</div>
+                                <div className={styles.ctaCardIcon} aria-hidden="true">🚀</div>
                                 <h3 className={styles.ctaCardTitle}>{t('cta.cardTitle')}</h3>
                                 <p className={styles.ctaCardText}>
                                     {t('cta.cardText')}

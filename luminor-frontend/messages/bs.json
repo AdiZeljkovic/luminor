@@ -64,6 +64,11 @@
             "title": "Web Hosting | Brzi NVMe SSD Hosting | Luminor",
             "description": "Profesionalni web hosting na NVMe SSD infrastrukturi. 99.9% uptime garancija, 24/7 podrška, besplatni SSL, dnevni backup. Pouzdan hosting za vaš sajt.",
             "keywords": "web hosting, nvme hosting, ssd hosting, brzi hosting, pouzdan hosting, managed hosting, wordpress hosting, poslovni hosting, hosting sarajevo, hosting bih, ssl certifikat, hosting za sajt, cloud hosting, hosting provajder"
+        },
+        "process": {
+            "title": "Kako Radimo | Naš Proces Rada | Luminor Solutions",
+            "description": "Bez misterija, bez iznenađenja. Saznajte tačno kako Luminor Solutions radi — od istraživanja i strategije do izgradnje i lansiranja. Transparentan proces, fiksne cijene.",
+            "keywords": "kako radimo, proces razvoja, tok projekta, agencijski proces, transparentne cijene, projekti s fiksnom cijenom, proces web razvoja, tok digitalne agencije, faza istraživanja, upravljanje projektom, luminor proces"
         }
     },
     "common": {
@@ -75,6 +80,7 @@
             "about": "O Nama",
             "blog": "Insights",
             "process": "Proces",
+            "pricing": "Cijene",
             "contact": "Kontakt",
             "startProject": "Započnite Saradnju"
         },
@@ -326,6 +332,7 @@
         "categories": {
             "all": "Svi Članci",
             "webDesign": "Web Dizajn",
+            "graphicDesign": "Grafički Dizajn",
             "seo": "SEO",
             "development": "Development",
             "marketing": "Marketing",
@@ -468,6 +475,8 @@
             "titleLine1": "POČNIMO",
             "titleLine2": "RAZGOVOROM.",
             "description": "Bez obaveze. Samo razgovor o tome što gradite i da li smo pravi tim za to.",
+            "cardTitle": "Zakažite Uvodne Razgovor",
+            "cardText": "30 minuta. Bez prezentacije. Samo iskren razgovor o vašem projektu.",
             "button": "Zakažite Uvodne Razgovor"
         }
     },
@@ -1385,6 +1394,35 @@
             "contact": {
                 "title": "Kontakt Informacije",
                 "content": "Za pitanja u vezi ovih Uslova Korištenja, molimo vas da nas kontaktirate:"
+            }
+        }
+    },
+    "portal": {
+        "projects": {
+            "title": "Vaši Projekti",
+            "empty": "Nemate aktivnih projekata.",
+            "milestones": "Milestoni"
+        },
+        "invoices": {
+            "title": "Vaše Fakture",
+            "empty": "Nemate faktura.",
+            "due": "Rok:",
+            "headers": {
+                "description": "Opis",
+                "qty": "Kol",
+                "unitPrice": "Jed. cijena",
+                "total": "Ukupno"
+            }
+        },
+        "hosting": {
+            "title": "Vaši Hosting Planovi",
+            "empty": "Nemate hosting planova.",
+            "expires": "Ističe",
+            "labels": {
+                "plan": "Plan",
+                "storage": "Prostor",
+                "bandwidth": "Bandwidth",
+                "ip": "IP Adresa"
             }
         }
     }

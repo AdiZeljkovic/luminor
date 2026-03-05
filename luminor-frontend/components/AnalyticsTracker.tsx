@@ -19,9 +19,18 @@ export default function AnalyticsTracker() {
         const trackView = async () => {
             try {
                 // Check if we already tracked this session/page view to avoid strict mode double count
-                // A simple session storage key for "lastTrackedPath" could work
                 const lastTracked = sessionStorage.getItem("lastTrackedPath");
                 if (lastTracked === pathname) return;
+
+                // GDPR: only track if user has accepted analytics cookies
+                const consentRaw = localStorage.getItem('cookie-consent');
+                if (!consentRaw) return;
+                try {
+                    const consent = JSON.parse(consentRaw);
+                    if (!consent?.analytics) return;
+                } catch {
+                    return;
+                }
 
                 await fetch(`${API_URL}/api/analytics/track`, {
                     method: 'POST',

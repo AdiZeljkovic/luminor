@@ -35,7 +35,7 @@ const ContactMessage = sequelize.define('ContactMessage', {
         defaultValue: 'other'
     },
     budget_range: {
-        type: DataTypes.ENUM('under_1000', '1000_5000', '5000_15000', '15000_50000', 'over_50000'),
+        type: DataTypes.ENUM('exploring', '1000_5000', '5000_15000', '15000_50000', 'over_50000'),
         allowNull: true
     },
     status: {

@@ -9,6 +9,7 @@ const validateEnv = () => {
         // JWT Security
         JWT_SECRET: 'JWT signing secret',
         JWT_REFRESH_SECRET: 'JWT refresh token secret',
+        CLIENT_JWT_SECRET: 'Client portal JWT signing secret',
 
         // Database (already validated in database.js for production)
         DB_NAME: 'Database name',

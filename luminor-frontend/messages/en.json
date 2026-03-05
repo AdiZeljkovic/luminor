@@ -64,6 +64,11 @@
             "title": "Web Hosting Services | Fast NVMe SSD Hosting | Luminor",
             "description": "Professional web hosting on NVMe SSD infrastructure. 99.9% uptime guarantee, 24/7 support, free SSL, daily backups. Reliable hosting for your website.",
             "keywords": "web hosting, nvme hosting, ssd hosting, fast hosting, reliable hosting, managed hosting, wordpress hosting, business hosting, hosting sarajevo, hosting bih, ssl certificate, website hosting, cloud hosting, hosting provider"
+        },
+        "process": {
+            "title": "How We Work | Our Development Process | Luminor Solutions",
+            "description": "No mystery, no surprises. Learn exactly how Luminor Solutions works — from discovery and strategy to build and launch. Transparent process, fixed-price projects.",
+            "keywords": "how we work, development process, project workflow, agency process, transparent pricing, fixed price projects, web development process, digital agency workflow, discovery phase, project management, luminor process"
         }
     },
     "common": {
@@ -75,6 +80,7 @@
             "about": "About",
             "blog": "Insights",
             "process": "Process",
+            "pricing": "Pricing",
             "contact": "Contact",
             "startProject": "Start a Project"
         },
@@ -326,6 +332,7 @@
         "categories": {
             "all": "All Articles",
             "webDesign": "Web Design",
+            "graphicDesign": "Graphic Design",
             "seo": "SEO",
             "development": "Development",
             "marketing": "Marketing",
@@ -467,6 +474,8 @@
             "titleLine1": "LET'S START",
             "titleLine2": "WITH A CONVERSATION.",
             "description": "No commitment required. Just a conversation about what you're building and whether we're the right team for it.",
+            "cardTitle": "Book a Discovery Call",
+            "cardText": "30 minutes. No pitch. Just an honest conversation about your project.",
             "button": "Book a Discovery Call"
         }
     },
@@ -1384,6 +1393,35 @@
             "contact": {
                 "title": "Contact Information",
                 "content": "For questions regarding these Terms of Service, please contact us:"
+            }
+        }
+    },
+    "portal": {
+        "projects": {
+            "title": "Your Projects",
+            "empty": "You have no active projects.",
+            "milestones": "Milestones"
+        },
+        "invoices": {
+            "title": "Your Invoices",
+            "empty": "You have no invoices.",
+            "due": "Due:",
+            "headers": {
+                "description": "Description",
+                "qty": "Qty",
+                "unitPrice": "Unit Price",
+                "total": "Total"
+            }
+        },
+        "hosting": {
+            "title": "Your Hosting Plans",
+            "empty": "You have no hosting plans.",
+            "expires": "Expires",
+            "labels": {
+                "plan": "Plan",
+                "storage": "Storage",
+                "bandwidth": "Bandwidth",
+                "ip": "IP Address"
             }
         }
     }

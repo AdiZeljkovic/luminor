@@ -1,5 +1,4 @@
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
 import styles from "../services/ServiceDetail.module.css";
@@ -8,11 +7,12 @@ import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: "process.hero" });
+    const t = await getTranslations({ locale, namespace: "seo.process" });
     const canonicalPath = locale === 'en' ? 'process' : `${locale}/process`;
     return {
-        title: `How We Work | Luminor Solutions`,
+        title: t("title"),
         description: t("description"),
+        keywords: t("keywords").split(", "),
         alternates: {
             canonical: `https://www.luminor.solutions/${canonicalPath}`,
             languages: {
@@ -24,8 +24,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
-export default function ProcessPage() {
-    const t = useTranslations("process");
+export default async function ProcessPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+
+    const t = await getTranslations({ locale, namespace: "process" });
 
     const phases = ['discovery', 'strategy', 'build', 'launch'] as const;
     const principleKeys = ['honest', 'scope', 'communication', 'ownership'] as const;
@@ -71,7 +74,7 @@ export default function ProcessPage() {
                         {phases.map((phase, index) => (
                             <AnimatedSection key={phase} animation="fade-up" delay={index * 100} className={processStyles.phaseItem}>
                                 <div className={processStyles.phaseNumber}>{t(`phases.${phase}.number`)}</div>
-                                <div className={processStyles.phaseIcon}>{phaseIcons[phase]}</div>
+                                <div className={processStyles.phaseIcon} aria-hidden="true">{phaseIcons[phase]}</div>
                                 <div className={processStyles.phaseContent}>
                                     <h3 className={processStyles.phaseTitle}>{t(`phases.${phase}.title`)}</h3>
                                     <p className={processStyles.phaseDescription}>{t(`phases.${phase}.description`)}</p>
@@ -117,7 +120,7 @@ export default function ProcessPage() {
                                 <details className="group">
                                     <summary className={styles.accordionTrigger}>
                                         {t(`faq.q${key}`)}
-                                        <span className="transform transition-transform group-open:rotate-180">▼</span>
+                                        <span className="transform transition-transform group-open:rotate-180" aria-hidden="true">▼</span>
                                     </summary>
                                     <div className={styles.accordionContent}>
                                         <p>{t(`faq.a${key}`)}</p>
@@ -132,8 +135,8 @@ export default function ProcessPage() {
             {/* CTA Panel */}
             <div className={styles.container}>
                 <AnimatedSection animation="scale" className={styles.ctaPanel}>
-                    <div className={`${styles.floatingElement} ${styles.float1}`}>🚀</div>
-                    <div className={`${styles.floatingElement} ${styles.float2}`}>💡</div>
+                    <div className={`${styles.floatingElement} ${styles.float1}`} aria-hidden="true">🚀</div>
+                    <div className={`${styles.floatingElement} ${styles.float2}`} aria-hidden="true">💡</div>
 
                     <div className={styles.ctaGrid}>
                         <div className={styles.ctaContent}>
@@ -147,9 +150,9 @@ export default function ProcessPage() {
 
                         <div className={styles.ctaCardWrapper}>
                             <div className={styles.ctaCard}>
-                                <div className={styles.ctaCardIcon}>📅</div>
-                                <h3 className={styles.ctaCardTitle}>{t("cta.button")}</h3>
-                                <p className={styles.ctaCardText}>{t("cta.description")}</p>
+                                <div className={styles.ctaCardIcon} aria-hidden="true">📅</div>
+                                <h3 className={styles.ctaCardTitle}>{t("cta.cardTitle")}</h3>
+                                <p className={styles.ctaCardText}>{t("cta.cardText")}</p>
                                 <Button href="/contact" fullWidth className={styles.ctaButton}>
                                     {t("cta.button")}
                                 </Button>

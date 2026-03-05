@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import styles from "../page.module.css";
 import { API_URL } from "@/lib/api";
 
@@ -26,7 +26,7 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 export default function PortalInvoicesPage() {
-    const locale = useLocale();
+    const t = useTranslations('portal.invoices');
     const [invoices, setInvoices] = useState<Invoice[]>([]);
     const [loading, setLoading] = useState(true);
     const [expanded, setExpanded] = useState<number | null>(null);
@@ -43,17 +43,14 @@ export default function PortalInvoicesPage() {
         return <div className={styles.loading}><div className={styles.spinner} /></div>;
     }
 
-    const title = locale === "bs" ? "Vaše Fakture" : "Your Invoices";
-    const empty = locale === "bs" ? "Nemate faktura." : "You have no invoices.";
-
     return (
         <div className={styles.page}>
             <div className={styles.header}>
-                <h1 className={styles.title}>{title}</h1>
+                <h1 className={styles.title}>{t('title')}</h1>
             </div>
 
             {!invoices.length ? (
-                <p className={styles.empty}>{empty}</p>
+                <p className={styles.empty}>{t('empty')}</p>
             ) : (
                 <div className={styles.section}>
                     <div className={styles.list}>
@@ -73,8 +70,7 @@ export default function PortalInvoicesPage() {
                                     <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                                         {inv.due_date && (
                                             <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.75rem" }}>
-                                                {locale === "bs" ? "Rok: " : "Due: "}
-                                                {new Date(inv.due_date).toLocaleDateString()}
+                                                {t('due')} {new Date(inv.due_date).toLocaleDateString()}
                                             </span>
                                         )}
                                         <span className={styles.amount}>{inv.currency} {Number(inv.amount).toFixed(2)}</span>
@@ -96,7 +92,7 @@ export default function PortalInvoicesPage() {
                                         <table style={{ width: "100%", borderCollapse: "collapse" }}>
                                             <thead>
                                                 <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                                                    {["Description", "Qty", "Unit Price", "Total"].map((h) => (
+                                                    {[t('headers.description'), t('headers.qty'), t('headers.unitPrice'), t('headers.total')].map((h) => (
                                                         <th key={h} style={{ padding: "8px 0", textAlign: "left", color: "rgba(255,255,255,0.35)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px" }}>
                                                             {h}
                                                         </th>

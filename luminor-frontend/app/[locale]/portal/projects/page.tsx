@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import styles from "../page.module.css";
 import { API_URL } from "@/lib/api";
 
@@ -25,7 +25,7 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 export default function PortalProjectsPage() {
-    const locale = useLocale();
+    const t = useTranslations('portal.projects');
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [expanded, setExpanded] = useState<number | null>(null);
@@ -42,17 +42,14 @@ export default function PortalProjectsPage() {
         return <div className={styles.loading}><div className={styles.spinner} /></div>;
     }
 
-    const title = locale === "bs" ? "Vaši Projekti" : "Your Projects";
-    const empty = locale === "bs" ? "Nemate aktivnih projekata." : "You have no active projects.";
-
     return (
         <div className={styles.page}>
             <div className={styles.header}>
-                <h1 className={styles.title}>{title}</h1>
+                <h1 className={styles.title}>{t('title')}</h1>
             </div>
 
             {!projects.length ? (
-                <p className={styles.empty}>{empty}</p>
+                <p className={styles.empty}>{t('empty')}</p>
             ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                     {projects.map((project) => (
@@ -88,7 +85,7 @@ export default function PortalProjectsPage() {
                                     {project.milestones?.length > 0 && (
                                         <div>
                                             <h4 style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "12px" }}>
-                                                Milestones
+                                                {t('milestones')}
                                             </h4>
                                             {project.milestones.map((ms, i) => (
                                                 <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
