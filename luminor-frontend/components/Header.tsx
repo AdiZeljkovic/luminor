@@ -13,12 +13,11 @@ const services = [
     { key: "digitalMarketing", href: "/services/digital-marketing", icon: "📈" },
     { key: "seo", href: "/services/seo", icon: "🔍" },
     { key: "aiAutomation", href: "/services/ai-automation", icon: "🤖" },
+    { key: "hosting", href: "/hosting", icon: "🖥️" },
 ];
 
 const navLinks = [
-    { key: "home", href: "/" },
     { key: "services", href: "/services", hasDropdown: true },
-    { key: "hosting", href: "/hosting" },
     { key: "portfolio", href: "/portfolio" },
     { key: "process", href: "/process" },
     { key: "pricing", href: "/pricing" },
