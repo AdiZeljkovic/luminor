@@ -60,6 +60,11 @@
             "description": "AI automatizacija i integracija. Custom ChatGPT rješenja, AI chatbotovi, automatizacija procesa, analiza podataka i inteligentna automatizacija za vaš biznis.",
             "keywords": "ai automatizacija, chatgpt integracija, ai chatbot, umjetna inteligencija, machine learning, automatizacija procesa, poslovnautomatizacija, ai rješenja, inteligentna automatizacija, izrada chatbota, ai agencija sarajevo"
         },
+        "mobileDevelopment": {
+            "title": "Razvoj Mobilnih Aplikacija | iOS i Android Aplikacije | Luminor Solutions",
+            "description": "Profesionalni razvoj mobilnih aplikacija za iOS i Android. React Native, Flutter, Swift, Kotlin. Od MVP-a do App Storea — fiksna cijena, transparentan proces.",
+            "keywords": "razvoj mobilnih aplikacija, ios aplikacije, android aplikacije, react native, flutter, cross-platform aplikacija, mobilni developer sarajevo, app store, google play, mobilna aplikacija, custom mobilna aplikacija"
+        },
         "hosting": {
             "title": "Web Hosting | Brzi NVMe SSD Hosting | Luminor",
             "description": "Profesionalni web hosting na NVMe SSD infrastrukturi. 99.9% uptime garancija, 24/7 podrška, besplatni SSL, dnevni backup. Pouzdan hosting za vaš sajt.",
@@ -91,6 +96,7 @@
             "digitalMarketing": "Digitalni Marketing",
             "seo": "SEO",
             "aiAutomation": "AI & Automatizacija",
+            "mobileApps": "Mobilne Aplikacije",
             "hosting": "Hosting"
         },
         "footer": {
@@ -150,6 +156,10 @@
             "ai": {
                 "title": "AI & Automatizacija",
                 "description": "Implementiramo rješenja umjetne inteligencije koja optimizuju procese i povećavaju efikasnost."
+            },
+            "mobile": {
+                "title": "Razvoj Mobilnih Aplikacija",
+                "description": "Razvijamo native i cross-platform mobilne aplikacije za iOS i Android koje korisnici vole."
             },
             "hosting": {
                 "title": "Premium Hosting",
@@ -508,6 +518,10 @@
             "ai": {
                 "title": "AI & Automatizacija",
                 "description": "Iskoristite moć vještačke inteligencije. Chatbots, automatizacija poslovnih procesa i AI integracije."
+            },
+            "mobile": {
+                "title": "Razvoj Mobilnih Aplikacija",
+                "description": "Native i cross-platform aplikacije za iOS i Android. Od MVP-a do potpunih proizvoda — brzo, pouzdano i App Store spremno."
             }
         },
         "cta": {
@@ -628,6 +642,98 @@
                 "description": "Hajde da je pretvorimo u stvarnost. Zakažite besplatnu konsultaciju i dobijte procjenu troškova i vremena izrade.",
                 "cardTitle": "Zatraži Ponudu",
                 "cardText": "Opišite nam ukratko šta vam treba i javljamo se sa ponudom u roku od 24h.",
+                "button": "Kontaktirajte Nas"
+            }
+        },
+        "mobileDevPage": {
+            "hero": {
+                "titleLine1": "Mobilne Aplikacije",
+                "titleLine2": "Koje Korisnici",
+                "titleLine3": "Stvarno Vole",
+                "description": "iOS, Android ili oboje — razvijamo brze, pouzdane i lijepe mobilne aplikacije koje rješavaju stvarne probleme i vraćaju korisnike.",
+                "ctaPrimary": "Pokreni Projekat",
+                "ctaSecondary": "Istraži Usluge"
+            },
+            "features": {
+                "crossPlatform": {
+                    "title": "Cross-Platform",
+                    "description": "Jedan kod, dvije platforme. React Native i Flutter nam omogućavaju da razvijamo za iOS i Android istovremeno — smanjujemo troškove bez kompromisa u kvalitetu."
+                },
+                "performance": {
+                    "title": "Native Performanse",
+                    "description": "Glatke 60fps animacije, brzo učitavanje i native integracije uređaja. Vaši korisnici neće znati da je cross-platform."
+                },
+                "appStore": {
+                    "title": "App Store Spreman",
+                    "description": "Vodimo cijeli proces objave — App Store i Google Play. Metapodaci, screenshotovi, usklađenost sa smjernicama pregleda."
+                }
+            },
+            "detailedServices": {
+                "title": "Što Tačno Gradimo?",
+                "ios": {
+                    "title": "iOS Aplikacije",
+                    "description": "Native Swift aplikacije za iPhone i iPad.",
+                    "features": ["SwiftUI & UIKit", "App Store Objava", "Push Notifikacije", "Apple Pay Integracija"]
+                },
+                "android": {
+                    "title": "Android Aplikacije",
+                    "description": "Kotlin aplikacije za sve Android uređaje.",
+                    "features": ["Jetpack Compose", "Google Play Objava", "Firebase Integracija", "Material Design 3"]
+                },
+                "crossPlatform": {
+                    "title": "React Native & Flutter",
+                    "description": "Jedan kod za iOS i Android.",
+                    "features": ["React Native / Flutter", "Expo Managed Workflow", "Native Module Bridging", "OTA Ažuriranja"]
+                },
+                "maintenance": {
+                    "title": "Održavanje i Ažuriranja",
+                    "description": "Dugoročna podrška i kontinualno unapređenje.",
+                    "features": ["Ažuriranja OS Verzija", "Praćenje Performansi", "Crash Reporting", "Feature Roadmap"]
+                }
+            },
+            "techStack": {
+                "title": "Tehnologije Koje Koristimo",
+                "description": "Moderni, provjereni alati koji osiguravaju besprijekorno funkcionisanje vaše aplikacije na svakom uređaju."
+            },
+            "process": {
+                "title": "Naš Proces Razvoja",
+                "steps": {
+                    "discovery": {
+                        "title": "Istraživanje i Scopiranje",
+                        "description": "Definiramo tokove korisnika, funkcije i tehničke zahtjeve. Dobijate detaljan spec i ponudu s fiksnom cijenom prije nego napišemo i liniju koda."
+                    },
+                    "design": {
+                        "title": "UI/UX Dizajn",
+                        "description": "Dizajniramo svaki ekran u Figmi. Intuitivna navigacija, mobile-first layouti i smjernice dizajna specifične za platformu."
+                    },
+                    "development": {
+                        "title": "Agilni Razvoj",
+                        "description": "Razvijamo u sprintovima i redovno šaljemo TestFlight / interne buildove kako biste mogli testirati na stvarnom uređaju tokom razvoja."
+                    },
+                    "launch": {
+                        "title": "Lansiranje i App Store",
+                        "description": "Pripremamo sve store materijale, šaljemo na App Store i Google Play, pratimo proces pregleda i rješavamo eventualna odbijanja."
+                    }
+                }
+            },
+            "faq": {
+                "title": "Često Postavljana Pitanja",
+                "q1": "Koliko košta izrada mobilne aplikacije?",
+                "a1": "Jednostavne aplikacije s 5-10 ekrana tipično koštaju €5.000–€15.000. Složenije aplikacije s custom backendima, plaćanjima ili real-time funkcijama kreću se od €15.000–€50.000+. Uvijek dajemo ponudu s fiksnom cijenom nakon faze istraživanja.",
+                "q2": "Koliko dugo traje razvoj mobilne aplikacije?",
+                "a2": "MVP (Minimum Viable Product) tipično traje 8–16 sedmica. Potpuno opremljene aplikacije sa složenim backendima mogu trajati 4–6 mjeseci. Dat ćemo vam realističan vremenski okvir unaprijed.",
+                "q3": "Trebam li graditi za iOS, Android ili oboje?",
+                "a3": "Za većinu biznisa preporučujemo cross-platform pristup s React Native ili Flutter — dobijate obje platforme za otprilike 60% cijene native razvoja za svaku posebno. Ako je vaša publika pretežno iOS ili Android, možemo ići native za maksimalne performanse.",
+                "q4": "Vodite li vi proces objave na App Store i Google Play?",
+                "a4": "Da, u potpunosti. Postavljamo developer accounte ako je potrebno, pripremamo sve store metapodatke, screenshotove i politike privatnosti, objavljujemo aplikaciju i vodimo proces pregleda do odobrenja."
+            },
+            "cta": {
+                "label": "Besplatna Konsultacija",
+                "titleLine1": "IMATE IDEJU ZA",
+                "titleLine2": "MOBILNU APLIKACIJU?",
+                "description": "Pretvorimo je u proizvod. Zakažite besplatni poziv i dobijte iskrenu procjenu obima i budžeta.",
+                "cardTitle": "Zatražite Ponudu",
+                "cardText": "Recite nam šta želite da izgradite i odgovoramo s ponudom i rokom u roku od 24h.",
                 "button": "Kontaktirajte Nas"
             }
         },

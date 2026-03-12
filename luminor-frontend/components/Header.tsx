@@ -13,6 +13,7 @@ const services = [
     { key: "digitalMarketing", href: "/services/digital-marketing", icon: "📈" },
     { key: "seo", href: "/services/seo", icon: "🔍" },
     { key: "aiAutomation", href: "/services/ai-automation", icon: "🤖" },
+    { key: "mobileApps", href: "/services/mobile-development", icon: "📱" },
     { key: "hosting", href: "/hosting", icon: "🖥️" },
 ];
 

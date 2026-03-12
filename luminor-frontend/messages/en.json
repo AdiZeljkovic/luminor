@@ -60,6 +60,11 @@
             "description": "AI automation and integration services. Custom ChatGPT solutions, AI chatbots, workflow automation, data analysis, and intelligent automation for your business.",
             "keywords": "ai automation, chatgpt integration, ai chatbot, artificial intelligence, machine learning, workflow automation, business automation, ai solutions, intelligent automation, custom ai development, chatbot development, ai agency sarajevo"
         },
+        "mobileDevelopment": {
+            "title": "Mobile App Development | iOS & Android Apps | Luminor Solutions",
+            "description": "Professional mobile app development for iOS and Android. React Native, Flutter, Swift, Kotlin. From MVP to App Store — fixed price, transparent process.",
+            "keywords": "mobile app development, ios app development, android app development, react native, flutter, cross-platform app, mobile app developer sarajevo, app store submission, mobile application, custom mobile app, swift development, kotlin development"
+        },
         "hosting": {
             "title": "Web Hosting Services | Fast NVMe SSD Hosting | Luminor",
             "description": "Professional web hosting on NVMe SSD infrastructure. 99.9% uptime guarantee, 24/7 support, free SSL, daily backups. Reliable hosting for your website.",
@@ -91,6 +96,7 @@
             "digitalMarketing": "Digital Marketing",
             "seo": "SEO",
             "aiAutomation": "AI & Automation",
+            "mobileApps": "Mobile Apps",
             "hosting": "Hosting"
         },
         "footer": {
@@ -150,6 +156,10 @@
             "ai": {
                 "title": "AI & Automation",
                 "description": "We implement artificial intelligence solutions that optimize processes and increase efficiency."
+            },
+            "mobile": {
+                "title": "Mobile App Development",
+                "description": "We build native and cross-platform mobile apps for iOS and Android that users love."
             },
             "hosting": {
                 "title": "Premium Hosting",
@@ -507,6 +517,10 @@
             "ai": {
                 "title": "AI & Automation",
                 "description": "Leverage the power of artificial intelligence. Chatbots, business process automation, and AI integrations."
+            },
+            "mobile": {
+                "title": "Mobile App Development",
+                "description": "Native and cross-platform apps for iOS and Android. From MVP to fully-featured products — fast, reliable, and App Store ready."
             }
         },
         "cta": {
@@ -627,6 +641,98 @@
                 "description": "Let's turn it into reality. Schedule a free consultation and get a cost and time estimate.",
                 "cardTitle": "Request a Quote",
                 "cardText": "Briefly describe what you need and we'll get back to you with a quote within 24h.",
+                "button": "Contact Us"
+            }
+        },
+        "mobileDevPage": {
+            "hero": {
+                "titleLine1": "Mobile Apps",
+                "titleLine2": "Users",
+                "titleLine3": "Actually Love",
+                "description": "iOS, Android, or both — we build fast, reliable, and beautiful mobile apps that solve real problems and keep users coming back.",
+                "ctaPrimary": "Start Project",
+                "ctaSecondary": "Explore Services"
+            },
+            "features": {
+                "crossPlatform": {
+                    "title": "Cross-Platform",
+                    "description": "One codebase, two platforms. React Native and Flutter let us build for iOS and Android simultaneously — cutting cost without cutting quality."
+                },
+                "performance": {
+                    "title": "Native Performance",
+                    "description": "Smooth 60fps animations, fast load times, and native device integrations. Your users won't know it's cross-platform."
+                },
+                "appStore": {
+                    "title": "App Store Ready",
+                    "description": "We handle the entire submission process — App Store and Google Play. Metadata, screenshots, review compliance."
+                }
+            },
+            "detailedServices": {
+                "title": "What Exactly Do We Build?",
+                "ios": {
+                    "title": "iOS Applications",
+                    "description": "Native Swift apps built for iPhone and iPad.",
+                    "features": ["SwiftUI & UIKit", "App Store Submission", "Push Notifications", "Apple Pay Integration"]
+                },
+                "android": {
+                    "title": "Android Applications",
+                    "description": "Kotlin-powered apps for all Android devices.",
+                    "features": ["Jetpack Compose", "Google Play Submission", "Firebase Integration", "Material Design 3"]
+                },
+                "crossPlatform": {
+                    "title": "React Native & Flutter",
+                    "description": "One codebase for both iOS and Android.",
+                    "features": ["React Native / Flutter", "Expo Managed Workflow", "Native Module Bridging", "OTA Updates"]
+                },
+                "maintenance": {
+                    "title": "Maintenance & Updates",
+                    "description": "Long-term support and continuous improvement.",
+                    "features": ["OS Version Updates", "Performance Monitoring", "Crash Reporting", "Feature Roadmap"]
+                }
+            },
+            "techStack": {
+                "title": "Technologies We Use",
+                "description": "Modern, battle-tested tools that ensure your app performs flawlessly on every device."
+            },
+            "process": {
+                "title": "Our Development Process",
+                "steps": {
+                    "discovery": {
+                        "title": "Discovery & Scoping",
+                        "description": "We define user flows, features, and technical requirements. You get a detailed spec and fixed-price quote before we write a single line of code."
+                    },
+                    "design": {
+                        "title": "UI/UX Design",
+                        "description": "We design every screen in Figma. Intuitive navigation, mobile-first layouts, and platform-specific design guidelines."
+                    },
+                    "development": {
+                        "title": "Agile Development",
+                        "description": "We build in sprints and share TestFlight / internal builds regularly so you can test on a real device throughout development."
+                    },
+                    "launch": {
+                        "title": "Launch & App Store",
+                        "description": "We prepare all store assets, submit to App Store and Google Play, monitor the review process, and handle any rejections."
+                    }
+                }
+            },
+            "faq": {
+                "title": "Frequently Asked Questions",
+                "q1": "How much does it cost to build a mobile app?",
+                "a1": "Simple apps with 5-10 screens typically cost €5,000–€15,000. More complex apps with custom backends, payments, or real-time features range from €15,000–€50,000+. We always provide a fixed-price quote after the discovery phase.",
+                "q2": "How long does mobile app development take?",
+                "a2": "An MVP (Minimum Viable Product) typically takes 8–16 weeks. Full-featured apps with complex backends can take 4–6 months. We'll give you a realistic timeline upfront.",
+                "q3": "Should I build for iOS, Android, or both?",
+                "a3": "For most businesses, we recommend starting cross-platform with React Native or Flutter — you get both platforms at roughly 60% of the cost of building natively twice. If your audience is predominantly iOS or Android, we can go native for maximum performance.",
+                "q4": "Do you handle App Store and Google Play submissions?",
+                "a4": "Yes, completely. We set up developer accounts if needed, prepare all store metadata, screenshots, and privacy policies, submit the app, and manage the review process until approval."
+            },
+            "cta": {
+                "label": "Free Consultation",
+                "titleLine1": "GOT AN IDEA FOR",
+                "titleLine2": "A MOBILE APP?",
+                "description": "Let's turn it into a product. Schedule a free call and get an honest scope and budget estimate.",
+                "cardTitle": "Request a Quote",
+                "cardText": "Tell us what you want to build and we'll respond with a quote and timeline within 24h.",
                 "button": "Contact Us"
             }
         },

@@ -77,6 +77,12 @@ export default async function ServicesPage({ params }: Props) {
             icon: "🤖",
             href: "/services/ai-automation",
         },
+        {
+            title: t('items.mobile.title'),
+            description: t('items.mobile.description'),
+            icon: "📱",
+            href: "/services/mobile-development",
+        },
     ];
 
     return (

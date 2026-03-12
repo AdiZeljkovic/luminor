@@ -69,6 +69,12 @@ export default async function Home() {
       href: "/services/ai-automation",
     },
     {
+      title: tServices('mobile.title'),
+      description: tServices('mobile.description'),
+      icon: "📱",
+      href: "/services/mobile-development",
+    },
+    {
       title: tServices('hosting.title'),
       description: tServices('hosting.description'),
       icon: "⚡",
