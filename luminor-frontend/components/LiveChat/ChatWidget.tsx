@@ -133,19 +133,29 @@ export default function ChatWidget() {
             const socket = await initSocket();
             if (!socket) return;
 
-            // Wait for connection then emit join
-            const tryJoin = () => {
-                if (socket.connected) {
-                    socket.emit("visitor:join", {
-                        name: name.trim(),
-                        email: email.trim() || null,
-                        pageUrl: window.location.href,
-                    });
-                } else {
-                    setTimeout(tryJoin, 100);
-                }
+            const visitorData = {
+                name: name.trim(),
+                email: email.trim() || null,
+                pageUrl: window.location.href,
             };
-            setTimeout(tryJoin, 200);
+
+            // Emit immediately if already connected, otherwise wait for connect event
+            if (socket.connected) {
+                socket.emit("visitor:join", visitorData);
+            } else {
+                socket.on("connect", () => {
+                    socket.emit("visitor:join", visitorData);
+                });
+                socket.on("connect_error", () => {
+                    setStatus("error");
+                });
+                // Fallback timeout — 8s
+                setTimeout(() => {
+                    if (socketRef.current && !socketRef.current.connected) {
+                        setStatus("error");
+                    }
+                }, 8000);
+            }
         },
         [name, email, initSocket]
     );
@@ -201,7 +211,21 @@ export default function ChatWidget() {
 
                     {/* Body */}
                     <div className={styles.body}>
-                        {status === "idle" || status === "connecting" ? (
+                        {status === "error" ? (
+                            <div className={styles.startForm}>
+                                <p className={styles.startText} style={{ color: "#DC2626" }}>
+                                    {locale === "bs"
+                                        ? "Nije moguće uspostaviti vezu. Pokušajte ponovo ili nas kontaktirajte na info@luminor.solutions."
+                                        : "Could not connect. Please try again or email us at info@luminor.solutions."}
+                                </p>
+                                <button
+                                    className={styles.startBtn}
+                                    onClick={() => { setStatus("idle"); socketRef.current?.disconnect(); socketRef.current = null; }}
+                                >
+                                    {locale === "bs" ? "Pokušaj Ponovo" : "Try Again"}
+                                </button>
+                            </div>
+                        ) : status === "idle" || status === "connecting" ? (
                             <form onSubmit={handleStart} className={styles.startForm}>
                                 <p className={styles.startText}>
                                     {locale === "bs"
