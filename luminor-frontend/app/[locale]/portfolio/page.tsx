@@ -164,14 +164,6 @@ export default function PortfolioPage() {
                     <div className={styles.ctaCardWrapper}>
                         <div className={styles.ctaCard}>
                             <div className={styles.ctaCardIcon}>🚀</div>
-                            <h3 className={styles.ctaCardTitle}>{t('cta.button')}? (No title in JSON)</h3>
-                            {/* JSON cta has label, titleLine1, titleLine2, description, button.
-                                But CTA Card has "Započnite Projekat", "Recite nam...".
-                                I'll hardcode or use generic strings?
-                                Actually, "Započnite Projekat" is t('cta.button')?
-                                cta.button = "Start a Project".
-                                ctaCardTitle = "Započnite Projekat"?
-                            */}
                             <h3 className={styles.ctaCardTitle}>Start a Project</h3>
                             <p className={styles.ctaCardText}>
                                 Tell us about your idea and we'll give you a free estimate.
