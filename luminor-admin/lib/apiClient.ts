@@ -46,6 +46,13 @@ class ApiClient {
 
             const data = await response.json();
 
+            if (response.status === 401) {
+                if (typeof window !== 'undefined') {
+                    window.location.href = '/login';
+                }
+                throw new Error(data.error || 'Unauthorized');
+            }
+
             if (!response.ok) {
                 throw new Error(data.error || `HTTP ${response.status}`);
             }
