@@ -363,17 +363,6 @@ export default function ContactPage() {
                 </section>
             )}
 
-            {/* Map Section */}
-            <section className={styles.mapSection}>
-                <div className={styles.container}>
-                    <AnimatedSection className={styles.mapWrapper}>
-                        <div className={styles.mapPlaceholder}>
-                            <span>🗺️</span>
-                            <p>Google Maps Integration</p>
-                        </div>
-                    </AnimatedSection>
-                </div>
-            </section>
         </div>
     );
 }
