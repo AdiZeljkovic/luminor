@@ -5,12 +5,32 @@
       "Bash(git commit:*)",
       "Bash(xargs sed -i \"s|''https://luminor\\\\.solutions|''https://www.luminor.solutions|g\")",
       "Bash(xargs sed -i 's|`https://luminor\\\\.solutions|`https://www.luminor.solutions|g')",
-      "Bash(xargs sed -i 's|\"\"https://luminor\\\\.solutions|\"\"https://www.luminor.solutions|g')"
+      "Bash(xargs sed -i 's|\"\"https://luminor\\\\.solutions|\"\"https://www.luminor.solutions|g')",
+      "Bash(python3 -c \" import sys, json data = json.load\\(sys.stdin\\) for item in data: if isinstance\\(item, dict\\) and item.get\\(''type''\\) == ''text'': print\\(item[''text'']\\) \")",
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \":*)",
+      "Bash(powershell -Command \":*)",
+      "Bash(powershell.exe -NoProfile -Command \"$f = ''C:\\\\Users\\\\adize\\\\.claude\\\\projects\\\\c--Users-adize-OneDrive-Documents-Projekti-LuminorAgencija\\\\c479e327-808e-49aa-885d-5807e37beecd\\\\tool-results\\\\toolu_01C11EoV6DceLciTiUiZPxv1.txt''; $j = Get-Content $f -Raw | ConvertFrom-Json; $j[0].text\")",
+      "Bash(powershell.exe -NoProfile:*)",
+      "Read(//c/Users/adize/.claude/projects/c--Users-adize-OneDrive-Documents-Projekti-LuminorAgencija/c479e327-808e-49aa-885d-5807e37beecd/subagents/**)",
+      "Bash(python -c \":*)",
+      "Bash(cat /c/Users/adize/OneDrive/Documents/Projekti/LuminorAgencija/luminor-frontend/app/[locale]/portal/projects/page.tsx)",
+      "Bash(cat /c/Users/adize/OneDrive/Documents/Projekti/LuminorAgencija/luminor-frontend/app/[locale]/about/page.tsx)",
+      "Bash(cat /c/Users/adize/OneDrive/Documents/Projekti/LuminorAgencija/luminor-frontend/app/[locale]/page.tsx)",
+      "Bash(cat /c/Users/adize/OneDrive/Documents/Projekti/LuminorAgencija/luminor-frontend/app/[locale]/layout.tsx)",
+      "Bash(cat /c/Users/adize/OneDrive/Documents/Projekti/LuminorAgencija/luminor-frontend/app/[locale]/blog/page.tsx)",
+      "Bash(cat /c/Users/adize/OneDrive/Documents/Projekti/LuminorAgencija/luminor-frontend/app/[locale]/services/web-development/page.tsx)",
+      "Bash(python3:*)",
+      "Bash(ssh Luminor:*)",
+      "Bash(ssh-keyscan luminor.solutions)",
+      "Bash(ping -n 1 luminor.solutions)"
     ],
     "additionalDirectories": [
       "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-admin\\app\\dashboard\\clients",
       "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-admin\\app\\dashboard\\pricing\\edit",
-      "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-frontend\\app\\[locale]"
+      "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-frontend\\app\\[locale]",
+      "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-frontend\\app\\[locale]\\portal",
+      "c:\\Users\\adize\\OneDrive\\Documents\\Projekti\\LuminorAgencija\\luminor-frontend\\app\\[locale]\\pricing"
     ]
   }
 }

@@ -21,7 +21,6 @@ const navLinks = [
     { key: "services", href: "/services", hasDropdown: true },
     { key: "portfolio", href: "/portfolio" },
     { key: "process", href: "/process" },
-    { key: "pricing", href: "/pricing" },
     { key: "about", href: "/about" },
     { key: "blog", href: "/blog" },
     { key: "contact", href: "/contact" },
