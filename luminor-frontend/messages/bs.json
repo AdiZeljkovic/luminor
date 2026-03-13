@@ -74,6 +74,16 @@
             "title": "Kako Radimo | Naš Proces Rada | Luminor Solutions",
             "description": "Bez misterija, bez iznenađenja. Saznajte tačno kako Luminor Solutions radi — od istraživanja i strategije do izgradnje i lansiranja. Transparentan proces, fiksne cijene.",
             "keywords": "kako radimo, proces razvoja, tok projekta, agencijski proces, transparentne cijene, projekti s fiksnom cijenom, proces web razvoja, tok digitalne agencije, faza istraživanja, upravljanje projektom, luminor proces"
+        },
+        "faq": {
+            "title": "FAQ | Često Postavljana Pitanja | Luminor Solutions",
+            "description": "Imate pitanja? Imamo odgovore. Sve što trebate znati o saradnji sa Luminor Solutions — proces, cijene, rokovi i kako radimo.",
+            "keywords": "faq, često postavljana pitanja, kako funkcioniše, rok izrade, cijena projekta, web agencija pitanja, koliko košta sajt, koliko traje izrada, luminor solutions faq"
+        },
+        "status": {
+            "title": "Status Sistema | Luminor Solutions",
+            "description": "Status sistema i usluga Luminor Solutions u realnom vremenu.",
+            "keywords": "status sistema, dostupnost, status usluga, luminor solutions status"
         }
     },
     "common": {

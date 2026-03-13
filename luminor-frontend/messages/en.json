@@ -74,6 +74,16 @@
             "title": "How We Work | Our Development Process | Luminor Solutions",
             "description": "No mystery, no surprises. Learn exactly how Luminor Solutions works — from discovery and strategy to build and launch. Transparent process, fixed-price projects.",
             "keywords": "how we work, development process, project workflow, agency process, transparent pricing, fixed price projects, web development process, digital agency workflow, discovery phase, project management, luminor process"
+        },
+        "faq": {
+            "title": "FAQ | Frequently Asked Questions | Luminor Solutions",
+            "description": "Got questions? We have answers. Everything you need to know about working with Luminor Solutions — process, pricing, timelines, and how we work.",
+            "keywords": "faq, frequently asked questions, how does it work, project timeline, pricing questions, digital agency faq, web development questions, agency cost, how long does it take, luminor solutions faq"
+        },
+        "status": {
+            "title": "System Status | Luminor Solutions",
+            "description": "Real-time system status for Luminor Solutions services.",
+            "keywords": "system status, uptime, service status, luminor solutions status"
         }
     },
     "common": {

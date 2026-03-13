@@ -12,6 +12,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         title: t("title"),
         description: t("description"),
         keywords: t("keywords").split(", "),
+        openGraph: {
+            title: t("title"),
+            description: t("description"),
+            type: 'website',
+            url: `https://www.luminor.solutions/${canonicalPath}`,
+            images: [{ url: 'https://www.luminor.solutions/rocket-hero.png', width: 1200, height: 630 }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: t("title"),
+            description: t("description"),
+        },
         alternates: {
             canonical: `https://www.luminor.solutions/${canonicalPath}`,
             languages: {

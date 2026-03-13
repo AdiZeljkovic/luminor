@@ -8,8 +8,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'seo.contact' });
-    const canonicalPath = locale === 'en' ? 'contact' : `${locale}/contact`;
+    const t = await getTranslations({ locale, namespace: 'seo.faq' });
+    const canonicalPath = locale === 'en' ? 'faq' : `${locale}/faq`;
 
     return {
         title: t('title'),
@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         alternates: {
             canonical: `https://www.luminor.solutions/${canonicalPath}`,
             languages: {
-                'en': 'https://www.luminor.solutions/contact',
-                'bs': 'https://www.luminor.solutions/bs/contact',
-                'x-default': 'https://www.luminor.solutions/contact',
+                'en': 'https://www.luminor.solutions/faq',
+                'bs': 'https://www.luminor.solutions/bs/faq',
+                'x-default': 'https://www.luminor.solutions/faq',
             },
         },
     };
 }
 
-export default function ContactLayout({ children }: Props) {
+export default function FaqLayout({ children }: Props) {
     return <>{children}</>;
 }
