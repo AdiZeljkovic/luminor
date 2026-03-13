@@ -37,7 +37,8 @@ const ChatSession = sequelize.define('ChatSession', {
     }
 }, {
     tableName: 'chat_sessions',
-    timestamps: true
+    timestamps: true,
+    underscored: true
 });
 
 module.exports = ChatSession;

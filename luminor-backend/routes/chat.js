@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const { ChatSession, ChatMessage } = require('../models');
 const { auth } = require('../middleware/auth');
 
@@ -12,7 +13,9 @@ const router = express.Router();
 router.get('/sessions', auth, async (req, res) => {
     try {
         const status = req.query.status;
-        const where = status ? { status } : {};
+        const where = status
+            ? { status: { [Op.in]: status.split(',').map(s => s.trim()) } }
+            : {};
 
         const sessions = await ChatSession.findAll({
             where,
@@ -20,10 +23,10 @@ router.get('/sessions', auth, async (req, res) => {
                 model: ChatMessage,
                 as: 'messages',
                 limit: 1,
-                order: [['createdAt', 'DESC']],
-                attributes: ['content', 'sender_type', 'createdAt']
+                order: [['created_at', 'DESC']],
+                attributes: ['content', 'sender_type', 'created_at']
             }],
-            order: [['updatedAt', 'DESC']],
+            order: [['updated_at', 'DESC']],
             limit: 100
         });
 
@@ -48,7 +51,7 @@ router.get('/sessions/:id/messages', auth, async (req, res) => {
 
         const messages = await ChatMessage.findAll({
             where: { session_id: req.params.id },
-            order: [['createdAt', 'ASC']]
+            order: [['created_at', 'ASC']]
         });
 
         // Mark messages as read
