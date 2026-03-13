@@ -26,7 +26,7 @@ router.get('/sessions', auth, async (req, res) => {
                 order: [['created_at', 'DESC']],
                 attributes: ['content', 'sender_type', 'created_at']
             }],
-            order: [['updated_at', 'DESC']],
+            order: [['id', 'DESC']],
             limit: 100
         });
 
