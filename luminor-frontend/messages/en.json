@@ -683,22 +683,42 @@
                 "ios": {
                     "title": "iOS Applications",
                     "description": "Native Swift apps built for iPhone and iPad.",
-                    "features": ["SwiftUI & UIKit", "App Store Submission", "Push Notifications", "Apple Pay Integration"]
+                    "features": [
+                        "SwiftUI & UIKit",
+                        "App Store Submission",
+                        "Push Notifications",
+                        "Apple Pay Integration"
+                    ]
                 },
                 "android": {
                     "title": "Android Applications",
                     "description": "Kotlin-powered apps for all Android devices.",
-                    "features": ["Jetpack Compose", "Google Play Submission", "Firebase Integration", "Material Design 3"]
+                    "features": [
+                        "Jetpack Compose",
+                        "Google Play Submission",
+                        "Firebase Integration",
+                        "Material Design 3"
+                    ]
                 },
                 "crossPlatform": {
                     "title": "React Native & Flutter",
                     "description": "One codebase for both iOS and Android.",
-                    "features": ["React Native / Flutter", "Expo Managed Workflow", "Native Module Bridging", "OTA Updates"]
+                    "features": [
+                        "React Native / Flutter",
+                        "Expo Managed Workflow",
+                        "Native Module Bridging",
+                        "OTA Updates"
+                    ]
                 },
                 "maintenance": {
                     "title": "Maintenance & Updates",
                     "description": "Long-term support and continuous improvement.",
-                    "features": ["OS Version Updates", "Performance Monitoring", "Crash Reporting", "Feature Roadmap"]
+                    "features": [
+                        "OS Version Updates",
+                        "Performance Monitoring",
+                        "Crash Reporting",
+                        "Feature Roadmap"
+                    ]
                 }
             },
             "techStack": {
@@ -1540,6 +1560,737 @@
                 "storage": "Storage",
                 "bandwidth": "Bandwidth",
                 "ip": "IP Address"
+            }
+        }
+    },
+    "offers": {
+        "webDevelopment": {
+            "titleLine1": "Web Development",
+            "titleLine2": "Service Proposal",
+            "subtitle": "We build fast, modern web solutions tailored to your business goals — from corporate websites to complex web applications.",
+            "validity": "Valid for 30 days from date of issue",
+            "packages": {
+                "basic": {
+                    "name": "Basic",
+                    "price": "€2.500",
+                    "priceSub": "one-time",
+                    "description": "Corporate website up to 10 pages with CMS, SSL certificate and responsive design.",
+                    "features": [
+                        "Up to 10 pages",
+                        "CMS integration",
+                        "SSL certificate",
+                        "Responsive design",
+                        "Contact form",
+                        "Google Analytics setup",
+                        "2-3 week delivery"
+                    ]
+                },
+                "professional": {
+                    "name": "Professional",
+                    "price": "€5.000",
+                    "priceSub": "one-time",
+                    "description": "Up to 30 pages with custom design, e-commerce option, SEO basics and advanced analytics.",
+                    "features": [
+                        "Up to 30 pages",
+                        "Custom UI/UX design",
+                        "E-commerce option",
+                        "SEO optimisation",
+                        "Speed optimisation",
+                        "3 months support",
+                        "4-6 week delivery"
+                    ]
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "price": "On request",
+                    "priceSub": "",
+                    "description": "Web applications, SaaS platforms and custom backend systems built for scale.",
+                    "features": [
+                        "Unlimited complexity",
+                        "Custom backend / API",
+                        "SaaS & web apps",
+                        "Auth & user management",
+                        "Performance at scale",
+                        "Dedicated team",
+                        "Timeline by scope"
+                    ]
+                }
+            },
+            "includes": {
+                "title": "What's Included",
+                "items": [
+                    "UI/UX design mockups (Figma)",
+                    "Fully responsive (mobile-first)",
+                    "Cross-browser testing",
+                    "On-page SEO setup",
+                    "SSL & security hardening",
+                    "Speed & Core Web Vitals optimisation",
+                    "CMS training session",
+                    "30-day post-launch support",
+                    "Source code delivery",
+                    "Deployment & hosting setup"
+                ]
+            },
+            "process": {
+                "title": "Our Process",
+                "steps": {
+                    "1": {
+                        "title": "Discovery & Brief",
+                        "description": "We align on goals, audience and technical requirements through a structured kick-off."
+                    },
+                    "2": {
+                        "title": "Design & Prototype",
+                        "description": "Figma mockups reviewed and approved before a single line of code is written."
+                    },
+                    "3": {
+                        "title": "Development & Testing",
+                        "description": "Iterative builds with weekly updates. Full QA across devices and browsers."
+                    },
+                    "4": {
+                        "title": "Launch & Handover",
+                        "description": "Deployment, DNS setup, training and 30-day warranty period."
+                    }
+                }
+            },
+            "terms": {
+                "title": "Terms & Conditions",
+                "items": [
+                    "Offer valid for 30 days from date of issue",
+                    "50% advance payment required to begin work",
+                    "50% due upon project delivery",
+                    "Up to 3 rounds of revisions included",
+                    "Additional revisions billed at €60/hour",
+                    "Client to provide all content (text, images, brand assets)",
+                    "Timeline begins after advance payment and brief confirmation"
+                ]
+            },
+            "cta": {
+                "title": "Ready to start your project?",
+                "button": "Contact Us"
+            }
+        },
+        "graphicDesign": {
+            "titleLine1": "Graphic Design",
+            "titleLine2": "Service Proposal",
+            "subtitle": "Visual identities and brand assets that make you memorable — from logo creation to complete brand systems.",
+            "validity": "Valid for 30 days from date of issue",
+            "packages": {
+                "basic": {
+                    "name": "Basic",
+                    "price": "€500",
+                    "priceSub": "one-time",
+                    "description": "Logo design with 3 concepts and final files in all formats.",
+                    "features": [
+                        "3 logo concepts",
+                        "2 revision rounds",
+                        "Final files (SVG, PNG, PDF)",
+                        "Light & dark versions",
+                        "Colour palette",
+                        "5-day delivery"
+                    ]
+                },
+                "professional": {
+                    "name": "Professional",
+                    "price": "€1.500",
+                    "priceSub": "one-time",
+                    "description": "Complete brand kit: logo, colours, typography, usage rules and brand book.",
+                    "features": [
+                        "Full branding kit",
+                        "Logo + all variations",
+                        "Typography system",
+                        "Colour system",
+                        "Brand guidelines PDF",
+                        "Social media templates",
+                        "2-3 week delivery"
+                    ]
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "price": "On request",
+                    "priceSub": "",
+                    "description": "Full rebrand, design systems and multi-channel campaign assets.",
+                    "features": [
+                        "Rebrand strategy",
+                        "Design system",
+                        "Campaign materials",
+                        "Print & digital assets",
+                        "Brand rollout support",
+                        "Dedicated designer",
+                        "Timeline by scope"
+                    ]
+                }
+            },
+            "includes": {
+                "title": "What's Included",
+                "items": [
+                    "Brand discovery session",
+                    "Competitor & market research",
+                    "Moodboard & direction",
+                    "Logo in all formats",
+                    "Colour & typography guide",
+                    "Business card design",
+                    "Social media profile assets",
+                    "Brand book PDF",
+                    "Source files (AI, Figma)",
+                    "Usage guidelines"
+                ]
+            },
+            "process": {
+                "title": "Our Process",
+                "steps": {
+                    "1": {
+                        "title": "Brand Discovery",
+                        "description": "We learn your values, audience and competitors to set the right creative direction."
+                    },
+                    "2": {
+                        "title": "Concepts & Moodboard",
+                        "description": "Multiple visual directions presented before committing to a final approach."
+                    },
+                    "3": {
+                        "title": "Refinement",
+                        "description": "Selected direction refined through revision rounds until it's perfect."
+                    },
+                    "4": {
+                        "title": "Delivery & Handover",
+                        "description": "All files packaged and delivered with a brand usage guide."
+                    }
+                }
+            },
+            "terms": {
+                "title": "Terms & Conditions",
+                "items": [
+                    "Offer valid for 30 days from date of issue",
+                    "50% advance payment required to begin",
+                    "50% due upon final delivery",
+                    "Revision rounds as specified per package",
+                    "Additional revisions at €50/hour",
+                    "Full ownership transferred upon final payment",
+                    "Fonts used are commercial-licence cleared"
+                ]
+            },
+            "cta": {
+                "title": "Ready to build your brand?",
+                "button": "Contact Us"
+            }
+        },
+        "digitalMarketing": {
+            "titleLine1": "Digital Marketing",
+            "titleLine2": "Service Proposal",
+            "subtitle": "Data-driven marketing that grows your audience, builds brand authority and drives measurable results.",
+            "validity": "Valid for 30 days from date of issue",
+            "packages": {
+                "basic": {
+                    "name": "Starter",
+                    "price": "€500",
+                    "priceSub": "/month",
+                    "description": "Entry-level social media management across 2 channels with monthly reporting.",
+                    "features": [
+                        "2 social channels",
+                        "8 posts/month",
+                        "Content creation",
+                        "Community management",
+                        "Monthly report",
+                        "No ad spend included"
+                    ]
+                },
+                "professional": {
+                    "name": "Professional",
+                    "price": "€1.000",
+                    "priceSub": "/month",
+                    "description": "3 channels, paid advertising on Meta and Google, analytics dashboard.",
+                    "features": [
+                        "3 social channels",
+                        "16 posts/month",
+                        "Meta + Google Ads",
+                        "Ad copy & creatives",
+                        "Analytics dashboard",
+                        "Bi-weekly reporting",
+                        "Strategy sessions"
+                    ]
+                },
+                "enterprise": {
+                    "name": "Agency",
+                    "price": "€2.000",
+                    "priceSub": "/month",
+                    "description": "Full-service marketing: unlimited content, A/B testing, CRO and dedicated strategist.",
+                    "features": [
+                        "All channels covered",
+                        "Unlimited content",
+                        "Multi-platform ads",
+                        "A/B testing",
+                        "CRO & landing pages",
+                        "Dedicated strategist",
+                        "Weekly reporting"
+                    ]
+                }
+            },
+            "includes": {
+                "title": "What's Included",
+                "items": [
+                    "Content calendar & planning",
+                    "Graphic design for posts",
+                    "Caption & hashtag writing",
+                    "Community engagement",
+                    "Paid ad management",
+                    "Audience targeting setup",
+                    "Performance tracking",
+                    "Monthly strategy review",
+                    "Competitor monitoring",
+                    "Monthly analytics report"
+                ]
+            },
+            "process": {
+                "title": "Our Process",
+                "steps": {
+                    "1": {
+                        "title": "Audit & Strategy",
+                        "description": "We audit your current presence and define a monthly content and ads strategy."
+                    },
+                    "2": {
+                        "title": "Content Production",
+                        "description": "Visuals, copy and scheduling prepared and approved in advance."
+                    },
+                    "3": {
+                        "title": "Publish & Engage",
+                        "description": "Daily publishing, comment management and community interaction."
+                    },
+                    "4": {
+                        "title": "Report & Optimise",
+                        "description": "Monthly performance report with insights and next-month optimisations."
+                    }
+                }
+            },
+            "terms": {
+                "title": "Terms & Conditions",
+                "items": [
+                    "Offer valid for 30 days from date of issue",
+                    "Monthly retainer billed in advance",
+                    "Minimum 3-month engagement",
+                    "Ad spend billed separately",
+                    "Content approval cycle: 3 business days",
+                    "30-day notice required to cancel",
+                    "All created assets remain property of client"
+                ]
+            },
+            "cta": {
+                "title": "Ready to grow your audience?",
+                "button": "Contact Us"
+            }
+        },
+        "seo": {
+            "titleLine1": "SEO Optimisation",
+            "titleLine2": "Service Proposal",
+            "subtitle": "Sustainable organic growth through technical SEO, content strategy and authority building.",
+            "validity": "Valid for 30 days from date of issue",
+            "packages": {
+                "basic": {
+                    "name": "Local",
+                    "price": "€400",
+                    "priceSub": "/month",
+                    "description": "Local SEO for businesses targeting a specific city or region.",
+                    "features": [
+                        "10 target keywords",
+                        "On-page optimisation",
+                        "Google My Business",
+                        "Local citations",
+                        "Monthly ranking report",
+                        "Meta tags & schema"
+                    ]
+                },
+                "professional": {
+                    "name": "Growth",
+                    "price": "€800",
+                    "priceSub": "/month",
+                    "description": "Technical SEO, link building, content strategy and 30 keywords.",
+                    "features": [
+                        "30 target keywords",
+                        "Technical SEO audit",
+                        "Link building (5/month)",
+                        "Content optimisation",
+                        "Core Web Vitals fix",
+                        "Bi-weekly reporting",
+                        "Competitor analysis"
+                    ]
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "price": "€1.500+",
+                    "priceSub": "/month",
+                    "description": "E-commerce SEO, 100+ keywords, full technical audit and content production.",
+                    "features": [
+                        "100+ keywords",
+                        "E-commerce SEO",
+                        "Full technical audit",
+                        "Content production",
+                        "Link building (15/month)",
+                        "Weekly reporting",
+                        "Dedicated SEO manager"
+                    ]
+                }
+            },
+            "includes": {
+                "title": "What's Included",
+                "items": [
+                    "Initial SEO audit",
+                    "Keyword research & mapping",
+                    "On-page optimisation",
+                    "Technical SEO fixes",
+                    "Content recommendations",
+                    "Link building outreach",
+                    "Schema markup",
+                    "Google Search Console setup",
+                    "Monthly ranking reports",
+                    "Competitor benchmarking"
+                ]
+            },
+            "process": {
+                "title": "Our Process",
+                "steps": {
+                    "1": {
+                        "title": "Audit & Research",
+                        "description": "Full site audit and keyword research to identify quick wins and long-term opportunities."
+                    },
+                    "2": {
+                        "title": "Technical Fixes",
+                        "description": "Speed, structure and crawlability improvements in the first two weeks."
+                    },
+                    "3": {
+                        "title": "On-Page & Content",
+                        "description": "Meta tags, headings, internal linking and content optimised for target keywords."
+                    },
+                    "4": {
+                        "title": "Build & Report",
+                        "description": "Monthly link building, ranking tracking and strategy adjustments."
+                    }
+                }
+            },
+            "terms": {
+                "title": "Terms & Conditions",
+                "items": [
+                    "Offer valid for 30 days from date of issue",
+                    "Monthly retainer billed in advance",
+                    "Minimum 3-month engagement for visible results",
+                    "Ranking results typically visible in 3-6 months",
+                    "Client to provide website access (CMS/FTP)",
+                    "30-day notice required to cancel",
+                    "Reports delivered within 5 business days of month end"
+                ]
+            },
+            "cta": {
+                "title": "Ready to rank higher?",
+                "button": "Contact Us"
+            }
+        },
+        "aiAutomation": {
+            "titleLine1": "AI & Automation",
+            "titleLine2": "Service Proposal",
+            "subtitle": "Custom AI integrations and workflow automation that save time, reduce errors and unlock new capabilities.",
+            "validity": "Valid for 30 days from date of issue",
+            "packages": {
+                "basic": {
+                    "name": "Starter",
+                    "price": "€2.000",
+                    "priceSub": "one-time",
+                    "description": "Chatbot integration or basic workflow automation for one process.",
+                    "features": [
+                        "AI chatbot setup",
+                        "1 automated workflow",
+                        "API integration",
+                        "Testing & QA",
+                        "Documentation",
+                        "2-week delivery"
+                    ]
+                },
+                "professional": {
+                    "name": "Professional",
+                    "price": "€7.000",
+                    "priceSub": "one-time",
+                    "description": "Custom AI solution with multiple API integrations and automated multi-step workflows.",
+                    "features": [
+                        "Custom AI solution",
+                        "Multi-step workflows",
+                        "Multiple integrations",
+                        "Dashboard & reporting",
+                        "Team training",
+                        "3-month support",
+                        "4-8 week delivery"
+                    ]
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "price": "On request",
+                    "priceSub": "",
+                    "description": "ML models, full AI systems and end-to-end automation of business operations.",
+                    "features": [
+                        "Custom ML models",
+                        "Full AI system",
+                        "End-to-end automation",
+                        "Data pipeline setup",
+                        "Enterprise integrations",
+                        "Dedicated team",
+                        "Timeline by scope"
+                    ]
+                }
+            },
+            "includes": {
+                "title": "What's Included",
+                "items": [
+                    "Requirements discovery session",
+                    "Process mapping & analysis",
+                    "Custom AI/LLM integration",
+                    "Workflow automation build",
+                    "API & third-party integrations",
+                    "Testing & quality assurance",
+                    "Deployment & monitoring",
+                    "Team onboarding & training",
+                    "Technical documentation",
+                    "Post-launch support period"
+                ]
+            },
+            "process": {
+                "title": "Our Process",
+                "steps": {
+                    "1": {
+                        "title": "Discovery & Mapping",
+                        "description": "We map your current workflows to identify automation opportunities and define scope."
+                    },
+                    "2": {
+                        "title": "Design & Architecture",
+                        "description": "Technical architecture designed and approved before development begins."
+                    },
+                    "3": {
+                        "title": "Build & Integrate",
+                        "description": "Iterative development with regular demos. All integrations tested in staging."
+                    },
+                    "4": {
+                        "title": "Deploy & Train",
+                        "description": "Production deployment, team training and monitoring setup."
+                    }
+                }
+            },
+            "terms": {
+                "title": "Terms & Conditions",
+                "items": [
+                    "Offer valid for 30 days from date of issue",
+                    "50% advance payment required to begin",
+                    "50% due upon delivery and acceptance",
+                    "Scope changes require written approval",
+                    "Client to provide API keys and access credentials",
+                    "Maintenance beyond support period billed separately",
+                    "All code and IP transferred to client upon final payment"
+                ]
+            },
+            "cta": {
+                "title": "Ready to automate your business?",
+                "button": "Contact Us"
+            }
+        },
+        "mobileDevelopment": {
+            "titleLine1": "Mobile Development",
+            "titleLine2": "Service Proposal",
+            "subtitle": "Native-quality mobile apps for iOS and Android — from validated MVPs to enterprise-grade products.",
+            "validity": "Valid for 30 days from date of issue",
+            "packages": {
+                "basic": {
+                    "name": "MVP",
+                    "price": "€7.500",
+                    "priceSub": "one-time",
+                    "description": "Core-feature app on one platform to validate your idea fast.",
+                    "features": [
+                        "Single platform (iOS or Android)",
+                        "Core feature set",
+                        "Basic UI/UX design",
+                        "REST API integration",
+                        "App Store submission",
+                        "8-10 week delivery"
+                    ]
+                },
+                "professional": {
+                    "name": "Standard",
+                    "price": "€15.000",
+                    "priceSub": "one-time",
+                    "description": "Cross-platform iOS + Android app with polished design and full backend.",
+                    "features": [
+                        "iOS + Android",
+                        "React Native / Flutter",
+                        "Custom UI/UX design",
+                        "Backend & API",
+                        "Push notifications",
+                        "Analytics integration",
+                        "12-16 week delivery"
+                    ]
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "price": "On request",
+                    "priceSub": "",
+                    "description": "Native apps, complex backends, real-time features and enterprise integrations.",
+                    "features": [
+                        "Native iOS & Android",
+                        "Complex backend",
+                        "Real-time features",
+                        "Enterprise integrations",
+                        "Security & compliance",
+                        "Dedicated team",
+                        "Timeline by scope"
+                    ]
+                }
+            },
+            "includes": {
+                "title": "What's Included",
+                "items": [
+                    "Product discovery & wireframes",
+                    "UI/UX design (Figma)",
+                    "iOS & Android development",
+                    "Backend API development",
+                    "Database design & setup",
+                    "Third-party integrations",
+                    "QA & device testing",
+                    "App Store & Play Store submission",
+                    "Push notifications setup",
+                    "3-month post-launch support"
+                ]
+            },
+            "process": {
+                "title": "Our Process",
+                "steps": {
+                    "1": {
+                        "title": "Discovery & Wireframes",
+                        "description": "User flows, wireframes and technical requirements defined before any design work."
+                    },
+                    "2": {
+                        "title": "UI/UX Design",
+                        "description": "High-fidelity Figma designs reviewed and signed off before development."
+                    },
+                    "3": {
+                        "title": "Development & QA",
+                        "description": "Iterative sprints with weekly builds delivered to TestFlight / Play Console."
+                    },
+                    "4": {
+                        "title": "Launch & Support",
+                        "description": "Store submission, launch support and 3-month post-launch warranty."
+                    }
+                }
+            },
+            "terms": {
+                "title": "Terms & Conditions",
+                "items": [
+                    "Offer valid for 30 days from date of issue",
+                    "50% advance payment to begin",
+                    "50% due upon App Store submission",
+                    "App Store fees borne by client",
+                    "Scope changes require written approval",
+                    "3 rounds of design revisions included",
+                    "Source code delivered upon final payment"
+                ]
+            },
+            "cta": {
+                "title": "Ready to build your app?",
+                "button": "Contact Us"
+            }
+        },
+        "hosting": {
+            "titleLine1": "Hosting & Infrastructure",
+            "titleLine2": "Service Proposal",
+            "subtitle": "Fast, secure and reliable hosting with proactive monitoring, daily backups and expert support.",
+            "validity": "Valid for 30 days from date of issue",
+            "packages": {
+                "basic": {
+                    "name": "Starter",
+                    "price": "€15",
+                    "priceSub": "/month",
+                    "description": "Reliable hosting for small websites and landing pages.",
+                    "features": [
+                        "10 GB SSD storage",
+                        "1 domain included",
+                        "Free SSL certificate",
+                        "Business email",
+                        "99.9% uptime SLA",
+                        "Shared resources"
+                    ]
+                },
+                "professional": {
+                    "name": "Business",
+                    "price": "€30",
+                    "priceSub": "/month",
+                    "description": "High-performance NVMe hosting for growing businesses with daily backups.",
+                    "features": [
+                        "50 GB NVMe storage",
+                        "5 domains included",
+                        "Daily backups",
+                        "Priority support",
+                        "Staging environment",
+                        "CDN included",
+                        "99.95% uptime SLA"
+                    ]
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "price": "€60",
+                    "priceSub": "/month",
+                    "description": "Dedicated resources, unlimited domains and full CDN for high-traffic applications.",
+                    "features": [
+                        "200 GB NVMe storage",
+                        "Unlimited domains",
+                        "Dedicated resources",
+                        "Global CDN",
+                        "Hourly backups",
+                        "24/7 monitoring",
+                        "Dedicated support"
+                    ]
+                }
+            },
+            "includes": {
+                "title": "What's Included",
+                "items": [
+                    "Server setup & configuration",
+                    "Free SSL certificates",
+                    "Daily automated backups",
+                    "DDoS protection",
+                    "Malware scanning",
+                    "99.9%+ uptime guarantee",
+                    "Email hosting",
+                    "One-click WordPress install",
+                    "24/7 monitoring & alerts",
+                    "Migration assistance"
+                ]
+            },
+            "process": {
+                "title": "Our Process",
+                "steps": {
+                    "1": {
+                        "title": "Onboarding",
+                        "description": "Account setup, domain configuration and migration from existing host if needed."
+                    },
+                    "2": {
+                        "title": "Configuration",
+                        "description": "Server optimised for your stack — PHP, Node.js, WordPress or custom."
+                    },
+                    "3": {
+                        "title": "Go Live",
+                        "description": "DNS cutover, SSL provisioning and final testing before launch."
+                    },
+                    "4": {
+                        "title": "Ongoing Management",
+                        "description": "24/7 monitoring, automatic backups and proactive security updates."
+                    }
+                }
+            },
+            "terms": {
+                "title": "Terms & Conditions",
+                "items": [
+                    "Offer valid for 30 days from date of issue",
+                    "Hosting billed monthly or annually (annual = 2 months free)",
+                    "30-day money-back guarantee on first payment",
+                    "Backups retained for 30 days",
+                    "Resource abuse may result in account suspension",
+                    "30-day notice required to cancel subscription",
+                    "Domains registered separately at cost price"
+                ]
+            },
+            "cta": {
+                "title": "Ready for fast, reliable hosting?",
+                "button": "Contact Us"
             }
         }
     }
