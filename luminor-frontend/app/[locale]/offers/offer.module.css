@@ -412,10 +412,10 @@
 
 @media print {
     /* Hide site chrome */
-    header,
-    footer,
-    .actionBar,
-    nav {
+    :global(header),
+    :global(footer),
+    :global(nav),
+    .actionBar {
         display: none !important;
     }
 
