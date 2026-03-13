@@ -10,7 +10,8 @@ interface Message {
     content: string;
     sender_type: "visitor" | "agent";
     sender_name: string;
-    createdAt: string;
+    createdAt?: string;
+    created_at?: string;
 }
 
 interface SocketClient {
@@ -269,7 +270,7 @@ export default function ChatWidget() {
                                             )}
                                             <div className={styles.bubble}>{msg.content}</div>
                                             <div className={styles.time}>
-                                                {new Date(msg.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                                                {new Date(msg.createdAt || msg.created_at || Date.now()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                                             </div>
                                         </div>
                                     ))}
