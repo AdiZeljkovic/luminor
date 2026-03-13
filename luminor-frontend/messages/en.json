@@ -87,7 +87,8 @@
             "process": "Process",
             "pricing": "Pricing",
             "contact": "Contact",
-            "startProject": "Start a Project"
+            "startProject": "Start a Project",
+            "clientArea": "Client Area"
         },
         "learnMore": "Learn more",
         "services": {

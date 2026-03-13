@@ -105,9 +105,9 @@ export default function Header() {
                 {/* Right Side Actions */}
                 <div className={styles.actions}>
                     {/* CTA Button */}
-                    <Link href="/contact" className={styles.ctaButton}>
-                        {t('startProject')}
-                    </Link>
+                    <a href="https://admin.luminor.solutions" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
+                        {t('clientArea')}
+                    </a>
 
                     {/* Language Switcher */}
                     <div className={styles.desktopSwitcher}>
@@ -165,9 +165,9 @@ export default function Header() {
                     <div className={styles.mobileSwitcherContainer}>
                         <LanguageSwitcher />
                     </div>
-                    <Link href="/contact" className={styles.mobileCta}>
-                        {t('startProject')}
-                    </Link>
+                    <a href="https://admin.luminor.solutions" target="_blank" rel="noopener noreferrer" className={styles.mobileCta}>
+                        {t('clientArea')}
+                    </a>
                 </nav>
             </div>
         </header >
