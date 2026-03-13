@@ -3,77 +3,82 @@
 .phasesList {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 1.5rem;
 }
 
 .phaseItem {
     display: grid;
-    grid-template-columns: 80px 60px 1fr;
-    gap: 2rem;
-    padding: 3rem 2rem;
-    border: 2px solid var(--color-dark);
-    border-bottom: none;
-    background: var(--color-surface);
-    transition: background 0.2s ease;
-    align-items: start;
-}
-
-.phaseItem:first-child {
-    border-radius: 0;
-}
-
-.phaseItem:last-child {
-    border-bottom: 2px solid var(--color-dark);
+    grid-template-columns: 110px 1fr;
+    gap: 0;
+    border-radius: 1.5rem;
+    border: 2px solid #E5E7EB;
+    overflow: hidden;
+    transition: all 0.25s ease;
 }
 
 .phaseItem:hover {
-    background: var(--color-surface-highlight);
+    border-color: #FF9F1C;
+    box-shadow: 0 12px 40px rgba(255, 159, 28, 0.12);
+    transform: translateY(-2px);
+}
+
+.phaseNumberBadge {
+    background: #0F172A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem 1rem;
 }
 
 .phaseNumber {
     font-family: var(--font-display);
-    font-size: 3rem;
+    font-size: 2.25rem;
     font-weight: 900;
-    color: var(--color-gray-300);
+    color: #FF9F1C;
     line-height: 1;
-    padding-top: 0.25rem;
 }
 
 .phaseIcon {
-    font-size: 2rem;
-    padding-top: 0.25rem;
+    font-size: 1.75rem;
 }
 
 .phaseContent {
-    flex: 1;
+    padding: 2rem 2.5rem;
 }
 
 .phaseTitle {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 800;
-    color: var(--color-dark);
-    margin-bottom: 1rem;
+    color: #0F172A;
+    margin-bottom: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .phaseDescription {
     font-family: var(--font-primary);
-    color: var(--color-gray-600);
+    color: #4B5563;
     line-height: 1.7;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     max-width: 65ch;
 }
 
 @media (max-width: 768px) {
     .phaseItem {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
-        padding: 2rem 1.5rem;
     }
 
-    .phaseNumber {
-        font-size: 2rem;
+    .phaseNumberBadge {
+        flex-direction: row;
+        padding: 1rem 1.5rem;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .phaseContent {
+        padding: 1.5rem;
     }
 }

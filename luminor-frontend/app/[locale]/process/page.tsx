@@ -73,8 +73,10 @@ export default async function ProcessPage({ params }: { params: Promise<{ locale
                     <div className={processStyles.phasesList}>
                         {phases.map((phase, index) => (
                             <AnimatedSection key={phase} animation="fade-up" delay={index * 100} className={processStyles.phaseItem}>
-                                <div className={processStyles.phaseNumber}>{t(`phases.${phase}.number`)}</div>
-                                <div className={processStyles.phaseIcon} aria-hidden="true">{phaseIcons[phase]}</div>
+                                <div className={processStyles.phaseNumberBadge}>
+                                    <div className={processStyles.phaseNumber}>{t(`phases.${phase}.number`)}</div>
+                                    <div className={processStyles.phaseIcon} aria-hidden="true">{phaseIcons[phase]}</div>
+                                </div>
                                 <div className={processStyles.phaseContent}>
                                     <h3 className={processStyles.phaseTitle}>{t(`phases.${phase}.title`)}</h3>
                                     <p className={processStyles.phaseDescription}>{t(`phases.${phase}.description`)}</p>
