@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
 import styles from "../services/ServiceDetail.module.css";
-import processStyles from "./page.module.css";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -31,7 +30,6 @@ export default async function ProcessPage({ params }: { params: Promise<{ locale
     const t = await getTranslations({ locale, namespace: "process" });
 
     const phases = ['discovery', 'strategy', 'build', 'launch'] as const;
-    const principleKeys = ['honest', 'scope', 'communication', 'ownership'] as const;
     const faqKeys = ['1', '2', '3', '4'] as const;
 
     const phaseIcons: Record<string, string> = {
@@ -62,47 +60,49 @@ export default async function ProcessPage({ params }: { params: Promise<{ locale
                 </div>
             </section>
 
-            {/* Four Phases */}
-            <section className={styles.detailedServicesSection}>
+            {/* Feature Highlights — 3 cards overlapping hero */}
+            <div className={styles.container}>
+                <div className={styles.featuresGrid}>
+                    <AnimatedSection animation="fade-up" delay={0} className={styles.featureCard}>
+                        <div className={styles.featureIcon} aria-hidden="true">🎯</div>
+                        <h3 className={styles.featureTitle}>{t("principles.honest.title")}</h3>
+                        <p className={styles.featureText}>{t("principles.honest.description")}</p>
+                    </AnimatedSection>
+                    <AnimatedSection animation="fade-up" delay={100} className={styles.featureCard}>
+                        <div className={styles.featureIcon} aria-hidden="true">📄</div>
+                        <h3 className={styles.featureTitle}>{t("principles.scope.title")}</h3>
+                        <p className={styles.featureText}>{t("principles.scope.description")}</p>
+                    </AnimatedSection>
+                    <AnimatedSection animation="fade-up" delay={200} className={styles.featureCard}>
+                        <div className={styles.featureIcon} aria-hidden="true">💬</div>
+                        <h3 className={styles.featureTitle}>{t("principles.communication.title")}</h3>
+                        <p className={styles.featureText}>{t("principles.communication.description")}</p>
+                    </AnimatedSection>
+                </div>
+            </div>
+
+            {/* Four Phases — dark section like service detail cards */}
+            <section id="phases" className={styles.detailedServicesSection}>
                 <div className={styles.container}>
                     <AnimatedSection className="text-center mb-16">
                         <h2 className={styles.sectionTitle}>{t("phases.title")}</h2>
-                        <p className="max-w-2xl mx-auto text-gray-600 font-primary mt-4">{t("phases.subtitle")}</p>
+                        <p className="max-w-2xl mx-auto text-gray-400 font-primary mt-4 relative z-10">{t("phases.subtitle")}</p>
                     </AnimatedSection>
-
-                    <div className={processStyles.phasesList}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                         {phases.map((phase, index) => (
-                            <AnimatedSection key={phase} animation="fade-up" delay={index * 100} className={processStyles.phaseItem}>
-                                <div className={processStyles.phaseNumberBadge}>
-                                    <div className={processStyles.phaseNumber}>{t(`phases.${phase}.number`)}</div>
-                                    <div className={processStyles.phaseIcon} aria-hidden="true">{phaseIcons[phase]}</div>
-                                </div>
-                                <div className={processStyles.phaseContent}>
-                                    <h3 className={processStyles.phaseTitle}>{t(`phases.${phase}.title`)}</h3>
-                                    <p className={processStyles.phaseDescription}>{t(`phases.${phase}.description`)}</p>
-                                    <ul className={styles.serviceDetailList}>
-                                        {(t.raw(`phases.${phase}.items`) as string[]).map((item: string, i: number) => (
-                                            <li key={i}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </AnimatedSection>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Principles */}
-            <section className={styles.techStackSection}>
-                <div className={styles.container}>
-                    <AnimatedSection className="text-center mb-16">
-                        <h2 className={styles.sectionTitle}>{t("principles.title")}</h2>
-                    </AnimatedSection>
-                    <div className={styles.featuresGrid}>
-                        {principleKeys.map((key, index) => (
-                            <AnimatedSection key={key} animation="fade-up" delay={index * 100} className={styles.featureCard}>
-                                <h3 className={styles.featureTitle}>{t(`principles.${key}.title`)}</h3>
-                                <p className={styles.featureText}>{t(`principles.${key}.description`)}</p>
+                            <AnimatedSection key={phase} animation="fade-up" delay={index * 100} className={styles.serviceDetailCard}>
+                                <h3 className={styles.serviceDetailTitle}>
+                                    <span style={{ color: 'var(--color-accent)', marginRight: '0.4rem' }}>
+                                        {t(`phases.${phase}.number`)}
+                                    </span>
+                                    {phaseIcons[phase]} {t(`phases.${phase}.title`)}
+                                </h3>
+                                <p className="text-gray-400 font-primary mb-4">{t(`phases.${phase}.description`)}</p>
+                                <ul className={styles.serviceDetailList}>
+                                    {(t.raw(`phases.${phase}.items`) as string[]).map((item: string, i: number) => (
+                                        <li key={i}>{item}</li>
+                                    ))}
+                                </ul>
                             </AnimatedSection>
                         ))}
                     </div>
