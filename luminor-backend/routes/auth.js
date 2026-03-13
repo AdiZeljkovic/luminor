@@ -104,7 +104,8 @@ router.post('/login', [
         const cookieOptions = {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // HTTPS only in production
-            sameSite: 'strict', // CSRF protection
+            sameSite: 'lax', // Allow cross-subdomain (admin. → api.)
+            domain: process.env.NODE_ENV === 'production' ? '.luminor.solutions' : undefined,
             path: '/'
         };
 
@@ -166,7 +167,8 @@ router.post('/refresh', async (req, res) => {
         const cookieOptions = {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'lax',
+            domain: process.env.NODE_ENV === 'production' ? '.luminor.solutions' : undefined,
             path: '/'
         };
 
@@ -191,8 +193,9 @@ router.post('/logout', auth, async (req, res) => {
         await User.update({ refresh_token: null }, { where: { id: req.user.id } });
 
         // SECURITY: Clear httpOnly cookies
-        res.clearCookie('accessToken');
-        res.clearCookie('refreshToken');
+        const clearOpts = { path: '/', domain: process.env.NODE_ENV === 'production' ? '.luminor.solutions' : undefined };
+        res.clearCookie('accessToken', clearOpts);
+        res.clearCookie('refreshToken', clearOpts);
 
         res.json({ success: true, message: 'Logged out successfully' });
     } catch (error) {
