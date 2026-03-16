@@ -1568,8 +1568,8 @@
         "webDevelopment": {
             "titleLine1": "Web Development",
             "titleLine2": "Ponuda Usluge",
-            "subtitle": "Gradimo brza, moderna web rjesenja prilagodjena vasim poslovnim ciljevima — od korporativnih sajtova do kompleksnih web aplikacija.",
-            "validity": "Ponuda vazi 30 dana od datuma izdavanja",
+            "subtitle": "Vaš web sajt je vaš najvredni zaposlenik. Gradimo ga da donosi rezultate.",
+            "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
                 "basic": {
                     "name": "Basic",
@@ -1597,55 +1597,55 @@
                         "E-commerce opcija",
                         "SEO optimizacija",
                         "Optimizacija brzine",
-                        "3 mjeseca podrske",
+                        "3 mjeseca podrške",
                         "Isporuka 4-6 sedmica"
                     ]
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "Na upit",
+                    "price": "Prilagođena cijena",
                     "priceSub": "",
-                    "description": "Web aplikacije, SaaS platforme i custom backend sistemi izgradeni za skalabilnost.",
+                    "description": "Web aplikacije, SaaS platforme i custom backend sistemi izgrađeni za skalabilnost.",
                     "features": [
-                        "Neogranicena kompleksnost",
+                        "Neograničena kompleksnost",
                         "Custom backend / API",
                         "SaaS i web aplikacije",
                         "Autentifikacija i korisnici",
                         "Performanse na velikom obimu",
-                        "Posveceni tim",
+                        "Posvećeni tim",
                         "Vremenski okvir po scopeu"
                     ]
                 }
             },
             "includes": {
-                "title": "Sto je Ukljuceno",
+                "title": "Što je Uključeno",
                 "items": [
                     "UI/UX dizajn mockupovi (Figma)",
                     "Potpuno responzivno (mobile-first)",
                     "Cross-browser testiranje",
                     "On-page SEO setup",
-                    "SSL i sigurnosna zastita",
+                    "SSL i sigurnosna zaštita",
                     "Optimizacija brzine i Core Web Vitals",
                     "Obuka za CMS",
-                    "30 dana podrske nakon lansiranja",
+                    "30 dana podrške nakon lansiranja",
                     "Isporuka izvornog koda",
                     "Deployment i hosting setup"
                 ]
             },
             "process": {
-                "title": "Nas Proces",
+                "title": "Naš Proces",
                 "steps": {
                     "1": {
                         "title": "Otkrivanje i Brief",
-                        "description": "Uskladujemo ciljeve, publiku i tehnicke zahtjeve kroz strukturisani kick-off."
+                        "description": "Usklađujemo ciljeve, publiku i tehničke zahtjeve kroz strukturisani kick-off."
                     },
                     "2": {
                         "title": "Dizajn i Prototip",
-                        "description": "Figma mockupovi pregledani i odobreni prije nego sto se napise ijedna linija koda."
+                        "description": "Figma mockupovi pregledani i odobreni prije nego što se napiše ijedna linija koda."
                     },
                     "3": {
                         "title": "Razvoj i Testiranje",
-                        "description": "Iterativni buildovi s nedjeljnim azuriranjima. Kompletni QA na svim uredajima."
+                        "description": "Iterativni buildovi s nedjeljnim ažuriranjima. Kompletni QA na svim uređajima."
                     },
                     "4": {
                         "title": "Lansiranje i Predaja",
@@ -1656,25 +1656,25 @@
             "terms": {
                 "title": "Uvjeti i Odredbe",
                 "items": [
-                    "Ponuda vazi 30 dana od datuma izdavanja",
-                    "Predujam od 50% obavezan za pocetrak rada",
+                    "Ponuda važi 30 dana od datuma izdavanja",
+                    "Predujam od 50% obavezan za početak rada",
                     "50% po isporuci projekta",
-                    "Do 3 runde revizija ukljuceno",
-                    "Dodatne revizije se naplacuju po €60/satu",
-                    "Klijent dostavlja sav sadrzaj (tekst, slike, brand materijali)",
-                    "Rok pocinje od uplate predujma i potvrde briefa"
+                    "Do 3 runde revizija uključeno",
+                    "Dodatne revizije se naplaćuju po €60/satu",
+                    "Klijent dostavlja sav sadržaj (tekst, slike, brand materijali)",
+                    "Rok počinje od uplate predujma i potvrde briefa"
                 ]
             },
             "cta": {
-                "title": "Spremni pokrenuti projekt?",
-                "button": "Kontaktirajte Nas"
+                "title": "Izgradimo nešto sjajno zajedno.",
+                "button": "Prihvati Ponudu"
             }
         },
         "graphicDesign": {
-            "titleLine1": "Graficki Dizajn",
+            "titleLine1": "Grafički Dizajn",
             "titleLine2": "Ponuda Usluge",
-            "subtitle": "Vizualni identiteti i brand materijali koji vas cine nezaboravnim — od kreiranja loga do kompletnih brand sistema.",
-            "validity": "Ponuda vazi 30 dana od datuma izdavanja",
+            "subtitle": "Vizualni identiteti i brand materijali koji vas čine nezaboravnim — od kreiranja loga do kompletnih brand sistema.",
+            "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
                 "basic": {
                     "name": "Basic",
@@ -1694,118 +1694,118 @@
                     "name": "Professional",
                     "price": "€1.500",
                     "priceSub": "jednokratno",
-                    "description": "Kompletni branding kit: logo, boje, tipografija, pravila koristenja i brand book.",
+                    "description": "Kompletni branding kit: logo, boje, tipografija, pravila korištenja i brand book.",
                     "features": [
                         "Kompletni branding kit",
                         "Logo i sve varijacije",
                         "Tipografski sistem",
                         "Sistem boja",
                         "Brand guidelines PDF",
-                        "Sabloni za drustvene mreze",
+                        "Šabloni za društvene mreže",
                         "Isporuka 2-3 sedmice"
                     ]
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "Na upit",
+                    "price": "Prilagođena cijena",
                     "priceSub": "",
-                    "description": "Kompletan rebrand, dizajn sistemi i materijali za visekanalne kampanje.",
+                    "description": "Kompletan rebrand, dizajn sistemi i materijali za višekanalne kampanje.",
                     "features": [
                         "Strategija rebrandinga",
                         "Dizajn sistem",
                         "Materijali za kampanje",
                         "Print i digitalni materijali",
-                        "Podrska pri implementaciji branda",
-                        "Posveceni dizajner",
+                        "Podrška pri implementaciji branda",
+                        "Posvećeni dizajner",
                         "Vremenski okvir po scopeu"
                     ]
                 }
             },
             "includes": {
-                "title": "Sto je Ukljuceno",
+                "title": "Što je Uključeno",
                 "items": [
                     "Brand discovery sesija",
-                    "Istrazivanje konkurencije i trzista",
+                    "Istraživanje konkurencije i tržišta",
                     "Moodboard i smjer",
                     "Logo u svim formatima",
-                    "Vodic za boje i tipografiju",
+                    "Vodič za boje i tipografiju",
                     "Dizajn posjetnice",
-                    "Materijali za profil na drustv. mrezama",
+                    "Materijali za profil na drušv. mrežama",
                     "Brand book PDF",
                     "Izvorni fajlovi (AI, Figma)",
-                    "Smjernice za koristenje"
+                    "Smjernice za korištenje"
                 ]
             },
             "process": {
-                "title": "Nas Proces",
+                "title": "Naš Proces",
                 "steps": {
                     "1": {
                         "title": "Brand Discovery",
-                        "description": "Upoznajemo vase vrijednosti, publiku i konkurenciju kako bismo postavili pravi kreativni smjer."
+                        "description": "Upoznajemo vaše vrijednosti, publiku i konkurenciju kako bismo postavili pravi kreativni smjer."
                     },
                     "2": {
                         "title": "Koncepti i Moodboard",
-                        "description": "Vise vizuelnih smjerova prezentovano prije odabira finalnog pristupa."
+                        "description": "Više vizuelnih smjerova prezentovano prije odabira finalnog pristupa."
                     },
                     "3": {
-                        "title": "Doradu i Finalizacija",
-                        "description": "Izabrani smjer usavrsavan kroz runde revizija dok ne bude savrseno."
+                        "title": "Dorada i Finalizacija",
+                        "description": "Izabrani smjer usavršavan kroz runde revizija dok ne bude savršeno."
                     },
                     "4": {
                         "title": "Isporuka i Predaja",
-                        "description": "Svi fajlovi pakovani i isporuceni s brand usage guidom."
+                        "description": "Svi fajlovi pakovani i isporučeni s brand usage guidom."
                     }
                 }
             },
             "terms": {
                 "title": "Uvjeti i Odredbe",
                 "items": [
-                    "Ponuda vazi 30 dana od datuma izdavanja",
-                    "Predujam od 50% obavezan za pocetrak",
+                    "Ponuda važi 30 dana od datuma izdavanja",
+                    "Predujam od 50% obavezan za početak",
                     "50% po finalnoj isporuci",
-                    "Runde revizija specificne po paketu",
-                    "Dodatne revizije po €50/satu",
-                    "Puno vlasnistvo preneseno pri finalnoj uplati",
+                    "Runde revizija specifične po paketu",
+                    "Dodatne revizije po €60/satu",
+                    "Puno vlasništvo preneseno pri finalnoj uplati",
                     "Fontovi su komercijalno licencirani"
                 ]
             },
             "cta": {
-                "title": "Spremni izgraditi vas brand?",
-                "button": "Kontaktirajte Nas"
+                "title": "Vaša brand priča počinje ovdje.",
+                "button": "Prihvati Ponudu"
             }
         },
         "digitalMarketing": {
             "titleLine1": "Digitalni Marketing",
             "titleLine2": "Ponuda Usluge",
-            "subtitle": "Marketing zasnovan na podacima koji povecava publiku, gradi autoritet branda i donosi mjerljive rezultate.",
-            "validity": "Ponuda vazi 30 dana od datuma izdavanja",
+            "subtitle": "Više vidljivosti. Više upita. Mjerljivi rezultati svaki mjesec.",
+            "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
                 "basic": {
                     "name": "Starter",
                     "price": "€500",
                     "priceSub": "/mjes.",
-                    "description": "Upravljanje drustvenim mrezama na 2 kanala s mjesecnim izvjestajem.",
+                    "description": "Upravljanje društvenim mrežama na 2 kanala s mjesečnim izvještajem.",
                     "features": [
-                        "2 drustvene mreze",
+                        "2 društvene mreže",
                         "8 postova/mjesec",
-                        "Kreiranje sadrzaja",
+                        "Kreiranje sadržaja",
                         "Upravljanje zajednicom",
-                        "Mjesecni izvjestaj",
-                        "Oglasni budzet nije ukljucen"
+                        "Mjesečni izvještaj",
+                        "Fokus na organski rast"
                     ]
                 },
                 "professional": {
                     "name": "Professional",
                     "price": "€1.000",
                     "priceSub": "/mjes.",
-                    "description": "3 kanala, placeno oglasavanje na Meta i Google platformama, analytics dashboard.",
+                    "description": "3 kanala, plaćeno oglašavanje na Meta i Google platformama, analytics dashboard.",
                     "features": [
-                        "3 drustvene mreze",
+                        "3 društvene mreže",
                         "16 postova/mjesec",
                         "Meta + Google Ads",
                         "Ad copy i kreative",
                         "Analytics dashboard",
-                        "Izvjestaji svakih 2 sedmice",
+                        "Izvještaji svakih 2 sedmice",
                         "Strategijske sesije"
                     ]
                 },
@@ -1813,42 +1813,42 @@
                     "name": "Agency",
                     "price": "€2.000",
                     "priceSub": "/mjes.",
-                    "description": "Kompletni marketing servis: neogranicen sadrzaj, A/B testovi, CRO i posveceni strateg.",
+                    "description": "Kompletni marketing servis: neograničen sadržaj, A/B testovi, CRO i posvećeni strateg.",
                     "features": [
                         "Svi kanali pokriveni",
-                        "Neogranicen sadrzaj",
-                        "Oglasavanje na vise platformi",
+                        "Neograničen sadržaj",
+                        "Oglašavanje na više platformi",
                         "A/B testiranje",
                         "CRO i landing stranice",
-                        "Posveceni strateg",
-                        "Nedjeljni izvjestaji"
+                        "Posvećeni strateg",
+                        "Nedjeljni izvještaji"
                     ]
                 }
             },
             "includes": {
-                "title": "Sto je Ukljuceno",
+                "title": "Što je Uključeno",
                 "items": [
-                    "Kalendar sadrzaja i planiranje",
-                    "Graficki dizajn za postove",
+                    "Kalendar sadržaja i planiranje",
+                    "Grafički dizajn za postove",
                     "Pisanje opisa i hashtagova",
                     "Engagement sa zajednicom",
-                    "Upravljanje placenim oglasima",
+                    "Upravljanje plaćenim oglasima",
                     "Setup ciljanja publike",
-                    "Pracenje performansi",
-                    "Mjesecni pregled strategije",
-                    "Pracenje konkurencije",
-                    "Mjesecni analytics izvjestaj"
+                    "Praćenje performansi",
+                    "Mjesečni pregled strategije",
+                    "Praćenje konkurencije",
+                    "Mjesečni analytics izvještaj"
                 ]
             },
             "process": {
-                "title": "Nas Proces",
+                "title": "Naš Proces",
                 "steps": {
                     "1": {
                         "title": "Audit i Strategija",
-                        "description": "Analiziramo vase trenutno prisustvo i definisemo mjesecnu strategiju sadrzaja i oglasavanja."
+                        "description": "Analiziramo vaše trenutno prisustvo i definišemo mjesečnu strategiju sadržaja i oglašavanja."
                     },
                     "2": {
-                        "title": "Produkcija Sadrzaja",
+                        "title": "Produkcija Sadržaja",
                         "description": "Vizuali, tekstovi i raspored pripremljeni i odobreni unaprijed."
                     },
                     "3": {
@@ -1856,45 +1856,45 @@
                         "description": "Svakodnevna objava, upravljanje komentarima i interakcija sa zajednicom."
                     },
                     "4": {
-                        "title": "Izvjestaj i Optimizacija",
-                        "description": "Mjesecni izvjestaj o performansama s uvidima i optimizacijama za sljedeci mjesec."
+                        "title": "Izvještaj i Optimizacija",
+                        "description": "Mjesečni izvještaj o performansama s uvidima i optimizacijama za sljedeći mjesec."
                     }
                 }
             },
             "terms": {
                 "title": "Uvjeti i Odredbe",
                 "items": [
-                    "Ponuda vazi 30 dana od datuma izdavanja",
-                    "Mjesecni retainer naplacuje se unaprijed",
-                    "Minimalni angazman od 3 mjeseca",
-                    "Oglasni budzet se naplacuje zasebno",
-                    "Ciklus odobravanja sadrzaja: 3 radna dana",
+                    "Ponuda važi 30 dana od datuma izdavanja",
+                    "Mjesečni retainer naplaćuje se unaprijed",
+                    "Minimalni angažman od 3 mjeseca",
+                    "Oglasni budžet se naplaćuje zasebno",
+                    "Ciklus odobravanja sadržaja: 3 radna dana",
                     "Potrebno 30 dana za otkazivanje",
-                    "Svi kreirani materijali ostaju vlasnistvo klijenta"
+                    "Svi kreirani materijali ostaju vlasništvo klijenta"
                 ]
             },
             "cta": {
-                "title": "Spremni povecati vasu publiku?",
-                "button": "Kontaktirajte Nas"
+                "title": "Vaša publika čeka.",
+                "button": "Prihvati Ponudu"
             }
         },
         "seo": {
             "titleLine1": "SEO Optimizacija",
             "titleLine2": "Ponuda Usluge",
-            "subtitle": "Odrzivi organski rast kroz tehnicki SEO, strategiju sadrzaja i izgradnju autoriteta.",
-            "validity": "Ponuda vazi 30 dana od datuma izdavanja",
+            "subtitle": "Održivi organski rast kroz tehnički SEO, strategiju sadržaja i izgradnju autoriteta.",
+            "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
                 "basic": {
                     "name": "Lokalni",
                     "price": "€400",
                     "priceSub": "/mjes.",
-                    "description": "Lokalni SEO za biznise koji ciljaju odredeni grad ili regiju.",
+                    "description": "Lokalni SEO za biznise koji ciljaju određeni grad ili regiju.",
                     "features": [
-                        "10 ciljnih kljucnih rijeci",
+                        "10 ciljnih ključnih riječi",
                         "On-page optimizacija",
                         "Google My Business",
                         "Lokalne citacije",
-                        "Mjesecni izvjestaj rangiranja",
+                        "Mjesečni izvještaj rangiranja",
                         "Meta tagovi i schema"
                     ]
                 },
@@ -1902,14 +1902,14 @@
                     "name": "Rast",
                     "price": "€800",
                     "priceSub": "/mjes.",
-                    "description": "Tehnicki SEO, izgradnja linkova, strategija sadrzaja i 30 kljucnih rijeci.",
+                    "description": "Tehnički SEO, izgradnja linkova, strategija sadržaja i 30 ključnih riječi.",
                     "features": [
-                        "30 ciljnih kljucnih rijeci",
-                        "Tehnicki SEO audit",
+                        "30 ciljnih ključnih riječi",
+                        "Tehnički SEO audit",
                         "Izgradnja linkova (5/mjes.)",
-                        "Optimizacija sadrzaja",
+                        "Optimizacija sadržaja",
                         "Popravak Core Web Vitals",
-                        "Izvjestaji svakih 2 sedmice",
+                        "Izvještaji svakih 2 sedmice",
                         "Analiza konkurencije"
                     ]
                 },
@@ -1917,76 +1917,76 @@
                     "name": "Enterprise",
                     "price": "€1.500+",
                     "priceSub": "/mjes.",
-                    "description": "E-commerce SEO, 100+ kljucnih rijeci, kompletni tehnicki audit i produkcija sadrzaja.",
+                    "description": "E-commerce SEO, 100+ ključnih riječi, kompletni tehnički audit i produkcija sadržaja.",
                     "features": [
-                        "100+ kljucnih rijeci",
+                        "100+ ključnih riječi",
                         "E-commerce SEO",
-                        "Kompletni tehnicki audit",
-                        "Produkcija sadrzaja",
+                        "Kompletni tehnički audit",
+                        "Produkcija sadržaja",
                         "Izgradnja linkova (15/mjes.)",
-                        "Nedjeljni izvjestaji",
-                        "Posveceni SEO menadzer"
+                        "Nedjeljni izvještaji",
+                        "Posvećeni SEO menadžer"
                     ]
                 }
             },
             "includes": {
-                "title": "Sto je Ukljuceno",
+                "title": "Što je Uključeno",
                 "items": [
                     "Inicijalni SEO audit",
-                    "Istrazivanje i mapiranje kljucnih rijeci",
+                    "Istraživanje i mapiranje ključnih riječi",
                     "On-page optimizacija",
-                    "Tehnicke SEO popravke",
-                    "Preporuke za sadrzaj",
+                    "Tehničke SEO popravke",
+                    "Preporuke za sadržaj",
                     "Link building outreach",
                     "Schema markup",
                     "Google Search Console setup",
-                    "Mjesecni izvjestaji rangiranja",
+                    "Mjesečni izvještaji rangiranja",
                     "Benchmarking konkurencije"
                 ]
             },
             "process": {
-                "title": "Nas Proces",
+                "title": "Naš Proces",
                 "steps": {
                     "1": {
-                        "title": "Audit i Istrazivanje",
-                        "description": "Kompletni audit sajta i istrazivanje kljucnih rijeci za identifikaciju brzih pobjeda i dugorocnih prilika."
+                        "title": "Audit i Istraživanje",
+                        "description": "Kompletni audit sajta i istraživanje ključnih riječi za identifikaciju brzih pobjeda i dugoročnih prilika."
                     },
                     "2": {
-                        "title": "Tehnicke Popravke",
-                        "description": "Poboljsanja brzine, strukture i crawlability-a u prve dvije sedmice."
+                        "title": "Tehničke Popravke",
+                        "description": "Poboljšanja brzine, strukture i crawlability-a u prve dvije sedmice."
                     },
                     "3": {
-                        "title": "On-Page i Sadrzaj",
-                        "description": "Meta tagovi, naslovi, interne veze i sadrzaj optimizovani za ciljne kljucne rijeci."
+                        "title": "On-Page i Sadržaj",
+                        "description": "Meta tagovi, naslovi, interne veze i sadržaj optimizovani za ciljne ključne riječi."
                     },
                     "4": {
-                        "title": "Gradnja i Izvjestavanje",
-                        "description": "Mjesecna izgradnja linkova, pracenje rangiranja i prilagodbe strategije."
+                        "title": "Gradnja i Izvještavanje",
+                        "description": "Mjesečna izgradnja linkova, praćenje rangiranja i prilagodbe strategije."
                     }
                 }
             },
             "terms": {
                 "title": "Uvjeti i Odredbe",
                 "items": [
-                    "Ponuda vazi 30 dana od datuma izdavanja",
-                    "Mjesecni retainer naplacuje se unaprijed",
-                    "Minimalni angazman od 3 mjeseca za vidljive rezultate",
-                    "Rezultati rangiranja vidljivi tipicno za 3-6 mjeseci",
+                    "Ponuda važi 30 dana od datuma izdavanja",
+                    "Mjesečni retainer naplaćuje se unaprijed",
+                    "Minimalni angažman od 3 mjeseca za vidljive rezultate",
+                    "Rezultati rangiranja vidljivi tipično za 3-6 mjeseci",
                     "Klijent dostavlja pristup sajtu (CMS/FTP)",
                     "Potrebno 30 dana za otkazivanje",
-                    "Izvjestaji isporuceni u roku od 5 radnih dana od kraja mjeseca"
+                    "Izvještaji isporučeni u roku od 5 radnih dana od kraja mjeseca"
                 ]
             },
             "cta": {
-                "title": "Spremni zauzeti vise pozicije?",
-                "button": "Kontaktirajte Nas"
+                "title": "Prva stranica je bliže nego mislite.",
+                "button": "Prihvati Ponudu"
             }
         },
         "aiAutomation": {
             "titleLine1": "AI i Automatizacija",
             "titleLine2": "Ponuda Usluge",
-            "subtitle": "Custom AI integracije i automatizacija procesa koje steduju vrijeme, smanjuju greske i otvaraju nove mogucnosti.",
-            "validity": "Ponuda vazi 30 dana od datuma izdavanja",
+            "subtitle": "Automatizujemo ono što vas usporava — da se fokusirate na ono što vaše poslovanje raste.",
+            "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
                 "basic": {
                     "name": "Starter",
@@ -2006,62 +2006,62 @@
                     "name": "Professional",
                     "price": "€7.000",
                     "priceSub": "jednokratno",
-                    "description": "Custom AI rjesenje s vise API integracija i automatizovanim vise-koracnim workflowima.",
+                    "description": "Custom AI rješenje s više API integracija i automatizovanim višekoračnim workflowima.",
                     "features": [
-                        "Custom AI rjesenje",
-                        "Vise-koracni workflowi",
-                        "Vise integracija",
-                        "Dashboard i izvjestavanje",
+                        "Custom AI rješenje",
+                        "Višekoračni workflowi",
+                        "Više integracija",
+                        "Dashboard i izvještavanje",
                         "Obuka tima",
-                        "3 mjeseca podrske",
+                        "3 mjeseca podrške",
                         "Isporuka 4-8 sedmica"
                     ]
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "Na upit",
+                    "price": "Prilagođena cijena",
                     "priceSub": "",
-                    "description": "ML modeli, kompletni AI sistemi i end-to-end automatizacija poslovnih operacija.",
+                    "description": "Dizajnujemo i gradimo kompletne AI ekosisteme — od data pipelina i prilagođenih modela do automatizovanih operacija i izvještajnih dashboarda.",
                     "features": [
                         "Custom ML modeli",
                         "Kompletni AI sistem",
                         "End-to-end automatizacija",
-                        "Setup data pipelinea",
+                        "Setup data pipelina",
                         "Enterprise integracije",
-                        "Posveceni tim",
+                        "Posvećeni tim",
                         "Vremenski okvir po scopeu"
                     ]
                 }
             },
             "includes": {
-                "title": "Sto je Ukljuceno",
+                "title": "Što je Uključeno",
                 "items": [
                     "Sesija otkrivanja zahtjeva",
                     "Mapiranje i analiza procesa",
                     "Custom AI/LLM integracija",
                     "Izgradnja workflow automatizacije",
-                    "API i integracije trecih strana",
+                    "API i integracije trećih strana",
                     "Testiranje i osiguranje kvaliteta",
                     "Deployment i monitoring",
                     "Onboarding i obuka tima",
-                    "Tehnicka dokumentacija",
-                    "Period podrske po isporuci"
+                    "Tehnička dokumentacija",
+                    "Period podrške po isporuci"
                 ]
             },
             "process": {
-                "title": "Nas Proces",
+                "title": "Naš Proces",
                 "steps": {
                     "1": {
                         "title": "Otkrivanje i Mapiranje",
-                        "description": "Mapiramo vase trenutne procese kako bismo identificirali prilike za automatizaciju i definisali scope."
+                        "description": "Mapiramo vaše trenutne procese kako bismo identificirali prilike za automatizaciju i definisali scope."
                     },
                     "2": {
                         "title": "Dizajn i Arhitektura",
-                        "description": "Tehnicka arhitektura dizajnirana i odobrena prije pocetka razvoja."
+                        "description": "Tehnička arhitektura dizajnirana i odobrena prije početka razvoja."
                     },
                     "3": {
                         "title": "Izgradnja i Integracija",
-                        "description": "Iterativni razvoj s redovnim demostacijama. Sve integracije testirane u stagingu."
+                        "description": "Iterativni razvoj s redovnim demonstracijama. Sve integracije testirane u stagingu."
                     },
                     "4": {
                         "title": "Deployment i Obuka",
@@ -2072,25 +2072,25 @@
             "terms": {
                 "title": "Uvjeti i Odredbe",
                 "items": [
-                    "Ponuda vazi 30 dana od datuma izdavanja",
-                    "Predujam od 50% obavezan za pocetrak",
+                    "Ponuda važi 30 dana od datuma izdavanja",
+                    "Predujam od 50% obavezan za početak",
                     "50% po isporuci i prihvatanju",
                     "Promjene scopea zahtijevaju pisano odobrenje",
-                    "Klijent dostavlja API kljuceve i pristupne podatke",
-                    "Odrzavanje izvan perioda podrske se naplacuje zasebno",
+                    "Klijent dostavlja API ključeve i pristupne podatke",
+                    "Održavanje izvan perioda podrške se naplaćuje zasebno",
                     "Sav kod i IP prenosi se na klijenta pri finalnoj uplati"
                 ]
             },
             "cta": {
-                "title": "Spremni automatizirati vase poslovanje?",
-                "button": "Kontaktirajte Nas"
+                "title": "Budućnost vašeg rada počinje sada.",
+                "button": "Prihvati Ponudu"
             }
         },
         "mobileDevelopment": {
             "titleLine1": "Mobilni Razvoj",
             "titleLine2": "Ponuda Usluge",
             "subtitle": "Mobilne aplikacije native kvalitete za iOS i Android — od validiranih MVP-ova do enterprise proizvoda.",
-            "validity": "Ponuda vazi 30 dana od datuma izdavanja",
+            "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
                 "basic": {
                     "name": "MVP",
@@ -2123,7 +2123,7 @@
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "Na upit",
+                    "price": "Prilagođena cijena",
                     "priceSub": "",
                     "description": "Native aplikacije, kompleksni backendi, real-time funkcije i enterprise integracije.",
                     "features": [
@@ -2131,33 +2131,33 @@
                         "Kompleksni backend",
                         "Real-time funkcije",
                         "Enterprise integracije",
-                        "Sigurnost i uskladjenost",
-                        "Posveceni tim",
+                        "Sigurnost i usklađenost",
+                        "Posvećeni tim",
                         "Vremenski okvir po scopeu"
                     ]
                 }
             },
             "includes": {
-                "title": "Sto je Ukljuceno",
+                "title": "Što je Uključeno",
                 "items": [
                     "Otkrivanje proizvoda i wireframovi",
                     "UI/UX dizajn (Figma)",
                     "iOS i Android razvoj",
                     "Razvoj backend API-ja",
                     "Dizajn i setup baze podataka",
-                    "Integracije trecih strana",
-                    "QA i testiranje na uredajima",
+                    "Integracije trećih strana",
+                    "QA i testiranje na uređajima",
                     "Predaja na App Store i Play Store",
                     "Setup push notifikacija",
-                    "3 mjeseca podrske nakon lansiranja"
+                    "3 mjeseca podrške nakon lansiranja"
                 ]
             },
             "process": {
-                "title": "Nas Proces",
+                "title": "Naš Proces",
                 "steps": {
                     "1": {
                         "title": "Otkrivanje i Wireframovi",
-                        "description": "Korisnicki tokovi, wireframovi i tehnicki zahtjevi definisani prije pocetka dizajna."
+                        "description": "Korisnički tokovi, wireframovi i tehnički zahtjevi definisani prije početka dizajna."
                     },
                     "2": {
                         "title": "UI/UX Dizajn",
@@ -2165,36 +2165,36 @@
                     },
                     "3": {
                         "title": "Razvoj i QA",
-                        "description": "Iterativni sprintovi s nedjeljnim buildovima isporucenim na TestFlight / Play Console."
+                        "description": "Iterativni sprintovi s nedjeljnim buildovima isporučenim na TestFlight / Play Console."
                     },
                     "4": {
-                        "title": "Lansiranje i Podrska",
-                        "description": "Predaja na store, podrska pri lansiranju i 3-mjesecna garancija."
+                        "title": "Lansiranje i Podrška",
+                        "description": "Predaja na store, podrška pri lansiranju i 3-mjesečna garancija."
                     }
                 }
             },
             "terms": {
                 "title": "Uvjeti i Odredbe",
                 "items": [
-                    "Ponuda vazi 30 dana od datuma izdavanja",
-                    "Predujam od 50% za pocetrak",
+                    "Ponuda važi 30 dana od datuma izdavanja",
+                    "Predujam od 50% za početak",
                     "50% po predaji na App Store",
-                    "Naknada App Store-a snosi klijent",
+                    "Naknadu App Store-a snosi klijent",
                     "Promjene scopea zahtijevaju pisano odobrenje",
-                    "3 runde revizija dizajna ukljuceno",
-                    "Izvorni kod isporucen pri finalnoj uplati"
+                    "3 runde revizija dizajna uključeno",
+                    "Izvorni kod isporučen pri finalnoj uplati"
                 ]
             },
             "cta": {
-                "title": "Spremni izgraditi vasu aplikaciju?",
-                "button": "Kontaktirajte Nas"
+                "title": "Vaša app ideja zaslužuje da postoji.",
+                "button": "Prihvati Ponudu"
             }
         },
         "hosting": {
             "titleLine1": "Hosting i Infrastruktura",
             "titleLine2": "Ponuda Usluge",
-            "subtitle": "Brz, siguran i pouzdan hosting s proaktivnim monitoringom, dnevnim backupovima i strucnom podrskom.",
-            "validity": "Ponuda vazi 30 dana od datuma izdavanja",
+            "subtitle": "Vaš sajt, uvijek online. Upravljan od strane ljudi kojima je stalo.",
+            "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
                 "basic": {
                     "name": "Starter",
@@ -2203,7 +2203,7 @@
                     "description": "Pouzdan hosting za male sajtove i landing stranice.",
                     "features": [
                         "10 GB SSD prostora",
-                        "1 domen ukljucen",
+                        "1 domen uključen",
                         "Besplatni SSL certifikat",
                         "Poslovni email",
                         "99.9% uptime SLA",
@@ -2214,14 +2214,14 @@
                     "name": "Business",
                     "price": "€30",
                     "priceSub": "/mjes.",
-                    "description": "Visokopoformansni NVMe hosting za rastuci biznis s dnevnim backupovima.",
+                    "description": "Visokoučinkovit NVMe hosting za rastuće poslovanje s dnevnim backupovima.",
                     "features": [
                         "50 GB NVMe prostora",
-                        "5 domena ukljuceno",
+                        "5 domena uključeno",
                         "Dnevni backupovi",
-                        "Prioritetna podrska",
-                        "Staging okruzenje",
-                        "CDN ukljucen",
+                        "Prioritetna podrška",
+                        "Staging okruženje",
+                        "CDN uključen",
                         "99.95% uptime SLA"
                     ]
                 },
@@ -2229,69 +2229,69 @@
                     "name": "Enterprise",
                     "price": "€60",
                     "priceSub": "/mjes.",
-                    "description": "Posveceni resursi, neograniceni domeni i kompletni CDN za aplikacije s visokim prometom.",
+                    "description": "Posvećeni resursi, neograničeni domeni i kompletni CDN za aplikacije s visokim prometom.",
                     "features": [
                         "200 GB NVMe prostora",
-                        "Neograniceni domeni",
-                        "Posveceni resursi",
+                        "Neograničeni domeni",
+                        "Posvećeni resursi",
                         "Globalni CDN",
                         "Satni backupovi",
                         "24/7 monitoring",
-                        "Posvecena podrska"
+                        "Posvećena podrška"
                     ]
                 }
             },
             "includes": {
-                "title": "Sto je Ukljuceno",
+                "title": "Što je Uključeno",
                 "items": [
                     "Setup i konfiguracija servera",
                     "Besplatni SSL certifikati",
                     "Automatski dnevni backupovi",
-                    "DDoS zastita",
+                    "DDoS zaštita",
                     "Skeniranje malwarea",
                     "Garancija uptime 99.9%+",
                     "Email hosting",
                     "Instalacija WordPressa jednim klikom",
                     "24/7 monitoring i upozorenja",
-                    "Pomoc pri migraciji"
+                    "Pomoć pri migraciji"
                 ]
             },
             "process": {
-                "title": "Nas Proces",
+                "title": "Naš Proces",
                 "steps": {
                     "1": {
                         "title": "Onboarding",
-                        "description": "Setup naloga, konfiguracija domene i migracija s postojeceg hosta po potrebi."
+                        "description": "Setup naloga, konfiguracija domene i migracija s postojećeg hosta po potrebi."
                     },
                     "2": {
                         "title": "Konfiguracija",
-                        "description": "Server optimizovan za vas stack — PHP, Node.js, WordPress ili custom."
+                        "description": "Server optimizovan za vaš stack — PHP, Node.js, WordPress ili custom."
                     },
                     "3": {
                         "title": "Go Live",
                         "description": "DNS cutover, SSL provisioning i finalno testiranje prije lansiranja."
                     },
                     "4": {
-                        "title": "Tekuce Upravljanje",
-                        "description": "24/7 monitoring, automatski backupovi i proaktivna sigurnosna azuriranja."
+                        "title": "Tekuće Upravljanje",
+                        "description": "24/7 monitoring, automatski backupovi i proaktivna sigurnosna ažuriranja."
                     }
                 }
             },
             "terms": {
                 "title": "Uvjeti i Odredbe",
                 "items": [
-                    "Ponuda vazi 30 dana od datuma izdavanja",
-                    "Hosting se naplacuje mjesecno ili godisnje (godisnje = 2 mjeseca besplatno)",
+                    "Ponuda važi 30 dana od datuma izdavanja",
+                    "Hosting se naplaćuje mjesečno ili godišnje (godišnje = 2 mjeseca besplatno)",
                     "Garancija povrata novca 30 dana od prve uplate",
-                    "Backupovi se cuvaju 30 dana",
-                    "Zloupotreba resursa moze rezultirati suspenzijom naloga",
+                    "Backupovi se čuvaju 30 dana",
+                    "Zloupotreba resursa može rezultirati suspenzijom naloga",
                     "Potrebno 30 dana za otkazivanje pretplate",
                     "Domeni se registruju zasebno po nabavnoj cijeni"
                 ]
             },
             "cta": {
-                "title": "Spremni za brz i pouzdan hosting?",
-                "button": "Kontaktirajte Nas"
+                "title": "Nula zastoja. Nula glavobolja.",
+                "button": "Prihvati Ponudu"
             }
         }
     }

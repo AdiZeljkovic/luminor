@@ -1567,7 +1567,7 @@
         "webDevelopment": {
             "titleLine1": "Web Development",
             "titleLine2": "Service Proposal",
-            "subtitle": "We build fast, modern web solutions tailored to your business goals — from corporate websites to complex web applications.",
+            "subtitle": "Your website is your hardest-working employee. We build it to perform.",
             "validity": "Valid for 30 days from date of issue",
             "packages": {
                 "basic": {
@@ -1602,7 +1602,7 @@
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "On request",
+                    "price": "Custom pricing",
                     "priceSub": "",
                     "description": "Web applications, SaaS platforms and custom backend systems built for scale.",
                     "features": [
@@ -1665,14 +1665,14 @@
                 ]
             },
             "cta": {
-                "title": "Ready to start your project?",
-                "button": "Contact Us"
+                "title": "Let's build something great.",
+                "button": "Accept This Proposal"
             }
         },
         "graphicDesign": {
             "titleLine1": "Graphic Design",
             "titleLine2": "Service Proposal",
-            "subtitle": "Visual identities and brand assets that make you memorable — from logo creation to complete brand systems.",
+            "subtitle": "Visual identities and brand assets that make you unforgettable — from logo creation to complete brand systems.",
             "validity": "Valid for 30 days from date of issue",
             "packages": {
                 "basic": {
@@ -1706,7 +1706,7 @@
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "On request",
+                    "price": "Custom pricing",
                     "priceSub": "",
                     "description": "Full rebrand, design systems and multi-channel campaign assets.",
                     "features": [
@@ -1763,20 +1763,20 @@
                     "50% advance payment required to begin",
                     "50% due upon final delivery",
                     "Revision rounds as specified per package",
-                    "Additional revisions at €50/hour",
+                    "Additional revisions at €60/hour",
                     "Full ownership transferred upon final payment",
                     "Fonts used are commercial-licence cleared"
                 ]
             },
             "cta": {
-                "title": "Ready to build your brand?",
-                "button": "Contact Us"
+                "title": "Your brand story starts here.",
+                "button": "Accept This Proposal"
             }
         },
         "digitalMarketing": {
             "titleLine1": "Digital Marketing",
             "titleLine2": "Service Proposal",
-            "subtitle": "Data-driven marketing that grows your audience, builds brand authority and drives measurable results.",
+            "subtitle": "More visibility. More leads. Measurable results every month.",
             "validity": "Valid for 30 days from date of issue",
             "packages": {
                 "basic": {
@@ -1790,7 +1790,7 @@
                         "Content creation",
                         "Community management",
                         "Monthly report",
-                        "No ad spend included"
+                        "Organic growth focus"
                     ]
                 },
                 "professional": {
@@ -1873,8 +1873,8 @@
                 ]
             },
             "cta": {
-                "title": "Ready to grow your audience?",
-                "button": "Contact Us"
+                "title": "Your audience is waiting.",
+                "button": "Accept This Proposal"
             }
         },
         "seo": {
@@ -1977,14 +1977,14 @@
                 ]
             },
             "cta": {
-                "title": "Ready to rank higher?",
-                "button": "Contact Us"
+                "title": "Page one is closer than you think.",
+                "button": "Accept This Proposal"
             }
         },
         "aiAutomation": {
             "titleLine1": "AI & Automation",
             "titleLine2": "Service Proposal",
-            "subtitle": "Custom AI integrations and workflow automation that save time, reduce errors and unlock new capabilities.",
+            "subtitle": "We automate what slows you down — so you can focus on what grows your business.",
             "validity": "Valid for 30 days from date of issue",
             "packages": {
                 "basic": {
@@ -2018,9 +2018,9 @@
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "On request",
+                    "price": "Custom pricing",
                     "priceSub": "",
-                    "description": "ML models, full AI systems and end-to-end automation of business operations.",
+                    "description": "We design and build complete AI ecosystems — from data pipelines and custom models to automated operations and executive reporting dashboards.",
                     "features": [
                         "Custom ML models",
                         "Full AI system",
@@ -2081,8 +2081,8 @@
                 ]
             },
             "cta": {
-                "title": "Ready to automate your business?",
-                "button": "Contact Us"
+                "title": "The future of your workflow starts now.",
+                "button": "Accept This Proposal"
             }
         },
         "mobileDevelopment": {
@@ -2122,7 +2122,7 @@
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "On request",
+                    "price": "Custom pricing",
                     "priceSub": "",
                     "description": "Native apps, complex backends, real-time features and enterprise integrations.",
                     "features": [
@@ -2185,14 +2185,14 @@
                 ]
             },
             "cta": {
-                "title": "Ready to build your app?",
-                "button": "Contact Us"
+                "title": "Your app idea deserves to be real.",
+                "button": "Accept This Proposal"
             }
         },
         "hosting": {
             "titleLine1": "Hosting & Infrastructure",
             "titleLine2": "Service Proposal",
-            "subtitle": "Fast, secure and reliable hosting with proactive monitoring, daily backups and expert support.",
+            "subtitle": "Your site, always up. Managed by people who care.",
             "validity": "Valid for 30 days from date of issue",
             "packages": {
                 "basic": {
@@ -2289,8 +2289,8 @@
                 ]
             },
             "cta": {
-                "title": "Ready for fast, reliable hosting?",
-                "button": "Contact Us"
+                "title": "Zero downtime. Zero headaches.",
+                "button": "Accept This Proposal"
             }
         }
     }
