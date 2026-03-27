@@ -1565,13 +1565,14 @@
     },
     "offers": {
         "webDevelopment": {
-            "titleLine1": "Web Development",
-            "titleLine2": "Service Proposal",
+            "titleLine1": "Web development",
+            "titleLine2": "Service proposal",
             "subtitle": "Your website is your hardest-working employee. We build it to perform.",
             "validity": "Valid for 30 days from date of issue",
             "packages": {
+                "title": "Service packages",
                 "basic": {
-                    "name": "Basic",
+                    "name": "Starter",
                     "price": "€2.500",
                     "priceSub": "one-time",
                     "description": "Corporate website up to 10 pages with CMS, SSL certificate and responsive design.",
@@ -1586,7 +1587,7 @@
                     ]
                 },
                 "professional": {
-                    "name": "Professional",
+                    "name": "Business",
                     "price": "€5.000",
                     "priceSub": "one-time",
                     "description": "Up to 30 pages with custom design, e-commerce option, SEO basics and advanced analytics.",
@@ -1614,11 +1615,10 @@
                         "Dedicated team",
                         "Timeline by scope"
                     ]
-                },
-                "title": "Service Packages"
+                }
             },
             "includes": {
-                "title": "What's Included",
+                "title": "What's included",
                 "items": [
                     "UI/UX design mockups (Figma)",
                     "Fully responsive (mobile-first)",
@@ -1633,28 +1633,28 @@
                 ]
             },
             "process": {
-                "title": "Our Process",
+                "title": "Our process",
                 "steps": {
                     "1": {
-                        "title": "Discovery & Brief",
+                        "title": "Discovery & brief",
                         "description": "We align on goals, audience and technical requirements through a structured kick-off."
                     },
                     "2": {
-                        "title": "Design & Prototype",
+                        "title": "Design & prototype",
                         "description": "Figma mockups reviewed and approved before a single line of code is written."
                     },
                     "3": {
-                        "title": "Development & Testing",
+                        "title": "Development & testing",
                         "description": "Iterative builds with weekly updates. Full QA across devices and browsers."
                     },
                     "4": {
-                        "title": "Launch & Handover",
+                        "title": "Launch & handover",
                         "description": "Deployment, DNS setup, training and 30-day warranty period."
                     }
                 }
             },
             "terms": {
-                "title": "Terms & Conditions",
+                "title": "Terms & conditions",
                 "items": [
                     "Offer valid for 30 days from date of issue",
                     "50% advance payment required to begin work",
@@ -1667,7 +1667,7 @@
             },
             "cta": {
                 "title": "Let's build something great.",
-                "button": "Accept This Proposal"
+                "button": "Accept this proposal"
             }
         },
         "graphicDesign": {

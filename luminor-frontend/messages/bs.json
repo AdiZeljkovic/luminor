@@ -1566,14 +1566,15 @@
     },
     "offers": {
         "webDevelopment": {
-            "titleLine1": "Web Development",
-            "titleLine2": "Ponuda Usluge",
+            "titleLine1": "Web development",
+            "titleLine2": "Ponuda usluge",
             "subtitle": "Vaš web sajt je vaš najvredni zaposlenik. Gradimo ga da donosi rezultate.",
             "validity": "Ponuda važi 30 dana od datuma izdavanja",
             "packages": {
+                "title": "Paketi usluge",
                 "basic": {
-                    "name": "Basic",
-                    "price": "€2.500",
+                    "name": "Starter",
+                    "price": "300,00 KM",
                     "priceSub": "jednokratno",
                     "description": "Korporativni sajt do 10 stranica s CMS-om, SSL certifikatom i responzivnim dizajnom.",
                     "features": [
@@ -1587,8 +1588,8 @@
                     ]
                 },
                 "professional": {
-                    "name": "Professional",
-                    "price": "€5.000",
+                    "name": "Business",
+                    "price": "500,00 KM",
                     "priceSub": "jednokratno",
                     "description": "Do 30 stranica s custom dizajnom, e-commerce opcijom, SEO osnovama i naprednom analitikom.",
                     "features": [
@@ -1603,8 +1604,8 @@
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "price": "Prilagođena cijena",
-                    "priceSub": "",
+                    "price": "1.000,00 KM",
+                    "priceSub": "jednokratno",
                     "description": "Web aplikacije, SaaS platforme i custom backend sistemi izgrađeni za skalabilnost.",
                     "features": [
                         "Neograničena kompleksnost",
@@ -1615,11 +1616,10 @@
                         "Posvećeni tim",
                         "Vremenski okvir po scopeu"
                     ]
-                },
-                "title": "Paketi Usluge"
+                }
             },
             "includes": {
-                "title": "Što je Uključeno",
+                "title": "Što je uključeno",
                 "items": [
                     "UI/UX dizajn mockupovi (Figma)",
                     "Potpuno responzivno (mobile-first)",
@@ -1634,41 +1634,41 @@
                 ]
             },
             "process": {
-                "title": "Naš Proces",
+                "title": "Naš proces",
                 "steps": {
                     "1": {
-                        "title": "Otkrivanje i Brief",
+                        "title": "Otkrivanje i brief",
                         "description": "Usklađujemo ciljeve, publiku i tehničke zahtjeve kroz strukturisani kick-off."
                     },
                     "2": {
-                        "title": "Dizajn i Prototip",
+                        "title": "Dizajn i prototip",
                         "description": "Figma mockupovi pregledani i odobreni prije nego što se napiše ijedna linija koda."
                     },
                     "3": {
-                        "title": "Razvoj i Testiranje",
+                        "title": "Razvoj i testiranje",
                         "description": "Iterativni buildovi s nedjeljnim ažuriranjima. Kompletni QA na svim uređajima."
                     },
                     "4": {
-                        "title": "Lansiranje i Predaja",
+                        "title": "Lansiranje i predaja",
                         "description": "Deployment, DNS setup, obuka i 30-dnevni garantni period."
                     }
                 }
             },
             "terms": {
-                "title": "Uvjeti i Odredbe",
+                "title": "Uvjeti i odredbe",
                 "items": [
                     "Ponuda važi 30 dana od datuma izdavanja",
                     "Predujam od 50% obavezan za početak rada",
                     "50% po isporuci projekta",
                     "Do 3 runde revizija uključeno",
-                    "Dodatne revizije se naplaćuju po €60/satu",
+                    "Dodatne revizije se naplaćuju po 120,00 KM/satu",
                     "Klijent dostavlja sav sadržaj (tekst, slike, brand materijali)",
                     "Rok počinje od uplate predujma i potvrde briefa"
                 ]
             },
             "cta": {
                 "title": "Izgradimo nešto sjajno zajedno.",
-                "button": "Prihvati Ponudu"
+                "button": "Prihvati ponudu"
             }
         },
         "graphicDesign": {
