@@ -1659,8 +1659,7 @@
                     "Offer valid for 30 days from date of issue",
                     "50% advance payment required to begin work",
                     "50% due upon project delivery",
-                    "Up to 3 rounds of revisions included",
-                    "Additional revisions billed at €60/hour",
+                    "Revisions within the agreed project scope are included",
                     "Client to provide all content (text, images, brand assets)",
                     "Timeline begins after advance payment and brief confirmation"
                 ]
@@ -1668,6 +1667,55 @@
             "cta": {
                 "title": "Let's build something great.",
                 "button": "Accept this proposal"
+            },
+            "notIncluded": {
+                "title": "Not included",
+                "items": [
+                    "Photography and video production",
+                    "Domain registration (available from €10/year)",
+                    "Hosting (available as a separate service)",
+                    "Third-party software licences (e.g. premium plugins, stock photos)"
+                ]
+            },
+            "clientResponsibilities": {
+                "title": "Client responsibilities",
+                "intro": "To keep the project on schedule, please prepare the following before we begin:",
+                "items": [
+                    "Brand assets (logo, colour palette, fonts) — by kick-off",
+                    "Written content for all pages — within 7 days of kick-off",
+                    "Feedback on design mockups — within 3 business days of delivery",
+                    "Access to existing hosting and domain — on kick-off call",
+                    "Final approval before launch — within 2 business days"
+                ]
+            },
+            "techStack": {
+                "title": "Technology stack",
+                "items": [
+                    "Frontend: Next.js / React",
+                    "Styling: Tailwind CSS",
+                    "CMS: WordPress / Sanity / custom (by agreement)",
+                    "Deployment: Linux VPS / Vercel",
+                    "Database: PostgreSQL / MySQL (if required)"
+                ]
+            },
+            "maintenance": {
+                "title": "After launch",
+                "support30Title": "30-day support — included",
+                "support30Items": [
+                    "Bug fixes and technical issues",
+                    "Content updates (text, images)",
+                    "Does not cover new features or design changes"
+                ],
+                "retainerTitle": "Monthly maintenance (optional)",
+                "retainerDesc": "From €80/month — 3 hours of work, security updates, uptime monitoring and priority support."
+            },
+            "acceptance": {
+                "title": "Accept this proposal",
+                "description": "To proceed, reply to this email or contact us directly. We will send a proforma invoice for the advance payment.",
+                "labelName": "Name",
+                "labelCompany": "Company",
+                "labelDate": "Date",
+                "labelSignature": "Signature"
             }
         },
         "graphicDesign": {

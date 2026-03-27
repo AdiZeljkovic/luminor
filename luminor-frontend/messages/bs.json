@@ -1660,8 +1660,7 @@
                     "Ponuda važi 30 dana od datuma izdavanja",
                     "Predujam od 50% obavezan za početak rada",
                     "50% po isporuci projekta",
-                    "Do 3 runde revizija uključeno",
-                    "Dodatne revizije se naplaćuju po 120,00 KM/satu",
+                    "Revizije unutar dogovorenog scopea projekta su uključene",
                     "Klijent dostavlja sav sadržaj (tekst, slike, brand materijali)",
                     "Rok počinje od uplate predujma i potvrde briefa"
                 ]
@@ -1669,6 +1668,55 @@
             "cta": {
                 "title": "Izgradimo nešto sjajno zajedno.",
                 "button": "Prihvati ponudu"
+            },
+            "notIncluded": {
+                "title": "Nije uključeno",
+                "items": [
+                    "Fotografija i video produkcija",
+                    "Registracija domene (dostupno od 20,00 KM/god.)",
+                    "Hosting (dostupan kao zasebna usluga)",
+                    "Licence za softvere trećih strana (npr. premium dodaci, stock fotografije)"
+                ]
+            },
+            "clientResponsibilities": {
+                "title": "Obaveze klijenta",
+                "intro": "Kako bismo održali projektni rok, molimo vas da pripremite sljedeće prije početka:",
+                "items": [
+                    "Brand materijali (logo, paleta boja, fontovi) — do kick-off-a",
+                    "Pisani sadržaj za sve stranice — u roku od 7 dana od kick-off-a",
+                    "Povratne informacije na dizajn mockupove — u roku od 3 radna dana od isporuke",
+                    "Pristup postojećem hostingu i domeni — na kick-off pozivu",
+                    "Finalno odobrenje prije lansiranja — u roku od 2 radna dana"
+                ]
+            },
+            "techStack": {
+                "title": "Tehnološki stack",
+                "items": [
+                    "Frontend: Next.js / React",
+                    "Stilizacija: Tailwind CSS",
+                    "CMS: WordPress / Sanity / custom (po dogovoru)",
+                    "Deployment: Linux VPS / Vercel",
+                    "Baza podataka: PostgreSQL / MySQL (po potrebi)"
+                ]
+            },
+            "maintenance": {
+                "title": "Nakon lansiranja",
+                "support30Title": "Podrška 30 dana — uključeno",
+                "support30Items": [
+                    "Ispravke bugova i tehničkih problema",
+                    "Ažuriranja sadržaja (tekst, slike)",
+                    "Ne uključuje nove funkcionalnosti ni promjene dizajna"
+                ],
+                "retainerTitle": "Mjesečni maintenance (opciono)",
+                "retainerDesc": "Od 160,00 KM/mjes. — 3 sata rada, sigurnosna ažuriranja, monitoring uptime-a i prioritetna podrška."
+            },
+            "acceptance": {
+                "title": "Prihvati ponudu",
+                "description": "Za nastavak, odgovorite na ovaj email ili nas kontaktirajte direktno. Poslat ćemo vam pred-račun za avansnu uplatu.",
+                "labelName": "Ime i prezime",
+                "labelCompany": "Naziv firme",
+                "labelDate": "Datum",
+                "labelSignature": "Potpis"
             }
         },
         "graphicDesign": {

@@ -407,6 +407,186 @@
 }
 
 /* ============================================================
+   NOT INCLUDED
+   ============================================================ */
+
+.notIncludedList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 2rem;
+}
+
+.notIncludedList li {
+    color: #64748B;
+    font-size: 0.9rem;
+    padding-left: 1.4rem;
+    position: relative;
+}
+
+.notIncludedList li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: #94A3B8;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* ============================================================
+   TECH STACK
+   ============================================================ */
+
+.techStackList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 2rem;
+}
+
+.techStackList li {
+    color: #CBD5E1;
+    font-size: 0.875rem;
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.techStackList li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #FF9F1C;
+}
+
+/* ============================================================
+   CLIENT RESPONSIBILITIES
+   ============================================================ */
+
+.sectionIntro {
+    color: #94A3B8;
+    font-size: 0.875rem;
+    margin: -0.5rem 0 1.25rem 0;
+    line-height: 1.6;
+}
+
+.responsibilitiesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.responsibilitiesList li {
+    color: #CBD5E1;
+    font-size: 0.875rem;
+    padding: 0.7rem 1rem;
+    background: rgba(255, 159, 28, 0.06);
+    border-left: 3px solid #FF9F1C;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.5;
+}
+
+/* ============================================================
+   AFTER LAUNCH / MAINTENANCE
+   ============================================================ */
+
+.maintenanceGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.maintenanceCard {
+    background: #F8FAFC;
+    border: 2px solid #E2E8F0;
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.5rem;
+}
+
+.maintenanceCard h4 {
+    color: #0F172A;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.maintenanceCard ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.maintenanceCard ul li {
+    color: #475569;
+    font-size: 0.85rem;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+}
+
+.maintenanceCard ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: #94A3B8;
+}
+
+.maintenanceCard p {
+    color: #475569;
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.65;
+}
+
+/* ============================================================
+   ACCEPTANCE
+   ============================================================ */
+
+.acceptanceSection {
+    padding: 2.5rem 3rem;
+    background: white;
+    border-top: 3px solid #0F172A;
+}
+
+.acceptanceGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 4rem;
+    margin-top: 1.75rem;
+}
+
+.acceptanceField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.acceptanceLabel {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94A3B8;
+}
+
+.acceptanceLine {
+    border-bottom: 1.5px solid #CBD5E1;
+    height: 2.5rem;
+}
+
+/* ============================================================
    PRINT STYLES — @media print
    ============================================================ */
 
