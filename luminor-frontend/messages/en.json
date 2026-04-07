@@ -1706,8 +1706,17 @@
                     "Content updates (text, images)",
                     "Does not cover new features or design changes"
                 ],
-                "retainerTitle": "Monthly maintenance (optional)",
-                "retainerDesc": "From €80/month — 3 hours of work, security updates, uptime monitoring and priority support."
+                "retainerTitle": "Monthly maintenance — €50/month",
+                "retainerItems": [
+                    "Security updates & patches",
+                    "Plugin and dependency updates",
+                    "Weekly automated backups",
+                    "24/7 uptime monitoring",
+                    "Bug fixes and error resolution",
+                    "Small content updates (text, images)",
+                    "SSL certificate renewal",
+                    "Priority support — response within 24 hours"
+                ]
             },
             "acceptance": {
                 "title": "Accept this proposal",

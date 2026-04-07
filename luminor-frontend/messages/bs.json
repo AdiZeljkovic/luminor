@@ -1707,8 +1707,17 @@
                     "Ažuriranja sadržaja (tekst, slike)",
                     "Ne uključuje nove funkcionalnosti ni promjene dizajna"
                 ],
-                "retainerTitle": "Mjesečni maintenance (opciono)",
-                "retainerDesc": "Od 160,00 KM/mjes. — 3 sata rada, sigurnosna ažuriranja, monitoring uptime-a i prioritetna podrška."
+                "retainerTitle": "Mjesečno održavanje — 100,00 KM/mjes.",
+                "retainerItems": [
+                    "Sigurnosna ažuriranja i patch-evi",
+                    "Ažuriranja plugina i zavisnosti",
+                    "Sedmični automatski backupovi",
+                    "24/7 monitoring uptime-a",
+                    "Ispravke bugova i tehničkih grešaka",
+                    "Male izmjene sadržaja (tekst, slike)",
+                    "Obnova SSL certifikata",
+                    "Prioritetna podrška — odgovor u roku 24h"
+                ]
             },
             "acceptance": {
                 "title": "Prihvati ponudu",

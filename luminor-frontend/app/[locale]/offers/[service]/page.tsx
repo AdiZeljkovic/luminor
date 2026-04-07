@@ -53,7 +53,7 @@ export default async function OfferPage({ params }: Props) {
         support30Title: string;
         support30Items: string[];
         retainerTitle: string;
-        retainerDesc: string;
+        retainerItems: string[];
     } | null = null;
     let acceptance: {
         title: string;
@@ -84,7 +84,7 @@ export default async function OfferPage({ params }: Props) {
                 support30Title: t('maintenance.support30Title'),
                 support30Items,
                 retainerTitle: t('maintenance.retainerTitle'),
-                retainerDesc: t('maintenance.retainerDesc'),
+                retainerItems: Array.isArray(t.raw('maintenance.retainerItems')) ? t.raw('maintenance.retainerItems') as string[] : [],
             };
         }
     } catch {}
@@ -245,7 +245,11 @@ export default async function OfferPage({ params }: Props) {
                             </div>
                             <div className={styles.maintenanceCard}>
                                 <h4>{maintenance.retainerTitle}</h4>
-                                <p>{maintenance.retainerDesc}</p>
+                                <ul>
+                                    {maintenance.retainerItems.map((item, i) => (
+                                        <li key={i}>{item}</li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     </div>
