@@ -64,27 +64,42 @@ export default async function OfferPage({ params }: Props) {
         labelSignature: string;
     } | null = null;
 
-    try { notIncluded = { title: t('notIncluded.title'), items: t.raw('notIncluded.items') as string[] }; } catch {}
-    try { clientResp = { title: t('clientResponsibilities.title'), intro: t('clientResponsibilities.intro'), items: t.raw('clientResponsibilities.items') as string[] }; } catch {}
-    try { techStack = { title: t('techStack.title'), items: t.raw('techStack.items') as string[] }; } catch {}
     try {
-        maintenance = {
-            title: t('maintenance.title'),
-            support30Title: t('maintenance.support30Title'),
-            support30Items: t.raw('maintenance.support30Items') as string[],
-            retainerTitle: t('maintenance.retainerTitle'),
-            retainerDesc: t('maintenance.retainerDesc'),
-        };
+        const items = t.raw('notIncluded.items');
+        if (Array.isArray(items)) notIncluded = { title: t('notIncluded.title'), items };
     } catch {}
     try {
-        acceptance = {
-            title: t('acceptance.title'),
-            description: t('acceptance.description'),
-            labelName: t('acceptance.labelName'),
-            labelCompany: t('acceptance.labelCompany'),
-            labelDate: t('acceptance.labelDate'),
-            labelSignature: t('acceptance.labelSignature'),
-        };
+        const items = t.raw('clientResponsibilities.items');
+        if (Array.isArray(items)) clientResp = { title: t('clientResponsibilities.title'), intro: t('clientResponsibilities.intro'), items };
+    } catch {}
+    try {
+        const items = t.raw('techStack.items');
+        if (Array.isArray(items)) techStack = { title: t('techStack.title'), items };
+    } catch {}
+    try {
+        const support30Items = t.raw('maintenance.support30Items');
+        if (Array.isArray(support30Items)) {
+            maintenance = {
+                title: t('maintenance.title'),
+                support30Title: t('maintenance.support30Title'),
+                support30Items,
+                retainerTitle: t('maintenance.retainerTitle'),
+                retainerDesc: t('maintenance.retainerDesc'),
+            };
+        }
+    } catch {}
+    try {
+        const title = t('acceptance.title');
+        if (title && !title.startsWith('offers.')) {
+            acceptance = {
+                title,
+                description: t('acceptance.description'),
+                labelName: t('acceptance.labelName'),
+                labelCompany: t('acceptance.labelCompany'),
+                labelDate: t('acceptance.labelDate'),
+                labelSignature: t('acceptance.labelSignature'),
+            };
+        }
     } catch {}
 
     return (
