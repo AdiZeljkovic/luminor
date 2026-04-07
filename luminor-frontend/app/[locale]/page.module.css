@@ -240,6 +240,51 @@
     margin-top: 2rem;
 }
 
+/* Client Logos Strip */
+.logosSection {
+    padding: 2.5rem 0;
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 1px solid #E5E7EB;
+    background: #FAFAFA;
+}
+
+.logosLabel {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9CA3AF;
+    margin-bottom: 1.5rem;
+}
+
+.logosStrip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem 3.5rem;
+}
+
+.logoItem {
+    display: flex;
+    align-items: center;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+    filter: grayscale(1);
+}
+
+.logoItem:hover {
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+.logoItem img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+}
+
 @media (max-width: 1024px) {
     .splitContent {
         grid-template-columns: 1fr;

@@ -99,6 +99,14 @@ export default async function Home() {
     },
   ];
 
+  // Fetch client logos
+  let clientLogos: Array<{ id: number; client_name: string; logo_url: string; website_url: string }> = [];
+  try {
+    const res = await fetch(`${API_URL}/api/client-logos`, { next: { revalidate: 3600 } });
+    const data = await res.json();
+    if (data.success && data.data) clientLogos = data.data;
+  } catch {}
+
   // Fetch featured projects from API
   let portfolioItems: Array<{
     id?: number;
@@ -124,6 +132,31 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
+
+      {/* Client Logos */}
+      {clientLogos.length > 0 && (
+        <section className={styles.logosSection}>
+          <div className="container">
+            <p className={styles.logosLabel}>
+              {t('trustedBy')}
+            </p>
+            <div className={styles.logosStrip}>
+              {clientLogos.map(logo => (
+                <a
+                  key={logo.id}
+                  href={logo.website_url || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.logoItem}
+                  title={logo.client_name}
+                >
+                  <img src={logo.logo_url} alt={logo.client_name} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Services Overview */}
       <section className={styles.section}>
