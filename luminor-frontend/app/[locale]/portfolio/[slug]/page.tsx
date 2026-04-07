@@ -21,22 +21,29 @@ async function getProjectData(slug: string) {
 
         const data = json.data;
 
+        const parseJson = (val: any, fallback: any) => {
+            if (Array.isArray(val) || (val && typeof val === 'object')) return val;
+            if (typeof val === 'string') {
+                try { return JSON.parse(val); } catch { return fallback; }
+            }
+            return fallback;
+        };
+
         // Transform backend data to frontend shape
         return {
             title: data.title,
             category: data.category,
             client: data.client_name,
-            date: data.completed_at || "2024", // Fallback if missing
+            date: data.completed_at || "2024",
             website: data.project_url || data.client_website,
-            description: data.description,
-            challenge: data.challenge,
-            solution: data.solution,
-            results: Array.isArray(data.results) ? data.results : [],
-            technologies: data.technologies || [],
-            // Ensure images array has hero image first if needed, or just use featured_image separately
+            description: data.description || '',
+            challenge: data.challenge || '',
+            solution: data.solution || '',
+            results: parseJson(data.results, []),
+            technologies: parseJson(data.technologies, []),
             featuredImage: data.featured_image,
-            images: data.images || [],
-            testimonial: data.testimonial, // { quote, author, role }
+            images: parseJson(data.images, []),
+            testimonial: parseJson(data.testimonial, null),
             case_study_pdf_url: data.case_study_pdf_url || null
         };
     } catch (error) {
