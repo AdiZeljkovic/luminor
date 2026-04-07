@@ -47,7 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
   const t = await getTranslations('home');
   const tServices = await getTranslations('home.services');
   const tWhyUs = await getTranslations('home.whyUs');
@@ -119,7 +120,7 @@ export default async function Home() {
   }> = [];
 
   try {
-    const res = await fetch(`${API_URL}/api/portfolio/featured`, {
+    const res = await fetch(`${API_URL}/api/portfolio/featured?locale=${locale}`, {
       next: { revalidate: 60 },
     });
     const data = await res.json();
@@ -127,7 +128,7 @@ export default async function Home() {
       portfolioItems = data.data.map((p: any) => ({
         ...p,
         image: p.featured_image || p.image || '',
-        description: (p.short_description || p.description || '')
+        description: (p.short_description || p.description || p.description_bs || p.description_en || '')
             .replace(/<[^>]*>?/gm, '')
             .substring(0, 120) + '...',
       }));

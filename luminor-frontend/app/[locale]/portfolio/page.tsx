@@ -39,7 +39,7 @@ export default function PortfolioPage() {
                     setProjects(data.data.map((p: any) => ({
                         ...p,
                         image: p.featured_image || p.image || '',
-                        description: (p.short_description || p.description || '')
+                        description: (p.short_description || p.description || p.description_bs || p.description_en || '')
                             .replace(/<[^>]*>?/gm, '')
                             .substring(0, 120) + '...',
                     })));
