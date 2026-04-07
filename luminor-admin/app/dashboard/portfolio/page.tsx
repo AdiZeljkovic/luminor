@@ -10,6 +10,7 @@ interface PortfolioProject {
     title: string;
     category: string;
     client_name: string;
+    status: string;
     created_at: string;
 }
 
@@ -24,7 +25,7 @@ export default function PortfolioListPage() {
 
     const fetchItems = async () => {
         try {
-            const response = await apiClient.get('/api/portfolio');
+            const response = await apiClient.get('/api/portfolio/admin/all');
             if (response.success) {
                 setProjects(response.data);
             }
@@ -95,6 +96,9 @@ export default function PortfolioListPage() {
                                 <td className="px-6 py-5">
                                     <span className="inline-flex items-center px-3 py-1 text-xs font-bold bg-[#DBEAFE] text-[#1E40AF] rounded-full border border-[#3B82F6] uppercase tracking-wide">
                                         {project.category}
+                                    </span>
+                                    <span className={`ml-2 inline-flex items-center px-2 py-0.5 text-xs font-bold rounded-full uppercase tracking-wide ${project.status === 'published' ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-yellow-100 text-yellow-700 border border-yellow-300'}`}>
+                                        {project.status}
                                     </span>
                                 </td>
                                 <td className="px-6 py-5">

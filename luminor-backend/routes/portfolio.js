@@ -126,6 +126,33 @@ router.get('/category/:category', async (req, res) => {
  * @desc    Get single portfolio project by ID or slug
  * @access  Public
  */
+/**
+ * @route   GET /api/portfolio/admin/all
+ * @desc    Get all portfolio projects including drafts (admin only)
+ * @access  Private
+ */
+router.get('/admin/all', auth, async (req, res) => {
+    try {
+        const locale = req.query.locale || 'en';
+        const { count, rows: projects } = await PortfolioProject.findAndCountAll({
+            order: [['created_at', 'DESC']],
+        });
+        const localizedProjects = projects.map(project => {
+            const p = project.toJSON();
+            return {
+                ...p,
+                title: p[`title_${locale}`] || p.title_en || p.title_bs || 'Untitled',
+                description: p[`description_${locale}`] || p.description_en || p.description_bs,
+                short_description: p[`short_description_${locale}`] || p.short_description_en || p.short_description_bs,
+            };
+        });
+        res.json({ success: true, data: localizedProjects, total: count });
+    } catch (error) {
+        console.error('Admin get projects error:', error);
+        res.status(500).json({ success: false, error: 'Server error' });
+    }
+});
+
 router.get('/:idOrSlug', async (req, res) => {
     try {
         const { idOrSlug } = req.params;
