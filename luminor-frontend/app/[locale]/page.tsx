@@ -4,6 +4,7 @@ import ServiceCard from "@/components/ServiceCard";
 import PortfolioCard from "@/components/PortfolioCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import ClientLogosMarquee from "@/components/ClientLogosMarquee";
 import Button from "@/components/Button";
 import styles from "./page.module.css";
 import { getTranslations } from 'next-intl/server';
@@ -236,25 +237,7 @@ export default async function Home() {
 
       {/* Client Logos */}
       {clientLogos.length > 0 && (
-        <section className={styles.logosSection}>
-          <div className="container">
-            <p className={styles.logosLabel}>{t('trustedBy')}</p>
-            <div className={styles.logosStrip}>
-              {clientLogos.map(logo => (
-                <a
-                  key={logo.id}
-                  href={logo.website_url || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.logoItem}
-                  title={logo.client_name}
-                >
-                  <img src={logo.logo_url} alt={logo.client_name} />
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ClientLogosMarquee logos={clientLogos} label={t('trustedBy')} />
       )}
 
       {/* CTA Section */}
