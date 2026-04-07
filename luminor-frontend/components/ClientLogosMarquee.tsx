@@ -45,11 +45,13 @@ export default function ClientLogosMarquee({
                                 className={styles.logoItem}
                                 title={logo.client_name}
                             >
-                                <img
-                                    src={logo.logo_url}
-                                    alt={logo.client_name}
-                                    draggable={false}
-                                />
+                                <div className={styles.logoPill}>
+                                    <img
+                                        src={logo.logo_url}
+                                        alt={logo.client_name}
+                                        draggable={false}
+                                    />
+                                </div>
                             </a>
                         ))}
                     </div>
