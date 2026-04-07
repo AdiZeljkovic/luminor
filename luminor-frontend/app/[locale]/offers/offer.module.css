@@ -449,7 +449,7 @@
 }
 
 .techStackList li {
-    color: #CBD5E1;
+    color: #334155;
     font-size: 0.875rem;
     font-family: 'Courier New', Courier, monospace;
     padding-left: 1.2rem;
@@ -468,7 +468,7 @@
    ============================================================ */
 
 .sectionIntro {
-    color: #94A3B8;
+    color: #64748B;
     font-size: 0.875rem;
     margin: -0.5rem 0 1.25rem 0;
     line-height: 1.6;
@@ -484,7 +484,7 @@
 }
 
 .responsibilitiesList li {
-    color: #CBD5E1;
+    color: #334155;
     font-size: 0.875rem;
     padding: 0.7rem 1rem;
     background: rgba(255, 159, 28, 0.06);
