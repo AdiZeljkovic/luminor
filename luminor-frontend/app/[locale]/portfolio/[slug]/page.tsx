@@ -46,11 +46,10 @@ async function getProjectData(slug: string) {
 }
 
 
-export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
-    const project = await getProjectData(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+    const { slug, locale = 'en' } = await params;
+    const project = await getProjectData(slug);
     if (!project) return {};
-
-    const { slug, locale = 'en' } = params;
     const plainDescription = project.description.replace(/<[^>]*>?/gm, '').substring(0, 160) + "...";
     const canonicalPath = locale === 'en' ? `portfolio/${slug}` : `${locale}/portfolio/${slug}`;
 
@@ -81,8 +80,9 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
     };
 }
 
-export default async function ProjectDetail({ params }: { params: { slug: string; locale: string } }) {
-    const project = await getProjectData(params.slug);
+export default async function ProjectDetail({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+    const { slug, locale = 'en' } = await params;
+    const project = await getProjectData(slug);
 
     if (!project) {
         return (
@@ -97,8 +97,6 @@ export default async function ProjectDetail({ params }: { params: { slug: string
             </div>
         );
     }
-
-    const { slug, locale = 'en' } = params;
     const canonicalUrl = `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}portfolio/${slug}`;
 
     const creativeWorkSchema = {
