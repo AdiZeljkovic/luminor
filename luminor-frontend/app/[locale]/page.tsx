@@ -133,31 +133,6 @@ export default async function Home() {
     <>
       <HeroSection />
 
-      {/* Client Logos */}
-      {clientLogos.length > 0 && (
-        <section className={styles.logosSection}>
-          <div className="container">
-            <p className={styles.logosLabel}>
-              {t('trustedBy')}
-            </p>
-            <div className={styles.logosStrip}>
-              {clientLogos.map(logo => (
-                <a
-                  key={logo.id}
-                  href={logo.website_url || '#'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.logoItem}
-                  title={logo.client_name}
-                >
-                  <img src={logo.logo_url} alt={logo.client_name} />
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Services Overview */}
       <section className={styles.section}>
         <div className="container">
@@ -258,6 +233,29 @@ export default async function Home() {
 
       {/* Testimonials Section */}
       <TestimonialsSection />
+
+      {/* Client Logos */}
+      {clientLogos.length > 0 && (
+        <section className={styles.logosSection}>
+          <div className="container">
+            <p className={styles.logosLabel}>{t('trustedBy')}</p>
+            <div className={styles.logosStrip}>
+              {clientLogos.map(logo => (
+                <a
+                  key={logo.id}
+                  href={logo.website_url || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.logoItem}
+                  title={logo.client_name}
+                >
+                  <img src={logo.logo_url} alt={logo.client_name} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className={`${styles.section} ${styles.ctaSection}`}>
