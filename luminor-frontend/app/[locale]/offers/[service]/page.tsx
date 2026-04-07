@@ -55,14 +55,6 @@ export default async function OfferPage({ params }: Props) {
         retainerTitle: string;
         retainerItems: string[];
     } | null = null;
-    let acceptance: {
-        title: string;
-        description: string;
-        labelName: string;
-        labelCompany: string;
-        labelDate: string;
-        labelSignature: string;
-    } | null = null;
 
     try {
         const items = t.raw('notIncluded.items');
@@ -85,19 +77,6 @@ export default async function OfferPage({ params }: Props) {
                 support30Items,
                 retainerTitle: t('maintenance.retainerTitle'),
                 retainerItems: Array.isArray(t.raw('maintenance.retainerItems')) ? t.raw('maintenance.retainerItems') as string[] : [],
-            };
-        }
-    } catch {}
-    try {
-        const title = t('acceptance.title');
-        if (title && !title.startsWith('offers.')) {
-            acceptance = {
-                title,
-                description: t('acceptance.description'),
-                labelName: t('acceptance.labelName'),
-                labelCompany: t('acceptance.labelCompany'),
-                labelDate: t('acceptance.labelDate'),
-                labelSignature: t('acceptance.labelSignature'),
             };
         }
     } catch {}
@@ -264,32 +243,6 @@ export default async function OfferPage({ params }: Props) {
                         ))}
                     </ul>
                 </div>
-
-                {/* Acceptance */}
-                {acceptance && (
-                    <div className={styles.acceptanceSection}>
-                        <span className={styles.sectionTitle}>{acceptance.title}</span>
-                        <p className={styles.sectionIntro}>{acceptance.description}</p>
-                        <div className={styles.acceptanceGrid}>
-                            <div className={styles.acceptanceField}>
-                                <span className={styles.acceptanceLabel}>{acceptance.labelName}</span>
-                                <div className={styles.acceptanceLine} />
-                            </div>
-                            <div className={styles.acceptanceField}>
-                                <span className={styles.acceptanceLabel}>{acceptance.labelCompany}</span>
-                                <div className={styles.acceptanceLine} />
-                            </div>
-                            <div className={styles.acceptanceField}>
-                                <span className={styles.acceptanceLabel}>{acceptance.labelDate}</span>
-                                <div className={styles.acceptanceLine} />
-                            </div>
-                            <div className={styles.acceptanceField}>
-                                <span className={styles.acceptanceLabel}>{acceptance.labelSignature}</span>
-                                <div className={styles.acceptanceLine} />
-                            </div>
-                        </div>
-                    </div>
-                )}
 
                 {/* Footer */}
                 <div className={styles.docFooter}>
