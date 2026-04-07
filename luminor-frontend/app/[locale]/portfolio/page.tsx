@@ -36,7 +36,13 @@ export default function PortfolioPage() {
                 const res = await fetch(`${API_URL}/api/portfolio?limit=50&locale=${locale}`);
                 const data = await res.json();
                 if (data.success) {
-                    setProjects(data.data);
+                    setProjects(data.data.map((p: any) => ({
+                        ...p,
+                        image: p.featured_image || p.image || '',
+                        description: (p.short_description || p.description || '')
+                            .replace(/<[^>]*>?/gm, '')
+                            .substring(0, 120) + '...',
+                    })));
                 }
             } catch (error) {
                 console.error("Error fetching portfolio projects:", error);

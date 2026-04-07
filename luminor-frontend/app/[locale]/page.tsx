@@ -124,7 +124,13 @@ export default async function Home() {
     });
     const data = await res.json();
     if (data.success && data.data) {
-      portfolioItems = data.data;
+      portfolioItems = data.data.map((p: any) => ({
+        ...p,
+        image: p.featured_image || p.image || '',
+        description: (p.short_description || p.description || '')
+            .replace(/<[^>]*>?/gm, '')
+            .substring(0, 120) + '...',
+      }));
     }
   } catch (error) {
     console.error("Error fetching featured projects:", error);
