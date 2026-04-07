@@ -11,7 +11,7 @@ import { API_URL } from "@/lib/api";
 async function getProjectData(slug: string) {
     try {
         const res = await fetch(`${API_URL}/api/portfolio/${slug}`, {
-            next: { revalidate: 3600 }
+            next: { revalidate: 60 }
         });
 
         if (!res.ok) return null;

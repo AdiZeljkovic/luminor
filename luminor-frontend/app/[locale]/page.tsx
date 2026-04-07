@@ -120,7 +120,7 @@ export default async function Home() {
 
   try {
     const res = await fetch(`${API_URL}/api/portfolio/featured`, {
-      next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
+      next: { revalidate: 60 },
     });
     const data = await res.json();
     if (data.success && data.data) {
