@@ -89,6 +89,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string; locale: string }> }) {
     const { slug, locale = 'en' } = await params;
+    const isBs = locale === 'bs';
     const project = await getProjectData(slug);
 
     if (!project) {
@@ -105,6 +106,10 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         );
     }
     const canonicalUrl = `https://www.luminor.solutions/${locale === 'en' ? '' : locale + '/'}portfolio/${slug}`;
+
+    const formattedDate = project.date
+        ? new Date(project.date).toLocaleDateString(isBs ? 'bs-BA' : 'en-GB', { year: 'numeric', month: 'long' })
+        : (isBs ? 'Nije navedeno' : 'Not specified');
 
     const creativeWorkSchema = {
         "@context": "https://schema.org",
@@ -169,21 +174,21 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 <div className={styles.container}>
                     <div className={styles.infoGrid}>
                         <div className={styles.infoItem}>
-                            <span className={styles.infoLabel}>{locale === 'bs' ? 'Klijent' : 'Client'}</span>
+                            <span className={styles.infoLabel}>{isBs ? 'Klijent' : 'Client'}</span>
                             <span className={styles.infoValue}>{project.client}</span>
                         </div>
                         <div className={styles.infoItem}>
-                            <span className={styles.infoLabel}>{locale === 'bs' ? 'Datum' : 'Date'}</span>
-                            <span className={styles.infoValue}>{project.date}</span>
+                            <span className={styles.infoLabel}>{isBs ? 'Datum' : 'Date'}</span>
+                            <span className={styles.infoValue}>{formattedDate}</span>
                         </div>
                         <div className={styles.infoItem}>
-                            <span className={styles.infoLabel}>{locale === 'bs' ? 'Kategorija' : 'Category'}</span>
+                            <span className={styles.infoLabel}>{isBs ? 'Kategorija' : 'Category'}</span>
                             <span className={styles.infoValue}>{project.category}</span>
                         </div>
                         {project.website && (
                             <div className={styles.infoItem}>
                                 <a href={project.website} target="_blank" rel="noopener noreferrer" className={styles.websiteLink}>
-                                    {locale === 'bs' ? 'Poseti Website ↗' : 'Visit Website ↗'}
+                                    {isBs ? 'Posjetite web stranicu ↗' : 'Visit Website ↗'}
                                 </a>
                             </div>
                         )}
@@ -204,13 +209,13 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                     <div className={styles.contentGrid}>
                         <AnimatedSection animation="fade-up" className={styles.contentBlock}>
                             <div className={styles.contentIcon}>🎯</div>
-                            <h2 className={styles.contentTitle}>Izazov</h2>
-                            <div className={styles.contentText} dangerouslySetInnerHTML={{ __html: project.challenge || "Nije uneto." }} />
+                            <h2 className={styles.contentTitle}>{isBs ? 'Izazov' : 'Challenge'}</h2>
+                            <div className={styles.contentText} dangerouslySetInnerHTML={{ __html: project.challenge || (isBs ? 'Nije uneseno.' : 'Not provided.') }} />
                         </AnimatedSection>
                         <AnimatedSection animation="fade-up" delay={150} className={styles.contentBlock}>
                             <div className={styles.contentIcon}>💡</div>
-                            <h2 className={styles.contentTitle}>Rešenje</h2>
-                            <div className={styles.contentText} dangerouslySetInnerHTML={{ __html: project.solution || "Nije uneto." }} />
+                            <h2 className={styles.contentTitle}>{isBs ? 'Rješenje' : 'Solution'}</h2>
+                            <div className={styles.contentText} dangerouslySetInnerHTML={{ __html: project.solution || (isBs ? 'Nije uneseno.' : 'Not provided.') }} />
                         </AnimatedSection>
                     </div>
                 </div>
@@ -221,7 +226,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 <section className={styles.resultsSection}>
                     <div className={styles.container}>
                         <AnimatedSection className={styles.sectionHeader}>
-                            <h2 className={styles.sectionTitle}>Rezultati</h2>
+                            <h2 className={styles.sectionTitle}>{isBs ? 'Rezultati' : 'Results'}</h2>
                         </AnimatedSection>
                         <div className={styles.resultsGrid}>
                             {project.results.map((result: any, index: number) => (
@@ -240,7 +245,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 <section className={styles.gallerySection}>
                     <div className={styles.container}>
                         <AnimatedSection className={styles.sectionHeader}>
-                            <h2 className={styles.sectionTitle}>Galerija</h2>
+                            <h2 className={styles.sectionTitle}>{isBs ? 'Galerija' : 'Gallery'}</h2>
                         </AnimatedSection>
                         <div className={styles.galleryGrid}>
                             {project.images.map((img: string, idx: number) => (
@@ -263,7 +268,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
             <section className={styles.techSection}>
                 <div className={styles.container}>
                     <AnimatedSection className={styles.sectionHeader}>
-                        <h2 className={styles.sectionTitle}>Korišćene Tehnologije</h2>
+                        <h2 className={styles.sectionTitle}>{isBs ? 'Korištene tehnologije' : 'Technologies Used'}</h2>
                     </AnimatedSection>
                     <div className={styles.techGrid}>
                         {project.technologies.map((tech: string, index: number) => (
@@ -299,25 +304,25 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
                     <div className={styles.ctaGrid}>
                         <div className={styles.ctaContent}>
-                            <span className={styles.ctaLabel}>Svidja vam se ovaj projekat?</span>
+                            <span className={styles.ctaLabel}>{isBs ? 'Sviđa vam se ovaj projekat?' : 'Like what you see?'}</span>
                             <h2 className={styles.ctaTitle}>
-                                <span className={styles.ctaTitleOutline}>ŽELITE NEŠTO</span>
-                                <span className={styles.ctaTitleSolid}>SLIČNO?</span>
+                                <span className={styles.ctaTitleOutline}>{isBs ? 'ŽELITE NEŠTO' : 'WANT SOMETHING'}</span>
+                                <span className={styles.ctaTitleSolid}>{isBs ? 'SLIČNO?' : 'SIMILAR?'}</span>
                             </h2>
                             <p className={styles.ctaText}>
-                                Kontaktirajte nas danas i hajde da napravimo nešto sjajno zajedno.
+                                {isBs ? 'Kontaktirajte nas danas i hajde da napravimo nešto sjajno zajedno.' : 'Contact us today and let\'s build something great together.'}
                             </p>
                         </div>
 
                         <div className={styles.ctaCardWrapper}>
                             <div className={styles.ctaCard}>
                                 <div className={styles.ctaCardIcon}>📞</div>
-                                <h3 className={styles.ctaCardTitle}>Započnite Projekat</h3>
+                                <h3 className={styles.ctaCardTitle}>{isBs ? 'Pokrenite projekat' : 'Start a Project'}</h3>
                                 <p className={styles.ctaCardText}>
-                                    Opišite nam vašu ideju i dobićete besplatnu procenu.
+                                    {isBs ? 'Opišite nam vašu ideju i dobit ćete besplatnu procjenu.' : 'Describe your idea and get a free estimate.'}
                                 </p>
                                 <Button href="/contact" fullWidth className={styles.ctaButton}>
-                                    Kontaktirajte Nas
+                                    {isBs ? 'Kontaktirajte nas' : 'Contact Us'}
                                 </Button>
                             </div>
                         </div>
@@ -329,7 +334,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
             <section className={styles.navSection}>
                 <div className={styles.container}>
                     <Link href="/portfolio" className={styles.navLink}>
-                        ← Nazad na Portfolio
+                        ← {isBs ? 'Nazad na portfolio' : 'Back to Portfolio'}
                     </Link>
                 </div>
             </section>
