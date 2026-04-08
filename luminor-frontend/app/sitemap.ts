@@ -26,6 +26,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/status',
     ];
 
+    const locales = ['en', 'bs'];
+
     const offerServices = [
         'web-development',
         'graphic-design',
@@ -44,8 +46,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 0.7,
         }))
     );
-
-    const locales = ['en', 'bs'];
 
     // Generate static URLs for all locales
     const staticUrls = locales.flatMap(locale =>
