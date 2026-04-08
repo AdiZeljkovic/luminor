@@ -11,15 +11,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '',
         '/about',
         '/services',
+        '/services/web-development',
+        '/services/graphic-design',
+        '/services/digital-marketing',
+        '/services/seo',
+        '/services/ai-automation',
+        '/services/mobile-development',
         '/process',
         '/portfolio',
         '/blog',
         '/contact',
         '/hosting',
-        '/services/mobile-development',
         '/faq',
         '/status',
     ];
+
+    const offerServices = [
+        'web-development',
+        'graphic-design',
+        'digital-marketing',
+        'seo',
+        'ai-automation',
+        'mobile-development',
+        'hosting',
+    ];
+
+    const offerUrls: MetadataRoute.Sitemap = locales.flatMap(locale =>
+        offerServices.map(service => ({
+            url: `${BASE_URL}/${locale}/offers/${service}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        }))
+    );
 
     const locales = ['en', 'bs'];
 
@@ -106,5 +130,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }))
     );
 
-    return [...staticUrls, ...blogUrls, ...portfolioUrls, ...categoryUrls, ...tagUrls];
+    return [...staticUrls, ...offerUrls, ...blogUrls, ...portfolioUrls, ...categoryUrls, ...tagUrls];
 }

@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import styles from '../offer.module.css';
 import OfferPrintButton from '@/components/OfferPrintButton';
@@ -17,6 +18,46 @@ const namespaceMap: Record<string, string> = {
 type Props = {
     params: Promise<{ locale: string; service: string }>;
 };
+
+const serviceTitles: Record<string, { en: string; bs: string }> = {
+    'web-development':   { en: 'Web Development Offer',      bs: 'Ponuda za web razvoj' },
+    'graphic-design':    { en: 'Graphic Design Offer',       bs: 'Ponuda za grafički dizajn' },
+    'digital-marketing': { en: 'Digital Marketing Offer',    bs: 'Ponuda za digitalni marketing' },
+    'seo':               { en: 'SEO Services Offer',         bs: 'Ponuda za SEO usluge' },
+    'ai-automation':     { en: 'AI Automation Offer',        bs: 'Ponuda za AI automatizaciju' },
+    'mobile-development':{ en: 'Mobile App Development Offer', bs: 'Ponuda za mobilne aplikacije' },
+    'hosting':           { en: 'Web Hosting Offer',          bs: 'Ponuda za web hosting' },
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { locale, service } = await params;
+    const titles = serviceTitles[service];
+    if (!titles) return {};
+
+    const t = await getTranslations({ locale, namespace: namespaceMap[service] });
+    const title = titles[locale as 'en' | 'bs'] ?? titles.en;
+    const description = (t('subtitle') || '').substring(0, 155) + '...';
+    const canonicalPath = locale === 'en' ? `offers/${service}` : `${locale}/offers/${service}`;
+
+    return {
+        title,
+        description,
+        robots: { index: false, follow: false },
+        openGraph: {
+            title,
+            description,
+            type: 'website',
+            url: `https://www.luminor.solutions/${canonicalPath}`,
+        },
+        alternates: {
+            canonical: `https://www.luminor.solutions/${canonicalPath}`,
+            languages: {
+                en: `https://www.luminor.solutions/offers/${service}`,
+                bs: `https://www.luminor.solutions/bs/offers/${service}`,
+            },
+        },
+    };
+}
 
 export async function generateStaticParams() {
     const services = Object.keys(namespaceMap);

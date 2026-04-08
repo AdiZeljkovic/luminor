@@ -265,16 +265,189 @@ export default function SeoPage() {
                             </div>
                         )}
 
-                        {/* Other tabs simplified for brevity but following same pattern */}
-                        {(activeTab === 'webmaster' || activeTab === 'analytics' || activeTab === 'crawling') && (
-                            <div className="card-bento p-8 animate-in fade-in slide-in-from-bottom-4 duration-500 flex items-center justify-center min-h-[300px] bg-[#0F172A] text-white">
-                                <div className="text-center">
-                                    <Code size={48} className="mx-auto mb-4 text-[#FF9F1C] opacity-50" />
-                                    <h3 className="text-xl font-bold font-display">Technical Configuration</h3>
-                                    <p className="text-gray-400 mt-2 max-w-sm mx-auto">
-                                        Edit specialized parameters for {activeTab === 'webmaster' ? 'Search Console' : activeTab === 'analytics' ? 'Tracking Scripts' : 'Robots.txt'} in the backend or use the legacy editor.
-                                    </p>
-                                    <button className="mt-6 btn btn-secondary text-sm">Open Advanced Editor</button>
+                        {activeTab === 'webmaster' && (
+                            <div className="card-bento p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <h2 className="text-xl font-bold font-display text-[#0F172A] mb-2 flex items-center gap-2">
+                                    <Search size={20} className="text-green-500" /> Webmaster Verification Keys
+                                </h2>
+                                <p className="text-sm text-gray-400 mb-6">Enter verification codes from each search console. These are injected as meta tags in the &lt;head&gt;.</p>
+
+                                <div className="space-y-5">
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block flex items-center gap-2">
+                                            <span className="w-5 h-5 rounded bg-white border border-gray-200 flex items-center justify-center">
+                                                <svg viewBox="0 0 24 24" className="w-3 h-3" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                                            </span>
+                                            Google Search Console
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="input-field font-mono text-sm"
+                                            placeholder="e.g. google-site-verification=abc123..."
+                                            value={settings.google_site_verification || ""}
+                                            onChange={(e) => handleChange("google_site_verification", e.target.value)}
+                                        />
+                                        <p className="text-xs text-gray-400 mt-1">From Search Console → Settings → Ownership verification → HTML tag. Copy only the content value.</p>
+                                    </div>
+
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Bing Webmaster Tools</label>
+                                        <input
+                                            type="text"
+                                            className="input-field font-mono text-sm"
+                                            placeholder="e.g. XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                                            value={settings.bing_site_verification || ""}
+                                            onChange={(e) => handleChange("bing_site_verification", e.target.value)}
+                                        />
+                                        <p className="text-xs text-gray-400 mt-1">From Bing Webmaster → Add Site → XML file or meta tag content value.</p>
+                                    </div>
+
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Yandex Webmaster</label>
+                                        <input
+                                            type="text"
+                                            className="input-field font-mono text-sm"
+                                            placeholder="e.g. XXXXXXXXXXXXXXXX"
+                                            value={settings.yandex_verification || ""}
+                                            onChange={(e) => handleChange("yandex_verification", e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl">
+                                        <p className="text-xs font-bold text-blue-700 mb-1">💡 How it works</p>
+                                        <p className="text-xs text-blue-600">These codes are automatically injected as <code className="bg-blue-100 px-1 rounded">&lt;meta name="google-site-verification" content="..."&gt;</code> tags in the &lt;head&gt; of every page. After saving, go to Search Console and click Verify.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'analytics' && (
+                            <div className="card-bento p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <h2 className="text-xl font-bold font-display text-[#0F172A] mb-2 flex items-center gap-2">
+                                    <BarChart2 size={20} className="text-orange-500" /> Tracking Scripts
+                                </h2>
+                                <p className="text-sm text-gray-400 mb-6">IDs are injected automatically into every page. No manual code needed.</p>
+
+                                <div className="space-y-6">
+                                    <div className="p-5 border-2 border-gray-100 rounded-xl hover:border-[#FF9F1C] transition-colors">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <svg viewBox="0 0 24 24" className="w-6 h-6 flex-shrink-0" fill="#E37400"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-1.62-1.62a.855.855 0 1 0-1.208 1.207l2.223 2.223a.855.855 0 0 0 1.208 0l5.057-5.056a.855.855 0 0 0-.614-1.457z"/></svg>
+                                            <div>
+                                                <p className="font-bold text-[#0F172A] text-sm">Google Analytics 4</p>
+                                                <p className="text-xs text-gray-400">Measurement ID format: G-XXXXXXXXXX</p>
+                                            </div>
+                                            {settings.google_analytics_id && (
+                                                <span className="ml-auto px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded-full">Active</span>
+                                            )}
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="input-field font-mono text-sm"
+                                            placeholder="G-XXXXXXXXXX"
+                                            value={settings.google_analytics_id || ""}
+                                            onChange={(e) => handleChange("google_analytics_id", e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div className="p-5 border-2 border-gray-100 rounded-xl hover:border-[#FF9F1C] transition-colors">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <svg viewBox="0 0 24 24" className="w-6 h-6 flex-shrink-0" fill="#246FDB"><path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm0 4.8l3.6 7.2H8.4L12 4.8zm-7.2 9.6h14.4l-3.6 3.6H8.4l-3.6-3.6z"/></svg>
+                                            <div>
+                                                <p className="font-bold text-[#0F172A] text-sm">Google Tag Manager</p>
+                                                <p className="text-xs text-gray-400">Container ID format: GTM-XXXXXXX</p>
+                                            </div>
+                                            {settings.google_tag_manager_id && (
+                                                <span className="ml-auto px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded-full">Active</span>
+                                            )}
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="input-field font-mono text-sm"
+                                            placeholder="GTM-XXXXXXX"
+                                            value={settings.google_tag_manager_id || ""}
+                                            onChange={(e) => handleChange("google_tag_manager_id", e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div className="p-5 border-2 border-gray-100 rounded-xl hover:border-[#FF9F1C] transition-colors">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <svg viewBox="0 0 24 24" className="w-6 h-6 flex-shrink-0" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                            <div>
+                                                <p className="font-bold text-[#0F172A] text-sm">Facebook Pixel</p>
+                                                <p className="text-xs text-gray-400">Pixel ID (numeric)</p>
+                                            </div>
+                                            {settings.facebook_pixel_id && (
+                                                <span className="ml-auto px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded-full">Active</span>
+                                            )}
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="input-field font-mono text-sm"
+                                            placeholder="123456789012345"
+                                            value={settings.facebook_pixel_id || ""}
+                                            onChange={(e) => handleChange("facebook_pixel_id", e.target.value)}
+                                        />
+                                    </div>
+
+                                    <div className="p-4 bg-orange-50 border border-orange-100 rounded-xl">
+                                        <p className="text-xs font-bold text-orange-700 mb-1">💡 How it works</p>
+                                        <p className="text-xs text-orange-600">Scripts are injected automatically using Next.js Script strategy. GA4 and GTM load after interaction, Facebook Pixel loads after page load. GDPR consent is checked before firing.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'crawling' && (
+                            <div className="card-bento p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <h2 className="text-xl font-bold font-display text-[#0F172A] mb-2 flex items-center gap-2">
+                                    <Zap size={20} className="text-yellow-500" /> Robots & Indexing
+                                </h2>
+                                <p className="text-sm text-gray-400 mb-6">Configure how search engines crawl your site. Rules are served at <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">/robots.txt</code></p>
+
+                                <div className="space-y-5">
+                                    <div className="grid grid-cols-2 gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                        <div className="text-xs">
+                                            <p className="font-bold text-[#0F172A] mb-1">Always blocked (system)</p>
+                                            <code className="text-gray-500 block">Disallow: /api/</code>
+                                            <code className="text-gray-500 block">Disallow: /dashboard/</code>
+                                            <code className="text-gray-500 block">Disallow: /portal/</code>
+                                        </div>
+                                        <div className="text-xs">
+                                            <p className="font-bold text-[#0F172A] mb-1">Always allowed</p>
+                                            <code className="text-gray-500 block">Allow: /</code>
+                                            <code className="text-gray-500 block">Sitemap: /sitemap.xml</code>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Custom Robots.txt Rules</label>
+                                        <textarea
+                                            className="input-field font-mono text-sm min-h-[180px] leading-relaxed"
+                                            placeholder={"# Add custom rules\nDisallow: /thank-you\nDisallow: /tmp/"}
+                                            value={settings.robots_txt || ""}
+                                            onChange={(e) => handleChange("robots_txt", e.target.value)}
+                                        />
+                                        <p className="text-xs text-gray-400 mt-1">These rules are appended to the default rules above. One rule per line.</p>
+                                    </div>
+
+                                    <div className="flex gap-4">
+                                        <a
+                                            href="https://www.luminor.solutions/robots.txt"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex-1 text-center py-2.5 border-2 border-[#0F172A] rounded-xl text-sm font-bold hover:bg-[#0F172A] hover:text-white transition-colors"
+                                        >
+                                            View robots.txt ↗
+                                        </a>
+                                        <a
+                                            href="https://www.luminor.solutions/sitemap.xml"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex-1 text-center py-2.5 border-2 border-[#0F172A] rounded-xl text-sm font-bold hover:bg-[#0F172A] hover:text-white transition-colors"
+                                        >
+                                            View sitemap.xml ↗
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         )}
