@@ -100,7 +100,7 @@ router.get('/category/:category', async (req, res) => {
         const { category } = req.params;
         const limit = parseInt(req.query.limit) || 12;
 
-        const validCategories = ['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation'];
+        const validCategories = ['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'mobile-development', 'hosting'];
         if (!validCategories.includes(category)) {
             return res.status(400).json({ success: false, error: 'Invalid category' });
         }
@@ -199,7 +199,7 @@ router.post('/', auth, [
     body('title_en').optional().trim(),
     body('title_bs').optional().trim(),
     body('featuredImage').notEmpty().withMessage('Featured image is required'),
-    body('category').isIn(['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation']).withMessage('Valid category is required')
+    body('category').isIn(['web-development', 'graphic-design', 'digital-marketing', 'seo', 'ai-automation', 'mobile-development', 'hosting']).withMessage('Valid category is required')
 ], async (req, res) => {
     try {
         const errors = validationResult(req);

@@ -306,6 +306,8 @@ export default function CreateProjectPage() {
                                     <option value="digital-marketing">Digital Marketing</option>
                                     <option value="seo">SEO</option>
                                     <option value="ai-automation">AI & Automation</option>
+                                    <option value="mobile-development">Mobile Development</option>
+                                    <option value="hosting">Hosting</option>
                                 </select>
                             </div>
 

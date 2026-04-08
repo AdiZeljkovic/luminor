@@ -395,7 +395,9 @@
       "webDev": "Web Development",
       "design": "Grafički Dizajn",
       "marketing": "Digitalni Marketing",
-      "seo": "SEO"
+      "seo": "SEO",
+      "mobile": "Mobilne aplikacije",
+      "hosting": "Hosting"
     },
     "emptyState": "Nema pronađenih projekata",
     "emptyStateHint": "Projekti će se pojaviti ovdje nakon unosa putem admin panela.",

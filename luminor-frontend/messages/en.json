@@ -394,7 +394,9 @@
       "webDev": "Web Development",
       "design": "Graphic Design",
       "marketing": "Digital Marketing",
-      "seo": "SEO"
+      "seo": "SEO",
+      "mobile": "Mobile Development",
+      "hosting": "Hosting"
     },
     "emptyState": "No projects found",
     "emptyStateHint": "Projects will appear here once added via the admin panel.",

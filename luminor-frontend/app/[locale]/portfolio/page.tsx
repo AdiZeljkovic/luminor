@@ -60,6 +60,8 @@ export default function PortfolioPage() {
         { id: "digital-marketing", label: t('filters.marketing') },
         { id: "seo", label: t('filters.seo') },
         { id: "ai-automation", label: "AI & Automation" },
+        { id: "mobile-development", label: t('filters.mobile') },
+        { id: "hosting", label: t('filters.hosting') },
     ];
 
     const filteredProjects = activeCategory === "all"
