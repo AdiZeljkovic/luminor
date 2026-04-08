@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
+import MultiImageUpload from "@/components/ui/MultiImageUpload";
 import RichTextEditor from "@/components/ui/RichTextEditor";
 import { toast } from "sonner";
 import { apiClient } from "@/lib/apiClient";
@@ -28,12 +29,13 @@ export default function CreateProjectPage() {
         website: "",
         date: "",
         image: "",
-        images: "",
         technologies: "",
         testimonialQuote: "",
         testimonialAuthor: "",
         testimonialRole: "",
     });
+
+    const [galleryImages, setGalleryImages] = useState<string[]>([]);
 
     // New state for key results
     const [results, setResults] = useState<{ metric: string; label: string }[]>([
@@ -68,8 +70,7 @@ export default function CreateProjectPage() {
         try {
             // Process array fields
             const technologiesArray = formData.technologies.split(",").map(t => t.trim()).filter(Boolean);
-            const imagesArray = formData.images ? formData.images.split(",").map(i => i.trim()).filter(Boolean) : [];
-            if (formData.image) imagesArray.unshift(formData.image);
+            const imagesArray = formData.image ? [formData.image, ...galleryImages] : [...galleryImages];
 
             // Filter out empty results
             const validResults = results.filter(r => r.metric && r.label);
@@ -384,13 +385,9 @@ export default function CreateProjectPage() {
                         </div>
 
                         <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-3 mt-6">Gallery Images</label>
-                        <textarea
-                            name="images"
-                            rows={3}
-                            className="input-field text-xs font-mono"
-                            placeholder="Comma separated URLs..."
-                            value={formData.images}
-                            onChange={handleChange}
+                        <MultiImageUpload
+                            values={galleryImages}
+                            onChange={setGalleryImages}
                         />
                     </div>
 

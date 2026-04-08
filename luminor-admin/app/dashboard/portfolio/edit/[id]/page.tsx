@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
+import MultiImageUpload from "@/components/ui/MultiImageUpload";
 import RichTextEditor from "@/components/ui/RichTextEditor";
 import { toast } from "sonner";
 import { apiClient } from "@/lib/apiClient";
@@ -12,6 +13,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
+    const [galleryImages, setGalleryImages] = useState<string[]>([]);
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -19,7 +21,6 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
         client: "",
         website: "",
         image: "",
-        images: "",
         technologies: "",
         challenge: "",
         solution: "",
@@ -39,6 +40,12 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
             const response = await apiClient.get(`/api/portfolio/admin/${params.id}`);
             if (response.success) {
                 const project = response.data;
+                // Load existing gallery images (exclude featured image)
+                const featured = project.featured_image || "";
+                const existing: string[] = Array.isArray(project.images)
+                    ? project.images.filter((img: string) => img !== featured)
+                    : [];
+                setGalleryImages(existing);
                 setFormData({
                     title: project.title,
                     description: project.description,
@@ -46,7 +53,6 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
                     client: project.client_name || "",
                     website: project.client_website || project.project_url || "",
                     image: project.featured_image || "",
-                    images: project.images && project.images.length > 0 ? project.images.join(", ") : "",
                     technologies: project.technologies ? project.technologies.join(", ") : "",
                     challenge: project.challenge || "",
                     solution: project.solution || "",
@@ -78,6 +84,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
         try {
             const technologiesArray = formData.technologies.split(",").map(t => t.trim()).filter(Boolean);
+            const imagesArray = formData.image ? [formData.image, ...galleryImages] : [...galleryImages];
 
             // Parse Results
             let resultsData: { metric: string; label: string }[] = [];
@@ -92,8 +99,6 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
                     return null;
                 }).filter((item): item is { metric: string; label: string } => item !== null);
             }
-
-            const imagesArray = formData.images ? formData.images.split(",").map(i => i.trim()).filter(Boolean) : [];
 
             // Construct payload to match backend expectation
             const payload = {
@@ -353,12 +358,9 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
                         </div>
 
                         <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-3 mt-6">Gallery Images</label>
-                        <textarea
-                            name="images"
-                            rows={3}
-                            className="input-field text-xs font-mono"
-                            value={formData.images}
-                            onChange={handleChange}
+                        <MultiImageUpload
+                            values={galleryImages}
+                            onChange={setGalleryImages}
                         />
                     </div>
                 </div>
