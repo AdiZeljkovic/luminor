@@ -46,6 +46,12 @@ router.put('/', auth, async (req, res) => {
             await settings.update(req.body);
         }
 
+        // Invalidate Redis cache so frontend picks up changes immediately
+        const { client } = require('../config/redis');
+        if (client.isOpen) {
+            await client.del('site_settings');
+        }
+
         res.json({ success: true, data: settings });
     } catch (error) {
         console.error('Update settings error:', error);

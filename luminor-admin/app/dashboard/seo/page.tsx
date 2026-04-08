@@ -21,6 +21,13 @@ interface SiteSettings {
     schema_type: string;
     business_name: string;
     logo_url: string;
+    contact_email: string;
+    contact_phone: string;
+    contact_address: string;
+    social_facebook: string;
+    social_instagram: string;
+    social_linkedin: string;
+    social_twitter: string;
     price_range: string;
     opening_hours: string;
     geo_latitude: string;
@@ -259,6 +266,86 @@ export default function SeoPage() {
                                             className="input-field font-mono text-xs"
                                             value={settings.logo_url || ""}
                                             onChange={(e) => handleChange("logo_url", e.target.value)}
+                                        />
+                                    </div>
+
+                                    {/* Contact Info */}
+                                    <div className="col-span-2 pt-4 mt-2 border-t border-gray-100">
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Contact Info</p>
+                                    </div>
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Email</label>
+                                        <input
+                                            type="email"
+                                            className="input-field"
+                                            placeholder="info@luminor.solutions"
+                                            value={settings.contact_email || ""}
+                                            onChange={(e) => handleChange("contact_email", e.target.value)}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Phone</label>
+                                        <input
+                                            type="text"
+                                            className="input-field"
+                                            placeholder="+387 62 574 783"
+                                            value={settings.contact_phone || ""}
+                                            onChange={(e) => handleChange("contact_phone", e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="col-span-2">
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Address</label>
+                                        <input
+                                            type="text"
+                                            className="input-field"
+                                            placeholder="Porodice Ribar 39, 71000 Sarajevo"
+                                            value={settings.contact_address || ""}
+                                            onChange={(e) => handleChange("contact_address", e.target.value)}
+                                        />
+                                    </div>
+
+                                    {/* Social Links */}
+                                    <div className="col-span-2 pt-4 mt-2 border-t border-gray-100">
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Social Links (for Schema sameAs)</p>
+                                    </div>
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Facebook URL</label>
+                                        <input
+                                            type="url"
+                                            className="input-field font-mono text-xs"
+                                            placeholder="https://facebook.com/luminor"
+                                            value={settings.social_facebook || ""}
+                                            onChange={(e) => handleChange("social_facebook", e.target.value)}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Instagram URL</label>
+                                        <input
+                                            type="url"
+                                            className="input-field font-mono text-xs"
+                                            placeholder="https://instagram.com/luminor"
+                                            value={settings.social_instagram || ""}
+                                            onChange={(e) => handleChange("social_instagram", e.target.value)}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">LinkedIn URL</label>
+                                        <input
+                                            type="url"
+                                            className="input-field font-mono text-xs"
+                                            placeholder="https://linkedin.com/company/luminor"
+                                            value={settings.social_linkedin || ""}
+                                            onChange={(e) => handleChange("social_linkedin", e.target.value)}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="text-sm font-bold text-[#0F172A] mb-1.5 block">Twitter / X URL</label>
+                                        <input
+                                            type="url"
+                                            className="input-field font-mono text-xs"
+                                            placeholder="https://x.com/luminor"
+                                            value={settings.social_twitter || ""}
+                                            onChange={(e) => handleChange("social_twitter", e.target.value)}
                                         />
                                     </div>
                                 </div>

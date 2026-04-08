@@ -135,7 +135,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         verification: {
             google: settings?.google_site_verification || undefined,
             other: {
-                "bing-analysis": settings?.bing_site_verification ? [settings.bing_site_verification] : [],
+                "msvalidate.01": settings?.bing_site_verification ? [settings.bing_site_verification] : [],
                 "yandex-verification": settings?.yandex_verification ? [settings.yandex_verification] : [],
                 "baidu-site-verification": settings?.baidu_verification ? [settings.baidu_verification] : [],
             },
