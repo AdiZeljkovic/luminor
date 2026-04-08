@@ -8,9 +8,9 @@ import styles from "./page.module.css";
 import { API_URL } from "@/lib/api";
 
 // Fetch data from API
-async function getProjectData(slug: string) {
+async function getProjectData(slug: string, locale: string = 'en') {
     try {
-        const res = await fetch(`${API_URL}/api/portfolio/${slug}`, {
+        const res = await fetch(`${API_URL}/api/portfolio/${slug}?locale=${locale}`, {
             next: { revalidate: 60 }
         });
 
@@ -55,7 +55,7 @@ async function getProjectData(slug: string) {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
     const { slug, locale = 'en' } = await params;
-    const project = await getProjectData(slug);
+    const project = await getProjectData(slug, locale);
     if (!project) return {};
     const plainDescription = project.description.replace(/<[^>]*>?/gm, '').substring(0, 160) + "...";
     const canonicalPath = locale === 'en' ? `portfolio/${slug}` : `${locale}/portfolio/${slug}`;
@@ -90,7 +90,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string; locale: string }> }) {
     const { slug, locale = 'en' } = await params;
     const isBs = locale === 'bs';
-    const project = await getProjectData(slug);
+    const project = await getProjectData(slug, locale);
 
     if (!project) {
         return (
@@ -286,7 +286,11 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                     <div className={styles.container}>
                         <AnimatedSection animation="scale" className={styles.testimonialCard}>
                             <div className={styles.quoteIcon}>"</div>
-                            <blockquote className={styles.quote}>{project.testimonial.quote}</blockquote>
+                            <blockquote className={styles.quote}>
+                                {isBs
+                                    ? (project.testimonial.quote_bs || project.testimonial.quote_en || project.testimonial.quote)
+                                    : (project.testimonial.quote_en || project.testimonial.quote)}
+                            </blockquote>
                             <div className={styles.author}>
                                 <span className={styles.authorName}>{project.testimonial.author}</span>
                                 <span className={styles.authorRole}>{project.testimonial.role}</span>
