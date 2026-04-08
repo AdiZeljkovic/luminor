@@ -30,7 +30,8 @@ export default function CreateProjectPage() {
         date: "",
         image: "",
         technologies: "",
-        testimonialQuote: "",
+        testimonialQuote_en: "",
+        testimonialQuote_bs: "",
         testimonialAuthor: "",
         testimonialRole: "",
     });
@@ -91,7 +92,8 @@ export default function CreateProjectPage() {
                 results: validResults,
                 images: imagesArray,
                 testimonial: {
-                    quote: formData.testimonialQuote,
+                    quote_en: formData.testimonialQuote_en,
+                    quote_bs: formData.testimonialQuote_bs,
                     author: formData.testimonialAuthor,
                     role: formData.testimonialRole
                 },
@@ -246,16 +248,17 @@ export default function CreateProjectPage() {
                     <div className="card-bento p-8 bg-white">
                         <h3 className="text-xl font-bold font-display text-[#0F172A] mb-6 flex items-center gap-2">Testimonial</h3>
                         <div className="space-y-6">
-                            <div>
-                                <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Quote</label>
-                                <textarea
-                                    name="testimonialQuote"
-                                    rows={3}
-                                    className="input-field"
-                                    placeholder="what the client said..."
-                                    value={formData.testimonialQuote}
-                                    onChange={handleChange}
-                                />
+                            <div className="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Quote (English)</label>
+                                    <textarea name="testimonialQuote_en" rows={4} className="input-field" placeholder="What the client said..."
+                                        value={formData.testimonialQuote_en} onChange={handleChange} />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Citat (Bosanski)</label>
+                                    <textarea name="testimonialQuote_bs" rows={4} className="input-field" placeholder="Što je klijent rekao..."
+                                        value={formData.testimonialQuote_bs} onChange={handleChange} />
+                                </div>
                             </div>
                             <div className="grid grid-cols-2 gap-6">
                                 <div>
@@ -337,14 +340,7 @@ export default function CreateProjectPage() {
 
                             <div>
                                 <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Completion Date</label>
-                                <input
-                                    type="text"
-                                    name="date"
-                                    placeholder="e.g. Dec 2023"
-                                    className="input-field"
-                                    value={formData.date}
-                                    onChange={handleChange}
-                                />
+                                <input type="date" name="date" className="input-field" value={formData.date} onChange={handleChange} />
                             </div>
 
                             <div>

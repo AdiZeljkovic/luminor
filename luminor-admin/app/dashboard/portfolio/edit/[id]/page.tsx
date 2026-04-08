@@ -38,7 +38,8 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
         image: "",
         technologies: "",
         date: "",
-        testimonialQuote: "",
+        testimonialQuote_en: "",
+        testimonialQuote_bs: "",
         testimonialAuthor: "",
         testimonialRole: "",
         status: "draft",
@@ -77,8 +78,9 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                     website: p.client_website || p.project_url || "",
                     image: featured,
                     technologies: technologies.join(", "),
-                    date: p.completed_at || "",
-                    testimonialQuote: testimonial?.quote || "",
+                    date: p.completed_at ? new Date(p.completed_at).toISOString().split("T")[0] : "",
+                    testimonialQuote_en: testimonial?.quote_en || testimonial?.quote || "",
+                    testimonialQuote_bs: testimonial?.quote_bs || "",
                     testimonialAuthor: testimonial?.author || "",
                     testimonialRole: testimonial?.role || "",
                     status: p.status || "draft",
@@ -127,7 +129,8 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                 results: validResults,
                 images: imagesArray,
                 testimonial: {
-                    quote: formData.testimonialQuote,
+                    quote_en: formData.testimonialQuote_en,
+                    quote_bs: formData.testimonialQuote_bs,
                     author: formData.testimonialAuthor,
                     role: formData.testimonialRole,
                 },
@@ -243,9 +246,15 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                     <div className="card-bento p-8 bg-white">
                         <h3 className="text-xl font-bold font-display text-[#0F172A] mb-6">Testimonial</h3>
                         <div className="space-y-6">
-                            <div>
-                                <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Quote</label>
-                                <textarea name="testimonialQuote" rows={3} className="input-field" value={formData.testimonialQuote} onChange={handleChange} />
+                            <div className="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Quote (English)</label>
+                                    <textarea name="testimonialQuote_en" rows={4} className="input-field" value={formData.testimonialQuote_en} onChange={handleChange} />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-[#0F172A] mb-1.5 uppercase tracking-wide">Citat (Bosanski)</label>
+                                    <textarea name="testimonialQuote_bs" rows={4} className="input-field" value={formData.testimonialQuote_bs} onChange={handleChange} />
+                                </div>
                             </div>
                             <div className="grid grid-cols-2 gap-6">
                                 <div>
@@ -296,7 +305,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Completion Date</label>
-                                <input type="text" name="date" className="input-field" value={formData.date} onChange={handleChange} />
+                                <input type="date" name="date" className="input-field" value={formData.date} onChange={handleChange} />
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Technologies</label>
