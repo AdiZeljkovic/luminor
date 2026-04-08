@@ -17,39 +17,6 @@ import { getSiteSettings } from "@/lib/getSettings";
 import MaintenanceScreen from "@/components/MaintenanceScreen";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
 
-interface SiteSettings {
-    site_title?: string;
-    site_description?: string;
-    site_keywords?: string;
-    google_site_verification?: string;
-    bing_site_verification?: string;
-    yandex_verification?: string;
-    baidu_verification?: string;
-    og_image_url?: string;
-    google_analytics_id?: string;
-    google_tag_manager_id?: string;
-    facebook_pixel_id?: string;
-
-    // Schema
-    schema_type?: string;
-    business_name?: string;
-    logo_url?: string;
-    contact_email?: string;
-    contact_phone?: string;
-    contact_address?: string;
-    social_facebook?: string;
-    social_instagram?: string;
-    social_linkedin?: string;
-    social_twitter?: string;
-    price_range?: string;
-    opening_hours?: string;
-    geo_latitude?: string;
-    geo_longitude?: string;
-    maintenance_mode?: boolean;
-    announcement_active?: boolean;
-    announcement_message?: string;
-    announcement_link?: string;
-}
 
 const beVietnamPro = Be_Vietnam_Pro({
     variable: "--font-primary",
@@ -202,6 +169,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         }}
                     />
                 )}
+                {/* Google Analytics 4 */}
+                {settings?.google_analytics_id && (
+                    <>
+                        <script
+                            async
+                            src={`https://www.googletagmanager.com/gtag/js?id=${settings.google_analytics_id}`}
+                        />
+                        <script
+                            dangerouslySetInnerHTML={{
+                                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${settings.google_analytics_id}');`
+                            }}
+                        />
+                    </>
+                )}
             </head>
             <body className={`${beVietnamPro.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased`}>
                 {/* Google Tag Manager (noscript) — immediately after <body> per GTM docs */}
@@ -275,24 +256,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <LeadMagnetPopup />
                     <ChatWidget />
                 </NextIntlClientProvider>
-
-                {/* Google Analytics 4 */}
-                {settings?.google_analytics_id && (
-                    <>
-                        <Script
-                            src={`https://www.googletagmanager.com/gtag/js?id=${settings.google_analytics_id}`}
-                            strategy="afterInteractive"
-                        />
-                        <Script id="google-analytics" strategy="afterInteractive">
-                            {`
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-                            gtag('config', '${settings.google_analytics_id}');
-                            `}
-                        </Script>
-                    </>
-                )}
 
                 {/* Facebook Pixel */}
                 {settings?.facebook_pixel_id && (
