@@ -41,29 +41,43 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
             const response = await apiClient.get(`/api/portfolio/admin/${id}`);
             if (response.success) {
                 const project = response.data;
+
+                // MariaDB stores JSON fields as strings — parse them
+                const parseJson = (val: any, fallback: any) => {
+                    if (Array.isArray(val)) return val;
+                    if (typeof val === 'string') {
+                        try { return JSON.parse(val); } catch { return fallback; }
+                    }
+                    return fallback;
+                };
+
+                const technologies = parseJson(project.technologies, []);
+                const images = parseJson(project.images, []);
+                const results = parseJson(project.results, []);
+                const testimonial = parseJson(project.testimonial, {});
+
                 // Load existing gallery images (exclude featured image)
                 const featured = project.featured_image || "";
-                const existing: string[] = Array.isArray(project.images)
-                    ? project.images.filter((img: string) => img !== featured)
-                    : [];
+                const existing: string[] = images.filter((img: string) => img !== featured);
                 setGalleryImages(existing);
+
                 setFormData({
-                    title: project.title,
-                    description: project.description,
+                    title: project.title_en || project.title || "",
+                    description: project.description_en || project.description || "",
                     category: project.category,
                     client: project.client_name || "",
                     website: project.client_website || project.project_url || "",
                     image: project.featured_image || "",
-                    technologies: project.technologies ? project.technologies.join(", ") : "",
-                    challenge: project.challenge || "",
-                    solution: project.solution || "",
-                    results: project.results && Array.isArray(project.results)
-                        ? project.results.map((r: any) => `${r.metric}: ${r.label}`).join(", ")
+                    technologies: technologies.join(", "),
+                    challenge: project.challenge_en || project.challenge || "",
+                    solution: project.solution_en || project.solution || "",
+                    results: Array.isArray(results)
+                        ? results.map((r: any) => `${r.metric}: ${r.label}`).join(", ")
                         : "",
                     date: project.completed_at || "",
-                    testimonialQuote: project.testimonial?.quote || "",
-                    testimonialAuthor: project.testimonial?.author || "",
-                    testimonialRole: project.testimonial?.role || "",
+                    testimonialQuote: testimonial?.quote || "",
+                    testimonialAuthor: testimonial?.author || "",
+                    testimonialRole: testimonial?.role || "",
                 });
             }
         } catch (error) {
