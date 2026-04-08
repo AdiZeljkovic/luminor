@@ -7,6 +7,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
 import styles from "./page.module.css";
 import { useTranslations, useLocale } from "next-intl";
+import Image from "next/image";
 import { API_URL } from "@/lib/api";
 
 interface BlogPost {
@@ -151,7 +152,7 @@ export default function BlogPage() {
                     <div className={styles.container}>
                         <AnimatedSection animation="fade-up" className={styles.featuredCard}>
                             <div className={styles.featuredImage}>
-                                <img src={featuredPost.featured_image} alt={featuredPost.title} />
+                                <Image src={featuredPost.featured_image} alt={featuredPost.title} fill style={{ objectFit: 'cover' }} unoptimized />
                                 <span className={styles.featuredBadge}>{t('featured')}</span>
                             </div>
                             <div className={styles.featuredContent}>

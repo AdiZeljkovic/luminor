@@ -54,6 +54,8 @@ export default function Header() {
     };
 
     return (
+        <>
+        <a href="#main-content" className={styles.skipLink}>Skip to main content</a>
         <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
             <div className={styles.container}>
                 {/* Logo */}
@@ -171,5 +173,6 @@ export default function Header() {
                 </nav>
             </div>
         </header >
+        </>
     );
 }

@@ -1,3 +1,20 @@
+.skipLink {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    background: var(--color-accent, #FF9F1C);
+    color: #000;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+.skipLink:focus {
+    top: 0;
+}
+
 .header {
     position: fixed;
     top: 0;
