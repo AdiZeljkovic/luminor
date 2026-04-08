@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ImageUpload from "@/components/ui/ImageUpload";
@@ -9,7 +9,8 @@ import RichTextEditor from "@/components/ui/RichTextEditor";
 import { toast } from "sonner";
 import { apiClient } from "@/lib/apiClient";
 
-export default function EditProjectPage({ params }: { params: { id: string } }) {
+export default function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
@@ -37,7 +38,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
     const fetchProject = async () => {
         try {
-            const response = await apiClient.get(`/api/portfolio/admin/${params.id}`);
+            const response = await apiClient.get(`/api/portfolio/admin/${id}`);
             if (response.success) {
                 const project = response.data;
                 // Load existing gallery images (exclude featured image)
@@ -121,7 +122,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
                 date: formData.date
             };
 
-            await apiClient.put(`/api/portfolio/${params.id}`, payload);
+            await apiClient.put(`/api/portfolio/${id}`, payload);
 
             toast.success("Project updated successfully");
             router.push("/dashboard/portfolio");
