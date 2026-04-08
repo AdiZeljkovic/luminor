@@ -190,9 +190,21 @@ export default async function LocaleLayout({ children, params }: Props) {
                 {/* Preconnect to API for faster data fetching */}
                 <link rel="preconnect" href="https://api.luminor.solutions" />
                 <link rel="dns-prefetch" href="https://api.luminor.solutions" />
+                {/* Google Tag Manager — must be as high in <head> as possible */}
+                {settings?.google_tag_manager_id && (
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${settings.google_tag_manager_id}');`
+                        }}
+                    />
+                )}
             </head>
             <body className={`${beVietnamPro.variable} ${outfit.variable} ${spaceGrotesk.variable} antialiased`}>
-                {/* Google Tag Manager (noscript) */}
+                {/* Google Tag Manager (noscript) — immediately after <body> per GTM docs */}
                 {settings?.google_tag_manager_id && (
                     <noscript>
                         <iframe
@@ -280,19 +292,6 @@ export default async function LocaleLayout({ children, params }: Props) {
                             `}
                         </Script>
                     </>
-                )}
-
-                {/* Google Tag Manager */}
-                {settings?.google_tag_manager_id && (
-                    <Script id="google-tag-manager" strategy="afterInteractive">
-                        {`
-                        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                        })(window,document,'script','dataLayer','${settings.google_tag_manager_id}');
-                        `}
-                    </Script>
                 )}
 
                 {/* Facebook Pixel */}
