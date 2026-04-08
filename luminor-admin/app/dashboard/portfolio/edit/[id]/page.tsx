@@ -36,7 +36,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
     const fetchProject = async () => {
         try {
-            const response = await apiClient.get(`/api/portfolio/${params.id}`);
+            const response = await apiClient.get(`/api/portfolio/admin/${params.id}`);
             if (response.success) {
                 const project = response.data;
                 setFormData({

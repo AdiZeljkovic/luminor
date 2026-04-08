@@ -131,6 +131,17 @@ router.get('/category/:category', async (req, res) => {
  * @desc    Get all portfolio projects including drafts (admin only)
  * @access  Private
  */
+router.get('/admin/:id', auth, async (req, res) => {
+    try {
+        const project = await PortfolioProject.findByPk(req.params.id);
+        if (!project) return res.status(404).json({ success: false, error: 'Project not found' });
+        res.json({ success: true, data: project.toJSON() });
+    } catch (error) {
+        console.error('Admin get project error:', error);
+        res.status(500).json({ success: false, error: 'Server error' });
+    }
+});
+
 router.get('/admin/all', auth, async (req, res) => {
     try {
         const locale = req.query.locale || 'en';
