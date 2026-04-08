@@ -72,18 +72,39 @@ router.get('/', async (req, res) => {
  */
 router.get('/featured', async (req, res) => {
     try {
-        const limit = parseInt(req.query.limit) || 4;
+        const limit = parseInt(req.query.limit) || 3;
+        const locale = req.query.locale || 'en';
 
-        const projects = await PortfolioProject.findAll({
-            where: {
-                status: 'published',
-                featured: true
-            },
+        const localize = (p) => ({
+            ...p,
+            title: p[`title_${locale}`] || p.title_en || p.title_bs,
+            description: p[`description_${locale}`] || p.description_en || p.description_bs,
+            short_description: p[`short_description_${locale}`] || p.short_description_en || p.short_description_bs,
+        });
+
+        // First try featured projects
+        let projects = await PortfolioProject.findAll({
+            where: { status: 'published', featured: true },
             order: [['order_num', 'ASC'], ['completed_at', 'DESC']],
             limit
         });
 
-        res.json({ success: true, data: projects });
+        // Fallback: fill up with latest published if not enough featured
+        if (projects.length < limit) {
+            const featuredIds = projects.map(p => p.id);
+            const { Op } = require('sequelize');
+            const extra = await PortfolioProject.findAll({
+                where: {
+                    status: 'published',
+                    id: { [Op.notIn]: featuredIds.length ? featuredIds : [0] }
+                },
+                order: [['completed_at', 'DESC'], ['createdAt', 'DESC']],
+                limit: limit - projects.length
+            });
+            projects = [...projects, ...extra];
+        }
+
+        res.json({ success: true, data: projects.map(p => localize(p.toJSON())) });
     } catch (error) {
         console.error('Get featured projects error:', error);
         res.status(500).json({ success: false, error: 'Server error' });

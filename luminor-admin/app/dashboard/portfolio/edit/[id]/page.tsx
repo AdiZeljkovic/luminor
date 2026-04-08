@@ -43,6 +43,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
         testimonialAuthor: "",
         testimonialRole: "",
         status: "draft",
+        featured: false,
     });
 
     useEffect(() => { fetchProject(); }, []);
@@ -84,6 +85,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                     testimonialAuthor: testimonial?.author || "",
                     testimonialRole: testimonial?.role || "",
                     status: p.status || "draft",
+                    featured: p.featured || false,
                 });
             }
         } catch (error) {
@@ -136,6 +138,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                 },
                 date: formData.date,
                 status: formData.status,
+                featured: formData.featured,
             };
 
             await apiClient.put(`/api/portfolio/${id}`, payload);
@@ -294,6 +297,19 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                                     <option value="draft">Draft</option>
                                     <option value="published">Published</option>
                                 </select>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-orange-50 border-2 border-orange-200 rounded-xl">
+                                <div>
+                                    <p className="text-xs font-bold text-[#0F172A] uppercase tracking-wide">Featured on Homepage</p>
+                                    <p className="text-xs text-gray-500 mt-0.5">Show in homepage portfolio section</p>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => setFormData(p => ({ ...p, featured: !p.featured }))}
+                                    className={`relative w-12 h-6 rounded-full transition-colors ${formData.featured ? 'bg-[#FF9F1C]' : 'bg-gray-300'}`}
+                                >
+                                    <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${formData.featured ? 'translate-x-7' : 'translate-x-1'}`} />
+                                </button>
                             </div>
                             <div>
                                 <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wide mb-1.5">Client Name</label>

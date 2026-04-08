@@ -30,6 +30,7 @@ export default function CreateProjectPage() {
         date: "",
         image: "",
         technologies: "",
+        featured: false,
         testimonialQuote_en: "",
         testimonialQuote_bs: "",
         testimonialAuthor: "",
@@ -88,6 +89,7 @@ export default function CreateProjectPage() {
                 category: formData.category,
                 client: formData.client,
                 featuredImage: formData.image,
+                featured: formData.featured,
                 technologies: technologiesArray,
                 results: validResults,
                 images: imagesArray,
@@ -355,6 +357,19 @@ export default function CreateProjectPage() {
                                 />
                             </div>
 
+                            <div className="flex items-center justify-between p-3 bg-orange-50 border-2 border-orange-200 rounded-xl">
+                                <div>
+                                    <p className="text-xs font-bold text-[#0F172A] uppercase tracking-wide">Featured on Homepage</p>
+                                    <p className="text-xs text-gray-500 mt-0.5">Show in homepage portfolio section</p>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => setFormData(p => ({ ...p, featured: !p.featured }))}
+                                    className={`relative w-12 h-6 rounded-full transition-colors ${formData.featured ? 'bg-[#FF9F1C]' : 'bg-gray-300'}`}
+                                >
+                                    <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${formData.featured ? 'translate-x-7' : 'translate-x-1'}`} />
+                                </button>
+                            </div>
                             <button
                                 type="submit"
                                 form="portfolioForm"
