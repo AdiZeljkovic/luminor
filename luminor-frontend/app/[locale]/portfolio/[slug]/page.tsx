@@ -6,6 +6,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import styles from "./page.module.css";
 import { API_URL } from "@/lib/api";
+import GalleryLightbox from "@/components/GalleryLightbox";
 
 // Fetch data from API
 async function getProjectData(slug: string, locale: string = 'en') {
@@ -247,19 +248,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                         <AnimatedSection className={styles.sectionHeader}>
                             <h2 className={styles.sectionTitle}>{isBs ? 'Galerija' : 'Gallery'}</h2>
                         </AnimatedSection>
-                        <div className={styles.galleryGrid}>
-                            {project.images.map((img: string, idx: number) => (
-                                <AnimatedSection key={idx} animation="fade-up" delay={idx * 100} className={styles.galleryItem}>
-                                    <Image
-                                        src={img}
-                                        alt={`${project.title} - Project detail screenshot ${idx + 1} showcasing ${project.category} implementation`}
-                                        fill
-                                        className={styles.galleryImage}
-                                        loading={idx === 0 ? "eager" : "lazy"}
-                                    />
-                                </AnimatedSection>
-                            ))}
-                        </div>
+                        <GalleryLightbox images={project.images} title={project.title} />
                     </div>
                 </section>
             )}
