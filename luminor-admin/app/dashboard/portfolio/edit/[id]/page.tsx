@@ -22,6 +22,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
     const { id } = use(params);
     const router = useRouter();
     const [loading, setLoading] = useState(true);
+    const [loadError, setLoadError] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [activeTab, setActiveTab] = useState<"en" | "bs">("en");
     const [galleryImages, setGalleryImages] = useState<string[]>([]);
@@ -90,6 +91,7 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
             }
         } catch (error) {
             toast.error("Failed to load project details");
+            setLoadError(true);
         } finally {
             setLoading(false);
         }
@@ -154,6 +156,17 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
     if (loading) return (
         <div className="flex justify-center items-center min-h-[400px]">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        </div>
+    );
+
+    if (loadError) return (
+        <div className="flex flex-col justify-center items-center min-h-[400px] gap-4">
+            <p className="text-red-500 font-bold text-lg">Failed to load project data.</p>
+            <p className="text-gray-500 text-sm">Cannot save — this would overwrite the project with empty values.</p>
+            <button onClick={() => { setLoadError(false); setLoading(true); fetchProject(); }} className="btn btn-primary px-6 py-2">
+                Retry
+            </button>
+            <Link href="/dashboard/portfolio" className="text-sm text-gray-400 hover:text-gray-600 underline">Back to Portfolio</Link>
         </div>
     );
 
