@@ -18,9 +18,26 @@ export default function AnimatedSection({
     threshold = 0.1,
 }: AnimatedSectionProps) {
     const [isVisible, setIsVisible] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+
+        // If element is already in viewport on load (above fold), show immediately without animation
+        const rect = el.getBoundingClientRect();
+        const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (alreadyVisible) {
+            setIsVisible(true);
+            setMounted(true);
+            return;
+        }
+
+        // Below fold: mount animation state then observe
+        setMounted(true);
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -31,53 +48,29 @@ export default function AnimatedSection({
             { threshold }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
+        observer.observe(el);
+        return () => observer.unobserve(el);
     }, [threshold]);
 
-    const animationStyles: { [key: string]: React.CSSProperties } = {
-        "fade-up": {
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(30px)",
-        },
-        "fade-in": {
-            opacity: isVisible ? 1 : 0,
-        },
-        "fade-left": {
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateX(0)" : "translateX(-30px)",
-        },
-        "slide-left": {
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateX(0)" : "translateX(-30px)",
-        },
-        "slide-right": {
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateX(0)" : "translateX(30px)",
-        },
-        scale: {
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "scale(1)" : "scale(0.95)",
-        },
+    const hiddenStyles: { [key: string]: React.CSSProperties } = {
+        "fade-up":    { opacity: 0, transform: "translateY(30px)" },
+        "fade-in":    { opacity: 0 },
+        "fade-left":  { opacity: 0, transform: "translateX(-30px)" },
+        "slide-left": { opacity: 0, transform: "translateX(-30px)" },
+        "slide-right":{ opacity: 0, transform: "translateX(30px)" },
+        scale:        { opacity: 0, transform: "scale(0.95)" },
     };
 
+    // SSR + before mount: no inline styles → content fully visible to crawlers
+    // After mount: apply animation only for below-fold elements
+    const style: React.CSSProperties = mounted
+        ? isVisible
+            ? { transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`, willChange: "transform, opacity" }
+            : { ...hiddenStyles[animation], transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`, willChange: "transform, opacity" }
+        : {};
+
     return (
-        <div
-            ref={sectionRef}
-            className={className}
-            style={{
-                ...animationStyles[animation],
-                transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
-                willChange: "transform, opacity",
-            }}
-        >
+        <div ref={sectionRef} className={className} style={style}>
             {children}
         </div>
     );

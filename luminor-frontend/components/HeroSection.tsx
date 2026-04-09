@@ -1,13 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Button from "./Button";
 import styles from "./HeroSection.module.css";
 import AnimatedSection from "./AnimatedSection";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function HeroSection() {
-    const t = useTranslations('home.hero');
+export default async function HeroSection() {
+    const t = await getTranslations('home.hero');
 
     return (
         <section className={styles.hero}>
