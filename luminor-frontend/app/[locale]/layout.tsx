@@ -114,7 +114,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: siteTitle,
             description: siteDesc,
             images: [{
-                url: settings?.og_image_url || 'https://www.luminor.solutions/rocket-hero.png',
+                url: settings?.og_image_url || 'https://www.luminor.solutions/OG.jpg',
                 width: 1200,
                 height: 630,
                 alt: siteTitle
@@ -124,7 +124,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             card: 'summary_large_image',
             title: siteTitle,
             description: siteDesc,
-            images: [settings?.og_image_url || 'https://www.luminor.solutions/rocket-hero.png'],
+            images: [settings?.og_image_url || 'https://www.luminor.solutions/OG.jpg'],
             creator: '@LuminorSolutions',
             site: '@LuminorSolutions',
         },
