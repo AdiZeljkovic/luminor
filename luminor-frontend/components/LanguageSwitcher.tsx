@@ -11,6 +11,10 @@ export default function LanguageSwitcher() {
     const switchLocale = (newLocale: string) => {
         if (newLocale === locale) return;
 
+        // Set NEXT_LOCALE cookie so next-intl middleware respects explicit user choice
+        // over Accept-Language header detection (prevents redirect loop back to /bs)
+        document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000;SameSite=Lax`;
+
         // Strip any locale prefix from the current path
         const pathWithoutLocale = pathname.replace(/^\/(en|bs)(\/|$)/, '/').replace(/\/$/, '') || '/';
 
@@ -19,7 +23,6 @@ export default function LanguageSwitcher() {
             ? pathWithoutLocale
             : `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
 
-        // Hard navigation ensures locale context reloads correctly
         window.location.href = newPath;
     };
 
