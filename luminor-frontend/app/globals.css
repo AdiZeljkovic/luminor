@@ -83,6 +83,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -93,6 +94,7 @@ body {
   -webkit-font-smoothing: antialiased;
   background-image: radial-gradient(var(--color-gray-300) 1px, transparent 1px);
   background-size: 40px 40px;
+  overflow-x: hidden;
 }
 
 /* =====================================
