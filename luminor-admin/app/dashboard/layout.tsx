@@ -1,9 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { LogOut, Home, PieChart, MessageSquare, Briefcase, FileText, Search, Mail, Settings, Menu, X, ChevronRight, Star, HelpCircle, Activity, MessageCircle, Users, Tag, Image } from "lucide-react";
+import { Toaster, toast } from "sonner";
+
+function playNotificationSound(type: "chat" | "message") {
+    try {
+        const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const notes = type === "chat" ? [880, 1100] : [660, 880];
+        notes.forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = "sine";
+            osc.frequency.value = freq;
+            const t = ctx.currentTime + i * 0.18;
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.18, t + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+            osc.start(t);
+            osc.stop(t + 0.3);
+        });
+    } catch { /* ignore */ }
+}
 
 // NOTE: We're using standard Lucide React icons for the sidebar
 // This requires installation: npm install lucide-react (Already done in package.json)
@@ -17,10 +41,12 @@ export default function DashboardLayout({
     const pathname = usePathname();
     const [user, setUser] = useState<any>(null);
     const [loading, setLoading] = useState(true);
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile toggle
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [chatUnread, setChatUnread] = useState(0);
+    const [messagesUnread, setMessagesUnread] = useState(0);
+    const notifSocketRef = useRef<any>(null);
 
     useEffect(() => {
-        // SECURITY: Token is now in httpOnly cookie, only check user data
         const userData = localStorage.getItem("user");
 
         if (!userData || userData === "undefined") {
@@ -35,6 +61,55 @@ export default function DashboardLayout({
             router.push("/login");
         }
     }, [router]);
+
+    // Global notification socket — active on all dashboard pages
+    useEffect(() => {
+        if (!user) return;
+
+        let socket: any = null;
+
+        const connect = async () => {
+            try {
+                const { io } = await import("socket.io-client");
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+                socket = io(`${apiUrl}/admin`, { transports: ["websocket", "polling"] });
+                notifSocketRef.current = socket;
+
+                socket.on("session:new", (data: any) => {
+                    playNotificationSound("chat");
+                    setChatUnread((n) => n + 1);
+                    toast(`New chat from ${data.visitor_name}`, {
+                        description: data.page_url || "Website visitor",
+                        action: { label: "Open", onClick: () => router.push("/dashboard/chat") },
+                    });
+                });
+
+                socket.on("contact:new", (data: any) => {
+                    playNotificationSound("message");
+                    setMessagesUnread((n) => n + 1);
+                    toast(`New message from ${data.name}`, {
+                        description: data.subject,
+                        action: { label: "View", onClick: () => router.push("/dashboard/messages") },
+                    });
+                });
+            } catch {
+                /* socket unavailable, ignore */
+            }
+        };
+
+        connect();
+
+        return () => {
+            if (socket) socket.disconnect();
+            notifSocketRef.current = null;
+        };
+    }, [user, router]);
+
+    // Clear badge when admin navigates to that page
+    useEffect(() => {
+        if (pathname.startsWith("/dashboard/chat")) setChatUnread(0);
+        if (pathname.startsWith("/dashboard/messages")) setMessagesUnread(0);
+    }, [pathname]);
 
     const handleLogout = async () => {
         try {
@@ -111,6 +186,8 @@ export default function DashboardLayout({
     };
 
     return (
+        <>
+        <Toaster position="top-right" richColors closeButton />
         <div className="flex h-screen bg-[#F8FAFC] overflow-hidden">
 
             {/* MOBILE SIDEBAR BACKDROP */}
@@ -173,6 +250,16 @@ export default function DashboardLayout({
                                             <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
                                             <span>{item.name}</span>
                                             {isActive && <ChevronRight size={14} className="ml-auto opacity-70" />}
+                                            {!isActive && item.href === "/dashboard/chat" && chatUnread > 0 && (
+                                                <span className="ml-auto bg-red-500 text-white text-[10px] font-bold rounded-full px-1.5 py-0.5 min-w-[18px] text-center leading-tight">
+                                                    {chatUnread > 9 ? "9+" : chatUnread}
+                                                </span>
+                                            )}
+                                            {!isActive && item.href === "/dashboard/messages" && messagesUnread > 0 && (
+                                                <span className="ml-auto bg-red-500 text-white text-[10px] font-bold rounded-full px-1.5 py-0.5 min-w-[18px] text-center leading-tight">
+                                                    {messagesUnread > 9 ? "9+" : messagesUnread}
+                                                </span>
+                                            )}
                                         </Link>
                                     );
                                 })}
@@ -239,5 +326,6 @@ export default function DashboardLayout({
                 </main>
             </div>
         </div>
+        </>
     );
 }

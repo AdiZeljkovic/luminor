@@ -4,6 +4,7 @@ const rateLimit = require('express-rate-limit');
 const nodemailer = require('nodemailer');
 const { ContactMessage } = require('../models');
 const { auth } = require('../middleware/auth');
+const { getIO } = require('../config/socket');
 
 const router = express.Router();
 
@@ -58,8 +59,19 @@ router.post('/send', contactLimiter, [
       await sendEmailNotification({ name, email, phone, subject, message, service, budget_range });
     } catch (emailError) {
       console.error('Email notification failed:', emailError);
-      // Don't fail the request if email fails - message is saved to DB
     }
+
+    // Notify all connected admins in real-time
+    try {
+      const io = getIO();
+      io.of('/admin').emit('contact:new', {
+        id: contactMessage.id,
+        name,
+        email,
+        subject,
+        createdAt: contactMessage.createdAt
+      });
+    } catch (_) { /* socket may not be ready, ignore */ }
 
     res.status(201).json({
       success: true,
