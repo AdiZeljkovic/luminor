@@ -23,15 +23,6 @@ const TLD_LABELS: Record<string, string> = {
     ".co": "CO",
 };
 
-// Manual WHOIS check URLs for each TLD — shown when automated check fails
-const MANUAL_CHECK_URLS: Record<string, string> = {
-    ".ba":  "https://nic.ba/lat/whois/",
-    ".co":  "https://www.nic.co/whois/",
-    ".com": "https://lookup.icann.org/",
-    ".net": "https://lookup.icann.org/",
-    ".org": "https://lookup.icann.org/",
-    ".io":  "https://lookup.icann.org/",
-};
 
 export default function DomainChecker({ locale }: Props) {
     const [query, setQuery] = useState("");
@@ -53,7 +44,7 @@ export default function DomainChecker({ locale }: Props) {
         checking: locale === "bs" ? "Provjera..." : "Checking...",
         available: locale === "bs" ? "Slobodna" : "Available",
         taken: locale === "bs" ? "Zauzeta" : "Taken",
-        unknown: locale === "bs" ? "Provjeri ručno" : "Check manually",
+        unknown: locale === "bs" ? "Nepoznato" : "Unknown",
         register: locale === "bs" ? "Registruj" : "Register",
         contactSubject:
             locale === "bs"
@@ -183,16 +174,6 @@ export default function DomainChecker({ locale }: Props) {
                                             className={styles.registerBtn}
                                         >
                                             {t.register} →
-                                        </a>
-                                    )}
-                                    {r.status === "unknown" && MANUAL_CHECK_URLS[r.tld] && (
-                                        <a
-                                            href={MANUAL_CHECK_URLS[r.tld]}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={styles.manualBtn}
-                                        >
-                                            {t.unknown} ↗
                                         </a>
                                     )}
                                 </div>
