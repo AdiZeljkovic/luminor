@@ -36,6 +36,7 @@ const clientPortalRoutes = require('./routes/clientPortal');
 const pricingRoutes = require('./routes/pricing');
 const teamRoutes = require('./routes/team');
 const mediaRoutes = require('./routes/media');
+const domainRoutes = require('./routes/domain');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -147,6 +148,7 @@ app.use('/api/portal', clientPortalRoutes);
 app.use('/api/pricing', pricingRoutes);
 app.use('/api/team', teamRoutes);
 app.use('/api/media', mediaRoutes);
+app.use('/api/domain', domainRoutes);
 
 // Enhanced Health check endpoint
 app.get('/api/health', async (req, res) => {

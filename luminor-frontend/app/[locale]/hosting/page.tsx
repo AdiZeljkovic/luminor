@@ -1,5 +1,6 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
+import DomainChecker from "@/components/DomainChecker/DomainChecker";
 import styles from "./page.module.css";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
@@ -150,6 +151,9 @@ export default async function HostingPage({ params }: { params: Promise<{ locale
                     </AnimatedSection>
                 </div>
             </section>
+
+            {/* Domain Checker */}
+            <DomainChecker locale={locale} />
 
             {/* Features Overview */}
             <section className={styles.featuresSection}>
