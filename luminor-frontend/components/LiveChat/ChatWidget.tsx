@@ -24,6 +24,8 @@ interface SocketClient {
 
 type Status = "idle" | "connecting" | "waiting" | "active" | "ended" | "error";
 
+const SESSION_STORAGE_KEY = "luminor_chat_session_id";
+
 export default function ChatWidget() {
     const locale = useLocale();
     const [open, setOpen] = useState(false);
@@ -35,6 +37,7 @@ export default function ChatWidget() {
     const [agentTyping, setAgentTyping] = useState(false);
     const [unread, setUnread] = useState(0);
     const socketRef = useRef<SocketClient | null>(null);
+    const sessionIdRef = useRef<number | null>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -74,7 +77,9 @@ export default function ChatWidget() {
 
             socketRef.current = socket;
 
-            socket.on("session:created", ({ message }: { message: string }) => {
+            socket.on("session:created", ({ sessionId, message }: { sessionId: number; message: string }) => {
+                sessionIdRef.current = sessionId;
+                sessionStorage.setItem(SESSION_STORAGE_KEY, String(sessionId));
                 setStatus("waiting");
                 setMessages((prev) => [
                     ...prev,
@@ -88,9 +93,38 @@ export default function ChatWidget() {
                 ]);
             });
 
+            // After a brief disconnect, rejoin the existing session to restore server-side sessionId
+            socket.on("reconnect" as any, () => {
+                const storedId = sessionIdRef.current ?? Number(sessionStorage.getItem(SESSION_STORAGE_KEY));
+                if (storedId) {
+                    socket.emit("visitor:rejoin", { sessionId: storedId });
+                }
+            });
+
+            socket.on("session:rejoined", ({ status: s, messages: history }: { status: string; messages: Message[] }) => {
+                if (s === "active") setStatus("active");
+                else if (s === "waiting") setStatus("waiting");
+                // Merge history with any local messages already displayed
+                setMessages((prev) => {
+                    const merged = [...history];
+                    const ids = new Set(merged.map((m) => m.id));
+                    prev.forEach((m) => { if (!ids.has(m.id)) merged.push(m); });
+                    return merged.sort((a, b) =>
+                        new Date(a.createdAt ?? a.created_at ?? 0).getTime() -
+                        new Date(b.createdAt ?? b.created_at ?? 0).getTime()
+                    );
+                });
+            });
+
+            socket.on("session:not_found", () => {
+                sessionIdRef.current = null;
+                sessionStorage.removeItem(SESSION_STORAGE_KEY);
+                setStatus("idle");
+                setMessages([]);
+            });
+
             socket.on("message:new", (msg: Message) => {
                 setMessages((prev) => {
-                    // Avoid duplicates
                     if (prev.some((m) => m.id === msg.id)) return prev;
                     return [...prev, msg];
                 });
@@ -105,6 +139,8 @@ export default function ChatWidget() {
             });
 
             socket.on("session:ended", ({ message }: { message: string }) => {
+                sessionIdRef.current = null;
+                sessionStorage.removeItem(SESSION_STORAGE_KEY);
                 setStatus("ended");
                 setMessages((prev) => [
                     ...prev,

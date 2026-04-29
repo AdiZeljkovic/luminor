@@ -27,6 +27,38 @@ function initSocket(httpServer) {
     io.on('connection', (socket) => {
         console.log(`[Chat] Visitor connected: ${socket.id}`);
 
+        // Visitor reconnects to an existing session (e.g. after brief network drop)
+        socket.on('visitor:rejoin', async ({ sessionId }) => {
+            try {
+                const session = await ChatSession.findByPk(sessionId);
+                if (!session || session.status === 'closed') {
+                    socket.emit('session:not_found', {});
+                    return;
+                }
+
+                socket.sessionId = session.id;
+                socket.join(`session:${session.id}`);
+                await session.update({ socket_id: socket.id });
+
+                // Send message history so visitor can see previous messages
+                const messages = await ChatMessage.findAll({
+                    where: { session_id: session.id },
+                    order: [['created_at', 'ASC']]
+                });
+
+                socket.emit('session:rejoined', {
+                    sessionId: session.id,
+                    status: session.status,
+                    messages
+                });
+
+                console.log(`[Chat] Visitor rejoined session ${session.id}`);
+            } catch (err) {
+                console.error('[Chat] Error rejoining session:', err);
+                socket.emit('error', { message: 'Failed to rejoin session' });
+            }
+        });
+
         // Visitor starts chat session
         socket.on('visitor:join', async ({ name, email, pageUrl }) => {
             try {
@@ -43,7 +75,7 @@ function initSocket(httpServer) {
 
                 socket.emit('session:created', {
                     sessionId: session.id,
-                    message: 'Connected! An agent will be with you shortly.'
+                    message: 'Connected! An agent will be with you shortly.',
                 });
 
                 // Notify all admin connections
@@ -112,14 +144,21 @@ function initSocket(httpServer) {
         socket.on('disconnect', async () => {
             if (socket.sessionId) {
                 try {
+                    // Only clear socket_id, don't close the session immediately.
+                    // This preserves messages for the admin if the visitor's connection drops briefly.
+                    // The admin or a timeout should explicitly close sessions.
                     await ChatSession.update(
-                        { status: 'closed', socket_id: null },
-                        { where: { id: socket.sessionId } }
+                        { socket_id: null },
+                        { where: { id: socket.sessionId, status: 'waiting' } }
                     );
-                    adminNs.emit('session:closed', { sessionId: socket.sessionId });
-                    console.log(`[Chat] Session ${socket.sessionId} closed (disconnect)`);
+                    await ChatSession.update(
+                        { socket_id: null },
+                        { where: { id: socket.sessionId, status: 'active' } }
+                    );
+                    adminNs.emit('visitor:disconnected', { sessionId: socket.sessionId });
+                    console.log(`[Chat] Visitor disconnected from session ${socket.sessionId}`);
                 } catch (err) {
-                    console.error('[Chat] Error closing session:', err);
+                    console.error('[Chat] Error handling visitor disconnect:', err);
                 }
             }
         });

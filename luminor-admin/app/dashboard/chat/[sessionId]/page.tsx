@@ -65,7 +65,15 @@ export default function ChatSessionPage() {
                 const response = await apiClient.get(`/api/chat/sessions/${sessionId}/messages`);
                 if (response.success) {
                     setSession(response.session);
-                    setMessages(response.data);
+                    // Merge with any socket messages already received to avoid race condition
+                    setMessages((prev) => {
+                        const merged: Message[] = [...response.data];
+                        const ids = new Set(merged.map((m) => m.id));
+                        prev.forEach((m) => { if (!ids.has(m.id)) merged.push(m); });
+                        return merged.sort((a, b) =>
+                            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+                        );
+                    });
                 }
             } catch (err) {
                 console.error("Failed to load session", err);
@@ -116,6 +124,13 @@ export default function ChatSessionPage() {
                 socket.on("session:closed", ({ sessionId: sid }: { sessionId: number }) => {
                     if (String(sid) === sessionId) {
                         setSession((prev) => prev ? { ...prev, status: "closed" } : prev);
+                    }
+                });
+
+                socket.on("visitor:disconnected", ({ sessionId: sid }: { sessionId: number }) => {
+                    if (String(sid) === sessionId) {
+                        // Visitor lost connection but session stays open — just show status
+                        setVisitorTyping(false);
                     }
                 });
 
