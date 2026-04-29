@@ -284,3 +284,20 @@
 .registerBtn:hover {
     opacity: 0.75;
 }
+
+.manualBtn {
+    display: inline-block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.manualBtn:hover {
+    color: rgba(255, 255, 255, 0.6);
+}

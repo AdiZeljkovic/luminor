@@ -1,4 +1,5 @@
 const express = require('express');
+const https = require('https');
 const net = require('net');
 const rateLimit = require('express-rate-limit');
 
@@ -15,7 +16,17 @@ const domainCheckLimiter = rateLimit({
 
 const TLDS = ['.com', '.net', '.org', '.ba', '.io', '.co'];
 
-// WHOIS servers for each TLD (TCP port 43)
+// Authoritative RDAP servers per TLD (HTTPS — never blocked by firewalls)
+const RDAP_SERVERS = {
+    '.com': 'https://rdap.verisign.com/com/v1/domain/',
+    '.net': 'https://rdap.verisign.com/net/v1/domain/',
+    '.org': 'https://rdap.publicinterestregistry.org/rdap/domain/',
+    '.io':  'https://rdap.nic.io/domain/',
+    '.co':  'https://rdap.nic.co/domain/',
+    // .ba has no public RDAP server — falls back to WHOIS
+};
+
+// WHOIS TCP servers (port 43) — used when RDAP is unavailable
 const WHOIS_SERVERS = {
     '.com': 'whois.verisign-grs.com',
     '.net': 'whois.verisign-grs.com',
@@ -25,49 +36,57 @@ const WHOIS_SERVERS = {
     '.co':  'whois.nic.co',
 };
 
-// Substrings in a WHOIS response that indicate the domain is NOT registered
-const FREE_PATTERNS = [
-    'no match',
-    'not found',
-    'no entries found',
-    'domain not found',
-    'no data found',
-    'status: free',
-    'object does not exist',
-    'no object found',
-    'this domain name has not been registered',
-    'domain name not found',
-    '% no such domain',
-    'no information available',
-    'domain is available',
+// Substrings indicating domain IS registered
+const REGISTERED_PATTERNS = [
+    'domain name:', 'domain:', 'registrar:', 'creation date:',
+    'created:', 'expires:', 'expiry date:', 'name server:',
+    'nserver:', 'registrant:', 'status: active', 'status: registered',
+    'last-modified:', 'handle:',
 ];
 
-/**
- * WHOIS TCP lookup — the authoritative source for domain registration data.
- * Connects to the registry's WHOIS server on port 43, sends "domain\r\n",
- * reads the response and checks for "not found" patterns.
- */
+// Substrings indicating domain is NOT registered (available)
+const FREE_PATTERNS = [
+    'no match', 'not found', 'no entries found', 'domain not found',
+    'no data found', 'status: free', 'object does not exist',
+    '% no such domain', 'is available', 'no information available',
+    'domain is available', 'status: available',
+];
+
+/** RDAP via authoritative HTTPS endpoint — 200=taken, 404=available */
+function checkViaRDAP(domain, baseUrl) {
+    return new Promise((resolve) => {
+        const url = `${baseUrl}${domain}`;
+        const req = https.get(
+            url,
+            { timeout: 8000, headers: { Accept: 'application/rdap+json', 'User-Agent': 'LuminorDomainChecker/1.0' } },
+            (res) => {
+                res.resume();
+                if (res.statusCode === 200) resolve('taken');
+                else if (res.statusCode === 404) resolve('available');
+                else resolve('unknown');
+            }
+        );
+        req.on('error', () => resolve('unknown'));
+        req.on('timeout', () => { req.destroy(); resolve('unknown'); });
+    });
+}
+
+/** WHOIS TCP on port 43 — fallback when no RDAP server available */
 function checkViaWHOIS(domain, server) {
     return new Promise((resolve) => {
         let data = '';
-
         const client = net.createConnection({ host: server, port: 43 }, () => {
             client.write(`${domain}\r\n`);
         });
-
-        client.setTimeout(8000);
-
-        client.on('data', (chunk) => {
-            data += chunk.toString('utf8');
-        });
-
+        client.setTimeout(9000);
+        client.on('data', (chunk) => { data += chunk.toString('utf8'); });
         client.on('end', () => {
+            if (!data.trim()) return resolve('unknown');
             const lower = data.toLowerCase();
-            const isFree = FREE_PATTERNS.some((p) => lower.includes(p));
-            // If we got a non-empty response with no "free" patterns, domain is taken
-            resolve(data.trim().length > 0 ? (isFree ? 'available' : 'taken') : 'unknown');
+            if (FREE_PATTERNS.some((p) => lower.includes(p)))       return resolve('available');
+            if (REGISTERED_PATTERNS.some((p) => lower.includes(p))) return resolve('taken');
+            resolve('unknown');
         });
-
         client.on('error', () => resolve('unknown'));
         client.on('timeout', () => { client.destroy(); resolve('unknown'); });
     });
@@ -75,7 +94,7 @@ function checkViaWHOIS(domain, server) {
 
 /**
  * @route   GET /api/domain/check?name=example
- * @desc    Check domain availability across popular TLDs via WHOIS
+ * @desc    Check domain availability via RDAP (primary) + WHOIS fallback
  * @access  Public
  */
 router.get('/check', domainCheckLimiter, async (req, res) => {
@@ -85,7 +104,6 @@ router.get('/check', domainCheckLimiter, async (req, res) => {
         return res.status(400).json({ success: false, error: 'Domain name is required.' });
     }
 
-    // Sanitize: strip protocol/www/TLD — keep only the second-level label
     const baseName = name
         .toLowerCase()
         .replace(/^https?:\/\//i, '')
@@ -105,8 +123,19 @@ router.get('/check', domainCheckLimiter, async (req, res) => {
     const results = await Promise.all(
         TLDS.map(async (tld) => {
             const full = `${baseName}${tld}`;
-            const server = WHOIS_SERVERS[tld];
-            const status = server ? await checkViaWHOIS(full, server) : 'unknown';
+            let status = 'unknown';
+
+            const rdapBase = RDAP_SERVERS[tld];
+            if (rdapBase) {
+                status = await checkViaRDAP(full, rdapBase);
+            }
+
+            // Fallback to WHOIS if RDAP is unavailable or returned unknown
+            if (status === 'unknown') {
+                const whoisServer = WHOIS_SERVERS[tld];
+                if (whoisServer) status = await checkViaWHOIS(full, whoisServer);
+            }
+
             return { domain: full, tld, status };
         })
     );
