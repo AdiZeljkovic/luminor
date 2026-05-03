@@ -7,27 +7,29 @@ const router = express.Router();
 
 const domainCheckLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 30,
+    max: 60,
     message: { success: false, error: 'Too many domain checks, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false,
     validate: { xForwardedForHeader: false }
 });
 
-const TLDS = ['.com', '.net', '.org', '.ba', '.io', '.co'];
+const POPULAR_TLDS = ['.com', '.net', '.org', '.ba', '.io', '.co'];
 
-// Authoritative RDAP servers for TLDs that support it
+const EXTENDED_TLDS = [
+    '.com', '.net', '.org', '.io', '.co', '.me',
+    '.ba', '.hr', '.rs', '.si', '.eu',
+    '.de', '.fr', '.uk', '.at', '.nl', '.it', '.es',
+    '.info', '.biz', '.online', '.store', '.app', '.dev', '.tech',
+    '.gg', '.tv', '.shop', '.agency', '.digital', '.studio', '.media', '.solutions',
+];
+
 const RDAP_SERVERS = {
     '.com': 'https://rdap.verisign.com/com/v1/domain/',
     '.net': 'https://rdap.verisign.com/net/v1/domain/',
     '.org': 'https://rdap.publicinterestregistry.org/rdap/domain/',
-    // .io, .co, .ba — RDAP unreachable from this VPS; DNS fallback used instead
 };
 
-/**
- * RDAP via authoritative HTTPS endpoint.
- * 200 = registered (taken), 404 = not found (available)
- */
 function checkViaRDAP(domain, baseUrl) {
     return new Promise((resolve) => {
         const req = https.get(
@@ -51,19 +53,12 @@ function checkViaRDAP(domain, baseUrl) {
     });
 }
 
-/**
- * DNS NS lookup — works for every TLD, no third-party dependency, port 53 always open.
- * NXDOMAIN (ENOTFOUND) = domain doesn't exist in DNS = available to register.
- * NS records present = domain is delegated to a registrar = taken.
- * ENODATA = domain exists in parent zone but no NS configured; try A record.
- */
 async function checkViaDNS(domain) {
     try {
         await dns.resolveNs(domain);
         return 'taken';
     } catch (nsErr) {
         if (nsErr.code === 'ENOTFOUND') return 'available';
-        // ENODATA: SOA exists but no NS yet — check for A/AAAA as secondary signal
         try {
             await dns.resolve4(domain);
             return 'taken';
@@ -74,24 +69,38 @@ async function checkViaDNS(domain) {
     }
 }
 
+async function checkDomain(baseName, tld) {
+    const full = `${baseName}${tld}`;
+    let status = 'unknown';
+    const rdapBase = RDAP_SERVERS[tld];
+    if (rdapBase) status = await checkViaRDAP(full, rdapBase);
+    if (status === 'unknown') status = await checkViaDNS(full);
+    return { domain: full, tld, status };
+}
+
 /**
- * @route   GET /api/domain/check?name=example
- * @desc    Check domain availability across popular TLDs
- *          Strategy: RDAP (for .com/.net/.org) → DNS NS lookup (all TLDs)
+ * @route   GET /api/domain/check?name=example[.gg]&extended=true
+ * @desc    Check domain availability.
+ *          - Detects specific TLD from input (e.g. "techplay.gg" → featured: .gg)
+ *          - extended=true checks 32 TLDs sorted available-first
  * @access  Public
  */
 router.get('/check', domainCheckLimiter, async (req, res) => {
-    const { name } = req.query;
+    const { name, extended } = req.query;
 
     if (!name || typeof name !== 'string') {
         return res.status(400).json({ success: false, error: 'Domain name is required.' });
     }
 
-    const baseName = name
-        .toLowerCase()
+    const cleaned = name.toLowerCase()
         .replace(/^https?:\/\//i, '')
-        .replace(/^www\./i, '')
-        .split('.')[0]
+        .replace(/^www\./i, '');
+
+    const dotIndex = cleaned.indexOf('.');
+    const rawBase = dotIndex > -1 ? cleaned.slice(0, dotIndex) : cleaned;
+    const specificTld = dotIndex > -1 ? cleaned.slice(dotIndex) : null;
+
+    const baseName = rawBase
         .replace(/[^a-z0-9-]/g, '')
         .replace(/^-+|-+$/g, '')
         .slice(0, 63);
@@ -103,27 +112,36 @@ router.get('/check', domainCheckLimiter, async (req, res) => {
         });
     }
 
-    const results = await Promise.all(
-        TLDS.map(async (tld) => {
-            const full = `${baseName}${tld}`;
-            let status = 'unknown';
+    const isExtended = extended === 'true';
+    const tldList = isExtended ? EXTENDED_TLDS : POPULAR_TLDS;
 
-            // 1. RDAP — fast and authoritative for .com/.net/.org
-            const rdapBase = RDAP_SERVERS[tld];
-            if (rdapBase) {
-                status = await checkViaRDAP(full, rdapBase);
-            }
+    // Include specific TLD in checks if not already in the list
+    const tldToCheck = specificTld && !tldList.includes(specificTld)
+        ? [specificTld, ...tldList]
+        : tldList;
 
-            // 2. DNS NS lookup — universal fallback, no external service needed
-            if (status === 'unknown') {
-                status = await checkViaDNS(full);
-            }
-
-            return { domain: full, tld, status };
-        })
+    const allResults = await Promise.all(
+        tldToCheck.map((tld) => checkDomain(baseName, tld))
     );
 
-    res.json({ success: true, baseName, results });
+    let featured = null;
+    let results = allResults;
+
+    if (specificTld) {
+        featured = allResults.find((r) => r.tld === specificTld) || null;
+        results = allResults.filter((r) => r.tld !== specificTld);
+        if (!isExtended) {
+            results = results.filter((r) => POPULAR_TLDS.includes(r.tld));
+        }
+    }
+
+    // Sort extended results: available → unknown → taken
+    if (isExtended) {
+        const order = { available: 0, unknown: 1, taken: 2 };
+        results.sort((a, b) => (order[a.status] ?? 1) - (order[b.status] ?? 1));
+    }
+
+    res.json({ success: true, baseName, featured, results });
 });
 
 module.exports = router;

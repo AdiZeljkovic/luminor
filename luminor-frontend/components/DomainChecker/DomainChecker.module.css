@@ -140,6 +140,12 @@
     flex-shrink: 0;
 }
 
+/* spinner inside extendedBtn is white */
+.extendedBtn .spinner {
+    border-color: rgba(255, 255, 255, 0.2);
+    border-top-color: var(--color-white);
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -150,7 +156,7 @@
     padding-left: 0.25rem;
 }
 
-/* Results */
+/* Results wrapper */
 .results {
     animation: fadeUp 0.35s ease;
 }
@@ -160,11 +166,70 @@
     to   { opacity: 1; transform: translateY(0); }
 }
 
-.resultsHint {
+/* Shared section hint */
+.sectionHint {
     color: rgba(255, 255, 255, 0.45);
     font-size: 0.875rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     text-align: center;
+}
+
+/* ── Featured card ── */
+.featuredSection {
+    margin-bottom: 2.5rem;
+}
+
+.featuredCard {
+    border-radius: 14px;
+    padding: 1.4rem 1.8rem;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    transition: transform 0.15s;
+}
+
+.featuredCard:hover {
+    transform: translateY(-2px);
+}
+
+.featuredLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.featuredDomain {
+    font-size: 1.4rem;
+    font-family: var(--font-mono, monospace);
+    color: var(--color-white);
+    word-break: break-all;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.featuredRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+    flex-shrink: 0;
+}
+
+.tldPill {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+}
+
+/* ── Popular section ── */
+.popularSection {
+    margin-bottom: 2rem;
 }
 
 .grid {
@@ -174,18 +239,14 @@
 }
 
 @media (max-width: 640px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 400px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
+    .grid { grid-template-columns: 1fr; }
 }
 
-/* Domain card */
+/* ── Domain card ── */
 .card {
     border-radius: 12px;
     padding: 1.25rem;
@@ -283,4 +344,86 @@
 
 .registerBtn:hover {
     opacity: 0.75;
+}
+
+/* ── Check all button ── */
+.extendedBtnWrap {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.extendedBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2.2rem;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.extendedBtn:hover:not(:disabled) {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.extendedBtn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ── Extended results ── */
+.extendedSection {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    animation: fadeUp 0.35s ease;
+}
+
+.extendedHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.4rem;
+}
+
+.extAvailableBadge {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+.extendedSubhint {
+    color: rgba(255, 255, 255, 0.28);
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.extendedGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+@media (max-width: 860px) {
+    .extendedGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 580px) {
+    .extendedGrid { grid-template-columns: repeat(2, 1fr); }
 }
