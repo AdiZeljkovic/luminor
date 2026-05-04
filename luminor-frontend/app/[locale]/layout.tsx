@@ -154,62 +154,6 @@ export default async function LocaleLayout({ children, params }: Props) {
     return (
         <html lang={locale} suppressHydrationWarning>
             <head>
-                {/* Organization JSON-LD — sitewide structured data for Google */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "ProfessionalService",
-                        "name": "Luminor Solutions",
-                        "url": "https://www.luminor.solutions",
-                        "logo": "https://www.luminor.solutions/luminor-logo.png",
-                        "image": "https://www.luminor.solutions/rocket-hero.png",
-                        "description": "Full-service digital agency based in Sarajevo, Bosnia. Custom web development, SEO, digital marketing, branding and AI automation for clients worldwide.",
-                        "telephone": "+38762574783",
-                        "email": "info@luminor.solutions",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "streetAddress": "Porodice Ribar 39",
-                            "addressLocality": "Sarajevo",
-                            "postalCode": "71000",
-                            "addressCountry": "BA"
-                        },
-                        "geo": {
-                            "@type": "GeoCoordinates",
-                            "latitude": 43.8563,
-                            "longitude": 18.4131
-                        },
-                        "areaServed": [
-                            { "@type": "Country", "name": "Bosnia and Herzegovina" },
-                            { "@type": "Country", "name": "Germany" },
-                            { "@type": "Country", "name": "United States" },
-                            { "@type": "Country", "name": "Croatia" },
-                            { "@type": "Country", "name": "Serbia" },
-                            { "@type": "Continent", "name": "Europe" }
-                        ],
-                        "hasOfferCatalog": {
-                            "@type": "OfferCatalog",
-                            "name": "Digital Services",
-                            "itemListElement": [
-                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development" } },
-                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Optimization" } },
-                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing" } },
-                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Graphic Design & Branding" } },
-                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
-                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Automation" } },
-                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Hosting" } }
-                            ]
-                        },
-                        "sameAs": [
-                            "https://www.facebook.com/luminor.solutions",
-                            "https://www.instagram.com/luminor.solutions",
-                            "https://www.linkedin.com/company/luminor-solutions"
-                        ],
-                        "priceRange": "$$",
-                        "openingHours": "Mo-Fr 09:00-17:00",
-                        "foundingDate": "2022"
-                    }) }}
-                />
                 {/* Preconnect to API for faster data fetching */}
                 <link rel="preconnect" href="https://api.luminor.solutions" />
                 <link rel="dns-prefetch" href="https://api.luminor.solutions" />
@@ -260,13 +204,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
-                            "@type": settings?.schema_type || "Organization",
-                            "name": settings?.business_name || settings?.site_title || "Luminor.Solutions",
+                            "@type": settings?.schema_type || "ProfessionalService",
+                            "name": settings?.business_name || settings?.site_title || "Luminor Solutions",
                             "url": "https://www.luminor.solutions",
-                            "logo": settings?.logo_url || "https://www.luminor.solutions/logo.png",
-                            "description": settings?.site_description,
+                            "logo": settings?.logo_url || "https://www.luminor.solutions/luminor-logo.png",
+                            "image": settings?.og_image_url || "https://www.luminor.solutions/OG.jpg",
+                            "description": settings?.site_description || "Full-service digital agency based in Sarajevo, Bosnia. Custom web development, SEO, digital marketing, branding and AI automation for clients worldwide.",
                             "email": settings?.contact_email || "info@luminor.solutions",
-                            "telephone": settings?.contact_phone || "+387 62 574 783",
+                            "telephone": settings?.contact_phone || "+38762574783",
+                            "foundingDate": "2022",
                             "address": {
                                 "@type": "PostalAddress",
                                 "streetAddress": settings?.contact_address?.split(',')[0] || "Porodice Ribar 39",
@@ -274,22 +220,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 "postalCode": "71000",
                                 "addressCountry": "BA"
                             },
+                            "geo": {
+                                "@type": "GeoCoordinates",
+                                "latitude": settings?.geo_latitude || 43.8563,
+                                "longitude": settings?.geo_longitude || 18.4131
+                            },
+                            "areaServed": [
+                                { "@type": "Country", "name": "Bosnia and Herzegovina" },
+                                { "@type": "Country", "name": "Germany" },
+                                { "@type": "Country", "name": "United States" },
+                                { "@type": "Country", "name": "Croatia" },
+                                { "@type": "Country", "name": "Serbia" },
+                                { "@type": "Continent", "name": "Europe" }
+                            ],
+                            "hasOfferCatalog": {
+                                "@type": "OfferCatalog",
+                                "name": "Digital Services",
+                                "itemListElement": [
+                                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development" } },
+                                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Optimization" } },
+                                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Digital Marketing" } },
+                                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Graphic Design & Branding" } },
+                                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
+                                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Automation" } },
+                                    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Hosting" } }
+                                ]
+                            },
+                            "priceRange": settings?.price_range || "$$",
+                            "openingHours": settings?.opening_hours || "Mo-Fr 09:00-17:00",
                             "sameAs": [
                                 settings?.social_facebook,
                                 settings?.social_instagram,
                                 settings?.social_linkedin,
                                 settings?.social_twitter
                             ].filter(Boolean),
-                            // LocalBusiness specific
-                            ...(settings?.schema_type === 'LocalBusiness' || settings?.schema_type === 'ProfessionalService' ? {
-                                "priceRange": settings?.price_range || "$$",
-                                "openingHours": settings?.opening_hours || "Mo-Fr 09:00-17:00",
-                                "geo": {
-                                    "@type": "GeoCoordinates",
-                                    "latitude": settings?.geo_latitude,
-                                    "longitude": settings?.geo_longitude
-                                }
-                            } : {})
                         })
                     }}
                 />
