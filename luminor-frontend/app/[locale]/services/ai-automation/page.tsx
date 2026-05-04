@@ -1,16 +1,24 @@
 import { useTranslations } from "next-intl";
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/AnimatedSection";
 import Button from "@/components/Button";
 import styles from "../ServiceDetail.module.css";
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
-    const t = await getTranslations({ locale, namespace: "services.aiAutomationPage.hero" });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'seo.aiAutomation' });
+    const canonicalPath = locale === 'en' ? 'services/ai-automation' : locale + '/services/ai-automation';
     return {
-        title: `${t("titleLine1")} ${t("titleLine2")} | Luminor.Solutions`,
-        description: t("description"),
+        title: t('title'),
+        description: t('description'),
+        keywords: t('keywords').split(',').map((k) => k.trim()),
+        openGraph: { title: t('title'), description: t('description'), type: 'website', url: 'https://www.luminor.solutions/' + canonicalPath, images: [{ url: 'https://www.luminor.solutions/rocket-hero.png', width: 1200, height: 630 }] },
+        twitter: { card: 'summary_large_image', title: t('title'), description: t('description') },
+        alternates: { canonical: 'https://www.luminor.solutions/' + canonicalPath, languages: { 'en': 'https://www.luminor.solutions/services/ai-automation', 'bs': 'https://www.luminor.solutions/bs/services/ai-automation', 'x-default': 'https://www.luminor.solutions/services/ai-automation' } },
     };
 }
+
 
 export default function AIAutomationPage() {
     const t = useTranslations("services.aiAutomationPage");

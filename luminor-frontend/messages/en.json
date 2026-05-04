@@ -1,89 +1,89 @@
 {
   "seo": {
     "default": {
-      "title": "Luminor Solutions Agency | Web development & digital marketing specialists",
-      "description": "Full-service digital agency. We build custom websites, impactful brands, and data-driven marketing campaigns that grow your business.",
-      "keywords": "luminor solutions, luminor solutions agency, web development, digital marketing, graphic design, seo agency, sarajevo, balkan, software company, custom software, react development, next.js experts, branding studio, digital transformation, marketing strategy, ui/ux design, web shop development"
+      "title": "Luminor Solutions | Web Development & Digital Marketing Agency",
+      "description": "Full-service digital agency based in Sarajevo, Bosnia. Custom websites, branding, SEO and performance marketing for clients in BiH, Germany, USA and worldwide.",
+      "keywords": "luminor solutions, web development agency, digital agency Bosnia Herzegovina, web design company Sarajevo, software company Bosnia, react development, next.js agency, digital marketing Europe, branding studio, custom software, IT company BiH, web agency EU, offshore development Europe, web development for US clients, web development for German clients, web design Balkans"
     },
     "home": {
-      "title": "Luminor Solutions | Web Development, SEO & Marketing Agency",
-      "description": "Digital agency for web development, SEO, digital marketing and branding. We build online presences that convert visitors into clients.",
-      "keywords": "luminor solutions, web development agency, digital marketing strategy, seo experts, graphic design, branding studio, custom software development, mobile app development, e-commerce solutions, digital growth, business automation, sarajevo agency"
+      "title": "Luminor Solutions | Web Development, SEO & Digital Marketing Agency",
+      "description": "Digital agency from Sarajevo delivering world-class web development, SEO and marketing. Trusted by clients in Bosnia, Germany, USA and across Europe.",
+      "keywords": "luminor solutions, web development agency Bosnia, web design Sarajevo, digital marketing agency Europe, SEO agency Bosnia Herzegovina, branding agency, custom website development, react next.js agency, mobile app development, e-commerce agency, software company Sarajevo, IT outsourcing Europe, web agency German clients, web agency US clients, digital agency EU, affordable web development Europe"
     },
     "about": {
-      "title": "About us | Luminor Solutions Agency",
-      "description": "Meet the team behind Luminor Solutions. We bridge the gap between creative design and technical engineering to deliver complete digital products.",
-      "keywords": "about luminor solutions, digital agency team, web developers sarajevo, creative studio, software engineers bosnia, agency culture, our story, luminor solutions team, tech experts sarajevo"
+      "title": "About Us | Luminor Solutions — Digital Agency from Sarajevo, Bosnia",
+      "description": "Meet the team behind Luminor Solutions. Engineers and designers from Bosnia building digital products for clients in the US, Germany and across Europe.",
+      "keywords": "about luminor solutions, digital agency team Bosnia, web developers Sarajevo, software engineers Bosnia Herzegovina, IT company Bosnia, creative studio Balkans, tech team Europe, outsource web development Bosnia, development team BiH, web agency story, Bosnian IT professionals, software agency EU"
     },
     "services": {
-      "title": "Our services | Web, design & marketing solutions",
-      "description": "Comprehensive digital services: Custom Web Development, UI/UX Design, SEO Optimization, and Performance Marketing. Everything you need under one roof.",
-      "keywords": "luminor solutions services, web development services, graphic design services, digital marketing agency, seo services, hosting provider, ai automation, chatbot development, social media management, ppc advertising, content marketing, brand identity design"
+      "title": "Digital Services | Web Development, SEO, Design & Marketing | Luminor",
+      "description": "Complete digital services: custom web development, UI/UX design, SEO, performance marketing and AI automation. One agency for everything — serving clients worldwide.",
+      "keywords": "web development services Bosnia, graphic design agency Sarajevo, digital marketing agency BiH, SEO services Europe, hosting provider Bosnia, AI automation agency, chatbot development, social media management, Google Ads management, Facebook advertising, content marketing, brand identity, full stack development, web services German companies, web services US companies"
     },
     "portfolio": {
-      "title": "Our work | Case studies & successful projects",
-      "description": "Explore our portfolio of successful projects. From e-commerce platforms to corporate branding, see how we help businesses solve real problems.",
-      "keywords": "luminor solutions portfolio, web design portfolio, branding case studies, software development projects, agency work, client success stories, e-commerce examples, website redesign, marketing campaign results"
+      "title": "Our Work | Portfolio & Case Studies | Luminor Solutions",
+      "description": "Explore our portfolio of web development, branding and marketing projects. Real results for businesses in Bosnia, Germany, USA and across Europe.",
+      "keywords": "web design portfolio Bosnia, branding portfolio Sarajevo, web development case studies, software projects BiH, e-commerce portfolio, corporate website examples, client success stories Europe, web design examples, digital marketing results, app development portfolio, agency work Bosnia Herzegovina"
     },
     "blog": {
-      "title": "Blog & insights | Digital trends and expert advice",
-      "description": "Practical advice and industry insights on web development, digital marketing, and design trends. Stay ahead of the curve with Luminor Solutions.",
-      "keywords": "luminor solutions blog, digital marketing blog, web development tips, design trends 2024, business growth strategies, seo guide, tech news, marketing insights, software development tutorial"
+      "title": "Blog & Insights | Web Development, SEO & Marketing Tips | Luminor",
+      "description": "Expert articles on web development, SEO, digital marketing and design. Practical insights from a Bosnian agency working with international clients.",
+      "keywords": "web development blog, digital marketing tips, SEO guide 2025, web design trends, business growth online, how to build a website, marketing strategy guide, react next.js tutorials, agency insights, web development Bosnia blog, tech news, software development tips, e-commerce tips, google ads guide"
     },
     "contact": {
-      "title": "Contact us | Start your digital project",
-      "description": "Ready to grow? Contact Luminor Solutions Agency for a free consultation. Let's discuss your project and find the right solution for your budget.",
-      "keywords": "contact luminor solutions, hire developers, digital agency sarajevo, request quote, web development quote, marketing consultation, start a project, agency contact email, sarajevo software company location"
+      "title": "Contact Us | Free Consultation | Luminor Solutions Sarajevo",
+      "description": "Contact Luminor Solutions for a free consultation. Web development, SEO and digital marketing agency in Sarajevo, Bosnia. Working with clients in BiH, Germany, USA and worldwide.",
+      "keywords": "contact web agency Sarajevo, hire web developers Bosnia, digital agency BiH contact, free website consultation, web development quote, get a proposal, web agency German clients, web agency US clients, contact luminor solutions, web development estimate, Sarajevo IT company contact, software agency Bosnia contact, start a web project"
     },
     "webDevelopment": {
-      "title": "Web Development Services | Custom Websites & Web Apps | Luminor",
-      "description": "Professional custom web development services. React, Next.js, Node.js specialists. E-commerce platforms, corporate websites, SaaS applications, and progressive web apps.",
-      "keywords": "web development, custom website development, react development, next.js development, node.js backend, e-commerce development, corporate website, saas platform, progressive web app, responsive website, web application development, full stack development, api development, web development agency sarajevo"
+      "title": "Web Development Agency | Custom Websites & Web Apps | Luminor, Bosnia",
+      "description": "Professional web development from Bosnia. React, Next.js, Node.js experts building e-commerce, corporate sites and SaaS platforms for clients in the US, EU and Germany.",
+      "keywords": "web development Bosnia Herzegovina, custom website development Sarajevo, react development agency Europe, next.js development company, node.js backend, e-commerce website development, corporate website Bosnia, SaaS platform development, web app development EU, full stack development, API development, affordable web development Europe, web development US companies, web development German companies, outsource web development Bosnia, responsive website design, WordPress development"
     },
     "seoService": {
-      "title": "SEO Services | Search Engine Optimization & Ranking | Luminor",
-      "description": "Expert SEO services to boost your search rankings. On-page SEO, technical SEO, link building, keyword research, and local SEO. Get more organic traffic and leads.",
-      "keywords": "seo services, search engine optimization, google ranking, seo agency, technical seo, on-page seo, link building, keyword research, local seo, seo audit, organic traffic, search visibility, seo expert sarajevo, google my business optimization"
+      "title": "SEO Services | Google Ranking & Search Optimization | Luminor Bosnia",
+      "description": "Expert SEO from Sarajevo. Google ranking, technical SEO, link building and local SEO for businesses in Bosnia, Germany, USA and Europe. Grow your organic traffic.",
+      "keywords": "SEO services Bosnia Herzegovina, SEO agency Sarajevo, Google ranking optimization, technical SEO Europe, on-page SEO, off-page SEO, link building service, keyword research, local SEO Bosnia, international SEO, multilingual SEO, SEO audit, organic traffic growth, Google My Business optimization, SEO for small business, SEO German market, SEO US market"
     },
     "graphicDesign": {
-      "title": "Graphic Design Services | Branding & Visual Identity | Luminor",
-      "description": "Creative graphic design services. Brand identity, logo design, marketing materials, social media graphics, and print design. Build a memorable brand.",
-      "keywords": "graphic design, brand identity design, logo design, visual identity, marketing materials, brochure design, social media graphics, print design, packaging design, corporate branding, brand guidelines, graphic design agency, creative studio sarajevo"
+      "title": "Graphic Design & Branding Agency | Logo & Visual Identity | Luminor",
+      "description": "Creative graphic design and branding from Sarajevo. Logo, brand identity, marketing materials and social media visuals for businesses worldwide.",
+      "keywords": "graphic design agency Sarajevo, branding agency Bosnia, logo design BiH, visual identity design Europe, brand identity package, marketing materials design, social media graphics, print design Bosnia, packaging design, corporate branding Europe, brand guidelines, creative studio Balkans, logo design German companies, branding US companies, affordable graphic design Europe"
     },
     "digitalMarketing": {
-      "title": "Digital Marketing Services | Performance Marketing & Ads | Luminor",
-      "description": "Data-driven digital marketing services. Google Ads, Facebook Ads, social media marketing, email campaigns, and content marketing. Maximize your ROI.",
-      "keywords": "digital marketing, performance marketing, google ads, facebook ads, social media marketing, email marketing, content marketing, ppc advertising, conversion optimization, marketing automation, influencer marketing, digital marketing agency sarajevo"
+      "title": "Digital Marketing Agency | Google Ads, Social Media & Performance | Luminor",
+      "description": "Data-driven digital marketing from Bosnia. Google Ads, Facebook Ads, social media, email campaigns and SEO for clients in BiH, Germany, USA and Europe.",
+      "keywords": "digital marketing agency Bosnia, performance marketing Europe, Google Ads management Sarajevo, Facebook Ads agency BiH, social media marketing Bosnia, email marketing, content marketing, PPC advertising, conversion rate optimization, marketing automation, digital marketing German companies, digital marketing US companies, affordable marketing agency Europe, ROI marketing, Instagram advertising"
     },
     "aiAutomation": {
-      "title": "AI Automation Services | ChatGPT Integration & AI Solutions | Luminor",
-      "description": "AI automation and integration services. Custom ChatGPT solutions, AI chatbots, workflow automation, data analysis, and intelligent automation for your business.",
-      "keywords": "ai automation, chatgpt integration, ai chatbot, artificial intelligence, machine learning, workflow automation, business automation, ai solutions, intelligent automation, custom ai development, chatbot development, ai agency sarajevo"
+      "title": "AI Automation & ChatGPT Integration | AI Business Solutions | Luminor",
+      "description": "AI automation services from Sarajevo. Custom ChatGPT integrations, AI chatbots, workflow automation and intelligent solutions for companies worldwide.",
+      "keywords": "AI automation agency Bosnia, ChatGPT integration Europe, AI chatbot development, artificial intelligence solutions, machine learning implementation, workflow automation, business process automation, custom AI development, AI agency Sarajevo, intelligent automation, AI e-commerce, AI customer support, AI solutions Germany, AI solutions US companies, chatbot development Bosnia"
     },
     "mobileDevelopment": {
-      "title": "Mobile App Development | iOS & Android Apps | Luminor Solutions",
-      "description": "Professional mobile app development for iOS and Android. React Native, Flutter, Swift, Kotlin. From MVP to App Store — fixed price, transparent process.",
-      "keywords": "mobile app development, ios app development, android app development, react native, flutter, cross-platform app, mobile app developer sarajevo, app store submission, mobile application, custom mobile app, swift development, kotlin development"
+      "title": "Mobile App Development | iOS & Android Apps | Luminor Solutions Bosnia",
+      "description": "Professional mobile app development from Sarajevo. React Native, Flutter, Swift and Kotlin. Fixed price, transparent process. Clients in US, EU and Germany.",
+      "keywords": "mobile app development Bosnia, iOS app development Sarajevo, Android app development BiH, React Native development, Flutter app development, cross-platform mobile app, mobile app developer Europe, App Store optimization, Google Play, custom mobile app, MVP development, mobile app German companies, mobile app US companies, affordable app development Europe, Swift development, Kotlin development"
     },
     "hosting": {
-      "title": "Web Hosting Services | Fast NVMe SSD Hosting | Luminor",
-      "description": "Professional web hosting on NVMe SSD infrastructure. 99.9% uptime guarantee, 24/7 support, free SSL, daily backups. Reliable hosting for your website.",
-      "keywords": "web hosting, nvme hosting, ssd hosting, fast hosting, reliable hosting, managed hosting, wordpress hosting, business hosting, hosting sarajevo, hosting bih, ssl certificate, website hosting, cloud hosting, hosting provider"
+      "title": "Web Hosting Services | Fast NVMe SSD Hosting | Luminor, Bosnia",
+      "description": "Reliable web hosting from Bosnia. NVMe SSD, 99.9% uptime, free SSL, daily backups and 24/7 support. For businesses in BiH, Germany and across Europe.",
+      "keywords": "web hosting Bosnia Herzegovina, NVMe SSD hosting, fast web hosting Europe, reliable hosting BiH, managed hosting Sarajevo, WordPress hosting Bosnia, business hosting EU, free SSL hosting, daily backup hosting, cloud hosting Bosnia, website hosting German companies, affordable hosting Europe, hosting provider Bosnia, cPanel hosting, domain registration BiH"
     },
     "process": {
-      "title": "How We Work | Our Development Process | Luminor Solutions",
-      "description": "No mystery, no surprises. Learn exactly how Luminor Solutions works — from discovery and strategy to build and launch. Transparent process, fixed-price projects.",
-      "keywords": "how we work, development process, project workflow, agency process, transparent pricing, fixed price projects, web development process, digital agency workflow, discovery phase, project management, luminor process"
+      "title": "How We Work | Project Process & Timeline | Luminor Solutions",
+      "description": "Transparent, fixed-price projects. Learn how Luminor Solutions works — from discovery to launch. No surprises, clear milestones.",
+      "keywords": "how web agency works, development process Bosnia, project workflow, fixed price web development, transparent web agency, web development timeline, project management Bosnia, agile development, discovery phase, design to launch process, how to hire web agency, web project process Europe, development milestones, website development steps"
     },
     "faq": {
-      "title": "FAQ | Frequently Asked Questions | Luminor Solutions",
-      "description": "Got questions? We have answers. Everything you need to know about working with Luminor Solutions — process, pricing, timelines, and how we work.",
-      "keywords": "faq, frequently asked questions, how does it work, project timeline, pricing questions, digital agency faq, web development questions, agency cost, how long does it take, luminor solutions faq"
+      "title": "FAQ | Web Development Pricing & Process Questions | Luminor Solutions",
+      "description": "Answers about working with Luminor Solutions. Learn about pricing, timelines, technology and how we work with clients in Bosnia, Germany, USA and worldwide.",
+      "keywords": "web development FAQ, web agency pricing Bosnia, how much does a website cost, website development timeline, web agency process questions, digital agency FAQ, web development cost Europe, how long to build a website, website pricing Bosnia, agency questions, web development process explained"
     },
     "status": {
-      "title": "System Status | Luminor Solutions",
-      "description": "Real-time system status for Luminor Solutions services.",
-      "keywords": "system status, uptime, service status, luminor solutions status"
+      "title": "System Status | Luminor Solutions Services",
+      "description": "Real-time status of all Luminor Solutions services. Check uptime and performance.",
+      "keywords": "luminor solutions status, system uptime, service status, server status Bosnia"
     }
   },
   "common": {

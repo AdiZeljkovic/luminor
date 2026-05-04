@@ -1,89 +1,89 @@
 {
   "seo": {
     "default": {
-      "title": "Luminor Solutions Agencija | Web development i digitalni marketing",
-      "description": "Full-service digitalna agencija. Izrađujemo web stranice, brendove i marketing kampanje koje donose konkretne poslovne rezultate.",
-      "keywords": "luminor solutions, luminor solutions agencija, izrada web stranica, digitalni marketing, grafički dizajn, seo optimizacija, sarajevo, bih, web agencija, programiranje, softverska kompanija, izrada aplikacija, branding, vođenje društvenih mreža"
+      "title": "Luminor Solutions | Izrada Web Stranica i Digitalni Marketing Sarajevo",
+      "description": "Full-service digitalna agencija iz Sarajeva. Izrađujemo web stranice, brendove i marketing kampanje za klijente u BiH, Srbiji, Hrvatskoj i cijelom svijetu.",
+      "keywords": "luminor solutions, izrada web stranica sarajevo, web dizajn agencija bih, digitalni marketing sarajevo, grafički dizajn sarajevo, seo optimizacija bih, web agencija bosna hercegovina, softverska kompanija sarajevo, izrada sajtova bih, web development bosna, brending agencija sarajevo, it kompanija bih"
     },
     "home": {
-      "title": "Luminor Solutions | Izrada web stranica, SEO & Marketing",
-      "description": "Digitalna agencija za izradu web stranica, SEO, digitalni marketing i brending. Gradimo online prisustvo koje pretvara posjetioce u klijente.",
-      "keywords": "luminor solutions, izrada web stranica sarajevo, web dizajn agencija, digitalni marketing, seo stručnjaci, grafički dizajn, izrada aplikacija, web hosting, online prodavnica, digitalna agencija bih, brending"
+      "title": "Luminor Solutions | Web Dizajn Sarajevo, SEO i Digitalni Marketing BiH",
+      "description": "Digitalna agencija iz Sarajeva. Izrađujemo web stranice, vodimo SEO i digitalni marketing za klijente u BiH, Srbiji, Hrvatskoj, Njemačkoj i svijetu.",
+      "keywords": "web dizajn sarajevo, izrada web stranica bih, web agencija sarajevo, digitalni marketing bosna hercegovina, seo optimizacija sarajevo, brending agencija bih, izrada sajtova sarajevo, mobilne aplikacije bih, e-commerce platforma bosna, softver kompanija sarajevo, google ads sarajevo, facebook oglašavanje bih, web development mostar, web development banja luka, digitalna transformacija bih"
     },
     "about": {
-      "title": "O nama | Luminor Solutions Agencija",
-      "description": "Upoznajte tim iza Luminor Solutions. Spajamo kreativni dizajn i tehničku preciznost kako bismo isporučili kompletne digitalne proizvode.",
-      "keywords": "o luminor solutions, tim programera, web dizajneri sarajevo, kreativni studio bih, naša priča, iskustvo, eksperti za web, zapošljavanje it"
+      "title": "O Nama | Luminor Solutions — Web Agencija iz Sarajeva",
+      "description": "Upoznajte tim iza Luminor Solutions. Web programeri i dizajneri iz Sarajeva koji rade za klijente u BiH, Srbiji, Hrvatskoj, Njemačkoj i SAD-u.",
+      "keywords": "o luminor solutions, tim web developera sarajevo, programeri bih, web dizajneri sarajevo, it kompanija bosna hercegovina, kreativni studio sarajevo, softver agencija bih, naša priča, iskustvo web agencije, zapošljavanje it bosna, web developeri balkan"
     },
     "services": {
-      "title": "Naše usluge | Web, dizajn i marketing rješenja",
-      "description": "Sveobuhvatne digitalne usluge: Custom Web Development, UI/UX Dizajn, SEO Optimizacija i Performans Marketing. Sve što vam treba na jednom mjestu.",
-      "keywords": "luminor solutions usluge, usluge programiranja, usluge grafičkog dizajna, agencija za digitalni marketing, seo usluge, hosting, ai automatizacija, izrada chatbota, google ads, facebook oglašavanje, održavanje sajtova"
+      "title": "Usluge | Izrada Web Stranica, SEO, Dizajn i Marketing | Luminor",
+      "description": "Sve digitalne usluge na jednom mjestu: izrada web stranica, grafički dizajn, SEO optimizacija, Google Ads i AI automatizacija za firme u BiH i regionu.",
+      "keywords": "izrada web stranica bih, web dizajn sarajevo, grafički dizajn sarajevo, digitalni marketing bih, seo usluge bosna hercegovina, hosting bih, ai automatizacija, izrada chatbota, upravljanje društvenim mrežama, google ads bih, facebook oglasi bosna, content marketing, brendiranje firme bih, izrada web shopa, web maintenance"
     },
     "portfolio": {
-      "title": "Naši radovi | Projekti i studije slučaja",
-      "description": "Pogledajte naš portfolio uspješnih projekata. Od e-commerce platformi do korporativnog brendinga, vidite kako rješavamo stvarne probleme.",
-      "keywords": "luminor solutions portfolio, web dizajn portfolio, primjeri sajtova, brending radovi, reference, projekti, studije slučaja, dizajn ambalaže, zadovoljni klijenti"
+      "title": "Naši Radovi | Portfolio i Projekti | Luminor Solutions Sarajevo",
+      "description": "Pogledajte naš portfolio web stranica, brendova i marketinških projekata za klijente u BiH, Srbiji, Hrvatskoj i inozemstvu.",
+      "keywords": "portfolio web agencija sarajevo, primjeri web dizajna bih, brending projekti bosna, izrada sajtova primjeri, e-commerce web shop bih, korporativne web stranice bosna, digitalni marketing rezultati bih, dizajn logotipa primjeri, reference web agencije sarajevo, mobilne aplikacije primjeri bih"
     },
     "blog": {
-      "title": "Blog | Savjeti, trendovi i novosti",
-      "description": "Praktični savjeti i analize iz svijeta web developmenta, marketinga i dizajna. Budite korak ispred konkurencije uz Luminor Solutions.",
-      "keywords": "luminor solutions blog, digitalni marketing blog, savjeti za web, trendovi u dizajnu, poslovni savjeti, kako napraviti sajt, seo tutorijali, vodič za marketing"
+      "title": "Blog | Web Dizajn, SEO i Marketing Savjeti | Luminor Solutions",
+      "description": "Stručni članci o izradi web stranica, SEO optimizaciji i digitalnom marketingu za firme u BiH i regionu. Budite korak ispred konkurencije.",
+      "keywords": "web dizajn blog bosna, seo savjeti bih, digitalni marketing tutorijali, kako napraviti web stranicu, izrada sajta vodič, google ads tutorial bih, marketing savjeti za firme bosna, web development trendovi, e-commerce savjeti bih, programiranje tutorijali bosna"
     },
     "contact": {
-      "title": "Kontakt | Započnite projekat sa nama",
-      "description": "Spremni za rast? Kontaktirajte Luminor Solutions Agenciju za besplatnu konsultaciju. Razgovarajmo o vašem projektu i nađimo rješenje za vaš budžet.",
-      "keywords": "kontaktirajte web agenciju, zapošljavanje programera, agencija sarajevo, zatraži ponudu, cijena izrade sajta, besplatna konsultacija, lokacija agencije"
+      "title": "Kontakt | Besplatna Konsultacija | Luminor Solutions Sarajevo",
+      "description": "Kontaktirajte Luminor Solutions za besplatnu konsultaciju. Web agencija u Sarajevu — radimo sa klijentima u cijeloj BiH, regionu i inozemstvu.",
+      "keywords": "kontakt web agencija sarajevo, izrada web stranica bih cijena, besplatna konsultacija web dizajn, ponuda za web stranicu, web agencija bih kontakt, programeri sarajevo kontakt, digitalni marketing konsultacija bih, lokacija luminor solutions sarajevo, zapošljavanje web developera bih, web dizajn cijena bosna"
     },
     "webDevelopment": {
-      "title": "Web Development Usluge | Izrada Web Stranica i Aplikacija | Luminor",
-      "description": "Profesionalne usluge izrade web stranica. React, Next.js, Node.js stručnjaci. E-commerce platforme, korporativni sajtovi, SaaS aplikacije i progresivne web aplikacije.",
-      "keywords": "izrada web stranica, programiranje sajtova, react development, next.js, node.js backend, e-commerce razvoj, korporativni sajt, saas platforma, responzivni sajt, web aplikacije, full stack development, api development, web agencija sarajevo"
+      "title": "Izrada Web Stranica Sarajevo | Web Development BiH | Luminor",
+      "description": "Profesionalna izrada web stranica u Sarajevu. React, Next.js, Node.js stručnjaci. Web shopovi, korporativni sajtovi, SaaS platforme. Fiksna cijena, transparentan proces.",
+      "keywords": "izrada web stranica sarajevo, web development bih, izrada sajtova bosna hercegovina, react programiranje sarajevo, next.js development bih, node.js backend bosna, e-commerce platforma sarajevo, korporativni sajt bih, web aplikacije bosna, responsive web dizajn, full stack development sarajevo, api integracija, web shop izrada bih, cijena izrade web stranice bosna, wordpress razvoj bih, web maintenance sarajevo"
     },
     "seoService": {
-      "title": "SEO Usluge | Optimizacija za Pretraživače | Luminor",
-      "description": "Stručne SEO usluge za poboljšanje rangiranja. On-page SEO, tehnički SEO, link building, istraživanje ključnih riječi i lokalni SEO. Više organskog saobraćaja.",
-      "keywords": "seo usluge, optimizacija za pretraživače, google rangiranje, seo agencija, tehnički seo, on-page seo, link building, ključne riječi, lokalni seo, seo audit, organski promet, seo ekspert sarajevo, google my business"
+      "title": "SEO Optimizacija Sarajevo | Google Rangiranje BiH | Luminor",
+      "description": "Stručna SEO optimizacija u Sarajevu. Google rangiranje, tehnički SEO, link building i lokalni SEO za firme u BiH, Srbiji, Hrvatskoj i regionu.",
+      "keywords": "seo optimizacija sarajevo, seo usluge bih, google rangiranje bosna, seo agencija sarajevo, tehnički seo bosna hercegovina, on-page seo bih, off-page seo, link building bosna, istraživanje ključnih riječi, lokalni seo sarajevo, seo za male firme, seo audit bih, organski promet google, google my business optimizacija sarajevo, seo za e-commerce bih"
     },
     "graphicDesign": {
-      "title": "Grafički Dizajn | Branding i Vizuelni Identitet | Luminor",
-      "description": "Kreativne usluge grafičkog dizajna. Brendiranje, dizajn logotipa, marketing materijali, grafika za društvene mreže i print dizajn. Izgradite prepoznatljiv brend.",
-      "keywords": "grafički dizajn, brand identitet, dizajn logotipa, vizuelni identitet, marketing materijali, dizajn brošura, grafika za društvene mreže, print dizajn, dizajn ambalaže, korporativno brendiranje, grafička agencija sarajevo"
+      "title": "Grafički Dizajn Sarajevo | Brending i Vizuelni Identitet BiH | Luminor",
+      "description": "Kreativna grafička agencija iz Sarajeva. Dizajn logotipa, brendiranje, vizuelni identitet, marketing materijali i grafika za društvene mreže za firme u BiH.",
+      "keywords": "grafički dizajn sarajevo, brending agencija bih, dizajn logotipa bosna hercegovina, vizuelni identitet firma bih, marketing materijali dizajn, dizajn brošura sarajevo, grafika za instagram bih, print dizajn bosna, dizajn ambalaže sarajevo, korporativno brendiranje bih, brand book, grafička agencija sarajevo, dizajn posjetnica bih, rollup dizajn bosna"
     },
     "digitalMarketing": {
-      "title": "Digitalni Marketing | Performance Marketing i Oglašavanje | Luminor",
-      "description": "Digitalni marketing zasnovan na podacima. Google Ads, Facebook oglasi, marketing na društvenim mrežama, email kampanje i content marketing. Maksimalan ROI.",
-      "keywords": "digitalni marketing, performance marketing, google ads, facebook oglasi, marketing na društvenim mrežama, email marketing, content marketing, ppc oglašavanje, optimizacija konverzija, marketing automatizacija, agencija za marketing sarajevo"
+      "title": "Digitalni Marketing Sarajevo | Google Ads i Facebook Oglasi BiH | Luminor",
+      "description": "Digitalni marketing agencija iz Sarajeva. Google Ads, Facebook oglasi, upravljanje društvenim mrežama, email marketing za firme u BiH i regionu.",
+      "keywords": "digitalni marketing sarajevo, google ads bih, facebook oglašavanje bosna, instagram oglasi sarajevo, upravljanje društvenim mrežama bih, email marketing bosna, content marketing bih, ppc oglašavanje sarajevo, optimizacija konverzija, marketing automatizacija bih, agencija za marketing sarajevo, tiktok oglasi bih, influencer marketing bosna, cijena google ads bih, facebook ads menadžment"
     },
     "aiAutomation": {
-      "title": "AI Automatizacija | ChatGPT Integracija i AI Rješenja | Luminor",
-      "description": "AI automatizacija i integracija. Custom ChatGPT rješenja, AI chatbotovi, automatizacija procesa, analiza podataka i inteligentna automatizacija za vaš biznis.",
-      "keywords": "ai automatizacija, chatgpt integracija, ai chatbot, umjetna inteligencija, machine learning, automatizacija procesa, poslovnautomatizacija, ai rješenja, inteligentna automatizacija, izrada chatbota, ai agencija sarajevo"
+      "title": "AI Automatizacija | ChatGPT Integracija i AI Rješenja za Firme | Luminor",
+      "description": "AI automatizacija i ChatGPT integracija iz Sarajeva. Custom AI chatbotovi, automatizacija poslovnih procesa i inteligentna rješenja za firme u BiH i regionu.",
+      "keywords": "ai automatizacija bih, chatgpt integracija bosna, ai chatbot razvoj, umjetna inteligencija za firme bih, machine learning implementacija, automatizacija poslovnih procesa bosna, custom ai rješenja, ai agencija sarajevo, inteligentna automatizacija bih, izrada chatbota bosna, ai za e-commerce, ai za korisničku podršku, automatizacija bih"
     },
     "mobileDevelopment": {
-      "title": "Razvoj Mobilnih Aplikacija | iOS i Android Aplikacije | Luminor Solutions",
-      "description": "Profesionalni razvoj mobilnih aplikacija za iOS i Android. React Native, Flutter, Swift, Kotlin. Od MVP-a do App Storea — fiksna cijena, transparentan proces.",
-      "keywords": "razvoj mobilnih aplikacija, ios aplikacije, android aplikacije, react native, flutter, cross-platform aplikacija, mobilni developer sarajevo, app store, google play, mobilna aplikacija, custom mobilna aplikacija"
+      "title": "Razvoj Mobilnih Aplikacija Sarajevo | iOS i Android BiH | Luminor",
+      "description": "Profesionalni razvoj mobilnih aplikacija u Sarajevu. React Native, Flutter, Swift, Kotlin. App Store i Google Play. Fiksna cijena za klijente u BiH i regionu.",
+      "keywords": "mobilne aplikacije sarajevo, razvoj ios aplikacija bih, android aplikacije bosna hercegovina, react native developer sarajevo, flutter razvoj bih, cross-platform aplikacija bosna, mobilni developer sarajevo, app store objava bih, google play objava, custom mobilna aplikacija bosna, mvp razvoj bih, cijena mobilne aplikacije bosna, swift developer sarajevo, kotlin developer bih"
     },
     "hosting": {
-      "title": "Web Hosting | Brzi NVMe SSD Hosting | Luminor",
-      "description": "Profesionalni web hosting na NVMe SSD infrastrukturi. 99.9% uptime garancija, 24/7 podrška, besplatni SSL, dnevni backup. Pouzdan hosting za vaš sajt.",
-      "keywords": "web hosting, nvme hosting, ssd hosting, brzi hosting, pouzdan hosting, managed hosting, wordpress hosting, poslovni hosting, hosting sarajevo, hosting bih, ssl certifikat, hosting za sajt, cloud hosting, hosting provajder"
+      "title": "Web Hosting Sarajevo | NVMe SSD Hosting BiH | Luminor Solutions",
+      "description": "Pouzdan web hosting iz Sarajeva. NVMe SSD, 99.9% uptime, besplatni SSL, dnevni backup i 24/7 podrška. Hosting za firme u BiH, Srbiji i Hrvatskoj.",
+      "keywords": "web hosting sarajevo, hosting bih, nvme hosting bosna hercegovina, ssd hosting sarajevo, brzi hosting bih, managed hosting bosna, wordpress hosting bih, poslovni hosting sarajevo, besplatni ssl hosting, dnevni backup hosting, cloud hosting bih, hosting za sajt bosna, cijena hostinga bih, cpanel hosting, registracija domena bih, domena ba registracija"
     },
     "process": {
-      "title": "Kako Radimo | Naš Proces Rada | Luminor Solutions",
-      "description": "Bez misterija, bez iznenađenja. Saznajte tačno kako Luminor Solutions radi — od istraživanja i strategije do izgradnje i lansiranja. Transparentan proces, fiksne cijene.",
-      "keywords": "kako radimo, proces razvoja, tok projekta, agencijski proces, transparentne cijene, projekti s fiksnom cijenom, proces web razvoja, tok digitalne agencije, faza istraživanja, upravljanje projektom, luminor proces"
+      "title": "Kako Radimo | Proces Izrade Web Stranice | Luminor Solutions Sarajevo",
+      "description": "Transparentan proces bez iznenađenja. Saznajte kako Luminor Solutions radi — od analize do lansiranja web stranice. Fiksne cijene, jasni rokovi.",
+      "keywords": "kako napraviti web stranicu bih, proces izrade sajta sarajevo, fiksna cijena web dizajn, transparentna web agencija, rokovi izrade web stranice bosna, projektni menadžment web bih, agilni razvoj bosna, discovery faza projekta, koraci izrade web stranice, kako odabrati web agenciju bih, web projekt timeline sarajevo"
     },
     "faq": {
-      "title": "FAQ | Često Postavljana Pitanja | Luminor Solutions",
-      "description": "Imate pitanja? Imamo odgovore. Sve što trebate znati o saradnji sa Luminor Solutions — proces, cijene, rokovi i kako radimo.",
-      "keywords": "faq, često postavljana pitanja, kako funkcioniše, rok izrade, cijena projekta, web agencija pitanja, koliko košta sajt, koliko traje izrada, luminor solutions faq"
+      "title": "FAQ | Pitanja o Izradi Web Stranica i Cijenama | Luminor Solutions",
+      "description": "Odgovori na najčešća pitanja o saradnji sa Luminor Solutions. Cijene, rokovi, tehnologije i kako radimo sa klijentima u BiH i inozemstvu.",
+      "keywords": "faq web agencija bih, koliko košta izrada web stranice bosna, koliko traje izrada sajta, cijena web dizajna sarajevo, web agencija pitanja bosna, kako funkcioniše web projekt, platforma za izradu sajta, wordpress ili custom sajt, cijena seo optimizacija bih, pitanja o web developmentu bosna"
     },
     "status": {
       "title": "Status Sistema | Luminor Solutions",
-      "description": "Status sistema i usluga Luminor Solutions u realnom vremenu.",
-      "keywords": "status sistema, dostupnost, status usluga, luminor solutions status"
+      "description": "Status i dostupnost svih usluga Luminor Solutions u realnom vremenu.",
+      "keywords": "luminor solutions status, dostupnost sistema, status usluga, server status sarajevo"
     }
   },
   "common": {
