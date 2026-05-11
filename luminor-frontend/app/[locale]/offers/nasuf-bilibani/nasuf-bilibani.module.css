@@ -1,0 +1,397 @@
+/* ============================================================
+   CUSTOM OFFER — NASUF BILIBANI
+   ============================================================ */
+
+/* Client badge in intro */
+.clientBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    padding: 0.45rem 1rem;
+    background: #0F172A;
+    color: #94A3B8;
+    font-size: 0.8rem;
+    border-radius: 0.35rem;
+    letter-spacing: 0.02em;
+}
+
+.clientBadge strong {
+    color: #FF9F1C;
+    font-weight: 700;
+}
+
+/* ============================================================
+   SINGLE PACKAGE CARD
+   ============================================================ */
+
+.singlePackage {
+    border: 2px solid #FF9F1C;
+    border-radius: 0.75rem;
+    background: #FFFBF0;
+    padding: 2rem;
+    position: relative;
+}
+
+.singleBadge {
+    position: absolute;
+    top: -1px;
+    left: 2rem;
+    background: #FF9F1C;
+    color: #0F172A;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.85rem;
+    border-radius: 0 0 0.4rem 0.4rem;
+    text-transform: uppercase;
+}
+
+.singlePackageInner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 0.5rem;
+}
+
+.singleName {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #0F172A;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+}
+
+.singleDesc {
+    font-size: 0.9rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.singleHighlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.singleHighlights li {
+    font-size: 0.85rem;
+    color: #374151;
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+.singleHighlights li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #FF9F1C;
+    font-weight: 800;
+}
+
+/* Right side — price */
+.singleRight {
+    min-width: 200px;
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 0.6rem;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.singlePrice {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #FF9F1C;
+    line-height: 1;
+}
+
+.singlePriceSub {
+    font-size: 0.72rem;
+    color: #9CA3AF;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.singlePayment {
+    width: 100%;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.paymentRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #4B5563;
+}
+
+.paymentRow strong {
+    color: #0F172A;
+    font-weight: 700;
+}
+
+.singleTimeline {
+    font-size: 0.75rem;
+    color: #6B7280;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 0.75rem;
+    width: 100%;
+    text-align: center;
+}
+
+/* ============================================================
+   HOSTING ADD-ON
+   ============================================================ */
+
+.hostingAddon {
+    padding: 1.75rem 2.5rem;
+    background: #F0F9FF;
+    border-left: 2px solid #0F172A;
+    border-right: 2px solid #0F172A;
+    border-bottom: 1px solid #BAE6FD;
+}
+
+.hostingAddonHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.hostingAddonLabel {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0369A1;
+}
+
+.hostingAddonBadge {
+    background: #0369A1;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.6rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.hostingAddonBody {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.hostingAddonTitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 0.4rem;
+}
+
+.hostingAddonDesc {
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.hostingAddonFeatures {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem 1.5rem;
+}
+
+.hostingAddonFeatures li {
+    font-size: 0.78rem;
+    color: #374151;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.hostingAddonFeatures li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: #0369A1;
+    font-weight: 900;
+}
+
+.hostingAddonPrice {
+    text-align: center;
+    min-width: 120px;
+}
+
+.hostingPrice {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #0369A1;
+    line-height: 1;
+}
+
+.hostingPriceSub {
+    font-size: 0.72rem;
+    color: #64748B;
+    margin-bottom: 0.75rem;
+}
+
+.hostingAddonLink {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0369A1;
+    text-decoration: none;
+    border-bottom: 1.5px solid #0369A1;
+    padding-bottom: 0.1rem;
+    white-space: nowrap;
+}
+
+.hostingAddonLink:hover {
+    color: #0F172A;
+    border-color: #0F172A;
+}
+
+/* ============================================================
+   PROCESS STEP DURATION
+   ============================================================ */
+
+.stepDuration {
+    display: inline-block;
+    margin-left: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #FF9F1C;
+    background: rgba(255, 159, 28, 0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.25rem;
+    vertical-align: middle;
+    font-family: var(--font-primary);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* ============================================================
+   ACCEPTANCE SECTION
+   ============================================================ */
+
+.acceptance {
+    padding: 2rem 2.5rem 2.5rem;
+    background: white;
+    border-left: 2px solid #0F172A;
+    border-right: 2px solid #0F172A;
+    border-bottom: 1px solid #E5E7EB;
+    border-top: 3px solid #0F172A;
+}
+
+.acceptanceIntro {
+    font-size: 0.85rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0.75rem 0 2rem;
+    max-width: 55ch;
+}
+
+.acceptanceGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 4rem;
+}
+
+.acceptanceField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.acceptanceLabel {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94A3B8;
+}
+
+.acceptanceLine {
+    border-bottom: 1.5px solid #CBD5E1;
+    height: 2.5rem;
+}
+
+.acceptanceSubLabel {
+    font-size: 0.68rem;
+    color: #CBD5E1;
+    letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 640px) {
+    .singlePackageInner {
+        grid-template-columns: 1fr;
+    }
+
+    .singleRight {
+        min-width: unset;
+    }
+
+    .hostingAddonBody {
+        grid-template-columns: 1fr;
+    }
+
+    .hostingAddonFeatures {
+        grid-template-columns: 1fr;
+    }
+
+    .acceptanceGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ============================================================
+   PRINT OVERRIDES
+   ============================================================ */
+
+@media print {
+    .hostingAddon {
+        background: #F0F9FF !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .singlePackage {
+        background: #FFFBF0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        break-inside: avoid;
+    }
+
+    .acceptance {
+        break-inside: avoid;
+    }
+}
