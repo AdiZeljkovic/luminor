@@ -76,9 +76,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem 1.5rem;
 }
 
 .singleHighlights li {
@@ -357,6 +357,10 @@
 
     .singleRight {
         min-width: unset;
+    }
+
+    .singleHighlights {
+        grid-template-columns: 1fr;
     }
 
     .hostingAddonBody {

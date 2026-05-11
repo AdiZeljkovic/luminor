@@ -23,18 +23,18 @@ export default async function NasufBilibaniOffer({ params }: Props) {
     });
 
     const includes = [
-        'Custom dizajn web shopa (unikatni UI po brendu)',
-        'Custom admin panel za upravljanje shopom',
-        'Upravljanje narudžbama (pregled, status, export)',
-        'Upravljanje produktima — dodavanje, uređivanje, brisanje',
-        'Kategorije, filteri i pretraga produkata',
+        'Unikatni dizajn shopa rađen po vašem brendu',
+        'Custom admin panel koji sami kontrolišete',
+        'Pregled narudžbi, statusi i export',
+        'Dodavanje, uređivanje i brisanje produkata',
+        'Kategorije, filteri i pretraga',
         'Korisnički nalozi i registracija kupaca',
-        'Integracija online plaćanja — kartice (Stripe)',
-        'PayPal / lokalna plaćanja (po potrebi)',
-        'Responsive dizajn — mobile, tablet, desktop',
+        'Plaćanje karticom putem Stripea',
+        'PayPal ili lokalne metode plaćanja (po dogovoru)',
+        'Radi savršeno na mobitelu, tabletu i desktopu',
         'Optimizacija brzine i Core Web Vitals',
-        'Osnovni SEO setup (meta tagovi, strukturirani podaci)',
-        '30 dana besplatne tehničke podrške po isporuci',
+        'Osnovna SEO konfiguracija (meta tagovi, strukturirani podaci)',
+        '30 dana besplatne podrške nakon predaje',
     ];
 
     const notIncluded = [
@@ -57,43 +57,41 @@ export default async function NasufBilibaniOffer({ params }: Props) {
 
     const process = [
         {
-            title: 'Discovery & Planiranje',
-            desc: 'Definišemo strukturu shopa, kategorije, tok narudžbe i sve poslovne zahtjeve. Potpisujemo ugovor.',
+            title: 'Razgovor i plan',
+            desc: 'Sjednemo zajedno — uživo ili na pozivu — i prolazimo kroz sve detalje. Koje kategorije, kako izgleda tok kupovine, šta vi vidite u adminu. Na kraju imamo jasan plan i potpisujemo ugovor.',
             duration: '2–3 dana',
         },
         {
-            title: 'Dizajn & Prototype',
-            desc: 'Kreiramo Figma prototype svih ključnih stranica (homepage, listing, produkt, košarica, checkout). Dvije revizije uključene.',
+            title: 'Dizajn i prototype',
+            desc: 'Radimo kompletan dizajn u Figmi — homepage, listing, stranica produkta, košarica i checkout. Šaljemo vam na pregled i zajedno usklađujemo dok ne bude tačno onako kako ste zamislili.',
             duration: '5–7 dana',
         },
         {
-            title: 'Razvoj & Integracije',
-            desc: 'Frontend, backend, admin panel i integracija plaćanja. Redovne update-e šaljemo na Viber/email.',
+            title: 'Razvoj i integracije',
+            desc: 'Krećemo s razvojem. Frontend, backend, admin panel i Stripe. Svaki dan-dva šaljemo kratki update šta je gotovo, tako da uvijek znate gdje smo.',
             duration: '15–20 dana',
         },
         {
-            title: 'Testiranje & Isporuka',
-            desc: 'QA testiranje na svim uređajima, test transakcije, performance check i predaja pristupnih podataka.',
+            title: 'Testiranje i predaja',
+            desc: 'Testiramo sve na pravim uređajima i radimo test transakcije. Kad je sve čisto — predajemo vam pristupe i shop je vaš.',
             duration: '3–5 dana',
         },
     ];
 
     const clientResp = [
-        'Logo i brand materijali (boje, fontovi) — ili dogovaramo dizajn u sklopu projekta',
-        'Tekstualni sadržaj (opisi produkata, o nama, uslovi kupovine)',
-        'Fotografije produkata (preporučeno min. 3 fotografije po produktu)',
-        'Pristup domeni i hosting nalogu (ili kupujemo zajedno)',
-        'Pravovremena povratna informacija na dizajn revizije (do 48h)',
+        'Logo i boje brenda — ako nemate ništa, dogovorimo se posebno',
+        'Tekstovi i opisi produkata (možemo pomoći ako treba)',
+        'Fotografije produkata — što bolji kvalitet, to bolji shop',
+        'Brz odgovor na naše poruke, posebno kad šaljemo dizajn na pregled',
     ];
 
     const terms = [
-        'Cijena: 1.500 KM (bez PDV-a) — fiksna, bez skrivenih troškova',
-        'Dinamika plaćanja: 50% avans (750 KM) pri potpisivanju, 50% (750 KM) pri isporuci',
-        'Rok isporuke: 25–35 radnih dana od uplate avansa i dostave svih materijala',
-        'Revizije dizajna: 2 revizije uključene, svaka dodatna = 50 KM',
-        'Ponuda vrijedi 30 dana od datuma izdavanja',
-        'Sve promjene u opsegu rada nakon potpisivanja se posebno procjenjuju',
-        'Luminor Solutions zadržava pravo portfelja (referenca), osim ako klijent eksplicitno odbije',
+        'Cijena je 1.500 KM i to je to — nema skrivenih troškova ni nenajavljenih faktura',
+        'Platite 750 KM kad krenemo, a ostalih 750 KM kad predamo gotov shop',
+        'Shop isporučujemo u roku od 25–35 radnih dana od kad dobijemo avans i materijale',
+        'Ponuda važi 30 dana od datuma izdavanja',
+        'Ako u toku rada odlučite promijeniti ili proširiti opseg projekta, to procjenjujemo zajedno',
+        'Zadržavamo pravo da shop koristimo kao referencu, osim ako preferirate da ostane privatno',
     ];
 
     return (
@@ -122,11 +120,14 @@ export default async function NasufBilibaniOffer({ params }: Props) {
                 {/* Service intro */}
                 <div className={styles.intro}>
                     <h1 className={styles.serviceTitle}>
-                        Izrada <span className={styles.serviceHighlight}>Web Shopa</span>
+                        Izrada <span className={styles.serviceHighlight}>web shopa</span>
                     </h1>
                     <p className={styles.serviceSubtitle}>
-                        Kompletna izrada e-commerce platforme s custom admin panelom, integracijom
-                        plaćanja i upravljanjem narudžbama — razvijeno po mjeri vašeg poslovanja.
+                        Pravimo vam potpunu platformu za online prodaju — od prvog dizajna do momenta
+                        kada kupac plati i vama stigne notifikacija. Custom admin panel koji vi sami
+                        kontrolišete, integracija kartičnog plaćanja putem Stripea, upravljanje
+                        narudžbama i produktima, i sve ostalo što treba da vaš shop ozbiljno radi
+                        od prvog dana.
                     </p>
                     <div className={customStyles.clientBadge}>
                         Pripremljeno za: <strong>Nasuf Bilibani</strong>
@@ -140,16 +141,18 @@ export default async function NasufBilibaniOffer({ params }: Props) {
                         <span className={customStyles.singleBadge}>Komplet paket</span>
                         <div className={customStyles.singlePackageInner}>
                             <div className={customStyles.singleLeft}>
-                                <div className={customStyles.singleName}>Web Shop Komplet</div>
-                                <p className={customStyles.singleDesc}>
-                                    Sve što vam treba za pokretanje online prodaje — od dizajna do
-                                    prvog plaćanja. Jedna cijena, bez iznenađenja.
-                                </p>
+                                <div className={customStyles.singleName}>Web shop komplet</div>
                                 <ul className={customStyles.singleHighlights}>
-                                    <li>Custom dizajn + admin panel</li>
+                                    <li>Custom dizajn po vašem brendu</li>
+                                    <li>Custom admin panel</li>
                                     <li>Stripe integracija plaćanja</li>
-                                    <li>Upravljanje narudžbama</li>
-                                    <li>30 dana podrška po isporuci</li>
+                                    <li>Upravljanje narudžbama i statusima</li>
+                                    <li>Upravljanje produktima i cijenama</li>
+                                    <li>Kategorije i filteri</li>
+                                    <li>Korisnički nalozi kupaca</li>
+                                    <li>Responsive za sve uređaje</li>
+                                    <li>Optimizacija brzine</li>
+                                    <li>30 dana podrška po predaji</li>
                                 </ul>
                             </div>
                             <div className={customStyles.singleRight}>
@@ -256,7 +259,7 @@ export default async function NasufBilibaniOffer({ params }: Props) {
                 <div className={styles.sectionDark}>
                     <span className={styles.sectionTitle}>Odgovornosti Klijenta</span>
                     <p className={styles.sectionIntro}>
-                        Za nesmetano odvijanje projekta, od klijenta očekujemo sljedeće materijale i informacije:
+                        Da bismo mogli početi i da sve ide glatko, trebamo od vas:
                     </p>
                     <ul className={styles.responsibilitiesList}>
                         {clientResp.map((item, i) => (
@@ -279,8 +282,7 @@ export default async function NasufBilibaniOffer({ params }: Props) {
                 <div className={customStyles.acceptance}>
                     <span className={styles.sectionTitle}>Prihvatanje Ponude</span>
                     <p className={customStyles.acceptanceIntro}>
-                        Potpisom ove ponude klijent potvrđuje da je upoznat s uslovima saradnje i odobrava
-                        početak rada po navedenim uvjetima.
+                        Potpisom potvrđujemo da smo obostrano razumjeli šta radimo, po kojoj cijeni i na koji rok.
                     </p>
                     <div className={customStyles.acceptanceGrid}>
                         <div className={customStyles.acceptanceField}>
