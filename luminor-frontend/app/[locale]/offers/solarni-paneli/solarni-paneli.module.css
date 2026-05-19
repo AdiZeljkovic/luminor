@@ -427,20 +427,14 @@
     }
 
     .pricingRowMain {
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
-    .pricingLabel strong {
-        font-size: 0.85rem;
-    }
-
-    .pricingLabel span {
-        font-size: 0.72rem;
-    }
-
-    .pricingAmount {
-        font-size: 1.15rem !important;
-        white-space: nowrap;
+    .pricingRowMain .pricingAmount {
+        font-size: 1.6rem;
     }
 
     .pricingNote {
