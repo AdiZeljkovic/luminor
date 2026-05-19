@@ -105,17 +105,17 @@ export default async function SolarniPaneliOffer({ params }: Props) {
     ];
 
     const phases = [
-        { num: '01', title: 'Dizajn i UI/UX', duration: '2–3 sedmice', desc: 'Wireframi i finalni dizajn svih ekrana za obje aplikacije i admin panel u Figmi.' },
+        { num: '01', title: 'Dizajn i UI/UX', duration: '2 sedmice', desc: 'Wireframi i finalni dizajn svih ekrana za obje aplikacije i admin panel u Figmi.' },
         { num: '02', title: 'Backend i baza podataka', duration: '3 sedmice', desc: 'Postavljanje servera, baze podataka i geo-algoritama za pronalazak najbližeg servisera.' },
-        { num: '03', title: 'Razvoj aplikacija', duration: '5–6 sedmica', desc: 'Paralelan razvoj korisničke i serviserne aplikacije, integracija mapa i praćenja u pozadini.' },
+        { num: '03', title: 'Razvoj aplikacija', duration: '5 sedmica', desc: 'Paralelan razvoj korisničke i serviserne aplikacije, integracija mapa i praćenja u pozadini.' },
         { num: '04', title: 'Testiranje i QA', duration: '2 sedmice', desc: 'Testiranje na terenu — simulacija kretanja servisera, push notifikacije na zaključanom telefonu, offline mode.' },
-        { num: '05', title: 'Lansiranje i predaja', duration: '1 sedmica', desc: 'Objava na Google Play i App Store, postavljanje produkcionog servera i obuka administratora.' },
+        { num: '05', title: 'Lansiranje i predaja', duration: null, desc: 'Predaja pristupnih podataka, postavljanje produkcionog servera i obuka administratora. Objava na Google Play i App Store se podnosi na odobrenje — rok pregleda ovisi o samim platformama.' },
     ];
 
     const terms = [
         'Cijena razvoja je fiksna — nema dodatnih troškova koji nisu navedeni u ovoj ponudi',
         'Plaćanje u fazama: 40% pri potpisivanju, 30% nakon završetka dizajna (Faza 1), 30% pri finalnoj isporuci',
-        'Ukupno procijenjeno trajanje projekta: 13–15 sedmica od uplate prvog avansa',
+        'Razvoj traje okvirno 3 mjeseca od uplate prvog avansa i dostave materijala',
         'Troškovi Google Play, App Store, servera i održavanja su zasebni i snosi ih klijent',
         'Ponuda važi 30 dana od datuma izdavanja',
         'Sve promjene u opsegu rada nakon potpisivanja se dogovaraju i procjenjuju zasebno',
@@ -223,7 +223,9 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                                 <div className={styles.processContent}>
                                     <h4>
                                         {phase.title}
-                                        <span className={s.phaseDuration}>{phase.duration}</span>
+                                        {phase.duration && (
+                                            <span className={s.phaseDuration}>{phase.duration}</span>
+                                        )}
                                     </h4>
                                     <p>{phase.desc}</p>
                                 </div>
@@ -231,7 +233,7 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                         ))}
                     </div>
                     <div className={s.totalDuration}>
-                        Ukupno procijenjeno trajanje: <strong>13–15 sedmica</strong>
+                        Ukupno procijenjeno trajanje razvoja: <strong>3 mjeseca</strong>
                     </div>
                 </div>
 
