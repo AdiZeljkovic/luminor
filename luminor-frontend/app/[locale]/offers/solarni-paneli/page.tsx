@@ -114,7 +114,7 @@ export default async function SolarniPaneliOffer({ params }: Props) {
 
     const terms = [
         'Cijena razvoja je 1.500 KM + PDV — fiksna, bez skrivenih troškova',
-        'Plaćanje u tri rate: 600 KM pri potpisivanju, 450 KM nakon završetka dizajna, 450 KM pri isporuci',
+        'Plaćanje se vrši mjesečno — 500 KM + PDV na početku svakog mjeseca razvoja (3 mjeseca)',
         'Razvoj traje okvirno 3 mjeseca od uplate prve rate i dostave potrebnih materijala',
         'Troškovi Google Play ($25), App Store ($99/god), servera (25 €/mj) i održavanja (150 KM/mj) su zasebni',
         'Ponuda važi 30 dana od datuma izdavanja',
@@ -289,16 +289,16 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                     <div className={s.paymentPlan}>
                         <span className={s.paymentPlanLabel}>Dinamika plaćanja za razvoj</span>
                         <div className={s.paymentPlanRow}>
-                            <span>Pri potpisivanju (40%)</span>
-                            <strong>600 KM</strong>
+                            <span>1. mjesec</span>
+                            <strong>500 KM + PDV</strong>
                         </div>
                         <div className={s.paymentPlanRow}>
-                            <span>Nakon završetka dizajna (30%)</span>
-                            <strong>450 KM</strong>
+                            <span>2. mjesec</span>
+                            <strong>500 KM + PDV</strong>
                         </div>
                         <div className={s.paymentPlanRow}>
-                            <span>Pri finalnoj isporuci (30%)</span>
-                            <strong>450 KM</strong>
+                            <span>3. mjesec</span>
+                            <strong>500 KM + PDV</strong>
                         </div>
                     </div>
                 </div>
