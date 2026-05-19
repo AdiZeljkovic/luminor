@@ -1,0 +1,451 @@
+/* ============================================================
+   OFFER — SOLARNI PANELI / ON-DEMAND PLATFORMA
+   ============================================================ */
+
+/* Component badges in intro */
+.componentsBadgeRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.componentBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    background: #0F172A;
+    color: #94A3B8;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border-radius: 0.35rem;
+    letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+
+.howItWorksList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.howItem {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.howStep {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #FF9F1C;
+    color: #0F172A;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    flex-shrink: 0;
+}
+
+.howContent strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 0.2rem;
+}
+
+.howContent p {
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ============================================================
+   3 COMPONENT CARDS
+   ============================================================ */
+
+.componentsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.componentCard {
+    border: 2px solid #E5E7EB;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+}
+
+.componentCard:hover {
+    border-color: #FF9F1C;
+}
+
+.componentIcon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.componentTitle {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 0.2rem;
+}
+
+.componentSubtitle {
+    font-size: 0.75rem;
+    color: #9CA3AF;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.componentFeatures {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.componentFeatures li {
+    font-size: 0.8rem;
+    color: #374151;
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.4;
+}
+
+.componentFeatures li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #FF9F1C;
+    font-weight: 800;
+    font-size: 0.75rem;
+}
+
+/* ============================================================
+   TECH STACK TABLE
+   ============================================================ */
+
+.techTable {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.techRow {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 2fr;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #E2E8F0;
+    align-items: center;
+}
+
+.techRow:last-child {
+    border-bottom: none;
+}
+
+.techRow:nth-child(odd) {
+    background: white;
+}
+
+.techRow:nth-child(even) {
+    background: #F8FAFC;
+}
+
+.techLabel {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.techValue {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #0F172A;
+    font-family: 'Courier New', monospace;
+}
+
+.techReason {
+    font-size: 0.8rem;
+    color: #64748B;
+    font-style: italic;
+}
+
+/* ============================================================
+   PHASE DURATION BADGE
+   ============================================================ */
+
+.phaseDuration {
+    display: inline-block;
+    margin-left: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #FF9F1C;
+    background: rgba(255, 159, 28, 0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.25rem;
+    vertical-align: middle;
+    font-family: var(--font-primary);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.totalDuration {
+    margin-top: 1.5rem;
+    padding: 0.85rem 1.25rem;
+    background: #0F172A;
+    color: #94A3B8;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.totalDuration strong {
+    color: #FF9F1C;
+}
+
+/* ============================================================
+   PRICING TABLE
+   ============================================================ */
+
+.pricingTable {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #E2E8F0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.pricingRow {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem 1.5rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #E2E8F0;
+    align-items: center;
+    background: white;
+}
+
+.pricingRow:last-child {
+    border-bottom: none;
+}
+
+.pricingRowMain {
+    background: #FFFBF0;
+    border-bottom: 2px solid #FF9F1C !important;
+}
+
+.pricingLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.pricingLabel strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.pricingLabel span {
+    font-size: 0.75rem;
+    color: #94A3B8;
+}
+
+.pricingAmount {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #FF9F1C;
+    white-space: nowrap;
+}
+
+.pricingRowMain .pricingAmount {
+    font-size: 1.75rem;
+}
+
+.pricingNote {
+    font-size: 0.72rem;
+    color: #9CA3AF;
+    white-space: nowrap;
+    text-align: right;
+    min-width: 72px;
+}
+
+.pricingDivider {
+    padding: 0.5rem 1.25rem;
+    background: #F1F5F9;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748B;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+/* Payment plan */
+.paymentPlan {
+    margin-top: 1rem;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.paymentPlanLabel {
+    display: block;
+    padding: 0.6rem 1rem;
+    background: #0F172A;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #94A3B8;
+}
+
+.paymentPlanRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+    color: #475569;
+    border-bottom: 1px solid #E2E8F0;
+    background: white;
+}
+
+.paymentPlanRow:last-child {
+    border-bottom: none;
+}
+
+.paymentPlanRow strong {
+    font-weight: 700;
+    color: #0F172A;
+}
+
+/* ============================================================
+   ACCEPTANCE
+   ============================================================ */
+
+.acceptance {
+    padding: 2rem 2.5rem 2.5rem;
+    background: white;
+    border-left: 2px solid #0F172A;
+    border-right: 2px solid #0F172A;
+    border-bottom: 1px solid #E5E7EB;
+    border-top: 3px solid #0F172A;
+}
+
+.acceptanceIntro {
+    font-size: 0.85rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0.75rem 0 2rem;
+}
+
+.acceptanceGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 4rem;
+}
+
+.acceptanceField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.acceptanceLabel {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94A3B8;
+}
+
+.acceptanceLine {
+    border-bottom: 1.5px solid #CBD5E1;
+    height: 2.5rem;
+}
+
+.acceptanceSubLabel {
+    font-size: 0.68rem;
+    color: #CBD5E1;
+    letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .componentsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .techRow {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+
+    .techReason {
+        display: none;
+    }
+
+    .pricingRow {
+        grid-template-columns: 1fr auto;
+    }
+
+    .pricingNote {
+        display: none;
+    }
+
+    .acceptanceGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+
+@media print {
+    .componentCard,
+    .pricingTable,
+    .paymentPlan,
+    .acceptance {
+        break-inside: avoid;
+    }
+
+    .componentsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pricingRowMain {
+        background: #FFFBF0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
