@@ -422,6 +422,25 @@
 
     .pricingRow {
         grid-template-columns: 1fr auto;
+        gap: 0.5rem 1rem;
+        align-items: center;
+    }
+
+    .pricingRowMain {
+        flex-wrap: wrap;
+    }
+
+    .pricingLabel strong {
+        font-size: 0.85rem;
+    }
+
+    .pricingLabel span {
+        font-size: 0.72rem;
+    }
+
+    .pricingAmount {
+        font-size: 1.15rem !important;
+        white-space: nowrap;
     }
 
     .pricingNote {
