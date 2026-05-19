@@ -286,6 +286,13 @@
     font-size: 1.75rem;
 }
 
+.pdvNote {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #9CA3AF;
+    vertical-align: middle;
+}
+
 .pricingNote {
     font-size: 0.72rem;
     color: #9CA3AF;

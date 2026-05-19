@@ -113,10 +113,10 @@ export default async function SolarniPaneliOffer({ params }: Props) {
     ];
 
     const terms = [
-        'Cijena razvoja je fiksna — nema dodatnih troškova koji nisu navedeni u ovoj ponudi',
-        'Plaćanje u fazama: 40% pri potpisivanju, 30% nakon završetka dizajna (Faza 1), 30% pri finalnoj isporuci',
-        'Razvoj traje okvirno 3 mjeseca od uplate prvog avansa i dostave materijala',
-        'Troškovi Google Play, App Store, servera i održavanja su zasebni i snosi ih klijent',
+        'Cijena razvoja je 1.500 KM + PDV — fiksna, bez skrivenih troškova',
+        'Plaćanje u tri rate: 600 KM pri potpisivanju, 450 KM nakon završetka dizajna, 450 KM pri isporuci',
+        'Razvoj traje okvirno 3 mjeseca od uplate prve rate i dostave potrebnih materijala',
+        'Troškovi Google Play ($25), App Store ($99/god), servera (25 €/mj) i održavanja (150 KM/mj) su zasebni',
         'Ponuda važi 30 dana od datuma izdavanja',
         'Sve promjene u opsegu rada nakon potpisivanja se dogovaraju i procjenjuju zasebno',
         'Zadržavamo pravo da projekat koristimo kao referencu, osim ako preferirate da ostane privatno',
@@ -246,7 +246,7 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                                 <strong>Izrada kompletnog sistema</strong>
                                 <span>Obje aplikacije + admin panel + backend</span>
                             </div>
-                            <div className={s.pricingAmount}>1.200 KM</div>
+                            <div className={s.pricingAmount}>1.500 KM <span className={s.pdvNote}>+ PDV</span></div>
                             <div className={s.pricingNote}>jednokratno</div>
                         </div>
 
@@ -273,7 +273,7 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                                 <strong>Server (VPS)</strong>
                                 <span>Hosting za backend, bazu i WebSocket server</span>
                             </div>
-                            <div className={s.pricingAmount}>15 €</div>
+                            <div className={s.pricingAmount}>25 €</div>
                             <div className={s.pricingNote}>/mjesečno</div>
                         </div>
                         <div className={s.pricingRow}>
@@ -281,7 +281,7 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                                 <strong>Mjesečno održavanje</strong>
                                 <span>Monitoring, ažuriranja, tehnička podrška</span>
                             </div>
-                            <div className={s.pricingAmount}>100 KM</div>
+                            <div className={s.pricingAmount}>150 KM</div>
                             <div className={s.pricingNote}>/mjesečno</div>
                         </div>
                     </div>
@@ -290,15 +290,15 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                         <span className={s.paymentPlanLabel}>Dinamika plaćanja za razvoj</span>
                         <div className={s.paymentPlanRow}>
                             <span>Pri potpisivanju (40%)</span>
-                            <strong>480 KM</strong>
+                            <strong>600 KM</strong>
                         </div>
                         <div className={s.paymentPlanRow}>
                             <span>Nakon završetka dizajna (30%)</span>
-                            <strong>360 KM</strong>
+                            <strong>450 KM</strong>
                         </div>
                         <div className={s.paymentPlanRow}>
                             <span>Pri finalnoj isporuci (30%)</span>
-                            <strong>360 KM</strong>
+                            <strong>450 KM</strong>
                         </div>
                     </div>
                 </div>
@@ -311,26 +311,6 @@ export default async function SolarniPaneliOffer({ params }: Props) {
                             <li key={i}>{item}</li>
                         ))}
                     </ul>
-                </div>
-
-                {/* Acceptance */}
-                <div className={s.acceptance}>
-                    <span className={styles.sectionTitle}>Prihvatanje ponude</span>
-                    <p className={s.acceptanceIntro}>
-                        Potpisom potvrđujemo da smo obostrano razumjeli šta radimo, po kojoj cijeni i na koji rok.
-                    </p>
-                    <div className={s.acceptanceGrid}>
-                        <div className={s.acceptanceField}>
-                            <span className={s.acceptanceLabel}>Klijent</span>
-                            <div className={s.acceptanceLine} />
-                            <span className={s.acceptanceSubLabel}>Potpis i datum</span>
-                        </div>
-                        <div className={s.acceptanceField}>
-                            <span className={s.acceptanceLabel}>Luminor Solutions d.o.o.</span>
-                            <div className={s.acceptanceLine} />
-                            <span className={s.acceptanceSubLabel}>Ovlašteno lice i datum</span>
-                        </div>
-                    </div>
                 </div>
 
                 {/* Footer */}
